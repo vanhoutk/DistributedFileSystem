@@ -20,7 +20,7 @@ import           	System.Log.Handler           (setFormatter)
 import           	System.Log.Handler.Simple
 import           	System.Log.Handler.Syslog
 import           	System.Log.Logger
-import						fileserverAPI
+import						FileserverAPI
 
 data User = User
   { userId        :: Int

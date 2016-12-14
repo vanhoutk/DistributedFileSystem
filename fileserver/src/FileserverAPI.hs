@@ -7,7 +7,7 @@
 {-# LANGUAGE TypeOperators        #-}
 {-# LANGUAGE TypeSynonymInstances #-}
 
-module fileserverAPI where
+module FileserverAPI where
 
 import           Data.Aeson
 import           Data.Aeson.TH
