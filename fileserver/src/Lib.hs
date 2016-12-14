@@ -14,6 +14,13 @@ import           	Database.MongoDB
 import 						Network.Wai
 import 						Network.Wai.Handler.Warp
 import 						Servant
+import           	System.Environment           (getArgs, getProgName, lookupEnv)
+import           	System.Log.Formatter
+import           	System.Log.Handler           (setFormatter)
+import           	System.Log.Handler.Simple
+import           	System.Log.Handler.Syslog
+import           	System.Log.Logger
+import						fileserverAPI
 
 data User = User
   { userId        :: Int
@@ -26,7 +33,10 @@ $(deriveJSON defaultOptions ''User)
 type API = "users" :> Get '[JSON] [User]
 
 startApp :: IO ()
-startApp = run 8080 app
+startApp = withLogging $ \ aplogger -> do
+  warnLog "Starting use-haskell."
+  let settings = setPort 8080 $ setLogger aplogger defaultSettings
+  runSettings settings app
 
 app :: Application
 app = serve api server
@@ -36,28 +46,52 @@ api = Proxy
 
 server :: Server API
 server = uploadFile
-	:<|> downloadFile
+		:<|> downloadFile
 
 	where
 
 		uploadFile :: Message -> Handler Bool
 		uploadFile msg@(Message key _) = liftIO $ do
-			putStrLn $ "Storing file under key " ++ key ++ "."
+			--putStrLn $ "Storing file under key " ++ key ++ "."
 			withMongoDbConnection $ upsert (select ["name" =: key] "MESSAGE_RECORD") $ toBSON msg
 			return True
 
 		downloadFile :: Maybe String -> Handler [Message]
 		downloadFile (Just key) = liftIO $ do
-			putStrLn $ "Searching for value for key: " ++ key
+			--putStrLn $ "Searching for value for key: " ++ key
 			withMongoDbConnection $ do
 				docs <- find (select ["name" =: key] "MESSAGE_RECORD") >>= drainCursor
 				return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe Message) docs
 
 		downloadFile Nothing = liftIO $ do
-      putStrLn $ "No key for searching."
+      warnLog $ "No key for searching."
       return $ ([] :: [Message])
 
+-- | Logging stuff
+iso8601 :: UTCTime -> String
+iso8601 = formatTime defaultTimeLocale "%FT%T%q%z"
 
+-- global loggin functions
+debugLog, warnLog, errorLog :: String -> IO ()
+debugLog = doLog debugM
+warnLog  = doLog warningM
+errorLog = doLog errorM
+noticeLog = doLog noticeM
+
+doLog f s = getProgName >>= \ p -> do
+                t <- getCurrentTime
+                f p $ (iso8601 t) ++ " " ++ s
+
+withLogging act = withStdoutLogger $ \aplogger -> do
+
+  lname  <- getProgName
+  llevel <- logLevel
+  updateGlobalLogger lname
+                     (setLevel $ case llevel of
+                                  "WARNING" -> WARNING
+                                  "ERROR"   -> ERROR
+                                  _         -> DEBUG)
+  act aplogger
 
 -- | Mongodb helpers...
 
