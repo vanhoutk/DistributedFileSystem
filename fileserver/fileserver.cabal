@@ -2,7 +2,7 @@ name:                fileserver
 version:             0.1.0.0
 synopsis:            Initial project template from stack
 description:         Please see README.md
-homepage:            https://github.com/githubuser/fileserver#readme
+homepage:            https://github.com/vanhoutk/fileserver#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Author name here
@@ -21,6 +21,7 @@ library
                      , servant-server
                      , wai
                      , warp
+                     , fileserverAPI
   default-language:    Haskell2010
 
 executable fileserver-exe
@@ -42,4 +43,4 @@ test-suite fileserver-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/fileserver
+  location: https://github.com/vanhoutk/fileserver
