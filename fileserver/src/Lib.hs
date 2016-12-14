@@ -1,18 +1,33 @@
-{-# LANGUAGE DataKinds       #-}
-{-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE TypeOperators   #-}
+{-# LANGUAGE DataKinds            #-}
+{-# LANGUAGE DeriveAnyClass       #-}
+{-# LANGUAGE DeriveGeneric        #-}
+{-# LANGUAGE FlexibleContexts     #-}
+{-# LANGUAGE FlexibleInstances    #-}
+{-# LANGUAGE OverloadedStrings    #-}
+{-# LANGUAGE StandaloneDeriving   #-}
+{-# LANGUAGE TemplateHaskell      #-}
+{-# LANGUAGE TypeOperators        #-}
+{-# LANGUAGE TypeSynonymInstances #-}
 
 module Lib
     ( startApp
     ) where
 
+import           	Control.Monad                (when)
+import           	Control.Monad.IO.Class
+import           	Control.Monad.Trans.Resource
 import 						Data.Aeson
 import						Data.Aeson.TH
+import         	  Data.Bson.Generic
 import qualified	Data.List                    as DL
 import           	Data.Maybe                   (catMaybes)
+import           	Data.Text                    (pack, unpack)
+import           	Data.Time.Clock              (UTCTime, getCurrentTime)
+import           	Data.Time.Format             (defaultTimeLocale, formatTime)
 import           	Database.MongoDB
 import 						Network.Wai
 import 						Network.Wai.Handler.Warp
+import           	Network.Wai.Logger
 import 						Servant
 import           	System.Environment           (getArgs, getProgName, lookupEnv)
 import           	System.Log.Formatter
@@ -21,16 +36,6 @@ import           	System.Log.Handler.Simple
 import           	System.Log.Handler.Syslog
 import           	System.Log.Logger
 import						FileserverAPI
-
-data User = User
-  { userId        :: Int
-  , userFirstName :: String
-  , userLastName  :: String
-  } deriving (Eq, Show)
-
-$(deriveJSON defaultOptions ''User)
-
-type API = "users" :> Get '[JSON] [User]
 
 startApp :: IO ()
 startApp = withLogging $ \ aplogger -> do
@@ -52,20 +57,20 @@ server = uploadFile
 
 		uploadFile :: Message -> Handler Bool
 		uploadFile msg@(Message key _) = liftIO $ do
-			--putStrLn $ "Storing file under key " ++ key ++ "."
+			warnLog $ "Storing file under key " ++ key ++ "."
 			withMongoDbConnection $ upsert (select ["name" =: key] "MESSAGE_RECORD") $ toBSON msg
 			return True
 
 		downloadFile :: Maybe String -> Handler [Message]
 		downloadFile (Just key) = liftIO $ do
-			--putStrLn $ "Searching for value for key: " ++ key
+			warnLog $ "Searching for value for key: " ++ key
 			withMongoDbConnection $ do
 				docs <- find (select ["name" =: key] "MESSAGE_RECORD") >>= drainCursor
 				return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe Message) docs
 
 		downloadFile Nothing = liftIO $ do
-      warnLog $ "No key for searching."
-      return $ ([] :: [Message])
+			warnLog $ "No key for searching."
+			return $ ([] :: [Message])
 
 -- | Logging stuff
 iso8601 :: UTCTime -> String
@@ -138,6 +143,11 @@ mongoDbPort = defEnv "MONGODB_PORT" read 27017 False -- 27017 is the default mon
 -- | The name of the mongoDB database that devnostics-rest uses to store and access data
 mongoDbDatabase :: IO String
 mongoDbDatabase = defEnv "MONGODB_DATABASE" id "USEHASKELLDB" True
+
+-- | Determines log reporting level. Set to "DEBUG", "WARNING" or "ERROR" as preferred. Loggin is
+-- provided by the hslogger library.
+logLevel :: IO String
+logLevel = defEnv "LOG_LEVEL" id "DEBUG" True
 
 -- | Helper function to simplify the setting of environment variables
 -- function that looks up environment variable and returns the result of running funtion fn over it

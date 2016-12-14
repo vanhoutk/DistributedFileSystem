@@ -19,8 +19,16 @@ library
                      , FileserverAPI
   build-depends:       base >= 4.7 && < 5
                      , aeson
+                     , bson
+                     , bson-generic
+                     , hslogger
+                     , mongoDB
+                     , resourcet
                      , servant-server
+                     , text
+                     , time
                      , wai
+                     , wai-logger
                      , warp
   default-language:    Haskell2010
 

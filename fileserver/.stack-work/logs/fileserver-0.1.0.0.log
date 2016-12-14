@@ -1,0 +1,16 @@
+Configuring fileserver-0.1.0.0...
+Preprocessing library fileserver-0.1.0.0...
+[1 of 2] Compiling FileserverAPI    ( src/FileserverAPI.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/FileserverAPI.o )
+[2 of 2] Compiling Lib              ( src/Lib.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Lib.o )
+
+src/Lib.hs:16:18: warning: [-Wtabs]
+    Tab character found here, and in 94 further locations.
+    Please use spaces instead.
+Preprocessing executable 'fileserver-exe' for fileserver-0.1.0.0...
+[1 of 1] Compiling Main             ( app/Main.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/fileserver-exe/fileserver-exe-tmp/Main.o )
+Linking .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/fileserver-exe/fileserver-exe ...
+Installing library in
+/home/protoman/Documents/CS4532/DFS/fileserver/.stack-work/install/x86_64-linux/lts-7.13/8.0.1/lib/x86_64-linux-ghc-8.0.1/fileserver-0.1.0.0-BXRdeOfAMIy1UMKTw6JJCZ
+Installing executable(s) in
+/home/protoman/Documents/CS4532/DFS/fileserver/.stack-work/install/x86_64-linux/lts-7.13/8.0.1/bin
+Registering fileserver-0.1.0.0...

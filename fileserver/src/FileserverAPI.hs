@@ -25,5 +25,5 @@ deriving instance ToBSON   String
 data ResponseData = ResponseData { response :: String
                                  } deriving (Generic, ToJSON, FromJSON,FromBSON, Show)
 
-type API = "uploadFile"		:> ReqBody '[JSON] Message  :> Post '[JSON] Bool
+type API = "uploadFile"   :> ReqBody '[JSON] Message  :> Post '[JSON] Bool
       :<|> "downloadFile" :> QueryParam "name" String :> Get '[JSON] [Message]
