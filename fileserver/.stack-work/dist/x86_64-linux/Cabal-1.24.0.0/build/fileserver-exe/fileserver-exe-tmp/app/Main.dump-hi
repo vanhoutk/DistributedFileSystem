@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-14 23:15:55.078835 UTC
+2016-12-17 21:13:55.865092 UTC
 
 interface main@main:Main 8001
-  interface hash: 2c6d55689120a7a1d2677a1e831d9fd5
-  ABI hash: b1df03d5f1556fb311485280353f0a41
-  export-list hash: da70a8462ee174e901fb30dfaa7a0e26
+  interface hash: c146b7b12211e3aa86d492be3c81b76e
+  ABI hash: 24741f879db33f284d64135bb8a8d7f5
+  export-list hash: 67b6da0a1acd7abbf560a2681202285c
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 37b165eaaeeaa24096411e4a8d333c6c
   sig of: Nothing
@@ -50,7 +50,7 @@ package dependencies: MonadRandom-0.4.2.3@MonadRandom-0.4.2.3-8TfCm6PGvGYB7omozO
                       fast-logger-2.4.7@fast-logger-2.4.7-E7H6TuZQzia59KuB50vayl
                       file-embed-0.0.10@file-embed-0.0.10-IXfudWSq57y1Athysk5ifZ
                       filepath-1.4.1.0@filepath-1.4.1.0
-                      fileserver-0.1.0.0@fileserver-0.1.0.0-BXRdeOfAMIy1UMKTw6JJCZ
+                      fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii
                       ghc-boot-th-8.0.1@ghc-boot-th-8.0.1 ghc-prim-0.5.0.0
                       hashable-1.2.4.0@hashable-1.2.4.0-EMu4H7FB10MAl6hwKw992G
                       hashtables-1.2.1.0@hashtables-1.2.1.0-97BixhaJIWTIDAaThqJujl
@@ -119,7 +119,6 @@ orphans: MonadRandom-0.4.2.3@MonadRandom-0.4.2.3-8TfCm6PGvGYB7omozORhov:Control.
          binary-0.8.3.0@binary-0.8.3.0:Data.Binary.Generic
          bson-generic-0.0.8@bson-generic-0.0.8-DtORpoUHwQhDReLJ5Keop0:Data.Bson.Generic
          bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Builder
-         fileserver-0.1.0.0@fileserver-0.1.0.0-BXRdeOfAMIy1UMKTw6JJCZ:FileserverAPI
          hashable-1.2.4.0@hashable-1.2.4.0-EMu4H7FB10MAl6hwKw992G:Data.Hashable.Generic
          mongoDB-2.1.1.1@mongoDB-2.1.1.1-5wYXyk7zdwHHB6m4bwUEQN:Database.MongoDB.Internal.Util
          network-2.6.3.1@network-2.6.3.1-G4Up1CPKbp7DeFsnywOnGG:Network.Socket
@@ -151,7 +150,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
                          containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
                          dlist-0.8.0.2@dlist-0.8.0.2-GWAMmbX9rLg3tqrbOizHGv:Data.DList
-                         fileserver-0.1.0.0@fileserver-0.1.0.0-BXRdeOfAMIy1UMKTw6JJCZ:FileserverAPI
+                         fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii:FileserverAPI
                          ghc-boot-th-8.0.1@ghc-boot-th-8.0.1:GHC.LanguageExtensions.Type
                          http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB:Web.Internal.FormUrlEncoded
                          iproute-1.7.1@iproute-1.7.1-9hsGfRvggCmFA0ueZi5Sd9:Data.IP.Addr
@@ -184,7 +183,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed.Base
                          zlib-0.6.1.2@zlib-0.6.1.2-4CWLN1T27kOJhNvXgy46ZV:Codec.Compression.Zlib.Stream
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
-import  -/  fileserver-0.1.0.0@fileserver-0.1.0.0-BXRdeOfAMIy1UMKTw6JJCZ:Lib 66ca17a51b8d0c34ada033e11ca88048
+import  -/  fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii:Lib d4ca421ef5812182520685fc39ac6512
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module
@@ -198,12 +197,12 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-db74349040380dc241d8d6f7639f84e3
+c2eed6e6a0d256ba65d047767a41d21d
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Lib.startApp1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-22317076352112d8352bb8205f026b24
+46c240d0a7d9fbe391501bfe4cc3af38
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)

@@ -11,19 +11,21 @@ module FileserverAPI where
 
 import           Data.Aeson
 import           Data.Aeson.TH
-import           Data.Bson.Generic
 import           GHC.Generics
 import           Servant
 
-data Message = Message { name    :: String
-                       , message :: String
-                       } deriving (Show, Generic, FromJSON, ToJSON, ToBSON, FromBSON)
+data File = File 	{ name :: String
+                  , contents :: String
+                  } deriving (Show, Generic, FromJSON, ToJSON)
 
-deriving instance FromBSON String  -- we need these as BSON does not provide
-deriving instance ToBSON   String
+--data Message = Message { name    :: String
+--                       , message :: String
+--                       } deriving (Show, Generic, FromJSON, ToJSON, ToBSON, FromBSON)
+
 
 data ResponseData = ResponseData { response :: String
-                                 } deriving (Generic, ToJSON, FromJSON,FromBSON, Show)
+                                 } deriving (Generic, ToJSON, FromJSON, Show)
 
-type API = "uploadFile"   :> ReqBody '[JSON] Message  :> Post '[JSON] Bool
-      :<|> "downloadFile" :> QueryParam "name" String :> Get '[JSON] [Message]
+type API = "upload"   :> ReqBody '[JSON] File  :> Post '[JSON] ResponseData
+      :<|> "download" :> Get '[JSON] [String]
+      :<|> "download" :> Capture "name" String :> Get '[JSON] File

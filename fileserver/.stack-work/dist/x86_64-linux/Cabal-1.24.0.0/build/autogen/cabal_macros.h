@@ -35,6 +35,13 @@
   (major1) == 0 && (major2) <  0 || \
   (major1) == 0 && (major2) == 0 && (minor) <= 8)
 
+/* package directory-1.2.6.2 */
+#define VERSION_directory "1.2.6.2"
+#define MIN_VERSION_directory(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  2 || \
+  (major1) == 1 && (major2) == 2 && (minor) <= 6)
+
 /* package hslogger-1.2.10 */
 #define VERSION_hslogger "1.2.10"
 #define MIN_VERSION_hslogger(major1,major2,minor) (\
@@ -76,6 +83,13 @@
   (major1) <  1 || \
   (major1) == 1 && (major2) <  6 || \
   (major1) == 1 && (major2) == 6 && (minor) <= 0)
+
+/* package transformers-0.5.2.0 */
+#define VERSION_transformers "0.5.2.0"
+#define MIN_VERSION_transformers(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  5 || \
+  (major1) == 0 && (major2) == 5 && (minor) <= 2)
 
 /* package wai-3.2.1.1 */
 #define VERSION_wai "3.2.1.1"
@@ -154,7 +168,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "fileserver-0.1.0.0-BXRdeOfAMIy1UMKTw6JJCZ"
+#define CURRENT_COMPONENT_ID "fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii"
 
-#define CURRENT_PACKAGE_KEY "fileserver-0.1.0.0-BXRdeOfAMIy1UMKTw6JJCZ"
+#define CURRENT_PACKAGE_KEY "fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii"
 

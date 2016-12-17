@@ -21,12 +21,14 @@ library
                      , aeson
                      , bson
                      , bson-generic
+                     , directory
                      , hslogger
                      , mongoDB
                      , resourcet
                      , servant-server
                      , text
                      , time
+                     , transformers
                      , wai
                      , wai-logger
                      , warp
