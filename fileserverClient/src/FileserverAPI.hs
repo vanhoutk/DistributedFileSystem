@@ -14,21 +14,19 @@ import           Data.Aeson.TH
 import           GHC.Generics
 import           Servant
 
-data File = File 	{ name :: String
+data File = File  { name :: String
                   , contents :: String
                   } deriving (Show, Generic, FromJSON, ToJSON)
-
-instance ToJSON   File
-instance FromJSON File
-
---data Message = Message { name    :: String
---                       , message :: String
---                       } deriving (Show, Generic, FromJSON, ToJSON, ToBSON, FromBSON)
 
 
 data ResponseData = ResponseData { response :: String
                                  } deriving (Generic, ToJSON, FromJSON, Show)
 
-type API = "upload"   :> ReqBody '[JSON] File  :> Post '[JSON] Bool
-      :<|> "download" :> Get '[JSON] [File]
+-- Could allow directory change
+-- Could allow files to be moved
+-- Could allow files to be deleted
+-- Could allow directories to be created
+
+type API = "upload"   :> ReqBody '[JSON] File  :> Post '[JSON] ResponseData
+      :<|> "download" :> Get '[JSON] [String]
       :<|> "download" :> Capture "name" String :> Get '[JSON] File

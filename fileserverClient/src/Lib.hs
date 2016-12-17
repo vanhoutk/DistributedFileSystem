@@ -20,19 +20,21 @@ import						Servant.API
 import						Servant.Client
 import						FileserverAPI
 
-uploadFile :: Message -> ClientM Bool
-downloadFile :: Maybe String -> ClientM [Message]
+uploadFile :: File -> ClientM ResponseData
+getFiles :: ClientM [String]
+downloadFile :: String -> ClientM File
 
 api :: Proxy API
 api = Proxy
 
-(uploadFile :<|> downloadFile) = client api
+uploadFile :<|> getFiles :<|> downloadFile = client api
 
-queries :: ClientM (Bool, [Message])
+queries :: ClientM (ResponseData, [String], File)
 queries = do
-	upload_file <- uploadFile (Message "File1" "This is file1")
-	download_file <- downloadFile (Just "File1")
-	return (upload_file, download_file)
+	upload_file <- uploadFile (File "File1.txt" "This is file1")
+	get_files <- getFiles
+	download_file <- downloadFile ("File2.txt")
+	return (upload_file, get_files, download_file)
 
 startApp :: IO ()
 startApp = do
@@ -41,6 +43,7 @@ startApp = do
 	res <- runClientM queries (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
 	case res of
 		Left err -> putStrLn $ "Error: " ++ show err
-		Right (uploadFile, downloadFile) -> do
-			print uploadFile
-			print downloadFile
+		Right (upload_file, get_files, download_file) -> do
+			print upload_file
+			print get_files
+			print download_file
