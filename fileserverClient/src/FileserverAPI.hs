@@ -27,6 +27,6 @@ data ResponseData = ResponseData { response :: String
 -- Could allow files to be deleted
 -- Could allow directories to be created
 
-type API = "upload"   :> ReqBody '[JSON] File  :> Post '[JSON] ResponseData
-      :<|> "download" :> Get '[JSON] [String]
-      :<|> "download" :> Capture "name" String :> Get '[JSON] File
+type FileServerAPI = "upload"   :> ReqBody '[JSON] File  :> Post '[JSON] ResponseData
+                :<|> "download" :> Get '[JSON] [String]
+                :<|> "download" :> Capture "name" String :> Get '[JSON] File

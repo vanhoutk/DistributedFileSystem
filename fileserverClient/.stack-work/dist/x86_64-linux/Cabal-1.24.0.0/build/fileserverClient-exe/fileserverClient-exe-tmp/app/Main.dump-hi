@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-17 21:48:26.005324 UTC
+2016-12-18 16:04:14.025617 UTC
 
 interface main@main:Main 8001
-  interface hash: 2466dcb77f97921279a0eac05d1f1dfb
-  ABI hash: 059f52b7264319ecf9de85d5cd6cf5ce
-  export-list hash: abfd64696366563a2eb5a0fe243ffd07
+  interface hash: e2e771c09e837e28d1f6ef41f1f363ef
+  ABI hash: 45651a44ab6d8b9527f9d36b8c58d152
+  export-list hash: 4c9bc88dc0613a2b05455566c34bac3a
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: ca98f81b9ba89b12203350e07ff1c66b
   sig of: Nothing
@@ -35,7 +35,7 @@ package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
                       exceptions-0.8.3@exceptions-0.8.3-7py7fmRxowDFpHmiHGKrTb
                       file-embed-0.0.10@file-embed-0.0.10-IXfudWSq57y1Athysk5ifZ
                       filepath-1.4.1.0@filepath-1.4.1.0
-                      fileserverClient-0.1.0.0@fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1
+                      fileserverClient-0.1.0.0@fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl
                       ghc-boot-th-8.0.1@ghc-boot-th-8.0.1 ghc-prim-0.5.0.0
                       hashable-1.2.4.0@hashable-1.2.4.0-EMu4H7FB10MAl6hwKw992G
                       http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB
@@ -114,7 +114,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
                          containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
                          dlist-0.8.0.2@dlist-0.8.0.2-GWAMmbX9rLg3tqrbOizHGv:Data.DList
-                         fileserverClient-0.1.0.0@fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1:FileserverAPI
+                         fileserverClient-0.1.0.0@fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl:FileserverAPI
                          ghc-boot-th-8.0.1@ghc-boot-th-8.0.1:GHC.LanguageExtensions.Type
                          http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB:Web.Internal.FormUrlEncoded
                          http-client-0.4.31.2@http-client-0.4.31.2-81NyMkNcWWADaJ0Cq5FYRE:Network.HTTP.Client
@@ -147,7 +147,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed.Base
                          zlib-0.6.1.2@zlib-0.6.1.2-4CWLN1T27kOJhNvXgy46ZV:Codec.Compression.Zlib.Stream
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
-import  -/  fileserverClient-0.1.0.0@fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1:Lib 536448c02c18840fa3ff7bc6928b0d38
+import  -/  fileserverClient-0.1.0.0@fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl:Client c64280a8eda5b7289aa576939adb768e
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module
@@ -161,19 +161,19 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-d0c3e788f5245a17670aad197c13d89f
+34a7e1abfa198833ebe3e8835fa425f2
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
-                Lib.startApp1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-b5eb26f2a472c9e7eadde3e9ffed51b4
+                Client.startClient1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
+0d91cba0bbd16f96bcbb32793844caba
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1,
      Unfolding: (GHC.TopHandler.runMainIO1
                    @ ()
-                   Lib.startApp1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
+                   Client.startClient1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

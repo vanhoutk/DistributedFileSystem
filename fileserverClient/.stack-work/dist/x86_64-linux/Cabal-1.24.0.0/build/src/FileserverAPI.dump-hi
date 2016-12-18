@@ -1,19 +1,19 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-17 21:46:58.698519 UTC
+2016-12-18 15:56:23.501604 UTC
 
-interface fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1:FileserverAPI [family instance module] 8001
-  interface hash: 60d2be3fe644a3bfb5afc6222ac60367
-  ABI hash: edc5691d2f41780077859f7440c66e82
-  export-list hash: d29f2497de57cbc9b6270824098148a0
-  orphan hash: 93983fe2f1472085c022edad7e584c13
+interface fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl:FileserverAPI [family instance module] 8001
+  interface hash: 8b80e8ba1ee75f7c5a64a39c683fbaaa
+  ABI hash: 0432222cc8759a92c40634272ab0e9d6
+  export-list hash: 71115e85f33871238dbe0a0a7ec40d9a
+  orphan hash: 0414769f5177971ea7f95464279c2136
   flag hash: b0e3f8b573d72bae0f984477a0acb626
   sig of: Nothing
   used TH splices: False
   where
 exports:
-  FileserverAPI.API
   FileserverAPI.File{FileserverAPI.File contents name}
+  FileserverAPI.FileServerAPI
   FileserverAPI.ResponseData{FileserverAPI.ResponseData response}
 module dependencies:
 package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
@@ -147,7 +147,7 @@ import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.R
 import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.Sub 8cde68da5a80a5af4f64bff49421dffb
 import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.Verbs 635eefa3150b87923b6bc0cdae51880a
 import  -/  servant-server-0.9.1.1@servant-server-0.9.1.1-66M2tFOHqQqK0MqMhFZVCd:Servant 486b79878ba489ae3f0fe8391c7fd3c5
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fFromJSONFile ::
     Data.Aeson.Types.Class.FromJSON FileserverAPI.File
   DFunId
@@ -157,7 +157,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                   `cast`
                 (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
                           <FileserverAPI.File>_N)) -}
-bfa97006e3f888a95fd8c8a35e22246c
+e9d4f6b5550531184724ccd0faf852cc
   $fFromJSONFile1 ::
     Data.Aeson.Types.Internal.Options
     -> GHC.Base.Maybe Data.Text.Internal.Text
@@ -189,7 +189,7 @@ bfa97006e3f888a95fd8c8a35e22246c
                    (w1 :: GHC.Base.Maybe Data.Text.Internal.Text)
                    (w2 :: Data.Aeson.Types.Internal.Value) ->
                  FileserverAPI.$w$dConsFromJSON' @ a w w2) -}
-4572bc920dfc7c155864ce5b1314120b
+e90b3c97d62e6ce12b6e2ab21b3abae4
   $fFromJSONFile10 :: GHC.Generics.R:SingSymbols "contents"
   {- Strictness: m,
      Unfolding: (GHC.Generics.SSym
@@ -199,10 +199,10 @@ bfa97006e3f888a95fd8c8a35e22246c
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"contents">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"contents">_N))) -}
-c8e1da99b1ff113c51ed5362a2fd8614
+e9e0425264f81f96c5d1ebc35a46d589
   $fFromJSONFile11 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "contents"#) -}
-343b8ada823e3b29dda97ebde8431114
+64ed58e61de8188927e95ec36a672c92
   $fFromJSONFile12 ::
     (GHC.Generics.:*:)
       (GHC.Generics.M1
@@ -245,7 +245,7 @@ c8e1da99b1ff113c51ed5362a2fd8614
                                 (GHC.Generics.Rec0 GHC.Base.String))
                              a) ->
                  GHC.Types.False) -}
-947a67d945fd265425efa6409246a3e5
+eca1c7a642613c03b532df99db24f2c9
   $fFromJSONFile2 :: GHC.Generics.SingI ('GHC.Base.Just "name")
   {- Unfolding: InlineRule (0, True, True)
                 FileserverAPI.$fFromJSONFile3
@@ -255,7 +255,7 @@ c8e1da99b1ff113c51ed5362a2fd8614
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Base.Maybe
                                                        GHC.Types.Symbol>_N) <'GHC.Base.Just
                                                                                "name">_N) -}
-208469a405c10998859bf0d7b24da376
+42e1e999db0fd6c984128cc9dc2efab7
   $fFromJSONFile3 ::
     GHC.Generics.R:SingMaybeb GHC.Types.Symbol ('GHC.Base.Just "name")
   {- Unfolding: (GHC.Generics.SJust
@@ -266,7 +266,7 @@ c8e1da99b1ff113c51ed5362a2fd8614
                    FileserverAPI.$fFromJSONFile4
                      `cast`
                    (Sym (GHC.Generics.D:R:SingSymbols0[0]) <"name">_N)) -}
-366bca098b975ae9ac4f041a849132fb
+d27fb97ab10fc79ead683c285e833c5c
   $fFromJSONFile4 :: GHC.Generics.R:SingSymbols "name"
   {- Strictness: m,
      Unfolding: (GHC.Generics.SSym
@@ -276,10 +276,10 @@ c8e1da99b1ff113c51ed5362a2fd8614
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"name">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"name">_N))) -}
-cbd437a87d1e48f051acb64863d3fadc
+cd2be7c8ed918530a45606b3ef2da837
   $fFromJSONFile5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "name"#) -}
-ba1a90bd951abb23590af12259a5952c
+28835f3ae1583a09e06a85503b409a70
   $fFromJSONFile6 ::
     Data.Aeson.Types.Internal.Options
     -> Data.Aeson.Types.Internal.Value
@@ -291,10 +291,10 @@ ba1a90bd951abb23590af12259a5952c
                    (w :: Data.Aeson.Types.Internal.Options)
                    (w1 :: Data.Aeson.Types.Internal.Value) ->
                  FileserverAPI.$w$dGFromJSON @ a1 w1) -}
-415708f36e96659d8fcd267bab0c991f
+e5143e90b12e3b93e7aeea59d648de46
   $fFromJSONFile7 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "String"#) -}
-661c9afef78b6903681d4ab39f41f19d
+018e647cf44c4a6fc4014ee4920eec55
   $fFromJSONFile8 :: GHC.Generics.SingI ('GHC.Base.Just "contents")
   {- Unfolding: InlineRule (0, True, True)
                 FileserverAPI.$fFromJSONFile9
@@ -304,7 +304,7 @@ ba1a90bd951abb23590af12259a5952c
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Base.Maybe
                                                        GHC.Types.Symbol>_N) <'GHC.Base.Just
                                                                                "contents">_N) -}
-838013294eb870ca7abfff67944d18f7
+9b316b6fa1448ab1a5a17cd19556a234
   $fFromJSONFile9 ::
     GHC.Generics.R:SingMaybeb
       GHC.Types.Symbol ('GHC.Base.Just "contents")
@@ -316,7 +316,7 @@ ba1a90bd951abb23590af12259a5952c
                    FileserverAPI.$fFromJSONFile10
                      `cast`
                    (Sym (GHC.Generics.D:R:SingSymbols0[0]) <"contents">_N)) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fFromJSONFile_$cparseJSON ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser FileserverAPI.File
@@ -476,7 +476,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <FileserverAPI.File>_R))) -}
-c6a770d7b2a408e29a2de32085425d25
+f078337863b42e4c7359925c8ad0ad8b
   $fFromJSONFile_$s$fSelectorMetaMetaSel ::
     GHC.Generics.Selector
       ('GHC.Generics.MetaSel
@@ -538,7 +538,7 @@ c6a770d7b2a408e29a2de32085425d25
                      GHC.Generics.$WSDecidedLazy
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Generics.DecidedStrictness>_N <'GHC.Generics.DecidedLazy>_N)) -}
-7134ef468fcfb7a811629647581ae313
+503304d55ae6232bc2517e9162e0f0b2
   $fFromJSONFile_$s$fSelectorMetaMetaSel1 ::
     GHC.Generics.Selector
       ('GHC.Generics.MetaSel
@@ -600,7 +600,7 @@ c6a770d7b2a408e29a2de32085425d25
                      GHC.Generics.$WSDecidedLazy
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Generics.DecidedStrictness>_N <'GHC.Generics.DecidedLazy>_N)) -}
-09dd68e3389b5177f791a8a50ae0e220
+208be17b6520fa11e2d118c62299e8f5
   $fFromJSONFile_$s$fSelectorMetaMetaSel_$cselName ::
     forall k (t :: GHC.Generics.Meta
                    -> (GHC.Types.* -> GHC.Types.*) -> k -> *) (f :: GHC.Types.*
@@ -624,7 +624,7 @@ c6a770d7b2a408e29a2de32085425d25
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  FileserverAPI.$fFromJSONFile5) -}
-6c5a3e66caa983aa8bc63d3cf3063116
+d003c55ca6a989210d92170675d5f3e0
   $fFromJSONFile_$s$fSelectorMetaMetaSel_$cselName1 ::
     forall k (t :: GHC.Generics.Meta
                    -> (GHC.Types.* -> GHC.Types.*) -> k -> *) (f :: GHC.Types.*
@@ -648,7 +648,7 @@ c6a770d7b2a408e29a2de32085425d25
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  FileserverAPI.$fFromJSONFile11) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fFromJSONResponseData ::
     Data.Aeson.Types.Class.FromJSON FileserverAPI.ResponseData
   DFunId
@@ -658,7 +658,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                   `cast`
                 (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
                           <FileserverAPI.ResponseData>_N)) -}
-a9fab65910f18802c48725e3465c71bb
+e0df7eb44335e50b582ce04e854e1fb8
   $fFromJSONResponseData1 ::
     Data.Aeson.Types.Internal.Options
     -> GHC.Base.Maybe Data.Text.Internal.Text
@@ -735,7 +735,7 @@ a9fab65910f18802c48725e3465c71bb
                                          'GHC.Generics.DecidedLazy)
                                       (GHC.Generics.Rec0 GHC.Base.String)
                                       a)>_R))) -}
-a0ca5018d8ed58e464bb257bec22ea21
+e688b6c1c505bf551125159d888c1df9
   $fFromJSONResponseData2 ::
     Data.Aeson.Types.Internal.Options
     -> Data.Aeson.Types.Internal.Value
@@ -747,7 +747,7 @@ a0ca5018d8ed58e464bb257bec22ea21
                    (w :: Data.Aeson.Types.Internal.Options)
                    (w1 :: Data.Aeson.Types.Internal.Value) ->
                  FileserverAPI.$w$dGFromJSON1 @ a1 w1) -}
-ad935b6fad200ae4be7f6ccc7004ffa4
+19e74bee77dc80a5ff4aa05423e06a67
   $fFromJSONResponseData3 ::
     GHC.Generics.SingI ('GHC.Base.Just "response")
   {- Unfolding: InlineRule (0, True, True)
@@ -758,7 +758,7 @@ ad935b6fad200ae4be7f6ccc7004ffa4
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Base.Maybe
                                                        GHC.Types.Symbol>_N) <'GHC.Base.Just
                                                                                "response">_N) -}
-cbd4296c812764820ff0d6d760a4ccf9
+c8b0ff3372ed504abbf0ae8e14613793
   $fFromJSONResponseData4 ::
     GHC.Generics.R:SingMaybeb
       GHC.Types.Symbol ('GHC.Base.Just "response")
@@ -770,7 +770,7 @@ cbd4296c812764820ff0d6d760a4ccf9
                    FileserverAPI.$fFromJSONResponseData5
                      `cast`
                    (Sym (GHC.Generics.D:R:SingSymbols0[0]) <"response">_N)) -}
-dec3a07b7faf0d2ce4d2329809ee13a5
+b7d01af7265e54ffc7aa792ea2afe32d
   $fFromJSONResponseData5 :: GHC.Generics.R:SingSymbols "response"
   {- Strictness: m,
      Unfolding: (GHC.Generics.SSym
@@ -780,10 +780,10 @@ dec3a07b7faf0d2ce4d2329809ee13a5
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"response">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"response">_N))) -}
-f0d90b44fb08da29803cecd5eddf5ef7
+15239473320a28e436cb8b79af4e46e0
   $fFromJSONResponseData6 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "response"#) -}
-27bd8a6943df8bdb6b10ec49bbe479e1
+b98b0d89e283cab1cf25fed7bee68e75
   $fFromJSONResponseData7 ::
     GHC.Generics.M1
       GHC.Generics.S
@@ -808,7 +808,7 @@ f0d90b44fb08da29803cecd5eddf5ef7
                              (GHC.Generics.K1 GHC.Generics.R GHC.Base.String)
                              a) ->
                  GHC.Types.True) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fFromJSONResponseData_$cparseJSON ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser FileserverAPI.ResponseData
@@ -912,7 +912,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <FileserverAPI.ResponseData>_R))) -}
-c0150d092b274f3cd4f427205d9f9de3
+372b94842f5a03184419896f97c3261b
   $fFromJSONResponseData_$s$fSelectorMetaMetaSel ::
     GHC.Generics.Selector
       ('GHC.Generics.MetaSel
@@ -974,7 +974,7 @@ c0150d092b274f3cd4f427205d9f9de3
                      GHC.Generics.$WSDecidedLazy
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Generics.DecidedStrictness>_N <'GHC.Generics.DecidedLazy>_N)) -}
-1239f6ca56ca300f0f158fc0f36a05e4
+f5aee44b5a0b75596ef9e4a5168c5ec6
   $fFromJSONResponseData_$s$fSelectorMetaMetaSel_$cselName ::
     forall k (t :: GHC.Generics.Meta
                    -> (GHC.Types.* -> GHC.Types.*) -> k -> *) (f :: GHC.Types.*
@@ -998,7 +998,7 @@ c0150d092b274f3cd4f427205d9f9de3
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  FileserverAPI.$fFromJSONResponseData6) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fGenericFile :: GHC.Generics.Generic FileserverAPI.File
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -1006,7 +1006,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                   @ FileserverAPI.File
                   FileserverAPI.$fGenericFile_$cfrom
                   FileserverAPI.$fGenericFile_$cto -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fGenericFile_$cfrom ::
     FileserverAPI.File -> GHC.Generics.Rep FileserverAPI.File x
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U)>m,
@@ -1086,7 +1086,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                                      <'GHC.Generics.MetaData
                                         "File"
                                         "FileserverAPI"
-                                        "fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1"
+                                        "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"
                                         'GHC.Types.False>_P
                                      <GHC.Generics.M1
                                         GHC.Generics.C
@@ -1110,7 +1110,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                                                             (GHC.Generics.K1
                                                                GHC.Generics.R GHC.Base.String))>_R))
                            (Sub (Sym (FileserverAPI.Rep_File[0])))) <x>_N) }) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fGenericFile_$cto ::
     GHC.Generics.Rep FileserverAPI.File x -> FileserverAPI.File
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U)>m,
@@ -1126,7 +1126,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                                      <'GHC.Generics.MetaData
                                         "File"
                                         "FileserverAPI"
-                                        "fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1"
+                                        "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"
                                         'GHC.Types.False>_P
                                      <GHC.Generics.M1
                                         GHC.Generics.C
@@ -1198,7 +1198,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                              <GHC.Generics.K1 GHC.Generics.R GHC.Base.String>_R <x>_N)
                         (GHC.Generics.N:K1[0]
                              <GHC.Generics.R>_P <GHC.Base.String>_R <x>_P)) }) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fGenericResponseData ::
     GHC.Generics.Generic FileserverAPI.ResponseData
   DFunId
@@ -1207,7 +1207,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                   @ FileserverAPI.ResponseData
                   FileserverAPI.$fGenericResponseData_$cfrom
                   FileserverAPI.$fGenericResponseData_$cto -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fGenericResponseData_$cfrom ::
     FileserverAPI.ResponseData
     -> GHC.Generics.Rep FileserverAPI.ResponseData x
@@ -1248,7 +1248,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                                                <'GHC.Generics.MetaData
                                                   "ResponseData"
                                                   "FileserverAPI"
-                                                  "fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1"
+                                                  "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"
                                                   'GHC.Types.False>_P
                                                <GHC.Generics.M1
                                                   GHC.Generics.C
@@ -1266,7 +1266,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                                                      (GHC.Generics.K1
                                                         GHC.Generics.R GHC.Base.String))>_R))
                                      (Sub (Sym (FileserverAPI.Rep_ResponseData[0]))))) <x>_N)) }) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fGenericResponseData_$cto ::
     GHC.Generics.Rep FileserverAPI.ResponseData x
     -> FileserverAPI.ResponseData
@@ -1285,7 +1285,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                                        <'GHC.Generics.MetaData
                                           "ResponseData"
                                           "FileserverAPI"
-                                          "fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1"
+                                          "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"
                                           'GHC.Types.False>_P
                                        <GHC.Generics.M1
                                           GHC.Generics.C
@@ -1325,7 +1325,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                                                GHC.Generics.R GHC.Base.String>_R))) <x>_N)
                         (GHC.Generics.N:K1[0]
                              <GHC.Generics.R>_P <GHC.Base.String>_R <x>_P))) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fShowFile :: GHC.Show.Show FileserverAPI.File
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -1334,28 +1334,28 @@ a7519682f71d1999a9ffa2cefe59bc21
                   FileserverAPI.$fShowFile_$cshowsPrec
                   FileserverAPI.$fShowFile_$cshow
                   FileserverAPI.$fShowFile_$cshowList -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fShowFile1 :: FileserverAPI.File -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (\ (w :: FileserverAPI.File) (w1 :: GHC.Base.String) ->
                  case w of ww { FileserverAPI.File ww1 ww2 ->
                  FileserverAPI.$w$cshowsPrec 0# ww1 ww2 w1 }) -}
-8cbc566512c85c27d57767b1b7d84f72
+d86d4b3adb7a8ade53a72ec93b94db5a
   $fShowFile2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "}"#) -}
-da8d340d3dc76df2d0c053ddbc2cfad2
+a69680fb4a19dc23450385532ccaad31
   $fShowFile3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "contents = "#) -}
-b21bffb2b454d6e5956b63009ae872ec
+26ba366a9e44826f094ab4a03eecb3fa
   $fShowFile4 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# ", "#) -}
-438afa05292b66eca1f175a05a57ae4a
+df277807f169fcc7ceb1c568c6abe370
   $fShowFile5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "name = "#) -}
-dd0d076b2653b195b423cb1ced155617
+b245f6d97776f8d259de9ae8535000ef
   $fShowFile6 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "File {"#) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fShowFile_$cshow :: FileserverAPI.File -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U(1*U,1*U)>,
      Unfolding: InlineRule (1, True, False)
@@ -1364,13 +1364,13 @@ a7519682f71d1999a9ffa2cefe59bc21
                    GHC.Show.shows22
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fShowFile_$cshowList :: [FileserverAPI.File] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__
                    @ FileserverAPI.File
                    FileserverAPI.$fShowFile1) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fShowFile_$cshowsPrec ::
     GHC.Types.Int -> FileserverAPI.File -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U,1*U)><L,U>,
@@ -1382,7 +1382,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { FileserverAPI.File ww3 ww4 ->
                  FileserverAPI.$w$cshowsPrec ww1 ww3 ww4 w2 } }) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fShowResponseData :: GHC.Show.Show FileserverAPI.ResponseData
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -1391,20 +1391,20 @@ a3e1dc6f36008b9333c0f6d5c079736e
                   FileserverAPI.$fShowResponseData_$cshowsPrec
                   FileserverAPI.$fShowResponseData_$cshow
                   FileserverAPI.$fShowResponseData_$cshowList -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fShowResponseData1 :: FileserverAPI.ResponseData -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (\ (w :: FileserverAPI.ResponseData)
                    (w1 :: GHC.Base.String) ->
                  case w of ww { FileserverAPI.ResponseData ww1 ->
                  FileserverAPI.$w$cshowsPrec1 0# ww1 w1 }) -}
-bb2d919418c32645fbb538bc93c3ab97
+20f0671d8eede15f21b1a4169a95de28
   $fShowResponseData2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "response = "#) -}
-25972bfa1e61c81d452349a73ac272ba
+9cabeacd085c6622267c375042de9678
   $fShowResponseData3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "ResponseData {"#) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fShowResponseData_$cshow ::
     FileserverAPI.ResponseData -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U(1*U)>,
@@ -1414,14 +1414,14 @@ a3e1dc6f36008b9333c0f6d5c079736e
                    GHC.Show.shows22
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fShowResponseData_$cshowList ::
     [FileserverAPI.ResponseData] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__
                    @ FileserverAPI.ResponseData
                    FileserverAPI.$fShowResponseData1) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fShowResponseData_$cshowsPrec ::
     GHC.Types.Int -> FileserverAPI.ResponseData -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U)><L,U>,
@@ -1433,7 +1433,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { FileserverAPI.ResponseData ww3 ->
                  FileserverAPI.$w$cshowsPrec1 ww1 ww3 w2 } }) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fToJSONFile :: Data.Aeson.Types.Class.ToJSON FileserverAPI.File
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -1441,7 +1441,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                   @ FileserverAPI.File
                   FileserverAPI.$fToJSONFile_$ctoJSON
                   FileserverAPI.$fToJSONFile_$ctoEncoding -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fToJSONFile1 ::
     FileserverAPI.File
     -> Data.Aeson.Types.Generic.Tagged
@@ -1456,14 +1456,14 @@ a7519682f71d1999a9ffa2cefe59bc21
                  (Sym (Data.Aeson.Types.Generic.N:Tagged[0]
                            <Data.Aeson.Types.Generic.True>_P
                            <Data.Aeson.Types.Internal.Value>_R)) } }) -}
-118346314945cfdfe7de7492212e1244
+791630cd8c04c0cd3908b1237c0d781f
   $fToJSONFile2 :: Data.Text.Internal.Text
   {- Unfolding: (case GHC.Magic.runRW#
                         @ 'GHC.Types.PtrRepLifted
                         @ Data.Text.Internal.Text
                         FileserverAPI.$fToJSONFile3 of ds7 { (#,#) ipv ipv1 ->
                  ipv1 }) -}
-5d6482a98f907657370f851a9aa94833
+f3205344681e3a647d0845b29643c9f9
   $fToJSONFile3 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
@@ -1481,17 +1481,17 @@ a7519682f71d1999a9ffa2cefe59bc21
                    FileserverAPI.$fFromJSONFile11
                    0#
                    ipv }) -}
-7018845991ff25d37c03423bac220d8e
+782f31ba1438894227186f88908d07a2
   $fToJSONFile4 :: GHC.Types.Int
   {- HasNoCafRefs, Unfolding: (GHC.Types.I# 4#) -}
-750cdc0a19d73262e8b9f2d76b87f2a2
+295b33711e0c0e8b8e2c1d81c5199f75
   $fToJSONFile5 :: Data.Text.Internal.Text
   {- Unfolding: (case GHC.Magic.runRW#
                         @ 'GHC.Types.PtrRepLifted
                         @ Data.Text.Internal.Text
                         FileserverAPI.$fToJSONFile6 of ds7 { (#,#) ipv ipv1 ->
                  ipv1 }) -}
-424e8e984d1eb7e8e5ee5657050d6aae
+90aced3e2f62c9435515723a2394391a
   $fToJSONFile6 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
@@ -1509,7 +1509,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                    FileserverAPI.$fFromJSONFile5
                    0#
                    ipv }) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fToJSONFile_$ctoEncoding ::
     FileserverAPI.File -> Data.Aeson.Types.Internal.Encoding
   {- Arity: 1, Strictness: <S,1*U(1*U,1*U)>,
@@ -1521,7 +1521,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                   `cast`
                 (<FileserverAPI.File>_R
                  ->_R Sym (Data.Aeson.Types.Internal.N:Encoding[0])) -}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   $fToJSONFile_$ctoJSON ::
     FileserverAPI.File -> Data.Aeson.Types.Internal.Value
   {- Arity: 1, Strictness: <S,1*U(1*U,1*U)>m1,
@@ -1532,7 +1532,7 @@ a7519682f71d1999a9ffa2cefe59bc21
                  ->_R Data.Aeson.Types.Generic.N:Tagged[0]
                           <Data.Aeson.Types.Generic.True>_P
                           <Data.Aeson.Types.Internal.Value>_R) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fToJSONResponseData ::
     Data.Aeson.Types.Class.ToJSON FileserverAPI.ResponseData
   DFunId
@@ -1541,7 +1541,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                   @ FileserverAPI.ResponseData
                   FileserverAPI.$fToJSONResponseData_$ctoJSON
                   FileserverAPI.$fToJSONResponseData_$ctoEncoding -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fToJSONResponseData1 ::
     FileserverAPI.ResponseData
     -> Data.Aeson.Types.Generic.Tagged
@@ -1573,14 +1573,14 @@ a3e1dc6f36008b9333c0f6d5c079736e
                  (Sym (Data.Aeson.Types.Generic.N:Tagged[0]
                            <Data.Aeson.Types.Generic.True>_P
                            <Data.Aeson.Types.Internal.Value>_R)) }) -}
-e97539164b12c806964a3f167ffe8bdb
+47687041d10fc88556e935609f2648d1
   $fToJSONResponseData2 :: Data.Text.Internal.Text
   {- Unfolding: (case GHC.Magic.runRW#
                         @ 'GHC.Types.PtrRepLifted
                         @ Data.Text.Internal.Text
                         FileserverAPI.$fToJSONResponseData3 of ds7 { (#,#) ipv ipv1 ->
                  ipv1 }) -}
-c48b324c3cdbf872d9975476037d0029
+6e748597399214f910e62a4d7a98f146
   $fToJSONResponseData3 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
@@ -1598,7 +1598,7 @@ c48b324c3cdbf872d9975476037d0029
                    FileserverAPI.$fFromJSONResponseData6
                    0#
                    ipv }) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fToJSONResponseData_$ctoEncoding ::
     FileserverAPI.ResponseData -> Data.Aeson.Types.Internal.Encoding
   {- Arity: 1, Strictness: <L,1*U(1*U)>, Inline: INLINE (sat-args=0),
@@ -1609,7 +1609,7 @@ a3e1dc6f36008b9333c0f6d5c079736e
                   `cast`
                 (<FileserverAPI.ResponseData>_R
                  ->_R Sym (Data.Aeson.Types.Internal.N:Encoding[0])) -}
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   $fToJSONResponseData_$ctoJSON ::
     FileserverAPI.ResponseData -> Data.Aeson.Types.Internal.Value
   {- Arity: 1, Strictness: <L,1*U(1*U)>m1,
@@ -1620,70 +1620,70 @@ a3e1dc6f36008b9333c0f6d5c079736e
                  ->_R Data.Aeson.Types.Generic.N:Tagged[0]
                           <Data.Aeson.Types.Generic.True>_P
                           <Data.Aeson.Types.Internal.Value>_R) -}
-c304ed9d493c70ee17bc6df5c9195483
+b03b6652125c8dab20ccb6ff96e8cd6c
   $tc'File :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   2425687306586419633##
-                   7099166925083039222##
+                   6639587705726690808##
+                   5744181605161431438##
                    FileserverAPI.$trModule
                    FileserverAPI.$tc'File1) -}
-547a274c0601a71aee1924ef9c24581d
+9f8b8c80ad322ace7e8ac42f0b135d81
   $tc'File1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'File"#) -}
-d8bb40d8d38a1d655ff167f676b384b8
+48a2f0e4ad9a72108b1ebae59a79f638
   $tc'ResponseData :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   11574390865236878466##
-                   11907036008272607734##
+                   3726528791202036335##
+                   6655943186956524158##
                    FileserverAPI.$trModule
                    FileserverAPI.$tc'ResponseData1) -}
-0c6409d34638f5f1df7573c623527ff5
+647af600cb0d38bed16aa616dc0e709d
   $tc'ResponseData1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'ResponseData"#) -}
-1f2059e33f518515dbaf41223c20a10b
+e569c936af7cc882c4534b579ef2aee7
   $tcFile :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   16141142155248678875##
-                   278836455501125110##
+                   10654254670128029017##
+                   10668796424004734457##
                    FileserverAPI.$trModule
                    FileserverAPI.$tcFile1) -}
-d312a44c53c59bc0931ebc70302c0612
+b75d906eceb83c049ebb2803321e979a
   $tcFile1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "File"#) -}
-4b2c5818be182dbae276f605b390217f
+f1134dff0cdfec1d2a16735522a12295
   $tcResponseData :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   10747819973469449789##
-                   10947795237740092394##
+                   12786638884064802168##
+                   15538352398001277990##
                    FileserverAPI.$trModule
                    FileserverAPI.$tcResponseData1) -}
-2336fa7e9f4b5144623a40db40bf1dab
+53efc6f4fa9ee6f97bc82a99347ea73f
   $tcResponseData1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "ResponseData"#) -}
-77abeb8521bd6487a71d7fcb49771b3c
+18ca607436d74b366297e169e81f2d4e
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.Module
                    FileserverAPI.$trModule2
                    FileserverAPI.$trModule1) -}
-18db1fd27bb0d15e06545cd446387d93
+eb2d3b2b290de424ec0e420b7ba206d2
   $trModule1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "FileserverAPI"#) -}
-cd7d9dcb40815b7d4b57b04045d61bd8
+08f9c667ffb11ffb3513dcac6c84d273
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
-                   "fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1"#) -}
-248e5b486ce5cfad04a95deb22bea8a3
+                   "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"#) -}
+c829fc1022ec6e407dcdf2216fa1b782
   $w$cshowsPrec ::
     GHC.Prim.Int#
     -> GHC.Base.String
@@ -1740,7 +1740,7 @@ cd7d9dcb40815b7d4b57b04045d61bd8
                         @ GHC.Types.Char
                         GHC.Show.shows9
                         (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w)) }) -}
-57a2c2a6226c2092313da1cd06e7062f
+4e53b734aab8a42de680fdcfb07236ae
   $w$cshowsPrec1 ::
     GHC.Prim.Int#
     -> GHC.Base.String -> GHC.Base.String -> GHC.Base.String
@@ -1776,7 +1776,7 @@ cd7d9dcb40815b7d4b57b04045d61bd8
                         @ GHC.Types.Char
                         GHC.Show.shows9
                         (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w)) }) -}
-a9e09c1ac21fa03b8d01f5f8fa044f8d
+359dca136e3933eac4da31941be8526a
   $w$ctoJSON ::
     GHC.Base.String
     -> GHC.Base.String -> (# Data.Aeson.Types.Internal.Object #)
@@ -1813,7 +1813,7 @@ a9e09c1ac21fa03b8d01f5f8fa044f8d
                            @ Data.Text.Internal.Text
                            @ Data.Aeson.Types.Internal.Value) of dt { DEFAULT ->
                  (# dt #) }) -}
-307801be0b5fe401ee2a68680f524ea4
+2ffb1ec0646361af34b5934dcb36e42b
   $w$dConsFromJSON' ::
     Data.Aeson.Types.Internal.Options
     -> Data.Aeson.Types.Internal.Value
@@ -2072,7 +2072,7 @@ a9e09c1ac21fa03b8d01f5f8fa044f8d
                                                  'GHC.Generics.DecidedLazy)
                                               (GHC.Generics.Rec0 GHC.Base.String))
                                            a)>_R))) }) -}
-3426f82f691c3ba66c08e817a8f231f5
+9c2e81334fcaa16152e97f60ea3f40e9
   $w$dGFromJSON ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser
@@ -2176,7 +2176,7 @@ a9e09c1ac21fa03b8d01f5f8fa044f8d
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1>_R))) -}
-90c66a5117b852b702258468839ca134
+a7e0992444c051346cff9ff3b57faca8
   $w$dGFromJSON1 ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser
@@ -2280,7 +2280,7 @@ a9e09c1ac21fa03b8d01f5f8fa044f8d
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1>_R))) -}
-a170ab1b2d410f7a644d52a8e35062f9
+ea7d3de0667b945a86d3c4c308ab51d1
   $w$dGToJSON ::
     GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1
     -> (# Data.Text.Internal.Text #)
@@ -2305,7 +2305,7 @@ a170ab1b2d410f7a644d52a8e35062f9
                            ipv }) of ds1 { (#,#) ipv ipv1 ->
                  case ipv1 of dt { Data.Text.Internal.Text ipv2 ipv3 ipv4 ->
                  (# dt #) } }) -}
-364130b24e7a28cf2e27ea64ce158655
+8ebadb767c1b540e8e415c34722c4cad
   $w$dGToJSON1 ::
     GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1
     -> (# Data.Text.Internal.Text #)
@@ -2330,7 +2330,7 @@ a170ab1b2d410f7a644d52a8e35062f9
                            ipv }) of ds1 { (#,#) ipv ipv1 ->
                  case ipv1 of dt { Data.Text.Internal.Text ipv2 ipv3 ipv4 ->
                  (# dt #) } }) -}
-2227c88f692641c936cdfb5f6ae0208c
+342681e0de58328ca12cf9c255952049
   $wouter ::
     Data.Text.Array.MArray GHC.Prim.RealWorld
     -> GHC.Types.Int
@@ -2341,7 +2341,7 @@ a170ab1b2d410f7a644d52a8e35062f9
           Data.Text.Internal.Text #)
   {- Arity: 5, Strictness: <L,U(U)><L,U(U)><S,1*U><S,U><S,U>,
      Inline: [0] -}
-68f51f6fdf0b2215976fec3611c6077e
+1afbf1a6627b2cb5f5752011376bbfda
   $wouter1 ::
     Data.Text.Array.MArray GHC.Prim.RealWorld
     -> GHC.Types.Int
@@ -2352,8 +2352,11 @@ a170ab1b2d410f7a644d52a8e35062f9
           Data.Text.Internal.Text #)
   {- Arity: 5, Strictness: <L,U(U)><L,U(U)><S,1*U><S,U><S,U>,
      Inline: [0] -}
-a10fb1c78d66526fa257877ea0ac973e
-  type API =
+f258de35eba308539b726f10312f18f9
+  data File
+    = File {name :: GHC.Base.String, contents :: GHC.Base.String}
+fd2d8a2e53146a93a87c39e17d8d3c29
+  type FileServerAPI =
     ("upload"
      Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
                            '[Servant.API.ContentTypes.JSON] FileserverAPI.File
@@ -2371,17 +2374,14 @@ a10fb1c78d66526fa257877ea0ac973e
                                                                                     Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                                          '[Servant.API.ContentTypes.JSON]
                                                                                                          FileserverAPI.File)))
-a7519682f71d1999a9ffa2cefe59bc21
-  data File
-    = File {name :: GHC.Base.String, contents :: GHC.Base.String}
-a7519682f71d1999a9ffa2cefe59bc21
+f258de35eba308539b726f10312f18f9
   axiom Rep_File::
       GHC.Generics.Rep FileserverAPI.File
         = GHC.Generics.D1
             ('GHC.Generics.MetaData
                "File"
                "FileserverAPI"
-               "fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1"
+               "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"
                'GHC.Types.False)
             (GHC.Generics.C1
                ('GHC.Generics.MetaCons
@@ -2400,14 +2400,14 @@ a7519682f71d1999a9ffa2cefe59bc21
                                       'GHC.Generics.NoSourceStrictness
                                       'GHC.Generics.DecidedLazy)
                                    (GHC.Generics.Rec0 GHC.Base.String)))
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   axiom Rep_ResponseData::
       GHC.Generics.Rep FileserverAPI.ResponseData
         = GHC.Generics.D1
             ('GHC.Generics.MetaData
                "ResponseData"
                "FileserverAPI"
-               "fileserverClient-0.1.0.0-GKLexTqNVBMJwMvuSs3vq1"
+               "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"
                'GHC.Types.False)
             (GHC.Generics.C1
                ('GHC.Generics.MetaCons
@@ -2419,23 +2419,23 @@ a3e1dc6f36008b9333c0f6d5c079736e
                      'GHC.Generics.NoSourceStrictness
                      'GHC.Generics.DecidedLazy)
                   (GHC.Generics.Rec0 GHC.Base.String)))
-a3e1dc6f36008b9333c0f6d5c079736e
+f3d268a7d85afc51ea91b8dc14ea7fe4
   data ResponseData = ResponseData {response :: GHC.Base.String}
-df22b66ed4723195fabb70a43679ca6c
+07d6dd40d8b51d3780bd7239d54e157e
   contents :: FileserverAPI.File -> GHC.Base.String
   RecSel Left FileserverAPI.File
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: FileserverAPI.File) ->
                  case ds of wild { FileserverAPI.File ds1 ds2 -> ds2 }) -}
-f839ef7a3576de0e4e9e1c0b2d14c82c
+d93a0ae5f78d0d83538a05e134a94443
   name :: FileserverAPI.File -> GHC.Base.String
   RecSel Left FileserverAPI.File
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: FileserverAPI.File) ->
                  case ds of wild { FileserverAPI.File ds1 ds2 -> ds1 }) -}
-18c90308b289d0ace9a9583800269ecd
+2c080560316a73c4f59af7e7f1fb2fac
   response :: FileserverAPI.ResponseData -> GHC.Base.String
   RecSel Left FileserverAPI.ResponseData
   {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,

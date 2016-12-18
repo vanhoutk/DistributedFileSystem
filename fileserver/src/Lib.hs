@@ -39,10 +39,10 @@ startApp = do
 app :: Application
 app = serve api server
 
-api :: Proxy API
+api :: Proxy FileServerAPI
 api = Proxy
 
-server :: Server API
+server :: Server FileServerAPI
 server = uploadFile
     :<|> getFiles
 		:<|> downloadFile
