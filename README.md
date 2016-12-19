@@ -17,10 +17,10 @@ Student Number: 12301975
 
 3. Caching (Client side to start)
 
-~~ - Create a temp folder when the client is started
-- Check the temp folder first whenever a download is called
-- Update the temp folder whenever a new download occurs
-- Clear the temp folder when the client is closed ~~
+- ~~Create a temp folder when the client is started~~
+- ~~Check the temp folder first whenever a download is called~~
+- ~~Update the temp folder whenever a new download occurs~~
+- ~~Clear the temp folder when the client is closed~~
 - Delete the oldest file when the cache is full and a new file is downloaded
 - ** Figure out invalidation of files **
 
