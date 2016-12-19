@@ -21,11 +21,14 @@ library
   build-depends:       base >= 4.7 && < 5
                      , aeson
                      , bson-generic
+                     , containers
                      , directory
                      , http-client
                      , servant
                      , servant-client
                      , servant-server
+                     , stm
+                     , time
                      , wai
                      , warp
   default-language:    Haskell2010

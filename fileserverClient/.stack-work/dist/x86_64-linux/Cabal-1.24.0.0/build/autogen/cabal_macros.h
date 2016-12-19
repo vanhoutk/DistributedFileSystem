@@ -28,6 +28,13 @@
   (major1) == 0 && (major2) <  0 || \
   (major1) == 0 && (major2) == 0 && (minor) <= 8)
 
+/* package containers-0.5.7.1 */
+#define VERSION_containers "0.5.7.1"
+#define MIN_VERSION_containers(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  5 || \
+  (major1) == 0 && (major2) == 5 && (minor) <= 7)
+
 /* package directory-1.2.6.2 */
 #define VERSION_directory "1.2.6.2"
 #define MIN_VERSION_directory(major1,major2,minor) (\
@@ -62,6 +69,20 @@
   (major1) <  0 || \
   (major1) == 0 && (major2) <  9 || \
   (major1) == 0 && (major2) == 9 && (minor) <= 1)
+
+/* package stm-2.4.4.1 */
+#define VERSION_stm "2.4.4.1"
+#define MIN_VERSION_stm(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  4 || \
+  (major1) == 2 && (major2) == 4 && (minor) <= 4)
+
+/* package time-1.6.0.1 */
+#define VERSION_time "1.6.0.1"
+#define MIN_VERSION_time(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  6 || \
+  (major1) == 1 && (major2) == 6 && (minor) <= 0)
 
 /* package wai-3.2.1.1 */
 #define VERSION_wai "3.2.1.1"
@@ -133,7 +154,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"
+#define CURRENT_COMPONENT_ID "fileserverClient-0.1.0.0-IUyCU49ptun4Vu0KIVAtup"
 
-#define CURRENT_PACKAGE_KEY "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"
+#define CURRENT_PACKAGE_KEY "fileserverClient-0.1.0.0-IUyCU49ptun4Vu0KIVAtup"
 

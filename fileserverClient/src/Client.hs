@@ -1,45 +1,46 @@
 module Client where
 
+import Control.Concurrent.STM
+import Data.Map as M hiding (filter, map)
 import System.IO
 
 import ClientAPI
 
 startClient :: IO()
 startClient = do
+	cacheSize <- atomically $ newTVar 0 
+	cacheList <- atomically $ newTVar M.empty
 	setupCache
-	clientLoop
+	clientLoop cacheSize cacheList
 
-clientLoop :: IO()
-clientLoop = do
+clientLoop :: TVar Int -> CacheList -> IO()
+clientLoop cacheSize cacheList = do
 	putStrLn "Please select command: upload/list_files/download/close_client"
 	user_input <- getLine
 	case user_input of
-		"upload" -> processUpload
+		"upload" -> processUpload cacheSize cacheList
 		"list_files" -> do
-			--putStrLn $ "listfiles" ++ "fileName" ++ "fileContents"
-			runQuery "listfiles" "fileName" "fileContents"
-			clientLoop
-		"download" -> processDownload
+			runQuery "listfiles" "fileName" "fileContents" cacheSize cacheList
+			clientLoop cacheSize cacheList
+		"download" -> processDownload cacheSize cacheList
 		"close_client" -> do
 			clearCache
 		_ -> do
 			putStrLn "Invalid commmand. Please try again."
-			clientLoop
+			clientLoop cacheSize cacheList
 
-processUpload :: IO()
-processUpload = do
+processUpload :: TVar Int -> CacheList -> IO()
+processUpload cacheSize cacheList = do
 	putStrLn "Please enter the name of the file to upload"
 	fileName <- getLine
 	putStrLn "Please enter the contents of the file to upload"
 	contents <- getLine
-	--putStrLn $ "upload" ++ fileName ++ contents
-	runQuery "upload" fileName contents
-	clientLoop
+	runQuery "upload" fileName contents cacheSize cacheList
+	clientLoop cacheSize cacheList
 
-processDownload :: IO()
-processDownload = do
+processDownload :: TVar Int -> CacheList -> IO()
+processDownload cacheSize cacheList = do
 	putStrLn "Please enter the name of the file you wish to download"
 	fileName <- getLine
-	--putStrLn $ "download" ++ fileName ++ "fileContents"
-	runQuery "download" fileName "fileContents"
-	clientLoop
+	runQuery "download" fileName "fileContents" cacheSize cacheList
+	clientLoop cacheSize cacheList

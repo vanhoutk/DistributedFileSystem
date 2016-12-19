@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-18 16:04:12.757936 UTC
+2016-12-19 23:32:12.501695 UTC
 
-interface fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl:Client 8001
-  interface hash: fd4324482f17caf43ccfba0bd3cbc42e
-  ABI hash: c64280a8eda5b7289aa576939adb768e
-  export-list hash: 1011ff59d5e6e506fc3b2a8e7eba7d25
+interface fileserverClient-0.1.0.0-IUyCU49ptun4Vu0KIVAtup:Client 8001
+  interface hash: e620fb04c97d27cce2918a2359ae5866
+  ABI hash: 5bc8db9e6a1f2e23c72b1375e0b18d6f
+  export-list hash: 33e214e58c25a50552a957c212c5a1a0
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: b159a15c55fa7c6870cb2eb79bbae5a5
   sig of: Nothing
@@ -116,7 +116,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
                          containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
                          dlist-0.8.0.2@dlist-0.8.0.2-GWAMmbX9rLg3tqrbOizHGv:Data.DList
-                         fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl:FileserverAPI
+                         fileserverClient-0.1.0.0-IUyCU49ptun4Vu0KIVAtup:FileserverAPI
                          ghc-boot-th-8.0.1@ghc-boot-th-8.0.1:GHC.LanguageExtensions.Type
                          http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB:Web.Internal.FormUrlEncoded
                          http-client-0.4.31.2@http-client-0.4.31.2-81NyMkNcWWADaJ0Cq5FYRE:Network.HTTP.Client
@@ -148,158 +148,175 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed.Base
                          zlib-0.6.1.2@zlib-0.6.1.2-4CWLN1T27kOJhNvXgy46ZV:Codec.Compression.Zlib.Stream
+import  -/  base-4.9.0.0:GHC.Conc.Sync 800ad52ae188c67fd514a07ba8a64fcc
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  ClientAPI 910167c60dcfce6138f071ceb9a77f8d
-  exports: 5d567b91cf485201b6d041f4fbf3df94
-  clearCache ef2ecde523ebd6a432386907d3ab6048
-  runQuery ed498ef9bfb385bd68ab528d4a7fa3db
-  setupCache 10cb2a7d14e075f4af9e893b53cb165c
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 24b19ef74cea78e4c18332bed9f0491d
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base 1e8d61dcc59a1a983b27bab6fd6bdcaf
+import  -/  ClientAPI 0554d1f5826189ae001618dd10cb2b88
+  exports: 79295bb9426c4f03107ee96bbbe09e73
+  CacheList 97ba103eb131c785939a137c102b0a9f
+  clearCache fcbb767cb069f93e47f1a6080e754549
+  runQuery 3d858ae9a86da3e9e8da31ed1768ad7e
+  setupCache 095872f174e5fa0ee72d2f2c6c77298d
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
-60667bcc84cd8d3d3c45c0666265f94c
+import  -/  stm-2.4.4.1@stm-2.4.4.1-4z2NRWnB0NIIUvSJsHW0kF:Control.Concurrent.STM fd77bc755b79c492176ed8b0d0d3f933
+baf8b402292be7a69e07d37afe17b334
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.Module
                    Client.$trModule2
                    Client.$trModule1) -}
-4c41da755e8d67cd7bc499ee1478a222
+c1057acec1094990c77308b201325383
   $trModule1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "Client"#) -}
-c097dc02cbd1ae67882368b1dcb6aa71
+e1b5bcdda9913d11e3d82eb37185c9eb
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
-                   "fileserverClient-0.1.0.0-C9TYoLarAA1FDEa0SfF5gl"#) -}
-260351ea478c67603f3723854888b07b
-  clientLoop :: GHC.Types.IO ()
-  {- Arity: 1, Strictness: <S,U>,
+                   "fileserverClient-0.1.0.0-IUyCU49ptun4Vu0KIVAtup"#) -}
+d0a5113f8e69a5fcb00e0f8ff7f44b15
+  $wclientLoop ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1, Strictness: <S,U>, Inline: [0] -}
+b407a9ab4eed92342aa5ee4c69dcca96
+  $wprocessDownload ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1, Strictness: <S,U>, Inline: [0] -}
+f39b80e6e439367d5e5e74f5edc47007
+  $wprocessUpload ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1, Strictness: <S,U>, Inline: [0] -}
+6eb6fe591ae6a22289d0b969d02d26e8
+  clientLoop ::
+    GHC.Conc.Sync.TVar GHC.Types.Int
+    -> ClientAPI.CacheList -> GHC.Types.IO ()
+  {- Arity: 3, Strictness: <L,A><L,A><S,U>,
      Unfolding: InlineRule (0, True, True)
-                Client.clientLoop1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-987644b41ee0fe142a751d492bff41d8
+                Client.clientLoop1
+                  `cast`
+                (<GHC.Conc.Sync.TVar GHC.Types.Int>_R
+                 ->_R <ClientAPI.CacheList>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
+b63a7aeab0f5b5900b1683ca2a025a1f
   clientLoop1 ::
-    GHC.Prim.State# GHC.Prim.RealWorld
+    GHC.Conc.Sync.TVar GHC.Types.Int
+    -> ClientAPI.CacheList
+    -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Strictness: <S,U> -}
-4bc6665adc55beee36b2baf6380afefb
-  processDownload :: GHC.Types.IO ()
-  {- Arity: 1, Strictness: <S,U>,
+  {- Arity: 3, Strictness: <L,A><L,A><S,U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ (w :: GHC.Conc.Sync.TVar GHC.Types.Int)
+                   (w1 :: ClientAPI.CacheList)
+                   (w2 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 Client.$wclientLoop w2) -}
+b820584113bb2cb2cc8db1328f71c713
+  processDownload ::
+    GHC.Conc.Sync.TVar GHC.Types.Int
+    -> ClientAPI.CacheList -> GHC.Types.IO ()
+  {- Arity: 3, Strictness: <L,A><L,A><S,U>,
      Unfolding: InlineRule (0, True, True)
-                Client.processDownload1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-17e54b206110429cc07507e8600e7ff3
+                Client.processDownload1
+                  `cast`
+                (<GHC.Conc.Sync.TVar GHC.Types.Int>_R
+                 ->_R <ClientAPI.CacheList>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
+5e82fc03d8890a8730d7c65e84fc61ea
   processDownload1 ::
-    GHC.Prim.State# GHC.Prim.RealWorld
+    GHC.Conc.Sync.TVar GHC.Types.Int
+    -> ClientAPI.CacheList
+    -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Strictness: <S,U>,
-     Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                 case GHC.IO.Handle.Text.hPutStr2
-                        GHC.IO.Handle.FD.stdout
-                        Client.processDownload4
-                        GHC.Types.True
-                        s of ds1 { (#,#) ipv ipv1 ->
-                 case GHC.IO.Handle.Internals.wantReadableHandle_1
-                        @ GHC.Base.String
-                        GHC.IO.Handle.Text.hGetLine4
-                        GHC.IO.Handle.FD.stdin
-                        GHC.IO.Handle.Text.hGetLine2
-                          `cast`
-                        (<GHC.IO.Handle.Types.Handle__>_R
-                         ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R))
-                        ipv of ds2 { (#,#) ipv2 ipv3 ->
-                 case ClientAPI.runQuery1
-                        Client.processDownload3
-                        ipv3
-                        Client.processDownload2
-                        ipv2 of ds3 { (#,#) ipv4 ipv5 ->
-                 Client.clientLoop1 ipv4 } } }) -}
-bd350c70df2064390b6fc50a1c91dc38
-  processDownload2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "fileContents"#) -}
-0c429af3e9aac589a2ee6ce4f2862591
-  processDownload3 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "download"#) -}
-578fc66c1a042c4a510ea4e9143abedd
-  processDownload4 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString#
-                   "Please enter the name of the file you wish to download"#) -}
-c43094134cb6a7a56140d9b11b27e451
-  processUpload :: GHC.Types.IO ()
-  {- Arity: 1, Strictness: <S,U>,
+  {- Arity: 3, Strictness: <L,A><L,A><S,U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ (w :: GHC.Conc.Sync.TVar GHC.Types.Int)
+                   (w1 :: ClientAPI.CacheList)
+                   (w2 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 Client.$wprocessDownload w2) -}
+9553146678870a76239e05ed011aaef4
+  processUpload ::
+    GHC.Conc.Sync.TVar GHC.Types.Int
+    -> ClientAPI.CacheList -> GHC.Types.IO ()
+  {- Arity: 3, Strictness: <L,A><L,A><S,U>,
      Unfolding: InlineRule (0, True, True)
-                Client.processUpload1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-62995bdc26db7efd55775e78162fcca5
+                Client.processUpload1
+                  `cast`
+                (<GHC.Conc.Sync.TVar GHC.Types.Int>_R
+                 ->_R <ClientAPI.CacheList>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
+35821c8cd2389013f7f61ec06805316a
   processUpload1 ::
-    GHC.Prim.State# GHC.Prim.RealWorld
+    GHC.Conc.Sync.TVar GHC.Types.Int
+    -> ClientAPI.CacheList
+    -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Strictness: <S,U>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                 case GHC.IO.Handle.Text.hPutStr2
-                        GHC.IO.Handle.FD.stdout
-                        Client.processUpload5
-                        GHC.Types.True
-                        s of ds1 { (#,#) ipv ipv1 ->
-                 Client.processUpload2 ipv }) -}
-7077de6ced622739db540cb694f3b1e0
-  processUpload2 ::
-    GHC.Prim.State# GHC.Prim.RealWorld
-    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Strictness: <S,U>,
-     Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                 case GHC.IO.Handle.Internals.wantReadableHandle_1
-                        @ GHC.Base.String
-                        GHC.IO.Handle.Text.hGetLine4
-                        GHC.IO.Handle.FD.stdin
-                        GHC.IO.Handle.Text.hGetLine2
-                          `cast`
-                        (<GHC.IO.Handle.Types.Handle__>_R
-                         ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R))
-                        s of ds1 { (#,#) ipv ipv1 ->
-                 case GHC.IO.Handle.Text.hPutStr2
-                        GHC.IO.Handle.FD.stdout
-                        Client.processUpload4
-                        GHC.Types.True
-                        ipv of ds2 { (#,#) ipv2 ipv3 ->
-                 case GHC.IO.Handle.Internals.wantReadableHandle_1
-                        @ GHC.Base.String
-                        GHC.IO.Handle.Text.hGetLine4
-                        GHC.IO.Handle.FD.stdin
-                        GHC.IO.Handle.Text.hGetLine2
-                          `cast`
-                        (<GHC.IO.Handle.Types.Handle__>_R
-                         ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R))
-                        ipv2 of ds3 { (#,#) ipv4 ipv5 ->
-                 case ClientAPI.runQuery1
-                        Client.processUpload3
-                        ipv1
-                        ipv5
-                        ipv4 of ds4 { (#,#) ipv6 ipv7 ->
-                 Client.clientLoop1 ipv6 } } } }) -}
-577d4aa11adf8d24e60a1cc7eb8cbba6
-  processUpload3 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "upload"#) -}
-8dbafa57795b0ebd0c1178459190c0c8
-  processUpload4 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString#
-                   "Please enter the contents of the file to upload"#) -}
-c22555427ef155fd28fbc7fc7aa49e52
-  processUpload5 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString#
-                   "Please enter the name of the file to upload"#) -}
-ec8a46ab255adfa6354bf49ea19c1b91
+  {- Arity: 3, Strictness: <L,A><L,A><S,U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ (w :: GHC.Conc.Sync.TVar GHC.Types.Int)
+                   (w1 :: ClientAPI.CacheList)
+                   (w2 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 Client.$wprocessUpload w2) -}
+b0e41e7b892b2f896df5ffc5707f83ea
   startClient :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Client.startClient1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-d5739e5c9cd22a312cfa4c90d9cad5b4
+53a54b4ec0b6bb75bf4d532c132b65c6
   startClient1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1, Strictness: <S,U>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                 case ClientAPI.setupCache1 s of ds1 { (#,#) ipv ipv1 ->
-                 Client.clientLoop1 ipv }) -}
+     Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.Prim.atomically#
+                        @ (GHC.Conc.Sync.TVar GHC.Types.Int)
+                        Client.startClient3
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case GHC.Prim.atomically#
+                        @ (GHC.Conc.Sync.TVar
+                             (Data.Map.Base.Map GHC.Base.String FileserverAPI.File))
+                        Client.startClient2
+                        ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 case ClientAPI.setupCache1 ipv2 of ds3 { (#,#) ipv4 ipv5 ->
+                 Client.$wclientLoop ipv4 } } }) -}
+1e246822f50f131d8fec57533334cb0f
+  startClient2 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          GHC.Conc.Sync.TVar
+            (Data.Map.Base.Map GHC.Base.String FileserverAPI.File) #)
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ (s1# :: GHC.Prim.State#
+                             GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.Prim.newTVar#
+                        @ (Data.Map.Base.Map GHC.Base.String FileserverAPI.File)
+                        @ GHC.Prim.RealWorld
+                        (Data.Map.Base.Tip @ GHC.Base.String @ FileserverAPI.File)
+                        s1# of ds { (#,#) ipv ipv1 ->
+                 (# ipv,
+                    GHC.Conc.Sync.TVar
+                      @ (Data.Map.Base.Map GHC.Base.String FileserverAPI.File)
+                      ipv1 #) }) -}
+e5c107c90db90b604e9b7e2d7e62a2e6
+  startClient3 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          GHC.Conc.Sync.TVar GHC.Types.Int #)
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ (s1# :: GHC.Prim.State#
+                             GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.Prim.newTVar#
+                        @ GHC.Types.Int
+                        @ GHC.Prim.RealWorld
+                        Client.startClient4
+                        s1# of ds { (#,#) ipv ipv1 ->
+                 (# ipv, GHC.Conc.Sync.TVar @ GHC.Types.Int ipv1 #) }) -}
+8888193a2f99fe439a0436053282397b
+  startClient4 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 0#) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:
