@@ -28,7 +28,7 @@ import            Network.HTTP.Client (newManager, defaultManagerSettings)
 import            Servant.API
 import            Servant.Client
 import            System.Directory
-import            FileserverAPI
+import            APIs
 
 maxCacheSize :: Int
 maxCacheSize = 4
@@ -39,10 +39,10 @@ uploadFile :: File -> ClientM ResponseData
 getFiles :: ClientM [String]
 downloadFile :: String -> ClientM File
 
-api :: Proxy FileServerAPI
-api = Proxy
+fileserverApi :: Proxy FileServerAPI
+fileserverApi = Proxy
 
-uploadFile :<|> getFiles :<|> downloadFile = client api
+uploadFile :<|> getFiles :<|> downloadFile = client fileserverApi
 
 uploadQuery :: String -> String -> ClientM(ResponseData)
 uploadQuery fileName fileContents = do
@@ -163,4 +163,4 @@ getFileTime file = do
   --return time
 
 
-type CacheList = TVar (Map String File)
+-- type CacheList = TVar (Map String File)
