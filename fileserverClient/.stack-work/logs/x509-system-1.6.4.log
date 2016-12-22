@@ -18,5 +18,5 @@ System/X509.hs:10:1: warning: [-Wtabs]
     Tab character found here, and in one further location.
     Please use spaces instead.
 Installing library in
-/home/protoman/.stack/snapshots/x86_64-linux/lts-7.13/8.0.1/lib/x86_64-linux-ghc-8.0.1/x509-system-1.6.4-GZ2eHV03TV52Kz7CzPq5ks
+/home/protoman/Documents/CS4532/DFS/fileserverClient/.stack-work/install/x86_64-linux/lts-7.13/8.0.1/lib/x86_64-linux-ghc-8.0.1/x509-system-1.6.4-C9lXTm1Ms6jGnGAIr3ub6o
 Registering x509-system-1.6.4...

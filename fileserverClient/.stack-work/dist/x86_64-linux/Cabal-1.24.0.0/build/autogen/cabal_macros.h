@@ -35,12 +35,12 @@
   (major1) == 0 && (major2) <  5 || \
   (major1) == 0 && (major2) == 5 && (minor) <= 7)
 
-/* package directory-1.2.6.2 */
-#define VERSION_directory "1.2.6.2"
+/* package directory-1.2.7.1 */
+#define VERSION_directory "1.2.7.1"
 #define MIN_VERSION_directory(major1,major2,minor) (\
   (major1) <  1 || \
   (major1) == 1 && (major2) <  2 || \
-  (major1) == 1 && (major2) == 2 && (minor) <= 6)
+  (major1) == 1 && (major2) == 2 && (minor) <= 7)
 
 /* package http-client-0.4.31.2 */
 #define VERSION_http_client "0.4.31.2"
@@ -154,7 +154,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "fileserverClient-0.1.0.0-IUyCU49ptun4Vu0KIVAtup"
+#define CURRENT_COMPONENT_ID "fileserverClient-0.1.0.0-IXEAdcwBxsU36YjbICl1e7"
 
-#define CURRENT_PACKAGE_KEY "fileserverClient-0.1.0.0-IUyCU49ptun4Vu0KIVAtup"
+#define CURRENT_PACKAGE_KEY "fileserverClient-0.1.0.0-IXEAdcwBxsU36YjbICl1e7"
 
