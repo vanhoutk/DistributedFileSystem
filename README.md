@@ -8,12 +8,13 @@ Student Number: 12301975
 
 1. Secondary Client Application
 
-- Interactive
-- Includes the first Client Application
+- ~~Interactive~~
+- ~~Includes the first Client Application~~
+- Change into more of a text editor
 
 2. Primary Client Application
 
-- Controls all of the API Calls
+- ~~Controls all of the API Calls~~
 
 3. Caching (Client side to start)
 
@@ -35,3 +36,14 @@ Student Number: 12301975
 7. Transactions
 
 8. Lock Service
+
+## Comments:
+
+Need to figure out how to have a single APIs.hs file that all of the different modules use.
+
+The caching currently uses polling every minute <- Something which should be discussed in the report.
+
+The fileserver and caching both works with local directories (files/ and temp/ respectively).
+
+Caching should ideally be slightly more modular with respect to the polling.
+
