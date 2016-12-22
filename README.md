@@ -22,7 +22,9 @@ Student Number: 12301975
 - ~~Update the temp folder whenever a new download occurs~~
 - ~~Clear the temp folder when the client is closed~~
 - ~~Delete the oldest file when the cache is full and a new file is downloaded~~
-- **Figure out invalidation of files**
+- ~~Figure out invalidation of files~~
+- Make the cache module less hardcoded (localhost and port number)
+  * Might make more sense once directory server has been created
 
 4. Directory Server
 

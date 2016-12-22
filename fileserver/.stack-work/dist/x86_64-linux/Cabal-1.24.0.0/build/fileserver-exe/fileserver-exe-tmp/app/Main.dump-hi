@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-17 21:36:12.262793 UTC
+2016-12-22 20:29:48.054954 UTC
 
 interface main@main:Main 8001
-  interface hash: e8398f0848dde9bc5d91e2ba9207da14
-  ABI hash: fae56984125f00e8bad0de27e5aaf916
+  interface hash: b1407ba83d0ab8bf921760a742c60ac0
+  ABI hash: 4c42cb4d599d7e59fa34afb249eb3641
   export-list hash: 6610b8a96a74bd496dc54f6b63ab9840
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 37b165eaaeeaa24096411e4a8d333c6c
@@ -122,7 +122,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
                          containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
                          dlist-0.8.0.2@dlist-0.8.0.2-GWAMmbX9rLg3tqrbOizHGv:Data.DList
-                         fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii:FileserverAPI
+                         fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii:APIs
                          ghc-boot-th-8.0.1@ghc-boot-th-8.0.1:GHC.LanguageExtensions.Type
                          http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB:Web.Internal.FormUrlEncoded
                          iproute-1.7.1@iproute-1.7.1-9hsGfRvggCmFA0ueZi5Sd9:Data.IP.Addr
@@ -155,7 +155,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed.Base
                          zlib-0.6.1.2@zlib-0.6.1.2-4CWLN1T27kOJhNvXgy46ZV:Codec.Compression.Zlib.Stream
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
-import  -/  fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii:Lib 9b8bfe0e71042f4da86889eb2f5f2c9a
+import  -/  fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii:Fileserver 7d408487cc5f2a25f1fb124fdfb55cbc
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module
@@ -169,19 +169,19 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-d55a38235a54d85d2aa1a70d59f85581
+cee27cfa0ba9cc846ca7e6ff66c56f9a
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
-                Lib.startApp1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-bc60409feec04718094e40cb9c6ba2b9
+                Fileserver.startServer1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
+0eb3e6e2b842668155200cf9f9599071
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1,
      Unfolding: (GHC.TopHandler.runMainIO1
                    @ ()
-                   Lib.startApp1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
+                   Fileserver.startServer1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

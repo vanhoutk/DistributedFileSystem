@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-22 18:37:34.96052 UTC
+2016-12-22 20:17:20.154806 UTC
 
 interface fileserverClient-0.1.0.0-IXEAdcwBxsU36YjbICl1e7:APIs [family instance module] 8001
-  interface hash: f256edb86943de23e8fefdbe2142e64b
-  ABI hash: fbba0fb25dfc10d7fa1484cae3edc9bd
+  interface hash: 97ef1e8592dc6112db97de3fac0b7494
+  ABI hash: 706940bf002146532a2a22907c9ee691
   export-list hash: 72a8a517bbef47b05a68dcb21101dfba
   orphan hash: f31059d7e2d2d90061dfd8af032c8286
   flag hash: b0e3f8b573d72bae0f984477a0acb626
@@ -149,6 +149,8 @@ import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.R
 import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.Sub 8cde68da5a80a5af4f64bff49421dffb
 import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.Verbs 635eefa3150b87923b6bc0cdae51880a
 import  -/  servant-server-0.9.1.1@servant-server-0.9.1.1-K6dmW2K7GFLCWwRdO1gKhn:Servant f9dcc577c9acae013f376be04614820a
+import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time 11aa6bb0881cf13119ff057ae5c21663
+import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e496610c238
 d99027858eeb32219356907016b03a9e
   $fFromJSONFile :: Data.Aeson.Types.Class.FromJSON APIs.File
   DFunId
@@ -2346,7 +2348,7 @@ e8e9ce0ed838b8cebf23bc69fe248598
 d99027858eeb32219356907016b03a9e
   data File
     = File {name :: GHC.Base.String, contents :: GHC.Base.String}
-71bef7a400c3a9c3bb2fa2d05c1d6c59
+366aa56b25051eb1602d5021c36d4c49
   type FileServerAPI =
     ("upload"
      Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
@@ -2357,13 +2359,20 @@ d99027858eeb32219356907016b03a9e
                                    Servant.API.Sub.:> Servant.API.Verbs.Get
                                                         '[Servant.API.ContentTypes.JSON]
                                                         [GHC.Base.String])
-                                  Servant.API.Alternative.:<|> ("download"
-                                                                Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                      "name"
-                                                                                      GHC.Base.String
-                                                                                    Servant.API.Sub.:> Servant.API.Verbs.Get
-                                                                                                         '[Servant.API.ContentTypes.JSON]
-                                                                                                         APIs.File)))
+                                  Servant.API.Alternative.:<|> (("download"
+                                                                 Servant.API.Sub.:> (Servant.API.Capture.Capture
+                                                                                       "name"
+                                                                                       GHC.Base.String
+                                                                                     Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                          '[Servant.API.ContentTypes.JSON]
+                                                                                                          APIs.File))
+                                                                Servant.API.Alternative.:<|> ("modifyTime"
+                                                                                              Servant.API.Sub.:> (Servant.API.Capture.Capture
+                                                                                                                    "name"
+                                                                                                                    GHC.Base.String
+                                                                                                                  Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                                       '[Servant.API.ContentTypes.JSON]
+                                                                                                                                       Data.Time.Clock.UTC.UTCTime))))
 d99027858eeb32219356907016b03a9e
   axiom Rep_File::
       GHC.Generics.Rep APIs.File

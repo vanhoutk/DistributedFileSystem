@@ -15,6 +15,7 @@ module ClientAPI
 import            Data.Aeson
 import            Data.Maybe
 import            Data.Proxy
+import            Data.Time
 import            GHC.Generics
 import            Network.HTTP.Client (newManager, defaultManagerSettings)
 import            Servant.API
@@ -29,11 +30,12 @@ import            Cache
 uploadFile :: File -> ClientM ResponseData
 getFiles :: ClientM [String]
 downloadFile :: String -> ClientM File
+getModifyTime :: String -> ClientM UTCTime
 
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
 
-uploadFile :<|> getFiles :<|> downloadFile = client fileserverApi
+uploadFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
 
 uploadQuery :: String -> String -> ClientM(ResponseData)
 uploadQuery fileName fileContents = do
@@ -49,7 +51,6 @@ getFilesQuery :: ClientM([String])
 getFilesQuery = do
   get_files <- getFiles
   return (get_files)
-
 
 -- TODO: Might need to change the return type to return something
 runQuery :: String -> String -> String -> IO()

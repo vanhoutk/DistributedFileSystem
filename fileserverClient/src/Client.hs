@@ -41,4 +41,6 @@ processDownload = do
 	putStrLn "Please enter the name of the file you wish to download"
 	fileName <- getLine
 	runQuery "download" fileName "fileContents"
+	--file <- downloadFileQuery fileName
+	--print file
 	clientLoop

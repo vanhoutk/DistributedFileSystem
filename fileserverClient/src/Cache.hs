@@ -6,21 +6,25 @@ module Cache
     , clearCache
     ) where
 
+import Control.Concurrent (forkIO, threadDelay)
+import Control.Exception
 import Control.Monad
 import Data.List
+import Data.Proxy
 import Data.Time
+import Network.HTTP.Client (newManager, defaultManagerSettings)
+import Servant.API
+import Servant.Client
 import System.Directory
 import System.Environment
 import System.IO
-import Control.Exception
 
 import APIs
-
 
 type FileSet = (Int, UTCTime, FilePath)
 
 maxCacheSize :: Int
-maxCacheSize = 30 -- Size is detemined by number of characters. TODO: Make this bigger
+maxCacheSize = 50 -- Size is detemined by number of characters. TODO: Make this bigger
 
 setupCache :: IO()
 setupCache = do
@@ -28,6 +32,84 @@ setupCache = do
   createDirectoryIfMissing True ("temp/")
   putStrLn "Changing current directory..."
   setCurrentDirectory ("temp/")
+  forkIO $ checkForUpdate 60
+  return ()
+
+checkForUpdate :: Int -> IO()
+checkForUpdate delay = do
+  threadDelay $ delay * 1000000 -- Wait 1 minute
+  putStrLn "Checking Cache for invalidations..."
+  fileList <- listDirectory "../temp/"
+  mapM_ (checkFileForUpdate) fileList
+  checkForUpdate delay -- Tail recursion
+
+checkFileForUpdate :: String -> IO()
+checkFileForUpdate fileName = do
+  localFileTime <- getAccessTime fileName -- Note: This is getAccessTime as opposed to getModificationTime, while the fileserver uses getModificationTime
+  remoteFileTime <- fileModifyTimeQuery fileName
+  case remoteFileTime of
+    Nothing -> do
+      putStrLn "Remote file does not exist"
+      return ()
+    Just time -> do
+      if(time >= localFileTime) then do
+        putStrLn "Changes made to remote file..."
+        file <- downloadFileQuery fileName
+        case file of
+          Nothing -> return()
+          Just file' -> do
+            storeNewFileInCache file'
+            return()
+      else do
+        putStrLn "No changes made to remote file..."
+        return()
+
+-- | File server bits
+-- TODO: Make this more modular and less hardcoded (w.r.t. port number and localhost)
+
+uploadFile :: File -> ClientM ResponseData
+getFiles :: ClientM [String]
+downloadFile :: String -> ClientM File
+getModifyTime :: String -> ClientM UTCTime
+
+fileserverApi :: Proxy FileServerAPI
+fileserverApi = Proxy
+
+uploadFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
+
+downloadQuery :: String -> ClientM(File)
+downloadQuery fileName = do
+  download_file <- downloadFile (fileName)
+  return (download_file)
+
+downloadFileQuery :: String -> IO (Maybe File)
+downloadFileQuery fileName = do
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (downloadQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return Nothing
+    Right (download_file) -> do
+      return (Just download_file)
+
+modifyTimeQuery :: String -> ClientM(UTCTime)
+modifyTimeQuery fileName = do
+  fileModTime <- getModifyTime (fileName)
+  return (fileModTime)
+
+fileModifyTimeQuery :: String -> IO (Maybe UTCTime)
+fileModifyTimeQuery fileName = do
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (modifyTimeQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return Nothing
+    Right (fileModTime) -> do
+      return (Just fileModTime)
+
+-- | Cache stuff
 
 storeNewFileInCache :: File -> IO()
 storeNewFileInCache (File name contents) = do
@@ -81,7 +163,7 @@ listCache path = do
     fileinfo a []   = return a
     fileinfo a filePath =  do 
       let p = path ++ filePath
-      act <- getAccessTime p
+      act <- getModificationTime p
       szt <- getFileSize p
       let sz = (read :: String -> Int) $ show szt
       isdir <- doesFileExist p 

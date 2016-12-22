@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-22 18:37:36.423938 UTC
+2016-12-22 20:18:53.412941 UTC
 
 interface fileserverClient-0.1.0.0-IXEAdcwBxsU36YjbICl1e7:ClientAPI 8001
-  interface hash: 491c6dd790ef2e2101f734b55a790134
-  ABI hash: 61fd5d236a91081245b9f64dc7e7f201
-  export-list hash: ccbd478120ac0a8178717c4d0132c93a
-  orphan hash: 6d265c89b0ba19a16fc4b269e3513658
+  interface hash: 7041bd72c195dcb714e58892e70987da
+  ABI hash: 118951347b302ab459af612a181caa47
+  export-list hash: cc0ffdbd5d9283979a73dcadbe7b7ac6
+  orphan hash: 134f7fc6a7b65ff61080afe539441cf4
   flag hash: 13c201de8bfdf7e69351b49f9035b3fa
   sig of: Nothing
   used TH splices: False
@@ -156,16 +156,16 @@ import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  directory-1.2.7.1@directory-1.2.7.1-6xbYYKdoE266LLlc7GOex4:System.Directory 970e76f5d7f7d1c2bb4871bad753c6c1
-import  -/  APIs fbba0fb25dfc10d7fa1484cae3edc9bd
+import  -/  APIs 706940bf002146532a2a22907c9ee691
   exports: 72a8a517bbef47b05a68dcb21101dfba
   File 2685f70f5cb3e920c3c1f98611ce72fa
   File d99027858eeb32219356907016b03a9e
-  FileServerAPI 71bef7a400c3a9c3bb2fa2d05c1d6c59
+  FileServerAPI 366aa56b25051eb1602d5021c36d4c49
   ResponseData 42d8ea75220002c51adaf6993dd474d1
-import  -/  Cache b97b85c8cd2ac9fd0dc02989ea47527a
-  exports: 6c69aa09305c08be6df67a097e209d9f
+import  -/  Cache 60083883a5774f5a1bfb00ca95e47f01
+  exports: 18eea07054ff5f0433cddc05dda7568d
   getFileFromCache 4f818af25495306cb83b72a7fca55c18
-  storeNewFileInCache 62022d0d7e4d01713da9758f4d28f4d0
+  storeNewFileInCache 678e953543938ad75b0bc99234a60aba
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  http-client-0.4.31.2@http-client-0.4.31.2-22JDLRDi4cqJNyCfT1wj4e:Network.HTTP.Client 544aaf3c3ee192cc642318dacb39ee6e
 import  -/  http-client-0.4.31.2@http-client-0.4.31.2-22JDLRDi4cqJNyCfT1wj4e:Network.HTTP.Client.Manager 9929816e5db2a227629dbf4f61af0184
@@ -174,7 +174,9 @@ import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.A
 import  -/  servant-client-0.9.1.1@servant-client-0.9.1.1-8jdRCDQwhgFBXqAXqJ8SyZ:Servant.Client 95164a0f8d737c15766ef6cfbe59fdfa
 import  -/  servant-client-0.9.1.1@servant-client-0.9.1.1-8jdRCDQwhgFBXqAXqJ8SyZ:Servant.Common.BaseUrl 5872a28c922767f99970b7d04596c893
 import  -/  servant-client-0.9.1.1@servant-client-0.9.1.1-8jdRCDQwhgFBXqAXqJ8SyZ:Servant.Common.Req 3bb9b81ac135ba6ce1a9e908beaecfad
-80b7dc5567d87f926cf5caf18dcb4b75
+import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time 11aa6bb0881cf13119ff057ae5c21663
+import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e496610c238
+d9cec3c4b79bea6b1b9e94f59d878b3b
   $s$fMimeUnrenderTYPEJSONa ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON [GHC.Base.String]
@@ -253,8 +255,8 @@ e19341cfc1e18c2bb2c4feae1fc9643c
 2488b7876bc18ce47e6cc6ded6c8b798
   $s$fMimeUnrenderTYPEJSONa5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "[a]"#) -}
-8a4d89a5620c70ea05141004b0025db7
-  $s$fMimeUnrenderTYPEJSONa6 ::
+27e15876e23c2ef88ba6b24893f5827c
+  $s$fMimeUnrenderTYPEJSONa7 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.ResponseData
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -267,9 +269,9 @@ e19341cfc1e18c2bb2c4feae1fc9643c
                      APIs.$fFromJSONResponseData_$cparseJSON
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.ResponseData>_N)))
-                  ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 -}
-e1a06d202856175dedb89946799cd07e
-  $s$fMimeUnrenderTYPEJSONa7 ::
+                  ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 -}
+df3e64cbac588c20f5bfa236ade740c5
+  $s$fMimeUnrenderTYPEJSONa8 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.File
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -282,7 +284,7 @@ e1a06d202856175dedb89946799cd07e
                      APIs.$fFromJSONFile_$cparseJSON
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.File>_N)))
-                  ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 -}
+                  ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 -}
 0c983f58f64521ca0d04d84b7de65aa9
   $s$fMimeUnrenderTYPEJSONa_$dFromJSON ::
     Data.Aeson.Types.Class.FromJSON [GHC.Base.String]
@@ -292,49 +294,49 @@ e1a06d202856175dedb89946799cd07e
                   `cast`
                 (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
                           <[[GHC.Types.Char]]>_N)) -}
-832445db727048911953eb681a461499
+84a824e64c52332ba72f818a7213d75f
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
     -> Data.Either.Either GHC.Base.String [GHC.Base.String]
   {- Arity: 2, Strictness: <L,A><S,1*U>,
      Unfolding: InlineRule (1, True, True)
-                (\ (ds1 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
-                   (eta1 :: Data.ByteString.Lazy.Internal.ByteString) ->
+                (\ (ds :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
+                   (eta2 :: Data.ByteString.Lazy.Internal.ByteString) ->
                  Servant.API.ContentTypes.eitherDecodeLenient
                    @ [GHC.Base.String]
                    ClientAPI.$s$fMimeUnrenderTYPEJSONa_$dFromJSON
-                   eta1) -}
-cd7511c9b756f6d15b1b713dd7a15537
-  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 ::
+                   eta2) -}
+532d4060ec71c1efa7d48aff6d81669d
+  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
     -> Data.Either.Either GHC.Base.String APIs.ResponseData
   {- Arity: 2, Strictness: <L,A><S,1*U>,
      Unfolding: InlineRule (1, True, True)
-                (\ (ds1 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
-                   (eta1 :: Data.ByteString.Lazy.Internal.ByteString) ->
+                (\ (ds :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
+                   (eta2 :: Data.ByteString.Lazy.Internal.ByteString) ->
                  Servant.API.ContentTypes.eitherDecodeLenient
                    @ APIs.ResponseData
                    APIs.$fFromJSONResponseData_$cparseJSON
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.ResponseData>_N))
-                   eta1) -}
-c584791f4196974a4887f6cec4e9d53b
-  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 ::
+                   eta2) -}
+329068fa400edc14e41904cd4944d871
+  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
     -> Data.Either.Either GHC.Base.String APIs.File
   {- Arity: 2, Strictness: <L,A><S,1*U>,
      Unfolding: InlineRule (1, True, True)
-                (\ (ds1 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
-                   (eta1 :: Data.ByteString.Lazy.Internal.ByteString) ->
+                (\ (ds :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
+                   (eta2 :: Data.ByteString.Lazy.Internal.ByteString) ->
                  Servant.API.ContentTypes.eitherDecodeLenient
                    @ APIs.File
                    APIs.$fFromJSONFile_$cparseJSON
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.File>_N))
-                   eta1) -}
+                   eta2) -}
 fc21096905dac6c89e75879e663ba58d
   $s$fMimeUnrenderTYPEJSONa_f1 ::
     GHC.Types.Int
@@ -445,8 +447,8 @@ fc21096905dac6c89e75879e663ba58d
 4107694097f58d90eb343ca197cafc9f
   $s$fMimeUnrenderTYPEJSONa_f2 :: [GHC.Types.Int]
   {- Unfolding: (GHC.Enum.eftInt 0# 9223372036854775807#) -}
-87f151fae1c877210d6aca2f280b328c
-  $sclient2 ::
+0718561b761991487dc4bd520a3580f5
+  $sclient5 ::
     Data.Proxy.Proxy
       (Servant.API.Verbs.Verb
          'Network.HTTP.Types.Method.GET
@@ -478,7 +480,7 @@ fc21096905dac6c89e75879e663ba58d
                    @ '[Servant.API.ContentTypes.JSON]
                    @ '[]
                    @ 200
-                   ClientAPI.$s$fMimeUnrenderTYPEJSONa7
+                   ClientAPI.$s$fMimeUnrenderTYPEJSONa8
                    Servant.API.Verbs.$fReflectMethodStdMethodGET_$creflectMethod
                      `cast`
                    (Sym (Servant.API.Verbs.N:ReflectMethod[0]
@@ -496,21 +498,21 @@ fc21096905dac6c89e75879e663ba58d
                            '[Servant.API.ContentTypes.JSON]
                            APIs.File))
                    w4 }) -}
-d9da2cd2b5afa42caffda04beb3dec4d
-  $sclient3 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackAppendCString#
-                   "/"#
-                   ClientAPI.$sclient4) -}
-b51101c87b042746377844e2b62816d5
-  $sclient4 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "download"#) -}
-573a5ea4ace249e2cb3cf30d38e18a8b
-  $sclient5 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackAppendCString#
-                   "/"#
-                   ClientAPI.$sclient6) -}
-3a74cc77f2a5b094590b34c55dce9c23
+c49eacabb9700dc03284c12cf4814270
   $sclient6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackAppendCString#
+                   "/"#
+                   ClientAPI.$sclient7) -}
+a4611e9e069c3d6794c6aefd9220d8a6
+  $sclient7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "download"#) -}
+6721283f88d30396d7afb1187f6e9959
+  $sclient8 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackAppendCString#
+                   "/"#
+                   ClientAPI.$sclient9) -}
+32285ff84ed6a01d7b2e25c4ef7d6202
+  $sclient9 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "upload"#) -}
 b71a72d0e5812ab4a2a849b4a1bc7da3
   $sclient_$d~~ ::
@@ -562,12 +564,12 @@ b0e0a2891c950402e0515d6e423b8c9c
                                                                                  APIs.File)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.File
                                                    $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa7
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa8
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa @ ResponseData" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                          APIs.ResponseData)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.ResponseData
                                                    $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa6
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa7
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa @ [String]" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                      [GHC.Base.String])
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ [GHC.Base.String]
@@ -577,12 +579,12 @@ b0e0a2891c950402e0515d6e423b8c9c
                                                                                                 APIs.File)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.File
                                                                   $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ ResponseData" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                                         APIs.ResponseData)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.ResponseData
                                                                   $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ [String]" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                                     [GHC.Base.String])
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ [GHC.Base.String]
