@@ -35,6 +35,13 @@
   (major1) == 0 && (major2) <  0 || \
   (major1) == 0 && (major2) == 0 && (minor) <= 8)
 
+/* package commonAPIs-0.1.0.0 */
+#define VERSION_commonAPIs "0.1.0.0"
+#define MIN_VERSION_commonAPIs(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  1 || \
+  (major1) == 0 && (major2) == 1 && (minor) <= 0)
+
 /* package directory-1.2.6.2 */
 #define VERSION_directory "1.2.6.2"
 #define MIN_VERSION_directory(major1,major2,minor) (\
@@ -168,7 +175,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii"
+#define CURRENT_COMPONENT_ID "fileserver-0.1.0.0-JmzsUrzGHALeNY7ChLqyj"
 
-#define CURRENT_PACKAGE_KEY "fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii"
+#define CURRENT_PACKAGE_KEY "fileserver-0.1.0.0-JmzsUrzGHALeNY7ChLqyj"
 

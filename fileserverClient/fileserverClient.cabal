@@ -15,15 +15,15 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     APIs
-                     , Cache
+  exposed-modules:     Cache
                      , Client
                      , ClientAPI
   build-depends:       base >= 4.7 && < 5
                      , aeson
                      , bson-generic
+                     , commonAPIs
                      , containers
-                     , directory >= 1.2.7.0
+                     , directory
                      , http-client
                      , servant
                      , servant-client

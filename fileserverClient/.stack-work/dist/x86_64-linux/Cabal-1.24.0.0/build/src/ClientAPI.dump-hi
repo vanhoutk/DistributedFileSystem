@@ -1,19 +1,19 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-22 20:18:53.412941 UTC
+2016-12-22 22:29:55.720575 UTC
 
-interface fileserverClient-0.1.0.0-IXEAdcwBxsU36YjbICl1e7:ClientAPI 8001
-  interface hash: 7041bd72c195dcb714e58892e70987da
-  ABI hash: 118951347b302ab459af612a181caa47
-  export-list hash: cc0ffdbd5d9283979a73dcadbe7b7ac6
-  orphan hash: 134f7fc6a7b65ff61080afe539441cf4
+interface fileserverClient-0.1.0.0-FEhXdnCxLoFJf5C7AREYok:ClientAPI 8001
+  interface hash: 9acd3bb8641aaec78f72ec01d50ff6f7
+  ABI hash: 0c9f3ef5e3fad2ed8a171842054d5f14
+  export-list hash: d087da2dc040fb3a31795f533bdb1ff7
+  orphan hash: 966c36ea946c3f109e1850e5b4466728
   flag hash: 13c201de8bfdf7e69351b49f9035b3fa
   sig of: Nothing
   used TH splices: False
   where
 exports:
   ClientAPI.runQuery
-module dependencies: APIs Cache
+module dependencies: Cache
 package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
                       array-0.5.1.1@array-0.5.1.1
                       attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzFS6V3sZR
@@ -26,6 +26,7 @@ package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
                       blaze-markup-0.7.1.1@blaze-markup-0.7.1.1-IE161DWDHNXF9O8bBguli5
                       bytestring-0.10.8.1@bytestring-0.10.8.1
                       case-insensitive-1.2.0.7@case-insensitive-1.2.0.7-FlqweN7AuKj9EdU2arVEt4
+                      commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-LOsepnt7162IBmA1Sob4YZ
                       containers-0.5.7.1@containers-0.5.7.1
                       cookie-0.4.2.1@cookie-0.4.2.1-2a2c54yIyBn79Ul3iLWclJ
                       cryptonite-0.19@cryptonite-0.19-G9PYO4oOEqhDTta2u9rAaU
@@ -108,13 +109,13 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          base-4.9.0.0:Data.Void base-4.9.0.0:GHC.Exts
                          base-4.9.0.0:GHC.Generics base-4.9.0.0:GHC.IO.Exception
                          base-4.9.0.0:GHC.TypeLits
+                         commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-LOsepnt7162IBmA1Sob4YZ:APIs
                          containers-0.5.7.1@containers-0.5.7.1:Data.IntMap.Base
                          containers-0.5.7.1@containers-0.5.7.1:Data.IntSet.Base
                          containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
                          containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
                          containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
                          dlist-0.8.0.2@dlist-0.8.0.2-GWAMmbX9rLg3tqrbOizHGv:Data.DList
-                         fileserverClient-0.1.0.0-IXEAdcwBxsU36YjbICl1e7:APIs
                          ghc-boot-th-8.0.1@ghc-boot-th-8.0.1:GHC.LanguageExtensions.Type
                          http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB:Web.Internal.FormUrlEncoded
                          http-client-0.4.31.2@http-client-0.4.31.2-22JDLRDi4cqJNyCfT1wj4e:Network.HTTP.Client
@@ -155,17 +156,12 @@ import  -/  base-4.9.0.0:GHC.Generics 8e2a7658e8b966c1d29d0d5fd4129f38
 import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-LOsepnt7162IBmA1Sob4YZ:APIs f6fced749e08b43575b908f59bfb1aff
 import  -/  directory-1.2.7.1@directory-1.2.7.1-6xbYYKdoE266LLlc7GOex4:System.Directory 970e76f5d7f7d1c2bb4871bad753c6c1
-import  -/  APIs 706940bf002146532a2a22907c9ee691
-  exports: 72a8a517bbef47b05a68dcb21101dfba
-  File 2685f70f5cb3e920c3c1f98611ce72fa
-  File d99027858eeb32219356907016b03a9e
-  FileServerAPI 366aa56b25051eb1602d5021c36d4c49
-  ResponseData 42d8ea75220002c51adaf6993dd474d1
-import  -/  Cache 60083883a5774f5a1bfb00ca95e47f01
-  exports: 18eea07054ff5f0433cddc05dda7568d
-  getFileFromCache 4f818af25495306cb83b72a7fca55c18
-  storeNewFileInCache 678e953543938ad75b0bc99234a60aba
+import  -/  Cache 23214044b95cadf2ed410094d994369e
+  exports: 687f6cc321cd476e4f4328c1035f04d7
+  getFileFromCache 22cdd853ecb36b31e6fd0ccc08abc034
+  storeNewFileInCache cb88b08d98978cfac6b59a92bf699e3f
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  http-client-0.4.31.2@http-client-0.4.31.2-22JDLRDi4cqJNyCfT1wj4e:Network.HTTP.Client 544aaf3c3ee192cc642318dacb39ee6e
 import  -/  http-client-0.4.31.2@http-client-0.4.31.2-22JDLRDi4cqJNyCfT1wj4e:Network.HTTP.Client.Manager 9929816e5db2a227629dbf4f61af0184
@@ -176,7 +172,7 @@ import  -/  servant-client-0.9.1.1@servant-client-0.9.1.1-8jdRCDQwhgFBXqAXqJ8SyZ
 import  -/  servant-client-0.9.1.1@servant-client-0.9.1.1-8jdRCDQwhgFBXqAXqJ8SyZ:Servant.Common.Req 3bb9b81ac135ba6ce1a9e908beaecfad
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time 11aa6bb0881cf13119ff057ae5c21663
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e496610c238
-d9cec3c4b79bea6b1b9e94f59d878b3b
+327923f75bcf66edd107e04e5cc6c723
   $s$fMimeUnrenderTYPEJSONa ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON [GHC.Base.String]
@@ -189,7 +185,7 @@ d9cec3c4b79bea6b1b9e94f59d878b3b
                      @ [GHC.Base.String]
                      ClientAPI.$s$fMimeUnrenderTYPEJSONa_$dFromJSON)
                   ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender -}
-9840058fc20265d75aee5068880990ae
+ca607e8006674da330c0ae75546d3167
   $s$fMimeUnrenderTYPEJSONa1 ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser [[GHC.Types.Char]]
@@ -202,7 +198,7 @@ d9cec3c4b79bea6b1b9e94f59d878b3b
                    (<Data.Vector.Vector Data.Aeson.Types.Internal.Value>_R
                     ->_R Sym (Data.Aeson.Types.Internal.N:Parser[0]
                                   <[[GHC.Types.Char]]>_R))) -}
-42b60c1ce3d748a11a7d418965f3dcbb
+9f12ada49e80b9281e4e3c912086c9c0
   $s$fMimeUnrenderTYPEJSONa2 ::
     Data.Vector.Vector Data.Aeson.Types.Internal.Value
     -> forall (f :: * -> *) r.
@@ -240,10 +236,10 @@ d9cec3c4b79bea6b1b9e94f59d878b3b
                              GHC.Types.True -> GHC.Types.[] @ Data.Aeson.Types.Internal.Value }
                        } in
                        $wgo 0# }))) -}
-8aec5b0b6bc15c1a9c78457396fb7c1f
+2e36e4667d7ef84c6ae38f15717f251f
   $s$fMimeUnrenderTYPEJSONa3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "String"#) -}
-e19341cfc1e18c2bb2c4feae1fc9643c
+b9e4edc36b179ef62b5b6a4e8208fae6
   $s$fMimeUnrenderTYPEJSONa4 ::
     [Data.Aeson.Types.Internal.Parser [GHC.Types.Char]]
     -> forall (f :: * -> *) r.
@@ -252,10 +248,10 @@ e19341cfc1e18c2bb2c4feae1fc9643c
        -> Data.Aeson.Types.Internal.Success [[GHC.Types.Char]] f r
        -> f r
   {- Arity: 4, HasNoCafRefs, Strictness: <S,1*U><L,U><L,U><L,C(U)> -}
-2488b7876bc18ce47e6cc6ded6c8b798
+cdae8edf301c770e237d3ff454f97f4b
   $s$fMimeUnrenderTYPEJSONa5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "[a]"#) -}
-27e15876e23c2ef88ba6b24893f5827c
+05ac44f80bca0c161a9d35a170d3bade
   $s$fMimeUnrenderTYPEJSONa7 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.ResponseData
@@ -270,7 +266,7 @@ e19341cfc1e18c2bb2c4feae1fc9643c
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.ResponseData>_N)))
                   ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 -}
-df3e64cbac588c20f5bfa236ade740c5
+33f9fe558b372bbd6d2cbf08e532c06b
   $s$fMimeUnrenderTYPEJSONa8 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.File
@@ -285,7 +281,7 @@ df3e64cbac588c20f5bfa236ade740c5
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.File>_N)))
                   ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 -}
-0c983f58f64521ca0d04d84b7de65aa9
+e3f462df01e873a3c8156440a65936b9
   $s$fMimeUnrenderTYPEJSONa_$dFromJSON ::
     Data.Aeson.Types.Class.FromJSON [GHC.Base.String]
   {- Arity: 1,
@@ -294,7 +290,7 @@ df3e64cbac588c20f5bfa236ade740c5
                   `cast`
                 (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
                           <[[GHC.Types.Char]]>_N)) -}
-84a824e64c52332ba72f818a7213d75f
+98a07d5e4f2815aac7db163b0fae89ab
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -307,7 +303,7 @@ df3e64cbac588c20f5bfa236ade740c5
                    @ [GHC.Base.String]
                    ClientAPI.$s$fMimeUnrenderTYPEJSONa_$dFromJSON
                    eta2) -}
-532d4060ec71c1efa7d48aff6d81669d
+693e5f5b310ee9bc98d05d3d592cfe4c
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -322,7 +318,7 @@ df3e64cbac588c20f5bfa236ade740c5
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.ResponseData>_N))
                    eta2) -}
-329068fa400edc14e41904cd4944d871
+208a629ed85d882370a4d837a98dd703
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -337,7 +333,7 @@ df3e64cbac588c20f5bfa236ade740c5
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.File>_N))
                    eta2) -}
-fc21096905dac6c89e75879e663ba58d
+64fbce3afb6979976f92822a0f6812d0
   $s$fMimeUnrenderTYPEJSONa_f1 ::
     GHC.Types.Int
     -> Data.Aeson.Types.Internal.Value
@@ -444,10 +440,10 @@ fc21096905dac6c89e75879e663ba58d
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <[GHC.Types.Char]>_R))) -}
-4107694097f58d90eb343ca197cafc9f
+0c66334bc769caeb4e4e760bc3aac380
   $s$fMimeUnrenderTYPEJSONa_f2 :: [GHC.Types.Int]
   {- Unfolding: (GHC.Enum.eftInt 0# 9223372036854775807#) -}
-0718561b761991487dc4bd520a3580f5
+39dc74d1964527eac70f0ede272167d1
   $sclient5 ::
     Data.Proxy.Proxy
       (Servant.API.Verbs.Verb
@@ -498,23 +494,23 @@ fc21096905dac6c89e75879e663ba58d
                            '[Servant.API.ContentTypes.JSON]
                            APIs.File))
                    w4 }) -}
-c49eacabb9700dc03284c12cf4814270
+433852b281ab70a2d054c2d542e92e0f
   $sclient6 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackAppendCString#
                    "/"#
                    ClientAPI.$sclient7) -}
-a4611e9e069c3d6794c6aefd9220d8a6
+68c311c815ac780b6768bd656fe30b68
   $sclient7 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "download"#) -}
-6721283f88d30396d7afb1187f6e9959
+ee336409549219409bc2dbc5faa8dec9
   $sclient8 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackAppendCString#
                    "/"#
                    ClientAPI.$sclient9) -}
-32285ff84ed6a01d7b2e25c4ef7d6202
+3dd2e1378385d3072e1e142ed164114f
   $sclient9 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "upload"#) -}
-b71a72d0e5812ab4a2a849b4a1bc7da3
+f4e8e52fea5b0a3aa15632d049141960
   $sclient_$d~~ ::
     '[Servant.API.ContentTypes.JSON]
     GHC.Types.~~ '[Servant.API.ContentTypes.JSON]
@@ -525,22 +521,22 @@ b71a72d0e5812ab4a2a849b4a1bc7da3
                    @ '[Servant.API.ContentTypes.JSON]
                    @ '[Servant.API.ContentTypes.JSON]
                    @~ <'[Servant.API.ContentTypes.JSON]>_N) -}
-5744c541976c4f0c2e59f9dfae7c8c2b
+62919a2f8f2a525811db591d776848e8
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.Module
                    ClientAPI.$trModule2
                    ClientAPI.$trModule1) -}
-fd82f0e4e0737c7f643a35d6a3dbf515
+47c60d7c4a8577f2e839a3ac76b4ff7a
   $trModule1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "ClientAPI"#) -}
-6d2a94ba5b35d95cc62e5836b71bbecb
+b19b5a940e5c3a4a717fe3c3050190a7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
-                   "fileserverClient-0.1.0.0-IXEAdcwBxsU36YjbICl1e7"#) -}
-b0e0a2891c950402e0515d6e423b8c9c
+                   "fileserverClient-0.1.0.0-FEhXdnCxLoFJf5C7AREYok"#) -}
+3c0749568cbbaed79840ee41cff61f81
   runQuery ::
     GHC.Base.String
     -> GHC.Base.String -> GHC.Base.String -> GHC.Types.IO ()
@@ -552,7 +548,7 @@ b0e0a2891c950402e0515d6e423b8c9c
                  ->_R <GHC.Base.String>_R
                  ->_R <GHC.Base.String>_R
                  ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-072b0ad032a5b663085846a65072f5e8
+be6f1b93206c4e00d2c0052564756ed9
   runQuery1 ::
     GHC.Base.String
     -> GHC.Base.String

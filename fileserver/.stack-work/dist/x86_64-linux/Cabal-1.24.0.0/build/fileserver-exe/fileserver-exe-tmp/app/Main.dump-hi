@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-22 20:29:48.054954 UTC
+2016-12-22 22:32:07.896566 UTC
 
 interface main@main:Main 8001
-  interface hash: b1407ba83d0ab8bf921760a742c60ac0
-  ABI hash: 4c42cb4d599d7e59fa34afb249eb3641
-  export-list hash: 6610b8a96a74bd496dc54f6b63ab9840
+  interface hash: 71fd46c1a9a474a36f3a6631194055d8
+  ABI hash: d94aa75f0960e3e11596384ab7a8165d
+  export-list hash: 7c5966ea76d87c419a2fabc415e61732
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 37b165eaaeeaa24096411e4a8d333c6c
   sig of: Nothing
@@ -30,6 +30,7 @@ package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
                       byteorder-1.0.4@byteorder-1.0.4-BbL4c17EpZrL9PcZm0xys9
                       bytestring-0.10.8.1@bytestring-0.10.8.1
                       case-insensitive-1.2.0.7@case-insensitive-1.2.0.7-FlqweN7AuKj9EdU2arVEt4
+                      commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp
                       containers-0.5.7.1@containers-0.5.7.1
                       cryptonite-0.19@cryptonite-0.19-G9PYO4oOEqhDTta2u9rAaU
                       deepseq-1.4.2.0@deepseq-1.4.2.0 directory-1.2.6.2@directory-1.2.6.2
@@ -37,7 +38,7 @@ package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
                       exceptions-0.8.3@exceptions-0.8.3-7py7fmRxowDFpHmiHGKrTb
                       file-embed-0.0.10@file-embed-0.0.10-IXfudWSq57y1Athysk5ifZ
                       filepath-1.4.1.0@filepath-1.4.1.0
-                      fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii
+                      fileserver-0.1.0.0@fileserver-0.1.0.0-JmzsUrzGHALeNY7ChLqyj
                       ghc-boot-th-8.0.1@ghc-boot-th-8.0.1 ghc-prim-0.5.0.0
                       hashable-1.2.4.0@hashable-1.2.4.0-EMu4H7FB10MAl6hwKw992G
                       http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB
@@ -116,13 +117,13 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          base-4.9.0.0:Data.Void base-4.9.0.0:GHC.Exts
                          base-4.9.0.0:GHC.Generics base-4.9.0.0:GHC.IO.Exception
                          base-4.9.0.0:GHC.TypeLits
+                         commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp:APIs
                          containers-0.5.7.1@containers-0.5.7.1:Data.IntMap.Base
                          containers-0.5.7.1@containers-0.5.7.1:Data.IntSet.Base
                          containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
                          containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
                          containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
                          dlist-0.8.0.2@dlist-0.8.0.2-GWAMmbX9rLg3tqrbOizHGv:Data.DList
-                         fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii:APIs
                          ghc-boot-th-8.0.1@ghc-boot-th-8.0.1:GHC.LanguageExtensions.Type
                          http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB:Web.Internal.FormUrlEncoded
                          iproute-1.7.1@iproute-1.7.1-9hsGfRvggCmFA0ueZi5Sd9:Data.IP.Addr
@@ -155,7 +156,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed.Base
                          zlib-0.6.1.2@zlib-0.6.1.2-4CWLN1T27kOJhNvXgy46ZV:Codec.Compression.Zlib.Stream
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
-import  -/  fileserver-0.1.0.0@fileserver-0.1.0.0-7JtfGwUH4SJ8cYpzYDBii:Fileserver 7d408487cc5f2a25f1fb124fdfb55cbc
+import  -/  fileserver-0.1.0.0@fileserver-0.1.0.0-JmzsUrzGHALeNY7ChLqyj:Fileserver 3d3a667eea160ab531ed38175755f650
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module
@@ -169,12 +170,12 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-cee27cfa0ba9cc846ca7e6ff66c56f9a
+fd1631f5d17b3381a80b6e3339576277
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.startServer1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-0eb3e6e2b842668155200cf9f9599071
+a98e9edbe00716c480f5a923c8449a37
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)

@@ -37,6 +37,7 @@ resolver: lts-7.13
 # will not be run. This is useful for tweaking upstream packages.
 packages:
 - '.'
+- ./../commonAPIs
 - location:
     git: https://github.com/Palmik/bson-generic.git
     commit: e078def65d0dee1ea7e3205f445e47d5937851f3

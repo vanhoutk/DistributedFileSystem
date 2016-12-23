@@ -1,0 +1,55 @@
+Preprocessing library directoryServer-0.1.0.0...
+[1 of 1] Compiling Directory        ( src/Directory.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Directory.o )
+
+src/Directory.hs:75:7: error:
+    • Couldn't match type ‘(String, [Char], Int)’ with ‘FileMapping’
+      Expected type: IO [FileMapping]
+        Actual type: IO [(String, [Char], Int)]
+    • In a stmt of a 'do' block:
+        return $ (fileName, serverName, port) : a
+      In the expression:
+        do { let serverNumber = port `mod` 8080;
+             let serverName = "Server" ++ show serverNumber;
+             return $ (fileName, serverName, port) : a }
+      In an equation for ‘fileMap’:
+          fileMap port a fileName
+            = do { let serverNumber = ...;
+                   let serverName = ...;
+                   return $ (fileName, serverName, port) : a }
+
+src/Directory.hs:75:45: error:
+    • Couldn't match type ‘FileMapping’ with ‘(String, [Char], Int)’
+      Expected type: [(String, [Char], Int)]
+        Actual type: [FileMapping]
+    • In the second argument of ‘(:)’, namely ‘a’
+      In the second argument of ‘($)’, namely
+        ‘(fileName, serverName, port) : a’
+      In a stmt of a 'do' block:
+        return $ (fileName, serverName, port) : a
+
+src/Directory.hs:122:1: error:
+    • Couldn't match type ‘http-client-0.4.31.2:Network.HTTP.Client.Types.Manager
+                           -> SC.BaseUrl -> SC.ClientM ResponseData’
+                     with ‘ExceptT SC.ServantError IO ResponseData’
+      Expected type: File -> SC.ClientM ResponseData
+        Actual type: File
+                     -> http-client-0.4.31.2:Network.HTTP.Client.Types.Manager
+                     -> SC.BaseUrl
+                     -> SC.ClientM ResponseData
+    • When checking that the inferred type
+        uploadFile :: File
+                      -> http-client-0.4.31.2:Network.HTTP.Client.Types.Manager
+                      -> SC.BaseUrl
+                      -> SC.ClientM ResponseData
+      is as general as its signature
+        uploadFile :: File -> SC.ClientM ResponseData
+
+src/Directory.hs:132:10: error:
+    Variable not in scope:
+      runClientM :: SC.ClientM [String] -> t0 -> IO (Either a0 [String])
+
+src/Directory.hs:132:36: error:
+    Data constructor not in scope:
+      ClientEnv
+        :: http-client-0.4.31.2:Network.HTTP.Client.Types.Manager
+           -> SC.BaseUrl -> t0

@@ -28,6 +28,13 @@
   (major1) == 0 && (major2) <  0 || \
   (major1) == 0 && (major2) == 0 && (minor) <= 8)
 
+/* package commonAPIs-0.1.0.0 */
+#define VERSION_commonAPIs "0.1.0.0"
+#define MIN_VERSION_commonAPIs(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  1 || \
+  (major1) == 0 && (major2) == 1 && (minor) <= 0)
+
 /* package containers-0.5.7.1 */
 #define VERSION_containers "0.5.7.1"
 #define MIN_VERSION_containers(major1,major2,minor) (\
@@ -154,7 +161,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "fileserverClient-0.1.0.0-IXEAdcwBxsU36YjbICl1e7"
+#define CURRENT_COMPONENT_ID "fileserverClient-0.1.0.0-FEhXdnCxLoFJf5C7AREYok"
 
-#define CURRENT_PACKAGE_KEY "fileserverClient-0.1.0.0-IXEAdcwBxsU36YjbICl1e7"
+#define CURRENT_PACKAGE_KEY "fileserverClient-0.1.0.0-FEhXdnCxLoFJf5C7AREYok"
 
