@@ -11,6 +11,7 @@ module APIs where
 
 import            Data.Aeson
 import            Data.Aeson.TH
+import            Data.Bson.Generic
 import            Data.Time
 import            GHC.Generics
 import            Servant
@@ -33,9 +34,12 @@ type FileServerAPI = "upload"   :> ReqBody '[JSON] File  :> Post '[JSON] Respons
                 :<|> "modifyTime" :> Capture "name" String :> Get '[JSON] UTCTime
 
 data FileMapping = FileMapping { fileName :: String
-                               , serverName :: [Char]
-                               , serverPort :: Int
-                               } deriving (Show, Generic, FromJSON, ToJSON)
+                               , serverName :: String
+                               , serverPort :: String
+                               } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
+
+deriving instance FromBSON String  -- we need these as BSON does not provide
+deriving instance ToBSON   String
 
 --type FileMapping = (String, String, Int)
 

@@ -17,11 +17,13 @@ import            Control.Monad.IO.Class
 import            Control.Monad.Trans.Except
 import            Control.Monad.Trans.Resource
 import            Data.Aeson
+import            Data.Bson.Generic
 import qualified  Data.List                     as DL
 import            Data.Maybe
 import            Data.Proxy
 import            Data.Text                     (pack, unpack)
 import            Data.Time
+import            Database.MongoDB
 import            Network.HTTP.Client           (newManager, defaultManagerSettings)
 import            Network.Wai
 import            Network.Wai.Handler.Warp
@@ -30,6 +32,7 @@ import qualified  Servant.API                   as SC
 import qualified  Servant.Client                as SC
 import            System.Directory
 import            APIs
+import            MongoFunctions
 
 type APIHandler = ExceptT ServantErr IO
 
@@ -42,13 +45,13 @@ startDirectory = do
   putStrLn "Changing current directory..."
   setCurrentDirectory ("fileservers/")
   putStrLn "Starting app..."
-  fileMappings <- initDirectory fileServerPorts
+  initDirectory fileServerPorts
   run 8080 app
 
 initDirectory :: [Int] -> IO()
 initDirectory ports = do
   fileMappingList <- getFileMappingList ports
-  writeFile "fileMappingList" (fileMappingList)
+  --writeFile "fileMappingList" (fileMappingList)
   return ()
 
 getFileMappingList :: [Int] -> IO [FileMapping]
@@ -73,7 +76,12 @@ getFileMappingList ports = do
     fileMap port a fileName = do
       let serverNumber = port `mod` 8080
       let serverName = "Server" ++ show serverNumber
-      return $ (FileMapping fileName serverName port):a
+      let fileMapping = (FileMapping fileName serverName (show port))
+      print fileMapping
+      putStrLn $ "Filename: " ++ fileName ++ " Servername: " ++ serverName
+      withMongoDbConnection $ upsert (select ["filename" =: fileName] "FILE_SERVER_MAPPINGS") $ toBSON fileMapping 
+      putStrLn "After withMongoDbConnection"
+      return $ (FileMapping fileName serverName (show port)):a
 
 app :: Application
 app = serve api server
@@ -90,14 +98,34 @@ server = searchForFile
 
     searchForFile :: String -> APIHandler Int
     searchForFile fileName = do
-      fileMappingList <- readFile "fileMappingList"
-      print fileMappingList
-      let returnValue = 1
-      return returnValue
+      fileMapping <- getFileMapping fileName
+      case fileMapping of
+        Nothing -> return 0
+        Just fileMapping' -> do
+          let (FileMapping _ _ port) = fileMapping'
+          let port' = (read :: String -> Int) $ port
+          return port'
+      --fileMappingList <- readFile "fileMappingList"
+      --print fileMappingList
+      --let returnValue = 1
+      --return returnValue
       {-liftIO $ do
         putStrLn $ "Uploading file: " ++ name
         (writeFile name contents)
       return (ResponseData "Success")-}
+      where
+        getFileMapping :: String -> APIHandler (Maybe FileMapping)
+        getFileMapping name = do
+          let serverName = "Server2" :: String
+          liftIO $ putStrLn $ "Filename: " ++ name ++ " Servername: " ++ serverName
+          fileMap <- liftIO $ withMongoDbConnection $ do
+            docs <- find (select ["filename" =: name] "FILE_SERVER_MAPPINGS") >>= drainCursor
+            return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
+
+          liftIO $ print fileMap
+          case (length fileMap) of
+            0 -> return Nothing 
+            _ -> return (Just (head fileMap))
 
     listFiles :: APIHandler [String]
     listFiles = do

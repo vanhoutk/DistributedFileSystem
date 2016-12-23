@@ -18,9 +18,11 @@ library
   exposed-modules:     Directory
   build-depends:       base >= 4.7 && < 5
                      , aeson
+                     , bson-generic
                      , commonAPIs
                      , directory
                      , http-client
+                     , mongoDB
                      , resourcet
                      , servant
                      , servant-client

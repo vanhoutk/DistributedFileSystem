@@ -17,9 +17,15 @@ library
   hs-source-dirs:      src
   exposed-modules:     APIs
                      , Lib
+                     , MongoFunctions
   build-depends:       base >= 4.7 && < 5
                      , aeson
+                     , bson-generic
+                     , hslogger
+                     , mongoDB
+                     , resourcet
                      , servant-server
+                     , text
                      , time
                      , wai
                      , warp

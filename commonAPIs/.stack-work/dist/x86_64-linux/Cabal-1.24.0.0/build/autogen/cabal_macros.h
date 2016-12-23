@@ -21,12 +21,47 @@
   (major1) == 4 && (major2) <  9 || \
   (major1) == 4 && (major2) == 9 && (minor) <= 0)
 
+/* package bson-generic-0.0.8 */
+#define VERSION_bson_generic "0.0.8"
+#define MIN_VERSION_bson_generic(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  0 || \
+  (major1) == 0 && (major2) == 0 && (minor) <= 8)
+
+/* package hslogger-1.2.10 */
+#define VERSION_hslogger "1.2.10"
+#define MIN_VERSION_hslogger(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  2 || \
+  (major1) == 1 && (major2) == 2 && (minor) <= 10)
+
+/* package mongoDB-2.1.1.1 */
+#define VERSION_mongoDB "2.1.1.1"
+#define MIN_VERSION_mongoDB(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  1 || \
+  (major1) == 2 && (major2) == 1 && (minor) <= 1)
+
+/* package resourcet-1.1.8.1 */
+#define VERSION_resourcet "1.1.8.1"
+#define MIN_VERSION_resourcet(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  1 || \
+  (major1) == 1 && (major2) == 1 && (minor) <= 8)
+
 /* package servant-server-0.9.1.1 */
 #define VERSION_servant_server "0.9.1.1"
 #define MIN_VERSION_servant_server(major1,major2,minor) (\
   (major1) <  0 || \
   (major1) == 0 && (major2) <  9 || \
   (major1) == 0 && (major2) == 9 && (minor) <= 1)
+
+/* package text-1.2.2.1 */
+#define VERSION_text "1.2.2.1"
+#define MIN_VERSION_text(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  2 || \
+  (major1) == 1 && (major2) == 2 && (minor) <= 2)
 
 /* package time-1.6.0.1 */
 #define VERSION_time "1.6.0.1"
@@ -105,7 +140,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
+#define CURRENT_COMPONENT_ID "commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM"
 
-#define CURRENT_PACKAGE_KEY "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
+#define CURRENT_PACKAGE_KEY "commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM"
 

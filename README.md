@@ -29,6 +29,11 @@ Student Number: 12301975
 
 4. Directory Server
 
+- Switch to using mongoDB
+- Save FileMapping to DB
+- Figure out update logic
+- 
+
 5. Replication
 
 6. Security Service

@@ -21,6 +21,13 @@
   (major1) == 4 && (major2) <  9 || \
   (major1) == 4 && (major2) == 9 && (minor) <= 0)
 
+/* package bson-generic-0.0.8 */
+#define VERSION_bson_generic "0.0.8"
+#define MIN_VERSION_bson_generic(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  0 || \
+  (major1) == 0 && (major2) == 0 && (minor) <= 8)
+
 /* package commonAPIs-0.1.0.0 */
 #define VERSION_commonAPIs "0.1.0.0"
 #define MIN_VERSION_commonAPIs(major1,major2,minor) (\
@@ -41,6 +48,13 @@
   (major1) <  0 || \
   (major1) == 0 && (major2) <  4 || \
   (major1) == 0 && (major2) == 4 && (minor) <= 31)
+
+/* package mongoDB-2.1.1.1 */
+#define VERSION_mongoDB "2.1.1.1"
+#define MIN_VERSION_mongoDB(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  1 || \
+  (major1) == 2 && (major2) == 1 && (minor) <= 1)
 
 /* package resourcet-1.1.8.1 */
 #define VERSION_resourcet "1.1.8.1"
@@ -161,7 +175,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "directoryServer-0.1.0.0-CWydoyM4B0Z5GeWVeBH4nl"
+#define CURRENT_COMPONENT_ID "directoryServer-0.1.0.0-6cSoK8KR7ApKUmEuxK4wek"
 
-#define CURRENT_PACKAGE_KEY "directoryServer-0.1.0.0-CWydoyM4B0Z5GeWVeBH4nl"
+#define CURRENT_PACKAGE_KEY "directoryServer-0.1.0.0-6cSoK8KR7ApKUmEuxK4wek"
 
