@@ -49,26 +49,26 @@
   (major1) == 1 && (major2) <  1 || \
   (major1) == 1 && (major2) == 1 && (minor) <= 8)
 
-/* package servant-0.8.1 */
-#define VERSION_servant "0.8.1"
+/* package servant-0.9.1.1 */
+#define VERSION_servant "0.9.1.1"
 #define MIN_VERSION_servant(major1,major2,minor) (\
   (major1) <  0 || \
-  (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 1)
+  (major1) == 0 && (major2) <  9 || \
+  (major1) == 0 && (major2) == 9 && (minor) <= 1)
 
-/* package servant-client-0.8.1 */
-#define VERSION_servant_client "0.8.1"
+/* package servant-client-0.9.1.1 */
+#define VERSION_servant_client "0.9.1.1"
 #define MIN_VERSION_servant_client(major1,major2,minor) (\
   (major1) <  0 || \
-  (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 1)
+  (major1) == 0 && (major2) <  9 || \
+  (major1) == 0 && (major2) == 9 && (minor) <= 1)
 
-/* package servant-server-0.8.1 */
-#define VERSION_servant_server "0.8.1"
+/* package servant-server-0.9.1.1 */
+#define VERSION_servant_server "0.9.1.1"
 #define MIN_VERSION_servant_server(major1,major2,minor) (\
   (major1) <  0 || \
-  (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 1)
+  (major1) == 0 && (major2) <  9 || \
+  (major1) == 0 && (major2) == 9 && (minor) <= 1)
 
 /* package text-1.2.2.1 */
 #define VERSION_text "1.2.2.1"
@@ -161,7 +161,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "directoryServer-0.1.0.0-FP4SStONEL0pskAorOn36"
+#define CURRENT_COMPONENT_ID "directoryServer-0.1.0.0-CWydoyM4B0Z5GeWVeBH4nl"
 
-#define CURRENT_PACKAGE_KEY "directoryServer-0.1.0.0-FP4SStONEL0pskAorOn36"
+#define CURRENT_PACKAGE_KEY "directoryServer-0.1.0.0-CWydoyM4B0Z5GeWVeBH4nl"
 

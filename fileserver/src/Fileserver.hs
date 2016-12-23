@@ -29,13 +29,13 @@ import						APIs
 
 type APIHandler = ExceptT ServantErr IO
 
-startServer :: IO ()
-startServer = do
-  createDirectoryIfMissing True ("files/")
+startServer :: Int -> IO ()
+startServer port = do
+  createDirectoryIfMissing True ("files" ++ show port ++ "/")
   putStrLn "Changing current directory..."
-  setCurrentDirectory ("files/")
+  setCurrentDirectory ("files" ++ show port ++ "/")
   putStrLn "Starting app..."
-  run 8080 app
+  run port app
 
 app :: Application
 app = serve api server
@@ -60,8 +60,9 @@ server = uploadFile
 
     getFiles :: APIHandler [String]
     getFiles = liftIO $ do
-      putStrLn "Listing files in directory ../files/"
-      (listDirectory("../files/"))
+      currentDirectory <- getCurrentDirectory
+      putStrLn $ "Listing files in directory " ++ currentDirectory
+      (listDirectory(currentDirectory))
 
     downloadFile :: String -> APIHandler File
     downloadFile name = do

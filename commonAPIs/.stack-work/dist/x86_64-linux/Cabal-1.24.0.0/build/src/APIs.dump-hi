@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-22 23:48:50.466856 UTC
+2016-12-23 13:12:23.142978 UTC
 
-interface commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7:APIs [family instance module] 8001
-  interface hash: adc9895a023825e1b78ab4b9929ffaaf
-  ABI hash: 6b1e2d572d891bb274276ca3ae4fbb30
-  export-list hash: 7477003a14f7fca3c241b0ba6de8c576
-  orphan hash: 3510aa38384ee6233abb6f703fb9147c
+interface commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp:APIs [family instance module] 8001
+  interface hash: 1cfbf6b2c3f46936f4b8143f2d0ab699
+  ABI hash: d40afea6d7f69c3123115bfac3b6d010
+  export-list hash: 1228e2f5f690cadfce8c74f4ccb19247
+  orphan hash: aaa9e8cc1d9588421d59a7f1ba0060fb
   flag hash: b0e3f8b573d72bae0f984477a0acb626
   sig of: Nothing
   used TH splices: False
@@ -29,18 +29,16 @@ package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
                       blaze-html-0.8.1.3@blaze-html-0.8.1.3-8MBPJsFNBtBBD2gWERenva
                       blaze-markup-0.7.1.1@blaze-markup-0.7.1.1-IE161DWDHNXF9O8bBguli5
                       bytestring-0.10.8.1@bytestring-0.10.8.1
-                      bytestring-conversion-0.3.1@bytestring-conversion-0.3.1-EAlKk6pzstQ97QOJQPK8Q6
                       case-insensitive-1.2.0.7@case-insensitive-1.2.0.7-FlqweN7AuKj9EdU2arVEt4
                       containers-0.5.7.1@containers-0.5.7.1
                       cryptonite-0.19@cryptonite-0.19-G9PYO4oOEqhDTta2u9rAaU
                       deepseq-1.4.2.0@deepseq-1.4.2.0 directory-1.2.6.2@directory-1.2.6.2
                       dlist-0.8.0.2@dlist-0.8.0.2-GWAMmbX9rLg3tqrbOizHGv
-                      double-conversion-2.0.2.0@double-conversion-2.0.2.0-1OXaMV7XK5k4xEuBWX0hy2
                       file-embed-0.0.10@file-embed-0.0.10-IXfudWSq57y1Athysk5ifZ
                       filepath-1.4.1.0@filepath-1.4.1.0
                       ghc-boot-th-8.0.1@ghc-boot-th-8.0.1 ghc-prim-0.5.0.0
                       hashable-1.2.4.0@hashable-1.2.4.0-EMu4H7FB10MAl6hwKw992G
-                      http-api-data-0.2.4@http-api-data-0.2.4-3jwS7OrPl3l4oJfG3gRZ5C
+                      http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB
                       http-date-0.0.6.1@http-date-0.0.6.1-150spKQYCuoIrltdbMmYGs
                       http-media-0.6.4@http-media-0.6.4-82jDVCpdN5H696EFF5l5I4
                       http-types-0.9.1@http-types-0.9.1-8WdUZL4twHzANJbxvb1Aoj
@@ -53,9 +51,10 @@ package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
                       parsec-3.1.11@parsec-3.1.11-BCos4GEVCuDB8dnOCBHO6X
                       pretty-1.1.3.3@pretty-1.1.3.3
                       primitive-0.6.1.0@primitive-0.6.1.0-Ip44DqhfCp21tTUYbecwa
+                      random-1.1@random-1.1-54KmMHXjttlERYcr1mvsAe
                       scientific-0.3.4.9@scientific-0.3.4.9-6oTYuCcx6H5BsTGU7D2Gk3
-                      servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ
-                      servant-server-0.8.1@servant-server-0.8.1-1vTVwRTJHQFav69tRufGl
+                      servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1
+                      servant-server-0.9.1.1@servant-server-0.9.1.1-66M2tFOHqQqK0MqMhFZVCd
                       string-conversions-0.4@string-conversions-0.4-8T0UFmRDEly2gsNJzmHrNQ
                       tagged-0.8.5@tagged-0.8.5-CtgV6EcN0do8F92i1S6iYx
                       template-haskell-2.11.0.0
@@ -65,7 +64,9 @@ package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
                       transformers-0.5.2.0@transformers-0.5.2.0 unix-2.7.2.0@unix-2.7.2.0
                       unix-compat-0.4.3.1@unix-compat-0.4.3.1-GamCWWfiT0318wIeUlpE1K
                       unordered-containers-0.2.7.1@unordered-containers-0.2.7.1-Eo9jd5DMz45DhBLCG8skzW
+                      uri-bytestring-0.2.2.1@uri-bytestring-0.2.2.1-LMJUdG9s1QpIQ10mPWMO6d
                       utf8-string-1.0.1.1@utf8-string-1.0.1.1-2T8mBCuEDlXDo8zed8Onw4
+                      uuid-types-1.0.3@uuid-types-1.0.3-1qmdgBeDGlbCUibOmxVGqx
                       vault-0.3.0.6@vault-0.3.0.6-CA9Xj82tAPe9nD32xVMgDG
                       vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6
                       wai-3.2.1.1@wai-3.2.1.1-f77bMYZGLQBAD3XJrvGiW
@@ -107,21 +108,26 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
                          dlist-0.8.0.2@dlist-0.8.0.2-GWAMmbX9rLg3tqrbOizHGv:Data.DList
                          ghc-boot-th-8.0.1@ghc-boot-th-8.0.1:GHC.LanguageExtensions.Type
+                         http-api-data-0.3.2@http-api-data-0.3.2-A22DPUhAmUlrIoBZ4qkGB:Web.Internal.FormUrlEncoded
                          network-uri-2.6.1.0@network-uri-2.6.1.0-DDHh2FNiPirBRgkuU9DEt2:Network.URI
                          pretty-1.1.3.3@pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
                          pretty-1.1.3.3@pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
                          primitive-0.6.1.0@primitive-0.6.1.0-Ip44DqhfCp21tTUYbecwa:Control.Monad.Primitive
-                         servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ:Servant.API.ContentTypes
-                         servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ:Servant.API.Verbs
-                         servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ:Servant.Utils.Links
-                         servant-server-0.8.1@servant-server-0.8.1-1vTVwRTJHQFav69tRufGl:Servant.Server.Internal
-                         servant-server-0.8.1@servant-server-0.8.1-1vTVwRTJHQFav69tRufGl:Servant.Server.Internal.BasicAuth
+                         servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.ContentTypes
+                         servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.IsSecure
+                         servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.Verbs
+                         servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.Utils.Links
+                         servant-server-0.9.1.1@servant-server-0.9.1.1-66M2tFOHqQqK0MqMhFZVCd:Servant.Server.Internal
+                         servant-server-0.9.1.1@servant-server-0.9.1.1-66M2tFOHqQqK0MqMhFZVCd:Servant.Server.Internal.BasicAuth
                          tagged-0.8.5@tagged-0.8.5-CtgV6EcN0do8F92i1S6iYx:Data.Tagged
                          template-haskell-2.11.0.0:Language.Haskell.TH.Syntax
                          text-1.2.2.1@text-1.2.2.1-5QpmrLQApEZ4Ly9nMHWY0s:Data.Text
                          text-1.2.2.1@text-1.2.2.1-5QpmrLQApEZ4Ly9nMHWY0s:Data.Text.Lazy
                          unordered-containers-0.2.7.1@unordered-containers-0.2.7.1-Eo9jd5DMz45DhBLCG8skzW:Data.HashMap.Base
                          unordered-containers-0.2.7.1@unordered-containers-0.2.7.1-Eo9jd5DMz45DhBLCG8skzW:Data.HashSet
+                         uri-bytestring-0.2.2.1@uri-bytestring-0.2.2.1-LMJUdG9s1QpIQ10mPWMO6d:URI.ByteString.Types
+                         uuid-types-1.0.3@uuid-types-1.0.3-1qmdgBeDGlbCUibOmxVGqx:Data.UUID.Types.Internal
+                         uuid-types-1.0.3@uuid-types-1.0.3-1qmdgBeDGlbCUibOmxVGqx:Data.UUID.Types.Internal.Builder
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Primitive
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Storable
@@ -136,16 +142,16 @@ import  -/  base-4.9.0.0:GHC.Generics 8e2a7658e8b966c1d29d0d5fd4129f38
 import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
-import  -/  servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ:Servant.API.Alternative 5d3122361dbff6ad787d90c80c934b84
-import  -/  servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ:Servant.API.Capture 4097480731fbf884d552d11ab6ebbe42
-import  -/  servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ:Servant.API.ContentTypes 36467541ce7f58ce2efd61f31bf62b1a
-import  -/  servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ:Servant.API.ReqBody 096de2b84a8299b19f996c33952b032f
-import  -/  servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ:Servant.API.Sub da9c539672b073bb6d03363609ac7535
-import  -/  servant-0.8.1@servant-0.8.1-F4us7PPFqrY4Yd8x1NHUcQ:Servant.API.Verbs eb24582ea473d8aa1dab7a8a29039c67
-import  -/  servant-server-0.8.1@servant-server-0.8.1-1vTVwRTJHQFav69tRufGl:Servant 281e101e351eaedd59ac0b5acae345cb
+import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.Alternative 7d4e73ce01670cd8a85baa5f3ddc5484
+import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.Capture f0f1e06a7ff8a4139e4956133dc06f4a
+import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.ContentTypes 81b7e28437c5e1561fbd94f754f2e8b3
+import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.ReqBody 9b669e986805c4d58685dc061d1faa2f
+import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.Sub 8cde68da5a80a5af4f64bff49421dffb
+import  -/  servant-0.9.1.1@servant-0.9.1.1-JzVvK9yk6sQ1E4UZympEK1:Servant.API.Verbs 635eefa3150b87923b6bc0cdae51880a
+import  -/  servant-server-0.9.1.1@servant-server-0.9.1.1-66M2tFOHqQqK0MqMhFZVCd:Servant 486b79878ba489ae3f0fe8391c7fd3c5
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time 11aa6bb0881cf13119ff057ae5c21663
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e496610c238
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fFromJSONFile :: Data.Aeson.Types.Class.FromJSON APIs.File
   DFunId
   {- Arity: 1, Strictness: <L,U>, Inline: INLINE (sat-args=0),
@@ -153,7 +159,7 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e
                 APIs.$fFromJSONFile_$cparseJSON
                   `cast`
                 (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.File>_N)) -}
-2f7c2aba7f6da12bc47de45cc2f45934
+a985433d049af18d2a4d9bb58179e453
   $fFromJSONFile1 ::
     Data.Aeson.Types.Internal.Options
     -> GHC.Base.Maybe Data.Text.Internal.Text
@@ -185,7 +191,7 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e
                    (w1 :: GHC.Base.Maybe Data.Text.Internal.Text)
                    (w2 :: Data.Aeson.Types.Internal.Value) ->
                  APIs.$w$dConsFromJSON' @ a w w2) -}
-d8d070adb58aa401b8dbc9a9bc65d27a
+cb119e1eb6768b6996294f199468a070
   $fFromJSONFile10 :: GHC.Generics.R:SingSymbols "contents"
   {- Strictness: m,
      Unfolding: (GHC.Generics.SSym
@@ -195,10 +201,10 @@ d8d070adb58aa401b8dbc9a9bc65d27a
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"contents">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"contents">_N))) -}
-ae7db3fc6f5aed3da3b51dadcefae5e8
+61f54002786793fd5993612667b2ee74
   $fFromJSONFile11 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "contents"#) -}
-375e5038d752f7b7c1f14b962039b700
+ca779e246c783140d829e1bf697739a3
   $fFromJSONFile12 ::
     (GHC.Generics.:*:)
       (GHC.Generics.M1
@@ -241,7 +247,7 @@ ae7db3fc6f5aed3da3b51dadcefae5e8
                                 (GHC.Generics.Rec0 GHC.Base.String))
                              a) ->
                  GHC.Types.False) -}
-92b5c957aaa65b5a37cdb70ae87ed91c
+15cd80055f0f1503176447db7a94d339
   $fFromJSONFile2 :: GHC.Generics.SingI ('GHC.Base.Just "name")
   {- Unfolding: InlineRule (0, True, True)
                 APIs.$fFromJSONFile3
@@ -251,7 +257,7 @@ ae7db3fc6f5aed3da3b51dadcefae5e8
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Base.Maybe
                                                        GHC.Types.Symbol>_N) <'GHC.Base.Just
                                                                                "name">_N) -}
-a5c6d4e1e6dd716c84646d1846dc91fd
+c913ecf88d8fad4664b274475fbad763
   $fFromJSONFile3 ::
     GHC.Generics.R:SingMaybeb GHC.Types.Symbol ('GHC.Base.Just "name")
   {- Unfolding: (GHC.Generics.SJust
@@ -262,7 +268,7 @@ a5c6d4e1e6dd716c84646d1846dc91fd
                    APIs.$fFromJSONFile4
                      `cast`
                    (Sym (GHC.Generics.D:R:SingSymbols0[0]) <"name">_N)) -}
-780d99587a70c149de3f508302f8c154
+a8d45201d0886385d9ae91317519ea3e
   $fFromJSONFile4 :: GHC.Generics.R:SingSymbols "name"
   {- Strictness: m,
      Unfolding: (GHC.Generics.SSym
@@ -272,10 +278,10 @@ a5c6d4e1e6dd716c84646d1846dc91fd
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"name">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"name">_N))) -}
-85abd6636379c96a3907f51e6b76f165
+03cd6d072f5851979561875c0ed75206
   $fFromJSONFile5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "name"#) -}
-be44c2a9d79311c7af70c686b5575565
+84ede819e108b43510ac42f72b194914
   $fFromJSONFile6 ::
     Data.Aeson.Types.Internal.Options
     -> Data.Aeson.Types.Internal.Value
@@ -287,10 +293,10 @@ be44c2a9d79311c7af70c686b5575565
                    (w :: Data.Aeson.Types.Internal.Options)
                    (w1 :: Data.Aeson.Types.Internal.Value) ->
                  APIs.$w$dGFromJSON @ a1 w1) -}
-4be424f1b17fc49fa24e9dbc72a5bb9b
+dd2ca0fe41be0488e485c0e0ca21eb02
   $fFromJSONFile7 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "String"#) -}
-b5743bf2071c13eeb68dcb98067214b5
+c08a0eaf69d32e2a193b7f45e50653d0
   $fFromJSONFile8 :: GHC.Generics.SingI ('GHC.Base.Just "contents")
   {- Unfolding: InlineRule (0, True, True)
                 APIs.$fFromJSONFile9
@@ -300,7 +306,7 @@ b5743bf2071c13eeb68dcb98067214b5
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Base.Maybe
                                                        GHC.Types.Symbol>_N) <'GHC.Base.Just
                                                                                "contents">_N) -}
-08ffc4f34279271160c0888dbef8aef2
+dc06b521a167de9aaa30d96d8fa01d69
   $fFromJSONFile9 ::
     GHC.Generics.R:SingMaybeb
       GHC.Types.Symbol ('GHC.Base.Just "contents")
@@ -312,7 +318,7 @@ b5743bf2071c13eeb68dcb98067214b5
                    APIs.$fFromJSONFile10
                      `cast`
                    (Sym (GHC.Generics.D:R:SingSymbols0[0]) <"contents">_N)) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fFromJSONFileMapping ::
     Data.Aeson.Types.Class.FromJSON APIs.FileMapping
   DFunId
@@ -322,7 +328,7 @@ b5743bf2071c13eeb68dcb98067214b5
                   `cast`
                 (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
                           <APIs.FileMapping>_N)) -}
-377539c90b00a94fca9207f68e835c45
+5b5d84b124a8ccdb47ae2d0cfaf56041
   $fFromJSONFileMapping1 ::
     Data.Aeson.Types.Internal.Options
     -> GHC.Base.Maybe Data.Text.Internal.Text
@@ -344,7 +350,7 @@ b5743bf2071c13eeb68dcb98067214b5
                      'GHC.Generics.NoSourceUnpackedness
                      'GHC.Generics.NoSourceStrictness
                      'GHC.Generics.DecidedLazy)
-                  (GHC.Generics.Rec0 GHC.Base.String)
+                  (GHC.Generics.Rec0 [GHC.Types.Char])
                 GHC.Generics.:*: GHC.Generics.S1
                                    ('GHC.Generics.MetaSel
                                       ('GHC.Base.Just "serverPort")
@@ -361,10 +367,10 @@ b5743bf2071c13eeb68dcb98067214b5
                    (w1 :: GHC.Base.Maybe Data.Text.Internal.Text)
                    (w2 :: Data.Aeson.Types.Internal.Value) ->
                  APIs.$w$dConsFromJSON'1 @ a w w2) -}
-56e81ff82fa2ef8b4af4a283d7901692
+90068e1075382039ca96c90c72be6199
   $fFromJSONFileMapping10 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "serverName"#) -}
-aa6977b29731c395995f55d1e00b2945
+3ea0e1579d63b860590eed5de65b15bf
   $fFromJSONFileMapping11 ::
     Data.Aeson.Types.Internal.Options
     -> Data.Aeson.Types.Internal.Value
@@ -376,7 +382,7 @@ aa6977b29731c395995f55d1e00b2945
                    (w :: Data.Aeson.Types.Internal.Options)
                    (w1 :: Data.Aeson.Types.Internal.Value) ->
                  APIs.$w$dGFromJSON2 @ a1 w1) -}
-22c139ed93c4fd3bd71b798a5b34aa25
+b50f0bb0d27665fbc71ac61262110252
   $fFromJSONFileMapping12 ::
     GHC.Generics.SingI ('GHC.Base.Just "serverPort")
   {- Unfolding: InlineRule (0, True, True)
@@ -387,7 +393,7 @@ aa6977b29731c395995f55d1e00b2945
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Base.Maybe
                                                        GHC.Types.Symbol>_N) <'GHC.Base.Just
                                                                                "serverPort">_N) -}
-c6992d5a5b38e452bf3a55205e66ecce
+8601ffdb0e3066b51361f9d1c3803953
   $fFromJSONFileMapping13 ::
     GHC.Generics.R:SingMaybeb
       GHC.Types.Symbol ('GHC.Base.Just "serverPort")
@@ -399,7 +405,7 @@ c6992d5a5b38e452bf3a55205e66ecce
                    APIs.$fFromJSONFileMapping14
                      `cast`
                    (Sym (GHC.Generics.D:R:SingSymbols0[0]) <"serverPort">_N)) -}
-294217e71a1378d7df09faea21f4d000
+094629f6180341adc34438b1fde5c434
   $fFromJSONFileMapping14 :: GHC.Generics.R:SingSymbols "serverPort"
   {- Strictness: m,
      Unfolding: (GHC.Generics.SSym
@@ -409,10 +415,10 @@ c6992d5a5b38e452bf3a55205e66ecce
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"serverPort">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"serverPort">_N))) -}
-d6887d0752d9145d18588a74fd895e02
+6f347542ad09c8f0c9f76656b2f7cc79
   $fFromJSONFileMapping15 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "serverPort"#) -}
-ca5e6fd5127a2eda44cbe8b3e0394825
+8c2eb0326d484227de7a2f8de8966146
   $fFromJSONFileMapping16 ::
     (GHC.Generics.:*:)
       (GHC.Generics.M1
@@ -429,7 +435,7 @@ ca5e6fd5127a2eda44cbe8b3e0394825
             'GHC.Generics.NoSourceUnpackedness
             'GHC.Generics.NoSourceStrictness
             'GHC.Generics.DecidedLazy)
-         (GHC.Generics.Rec0 GHC.Base.String)
+         (GHC.Generics.Rec0 [GHC.Types.Char])
        GHC.Generics.:*: GHC.Generics.S1
                           ('GHC.Generics.MetaSel
                              ('GHC.Base.Just "serverPort")
@@ -457,7 +463,7 @@ ca5e6fd5127a2eda44cbe8b3e0394825
                                    'GHC.Generics.NoSourceUnpackedness
                                    'GHC.Generics.NoSourceStrictness
                                    'GHC.Generics.DecidedLazy)
-                                (GHC.Generics.Rec0 GHC.Base.String)
+                                (GHC.Generics.Rec0 [GHC.Types.Char])
                               GHC.Generics.:*: GHC.Generics.S1
                                                  ('GHC.Generics.MetaSel
                                                     ('GHC.Base.Just "serverPort")
@@ -467,7 +473,7 @@ ca5e6fd5127a2eda44cbe8b3e0394825
                                                  (GHC.Generics.Rec0 GHC.Types.Int))
                              a) ->
                  GHC.Types.False) -}
-5048cca30e4b2e4fb67fbb374e043fc8
+0d6d06222132eff5544f9f7bd36a0efd
   $fFromJSONFileMapping2 ::
     GHC.Generics.SingI ('GHC.Base.Just "fileName")
   {- Unfolding: InlineRule (0, True, True)
@@ -478,7 +484,7 @@ ca5e6fd5127a2eda44cbe8b3e0394825
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Base.Maybe
                                                        GHC.Types.Symbol>_N) <'GHC.Base.Just
                                                                                "fileName">_N) -}
-41815abef0345cd8dab2d08e764d217d
+a55e21eb2ae9a4f6b9e16628276dbbc1
   $fFromJSONFileMapping3 ::
     GHC.Generics.R:SingMaybeb
       GHC.Types.Symbol ('GHC.Base.Just "fileName")
@@ -490,7 +496,7 @@ ca5e6fd5127a2eda44cbe8b3e0394825
                    APIs.$fFromJSONFileMapping4
                      `cast`
                    (Sym (GHC.Generics.D:R:SingSymbols0[0]) <"fileName">_N)) -}
-2a0d8b61937384c724f523929fb7d24c
+cca523b1c3adab80f16ca3160f2231a9
   $fFromJSONFileMapping4 :: GHC.Generics.R:SingSymbols "fileName"
   {- Strictness: m,
      Unfolding: (GHC.Generics.SSym
@@ -500,10 +506,10 @@ ca5e6fd5127a2eda44cbe8b3e0394825
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"fileName">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"fileName">_N))) -}
-07359808a68422403ece23592ff9dba0
+2f5cf1eaf53ef557e821bbf90553aa55
   $fFromJSONFileMapping5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "fileName"#) -}
-843fa7d775332f5ec139ebd942e44fd8
+a4c12d266395174f6fcc6bfe63321d13
   $fFromJSONFileMapping6 ::
     Data.Aeson.Types.Internal.Options
     -> Data.Aeson.Types.Internal.Value
@@ -515,7 +521,7 @@ ca5e6fd5127a2eda44cbe8b3e0394825
                    (w :: Data.Aeson.Types.Internal.Options)
                    (w1 :: Data.Aeson.Types.Internal.Value) ->
                  APIs.$w$dGFromJSON1 @ a1 w1) -}
-9124177cd2f278c7eda80426af9864fc
+65593868dcedb1dc928b089222d74df3
   $fFromJSONFileMapping7 ::
     GHC.Generics.SingI ('GHC.Base.Just "serverName")
   {- Unfolding: InlineRule (0, True, True)
@@ -526,7 +532,7 @@ ca5e6fd5127a2eda44cbe8b3e0394825
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Base.Maybe
                                                        GHC.Types.Symbol>_N) <'GHC.Base.Just
                                                                                "serverName">_N) -}
-db8422a4221719ff95c8f5f928e19c66
+4c6fb7fa69c872da1b7e2e0d2ead2f89
   $fFromJSONFileMapping8 ::
     GHC.Generics.R:SingMaybeb
       GHC.Types.Symbol ('GHC.Base.Just "serverName")
@@ -538,7 +544,7 @@ db8422a4221719ff95c8f5f928e19c66
                    APIs.$fFromJSONFileMapping9
                      `cast`
                    (Sym (GHC.Generics.D:R:SingSymbols0[0]) <"serverName">_N)) -}
-f8bcb360654ac74f4b0c886c8d439980
+cd86e8a80c0df5fd56747e287e0a2e9c
   $fFromJSONFileMapping9 :: GHC.Generics.R:SingSymbols "serverName"
   {- Strictness: m,
      Unfolding: (GHC.Generics.SSym
@@ -548,7 +554,7 @@ f8bcb360654ac74f4b0c886c8d439980
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"serverName">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"serverName">_N))) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fFromJSONFileMapping_$cparseJSON ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser APIs.FileMapping
@@ -570,7 +576,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                    'GHC.Generics.NoSourceUnpackedness
                                    'GHC.Generics.NoSourceStrictness
                                    'GHC.Generics.DecidedLazy)
-                                (GHC.Generics.Rec0 GHC.Base.String)
+                                (GHC.Generics.Rec0 [GHC.Types.Char])
                               GHC.Generics.:*: GHC.Generics.S1
                                                  ('GHC.Generics.MetaSel
                                                     ('GHC.Base.Just "serverPort")
@@ -593,7 +599,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                                  'GHC.Generics.NoSourceUnpackedness
                                                  'GHC.Generics.NoSourceStrictness
                                                  'GHC.Generics.DecidedLazy)
-                                              (GHC.Generics.Rec0 GHC.Base.String)
+                                              (GHC.Generics.Rec0 [GHC.Types.Char])
                                             GHC.Generics.:*: GHC.Generics.S1
                                                                ('GHC.Generics.MetaSel
                                                                   ('GHC.Base.Just "serverPort")
@@ -619,7 +625,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                                          'GHC.Generics.NoSourceUnpackedness
                                                          'GHC.Generics.NoSourceStrictness
                                                          'GHC.Generics.DecidedLazy)
-                                                      (GHC.Generics.Rec0 GHC.Base.String)
+                                                      (GHC.Generics.Rec0 [GHC.Types.Char])
                                                     GHC.Generics.:*: GHC.Generics.S1
                                                                        ('GHC.Generics.MetaSel
                                                                           ('GHC.Base.Just
@@ -646,7 +652,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                                          'GHC.Generics.NoSourceUnpackedness
                                                          'GHC.Generics.NoSourceStrictness
                                                          'GHC.Generics.DecidedLazy)
-                                                      (GHC.Generics.Rec0 GHC.Base.String)
+                                                      (GHC.Generics.Rec0 [GHC.Types.Char])
                                                     GHC.Generics.:*: GHC.Generics.S1
                                                                        ('GHC.Generics.MetaSel
                                                                           ('GHC.Base.Just
@@ -682,7 +688,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                 'GHC.Generics.NoSourceUnpackedness
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy)
-                             (GHC.Generics.Rec0 GHC.Base.String)
+                             (GHC.Generics.Rec0 [GHC.Types.Char])
                            GHC.Generics.:*: GHC.Generics.S1
                                               ('GHC.Generics.MetaSel
                                                  ('GHC.Base.Just "serverPort")
@@ -709,7 +715,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                       'GHC.Generics.NoSourceUnpackedness
                                       'GHC.Generics.NoSourceStrictness
                                       'GHC.Generics.DecidedLazy)
-                                   (GHC.Generics.Rec0 GHC.Base.String)
+                                   (GHC.Generics.Rec0 [GHC.Types.Char])
                                  GHC.Generics.:*: GHC.Generics.S1
                                                     ('GHC.Generics.MetaSel
                                                        ('GHC.Base.Just "serverPort")
@@ -741,7 +747,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                                                  'GHC.Generics.NoSourceUnpackedness
                                                                  'GHC.Generics.NoSourceStrictness
                                                                  'GHC.Generics.DecidedLazy)
-                                                              (GHC.Generics.Rec0 GHC.Base.String)
+                                                              (GHC.Generics.Rec0 [GHC.Types.Char])
                                                             GHC.Generics.:*: GHC.Generics.S1
                                                                                ('GHC.Generics.MetaSel
                                                                                   ('GHC.Base.Just
@@ -757,7 +763,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                               <'GHC.Generics.MetaData
                                                  "FileMapping"
                                                  "APIs"
-                                                 "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+                                                 "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                                                  'GHC.Types.False>_P
                                               <GHC.Generics.M1
                                                  GHC.Generics.C
@@ -780,7 +786,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                                                          'GHC.Generics.NoSourceStrictness
                                                                          'GHC.Generics.DecidedLazy)
                                                                       (GHC.Generics.Rec0
-                                                                         GHC.Base.String)
+                                                                         [GHC.Types.Char])
                                                                     GHC.Generics.:*: GHC.Generics.S1
                                                                                        ('GHC.Generics.MetaSel
                                                                                           ('GHC.Base.Just
@@ -794,7 +800,7 @@ f8bcb360654ac74f4b0c886c8d439980
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <APIs.FileMapping>_R))) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fFromJSONFileMapping_$cto ::
     GHC.Generics.Rep APIs.FileMapping x -> APIs.FileMapping
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(U,1*U(U,U))>m,
@@ -810,7 +816,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                      <'GHC.Generics.MetaData
                                         "FileMapping"
                                         "APIs"
-                                        "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+                                        "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                                         'GHC.Types.False>_P
                                      <GHC.Generics.M1
                                         GHC.Generics.C
@@ -832,7 +838,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                                                 'GHC.Generics.NoSourceStrictness
                                                                 'GHC.Generics.DecidedLazy)
                                                              (GHC.Generics.K1
-                                                                GHC.Generics.R GHC.Base.String)
+                                                                GHC.Generics.R [GHC.Types.Char])
                                                            GHC.Generics.:*: GHC.Generics.M1
                                                                               GHC.Generics.S
                                                                               ('GHC.Generics.MetaSel
@@ -864,7 +870,7 @@ f8bcb360654ac74f4b0c886c8d439980
                                                              'GHC.Generics.NoSourceStrictness
                                                              'GHC.Generics.DecidedLazy)
                                                           (GHC.Generics.K1
-                                                             GHC.Generics.R GHC.Base.String)
+                                                             GHC.Generics.R [GHC.Types.Char])
                                                         GHC.Generics.:*: GHC.Generics.M1
                                                                            GHC.Generics.S
                                                                            ('GHC.Generics.MetaSel
@@ -901,9 +907,9 @@ f8bcb360654ac74f4b0c886c8d439980
                                 'GHC.Generics.NoSourceUnpackedness
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy>_P
-                             <GHC.Generics.K1 GHC.Generics.R GHC.Base.String>_R <x>_N)
+                             <GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char]>_R <x>_N)
                         (GHC.Generics.N:K1[0]
-                             <GHC.Generics.R>_P <GHC.Base.String>_R <x>_P))
+                             <GHC.Generics.R>_P <[GHC.Types.Char]>_R <x>_P))
                    ds4
                      `cast`
                    (Trans
@@ -917,7 +923,7 @@ f8bcb360654ac74f4b0c886c8d439980
                              <GHC.Generics.K1 GHC.Generics.R GHC.Types.Int>_R <x>_N)
                         (GHC.Generics.N:K1[0]
                              <GHC.Generics.R>_P <GHC.Types.Int>_R <x>_P)) } }) -}
-faaa7880dce633da1fe9b7c79b57b910
+0dbfa87baca1e32d07995a1b80455b4a
   $fFromJSONFileMapping_$s$fSelectorMetaMetaSel ::
     GHC.Generics.Selector
       ('GHC.Generics.MetaSel
@@ -979,7 +985,7 @@ faaa7880dce633da1fe9b7c79b57b910
                      GHC.Generics.$WSDecidedLazy
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Generics.DecidedStrictness>_N <'GHC.Generics.DecidedLazy>_N)) -}
-c675bb4160f7c7991d765e5bc21e9d3c
+541ead4f7706d7a89527bf7c24c982a1
   $fFromJSONFileMapping_$s$fSelectorMetaMetaSel1 ::
     GHC.Generics.Selector
       ('GHC.Generics.MetaSel
@@ -1041,7 +1047,7 @@ c675bb4160f7c7991d765e5bc21e9d3c
                      GHC.Generics.$WSDecidedLazy
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Generics.DecidedStrictness>_N <'GHC.Generics.DecidedLazy>_N)) -}
-9eb9564c5cd22e10fd291f791ba303cf
+1a37f928e5726598b75ee52948ed1ee0
   $fFromJSONFileMapping_$s$fSelectorMetaMetaSel2 ::
     GHC.Generics.Selector
       ('GHC.Generics.MetaSel
@@ -1103,7 +1109,7 @@ c675bb4160f7c7991d765e5bc21e9d3c
                      GHC.Generics.$WSDecidedLazy
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Generics.DecidedStrictness>_N <'GHC.Generics.DecidedLazy>_N)) -}
-da5f2b09c40679069793d52ff64e07a3
+ca38f896925cd3df0d977d1a8b2f4224
   $fFromJSONFileMapping_$s$fSelectorMetaMetaSel_$cselName ::
     forall k (t :: GHC.Generics.Meta
                    -> (GHC.Types.* -> GHC.Types.*) -> k -> *) (f :: GHC.Types.*
@@ -1127,7 +1133,7 @@ da5f2b09c40679069793d52ff64e07a3
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  APIs.$fFromJSONFileMapping5) -}
-f68fdbf5966780334cdd0d60b5591acc
+1ea369c85e881e8f0708f412d6eea7ab
   $fFromJSONFileMapping_$s$fSelectorMetaMetaSel_$cselName1 ::
     forall k (t :: GHC.Generics.Meta
                    -> (GHC.Types.* -> GHC.Types.*) -> k -> *) (f :: GHC.Types.*
@@ -1151,7 +1157,7 @@ f68fdbf5966780334cdd0d60b5591acc
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  APIs.$fFromJSONFileMapping10) -}
-e558b5d61cb65aca88b0c8fc8e229979
+8f2384dc053ac948e8dde68cd123c52d
   $fFromJSONFileMapping_$s$fSelectorMetaMetaSel_$cselName2 ::
     forall k (t :: GHC.Generics.Meta
                    -> (GHC.Types.* -> GHC.Types.*) -> k -> *) (f :: GHC.Types.*
@@ -1175,7 +1181,7 @@ e558b5d61cb65aca88b0c8fc8e229979
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  APIs.$fFromJSONFileMapping15) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fFromJSONFile_$cparseJSON ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser APIs.File
@@ -1333,7 +1339,7 @@ e558b5d61cb65aca88b0c8fc8e229979
                                     <GHC.Generics.R>_P <GHC.Base.String>_R <GHC.Prim.Any>_P)) })))
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0] <APIs.File>_R))) -}
-6cfd6e5b8a6eb7c27267c8a740f986f9
+698a0a81d092d3a11851771509452ad3
   $fFromJSONFile_$s$fSelectorMetaMetaSel ::
     GHC.Generics.Selector
       ('GHC.Generics.MetaSel
@@ -1395,7 +1401,7 @@ e558b5d61cb65aca88b0c8fc8e229979
                      GHC.Generics.$WSDecidedLazy
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Generics.DecidedStrictness>_N <'GHC.Generics.DecidedLazy>_N)) -}
-4768c1092d1f025014eeb2965920e8d3
+2e0d5e1031a339afc6257edae08a4c3e
   $fFromJSONFile_$s$fSelectorMetaMetaSel1 ::
     GHC.Generics.Selector
       ('GHC.Generics.MetaSel
@@ -1457,7 +1463,7 @@ e558b5d61cb65aca88b0c8fc8e229979
                      GHC.Generics.$WSDecidedLazy
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Generics.DecidedStrictness>_N <'GHC.Generics.DecidedLazy>_N)) -}
-595cfa908e12d501ec9feeb0a2ee4482
+4117dc7915af62f00911bfb0492c2caf
   $fFromJSONFile_$s$fSelectorMetaMetaSel_$cselName ::
     forall k (t :: GHC.Generics.Meta
                    -> (GHC.Types.* -> GHC.Types.*) -> k -> *) (f :: GHC.Types.*
@@ -1481,7 +1487,7 @@ e558b5d61cb65aca88b0c8fc8e229979
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  APIs.$fFromJSONFile5) -}
-daf857126e34796b0ea35ddfd45baf34
+30d62eb96b57ecc9f1a9f0ef77f3e431
   $fFromJSONFile_$s$fSelectorMetaMetaSel_$cselName1 ::
     forall k (t :: GHC.Generics.Meta
                    -> (GHC.Types.* -> GHC.Types.*) -> k -> *) (f :: GHC.Types.*
@@ -1505,7 +1511,7 @@ daf857126e34796b0ea35ddfd45baf34
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  APIs.$fFromJSONFile11) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fFromJSONResponseData ::
     Data.Aeson.Types.Class.FromJSON APIs.ResponseData
   DFunId
@@ -1515,7 +1521,7 @@ f2d055de601eb40cab8ebc79be1c765c
                   `cast`
                 (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
                           <APIs.ResponseData>_N)) -}
-5ab51b7f6012f61c120a4e1eadf77187
+27a4bd4475b12bbbd8ad31ac69801ddd
   $fFromJSONResponseData1 ::
     Data.Aeson.Types.Internal.Options
     -> GHC.Base.Maybe Data.Text.Internal.Text
@@ -1592,7 +1598,7 @@ f2d055de601eb40cab8ebc79be1c765c
                                          'GHC.Generics.DecidedLazy)
                                       (GHC.Generics.Rec0 GHC.Base.String)
                                       a)>_R))) -}
-2ab0533fd28c77205e8576e8c9b4c15b
+14472fc96b74692b916f79eb5ae8253c
   $fFromJSONResponseData2 ::
     Data.Aeson.Types.Internal.Options
     -> Data.Aeson.Types.Internal.Value
@@ -1604,7 +1610,7 @@ f2d055de601eb40cab8ebc79be1c765c
                    (w :: Data.Aeson.Types.Internal.Options)
                    (w1 :: Data.Aeson.Types.Internal.Value) ->
                  APIs.$w$dGFromJSON3 @ a1 w1) -}
-302e249b1df4f03b31a78ef5002891cf
+0d327a9737ff9de4574bc455e2b1dbfa
   $fFromJSONResponseData3 ::
     GHC.Generics.SingI ('GHC.Base.Just "response")
   {- Unfolding: InlineRule (0, True, True)
@@ -1615,7 +1621,7 @@ f2d055de601eb40cab8ebc79be1c765c
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Base.Maybe
                                                        GHC.Types.Symbol>_N) <'GHC.Base.Just
                                                                                "response">_N) -}
-6da3bc544af683db7508b9b27033d916
+ccfb6ee3068f7e45949745b1fcd7bcf6
   $fFromJSONResponseData4 ::
     GHC.Generics.R:SingMaybeb
       GHC.Types.Symbol ('GHC.Base.Just "response")
@@ -1627,7 +1633,7 @@ f2d055de601eb40cab8ebc79be1c765c
                    APIs.$fFromJSONResponseData5
                      `cast`
                    (Sym (GHC.Generics.D:R:SingSymbols0[0]) <"response">_N)) -}
-8a337ae2fef0078757347206711d7ceb
+0ef7734190381485208a4e76eb9400d2
   $fFromJSONResponseData5 :: GHC.Generics.R:SingSymbols "response"
   {- Strictness: m,
      Unfolding: (GHC.Generics.SSym
@@ -1637,10 +1643,10 @@ f2d055de601eb40cab8ebc79be1c765c
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"response">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"response">_N))) -}
-7b72b9b908639b9ee560f28654bc9fb4
+d8a292f3ef812e597a1a97843d98dbe2
   $fFromJSONResponseData6 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "response"#) -}
-a35012605f21e65e136c75a1bc09b40d
+a4f4fc79c3626fd1e39387c219e84363
   $fFromJSONResponseData7 ::
     GHC.Generics.M1
       GHC.Generics.S
@@ -1665,7 +1671,7 @@ a35012605f21e65e136c75a1bc09b40d
                              (GHC.Generics.K1 GHC.Generics.R GHC.Base.String)
                              a) ->
                  GHC.Types.True) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fFromJSONResponseData_$cparseJSON ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser APIs.ResponseData
@@ -1768,7 +1774,7 @@ f2d055de601eb40cab8ebc79be1c765c
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <APIs.ResponseData>_R))) -}
-1d2f9619bcfbd151fb0d4899fc385a5f
+f5339a1c80091b606189a7719a783847
   $fFromJSONResponseData_$s$fSelectorMetaMetaSel ::
     GHC.Generics.Selector
       ('GHC.Generics.MetaSel
@@ -1830,7 +1836,7 @@ f2d055de601eb40cab8ebc79be1c765c
                      GHC.Generics.$WSDecidedLazy
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Generics.DecidedStrictness>_N <'GHC.Generics.DecidedLazy>_N)) -}
-f9cd9e753ffea26776b0010bba9c9f75
+a30f3982eb8e4086488b3bee4639f01b
   $fFromJSONResponseData_$s$fSelectorMetaMetaSel_$cselName ::
     forall k (t :: GHC.Generics.Meta
                    -> (GHC.Types.* -> GHC.Types.*) -> k -> *) (f :: GHC.Types.*
@@ -1854,13 +1860,13 @@ f9cd9e753ffea26776b0010bba9c9f75
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  APIs.$fFromJSONResponseData6) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fGenericFile :: GHC.Generics.Generic APIs.File
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ APIs.File APIs.$fGenericFile_$cfrom APIs.$fGenericFile_$cto -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fGenericFileMapping :: GHC.Generics.Generic APIs.FileMapping
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -1868,7 +1874,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                   @ APIs.FileMapping
                   APIs.$fGenericFileMapping_$cfrom
                   APIs.$fFromJSONFileMapping_$cto -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fGenericFileMapping_$cfrom ::
     APIs.FileMapping -> GHC.Generics.Rep APIs.FileMapping x
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,U)>m,
@@ -1891,7 +1897,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                             'GHC.Generics.NoSourceUnpackedness
                             'GHC.Generics.NoSourceStrictness
                             'GHC.Generics.DecidedLazy)
-                         (GHC.Generics.K1 GHC.Generics.R GHC.Base.String)
+                         (GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char])
                        GHC.Generics.:*: GHC.Generics.M1
                                           GHC.Generics.S
                                           ('GHC.Generics.MetaSel
@@ -1922,7 +1928,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                                'GHC.Generics.NoSourceUnpackedness
                                'GHC.Generics.NoSourceStrictness
                                'GHC.Generics.DecidedLazy)
-                            (GHC.Generics.K1 GHC.Generics.R GHC.Base.String))
+                            (GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char]))
                        @ (GHC.Generics.M1
                             GHC.Generics.S
                             ('GHC.Generics.MetaSel
@@ -1936,7 +1942,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                          `cast`
                        (Trans
                             (Sym (GHC.Generics.N:K1[0]
-                                      <GHC.Generics.R>_P <GHC.Base.String>_R <x>_P))
+                                      <GHC.Generics.R>_P <[GHC.Types.Char]>_R <x>_P))
                             (Sym (GHC.Generics.N:M1[0]
                                       <GHC.Generics.S>_P
                                       <'GHC.Generics.MetaSel
@@ -1944,7 +1950,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                                          'GHC.Generics.NoSourceUnpackedness
                                          'GHC.Generics.NoSourceStrictness
                                          'GHC.Generics.DecidedLazy>_P
-                                      <GHC.Generics.K1 GHC.Generics.R GHC.Base.String>_R) <x>_N))
+                                      <GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char]>_R) <x>_N))
                        g3
                          `cast`
                        (Trans
@@ -1980,7 +1986,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                                                         'GHC.Generics.NoSourceStrictness
                                                         'GHC.Generics.DecidedLazy)
                                                      (GHC.Generics.K1
-                                                        GHC.Generics.R GHC.Base.String)
+                                                        GHC.Generics.R [GHC.Types.Char])
                                                    GHC.Generics.:*: GHC.Generics.M1
                                                                       GHC.Generics.S
                                                                       ('GHC.Generics.MetaSel
@@ -1998,7 +2004,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                                      <'GHC.Generics.MetaData
                                         "FileMapping"
                                         "APIs"
-                                        "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+                                        "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                                         'GHC.Types.False>_P
                                      <GHC.Generics.M1
                                         GHC.Generics.C
@@ -2020,7 +2026,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                                                                 'GHC.Generics.NoSourceStrictness
                                                                 'GHC.Generics.DecidedLazy)
                                                              (GHC.Generics.K1
-                                                                GHC.Generics.R GHC.Base.String)
+                                                                GHC.Generics.R [GHC.Types.Char])
                                                            GHC.Generics.:*: GHC.Generics.M1
                                                                               GHC.Generics.S
                                                                               ('GHC.Generics.MetaSel
@@ -2033,7 +2039,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                                                                                  GHC.Generics.R
                                                                                  GHC.Types.Int)))>_R))
                            (Sub (Sym (APIs.Rep_FileMapping[0])))) <x>_N) }) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fGenericFile_$cfrom :: APIs.File -> GHC.Generics.Rep APIs.File x
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U)>m,
      Unfolding: InlineRule (1, True, False)
@@ -2112,7 +2118,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                                      <'GHC.Generics.MetaData
                                         "File"
                                         "APIs"
-                                        "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+                                        "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                                         'GHC.Types.False>_P
                                      <GHC.Generics.M1
                                         GHC.Generics.C
@@ -2136,7 +2142,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                                                             (GHC.Generics.K1
                                                                GHC.Generics.R GHC.Base.String))>_R))
                            (Sub (Sym (APIs.Rep_File[0])))) <x>_N) }) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fGenericFile_$cto :: GHC.Generics.Rep APIs.File x -> APIs.File
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U)>m,
      Unfolding: InlineRule (1, True, False)
@@ -2151,7 +2157,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                                      <'GHC.Generics.MetaData
                                         "File"
                                         "APIs"
-                                        "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+                                        "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                                         'GHC.Types.False>_P
                                      <GHC.Generics.M1
                                         GHC.Generics.C
@@ -2223,7 +2229,7 @@ f9cd9e753ffea26776b0010bba9c9f75
                              <GHC.Generics.K1 GHC.Generics.R GHC.Base.String>_R <x>_N)
                         (GHC.Generics.N:K1[0]
                              <GHC.Generics.R>_P <GHC.Base.String>_R <x>_P)) }) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fGenericResponseData :: GHC.Generics.Generic APIs.ResponseData
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -2231,7 +2237,7 @@ f2d055de601eb40cab8ebc79be1c765c
                   @ APIs.ResponseData
                   APIs.$fGenericResponseData_$cfrom
                   APIs.$fGenericResponseData_$cto -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fGenericResponseData_$cfrom ::
     APIs.ResponseData -> GHC.Generics.Rep APIs.ResponseData x
   {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,
@@ -2271,7 +2277,7 @@ f2d055de601eb40cab8ebc79be1c765c
                                                <'GHC.Generics.MetaData
                                                   "ResponseData"
                                                   "APIs"
-                                                  "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+                                                  "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                                                   'GHC.Types.False>_P
                                                <GHC.Generics.M1
                                                   GHC.Generics.C
@@ -2289,7 +2295,7 @@ f2d055de601eb40cab8ebc79be1c765c
                                                      (GHC.Generics.K1
                                                         GHC.Generics.R GHC.Base.String))>_R))
                                      (Sub (Sym (APIs.Rep_ResponseData[0]))))) <x>_N)) }) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fGenericResponseData_$cto ::
     GHC.Generics.Rep APIs.ResponseData x -> APIs.ResponseData
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U>m,
@@ -2307,7 +2313,7 @@ f2d055de601eb40cab8ebc79be1c765c
                                        <'GHC.Generics.MetaData
                                           "ResponseData"
                                           "APIs"
-                                          "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+                                          "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                                           'GHC.Types.False>_P
                                        <GHC.Generics.M1
                                           GHC.Generics.C
@@ -2347,7 +2353,7 @@ f2d055de601eb40cab8ebc79be1c765c
                                                GHC.Generics.R GHC.Base.String>_R))) <x>_N)
                         (GHC.Generics.N:K1[0]
                              <GHC.Generics.R>_P <GHC.Base.String>_R <x>_P))) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fShowFile :: GHC.Show.Show APIs.File
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -2356,28 +2362,28 @@ f2d055de601eb40cab8ebc79be1c765c
                   APIs.$fShowFile_$cshowsPrec
                   APIs.$fShowFile_$cshow
                   APIs.$fShowFile_$cshowList -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fShowFile1 :: APIs.File -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (\ (w :: APIs.File) (w1 :: GHC.Base.String) ->
                  case w of ww { APIs.File ww1 ww2 ->
                  APIs.$w$cshowsPrec 0# ww1 ww2 w1 }) -}
-53b5ae26dea44376c2c60a638265fea0
+193ca7821a269a45c7d9e57b23fe8117
   $fShowFile2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "}"#) -}
-12740f2ab66298f624c7cfda9b726af5
+cd58c02f6fd7c1b520da117f9b09b884
   $fShowFile3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "contents = "#) -}
-5ae7f125d1da110b98274a00aae2eb62
+8f5a234f27e3ff383a24588360479f49
   $fShowFile4 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# ", "#) -}
-b9aafa3690de01712effcd06c9007240
+64f656eae356c47c41041716ad1a9e73
   $fShowFile5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "name = "#) -}
-c63e296a851ec530c50f0d7cda162607
+10ccc34d9e0d6d6ec2e9a7d41c714085
   $fShowFile6 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "File {"#) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fShowFileMapping :: GHC.Show.Show APIs.FileMapping
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -2386,25 +2392,25 @@ c63e296a851ec530c50f0d7cda162607
                   APIs.$fShowFileMapping_$cshowsPrec
                   APIs.$fShowFileMapping_$cshow
                   APIs.$fShowFileMapping_$cshowList -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fShowFileMapping1 :: APIs.FileMapping -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (\ (w :: APIs.FileMapping) (w1 :: GHC.Base.String) ->
                  case w of ww { APIs.FileMapping ww1 ww2 ww3 ->
                  APIs.$w$cshowsPrec1 0# ww1 ww2 ww3 w1 }) -}
-ee3613cb52ab7b1d42bf597f30c89db9
+6065d7cf796bc8ae36824a983ef71dd4
   $fShowFileMapping2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "serverPort = "#) -}
-a4e5887ad92bcb865699b54a07be9b24
+548f87cff04ed80cede7cbbefc160973
   $fShowFileMapping3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "serverName = "#) -}
-a9321613577a232f05e01df1cbebffcf
+da1b3b2f8c195ed96fc0c0ae1c900597
   $fShowFileMapping4 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "fileName = "#) -}
-07dc2982de8f16011e818a2e484a22c1
+9a1123b1129148d58bec201698dfdae6
   $fShowFileMapping5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "FileMapping {"#) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fShowFileMapping_$cshow :: APIs.FileMapping -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U(1*U,1*U,1*U(U))>,
      Unfolding: InlineRule (1, True, False)
@@ -2413,14 +2419,14 @@ a9321613577a232f05e01df1cbebffcf
                    GHC.Show.shows22
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fShowFileMapping_$cshowList ::
     [APIs.FileMapping] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__
                    @ APIs.FileMapping
                    APIs.$fShowFileMapping1) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fShowFileMapping_$cshowsPrec ::
     GHC.Types.Int -> APIs.FileMapping -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U,1*U,1*U(U))><L,U>,
@@ -2432,7 +2438,7 @@ a9321613577a232f05e01df1cbebffcf
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { APIs.FileMapping ww3 ww4 ww5 ->
                  APIs.$w$cshowsPrec1 ww1 ww3 ww4 ww5 w2 } }) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fShowFile_$cshow :: APIs.File -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U(1*U,1*U)>,
      Unfolding: InlineRule (1, True, False)
@@ -2441,11 +2447,11 @@ a9321613577a232f05e01df1cbebffcf
                    GHC.Show.shows22
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fShowFile_$cshowList :: [APIs.File] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__ @ APIs.File APIs.$fShowFile1) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fShowFile_$cshowsPrec ::
     GHC.Types.Int -> APIs.File -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U,1*U)><L,U>,
@@ -2457,7 +2463,7 @@ a9321613577a232f05e01df1cbebffcf
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { APIs.File ww3 ww4 ->
                  APIs.$w$cshowsPrec ww1 ww3 ww4 w2 } }) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fShowResponseData :: GHC.Show.Show APIs.ResponseData
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -2466,19 +2472,19 @@ f2d055de601eb40cab8ebc79be1c765c
                   APIs.$fShowResponseData_$cshowsPrec
                   APIs.$fShowResponseData_$cshow
                   APIs.$fShowResponseData_$cshowList -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fShowResponseData1 :: APIs.ResponseData -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (\ (w :: APIs.ResponseData) (w1 :: GHC.Base.String) ->
                  case w of ww { APIs.ResponseData ww1 ->
                  APIs.$w$cshowsPrec2 0# ww1 w1 }) -}
-005ff4f328b384b72237296d2b43cef0
+a28a1fad541779a0ed991752f5122ae1
   $fShowResponseData2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "response = "#) -}
-f7134c8d298845a35d8fafa57d731028
+a4b74189b0bb33d8796207abb1e9dd38
   $fShowResponseData3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "ResponseData {"#) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fShowResponseData_$cshow :: APIs.ResponseData -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U(1*U)>,
      Unfolding: InlineRule (1, True, False)
@@ -2487,14 +2493,14 @@ f2d055de601eb40cab8ebc79be1c765c
                    GHC.Show.shows22
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fShowResponseData_$cshowList ::
     [APIs.ResponseData] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__
                    @ APIs.ResponseData
                    APIs.$fShowResponseData1) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fShowResponseData_$cshowsPrec ::
     GHC.Types.Int -> APIs.ResponseData -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U)><L,U>,
@@ -2506,7 +2512,7 @@ f2d055de601eb40cab8ebc79be1c765c
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { APIs.ResponseData ww3 ->
                  APIs.$w$cshowsPrec2 ww1 ww3 w2 } }) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fToJSONFile :: Data.Aeson.Types.Class.ToJSON APIs.File
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -2514,7 +2520,7 @@ f2d055de601eb40cab8ebc79be1c765c
                   @ APIs.File
                   APIs.$fToJSONFile_$ctoJSON
                   APIs.$fToJSONFile_$ctoEncoding -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fToJSONFile1 ::
     APIs.File
     -> Data.Aeson.Types.Generic.Tagged
@@ -2529,14 +2535,14 @@ f2d055de601eb40cab8ebc79be1c765c
                  (Sym (Data.Aeson.Types.Generic.N:Tagged[0]
                            <Data.Aeson.Types.Generic.True>_P
                            <Data.Aeson.Types.Internal.Value>_R)) } }) -}
-539bda0bbf3f6ce3874b579d92bacaed
+3a8ef72de0112ff9f9a0241dbea9fb11
   $fToJSONFile2 :: Data.Text.Internal.Text
   {- Unfolding: (case GHC.Magic.runRW#
                         @ 'GHC.Types.PtrRepLifted
                         @ Data.Text.Internal.Text
                         APIs.$fToJSONFile3 of ds7 { (#,#) ipv ipv1 ->
                  ipv1 }) -}
-c1ba38dca7545f2731c51936d8953508
+255457668754d39c7489dafb97d93423
   $fToJSONFile3 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
@@ -2554,17 +2560,17 @@ c1ba38dca7545f2731c51936d8953508
                    APIs.$fFromJSONFile11
                    0#
                    ipv }) -}
-c595b691c87867fc8630d0eee4b3877c
+69e90b5c9ac80efa7221e4d4411cbf23
   $fToJSONFile4 :: GHC.Types.Int
   {- HasNoCafRefs, Unfolding: (GHC.Types.I# 4#) -}
-af3c4d94f9141c8521ff52218f0d217c
+37b8448d35db80a166f669ee753e6e9c
   $fToJSONFile5 :: Data.Text.Internal.Text
   {- Unfolding: (case GHC.Magic.runRW#
                         @ 'GHC.Types.PtrRepLifted
                         @ Data.Text.Internal.Text
                         APIs.$fToJSONFile6 of ds7 { (#,#) ipv ipv1 ->
                  ipv1 }) -}
-aeb0d3fe04d5be6cf56a86072d629382
+79c0c5275fdb1b3691ca6a0a6646687a
   $fToJSONFile6 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
@@ -2582,7 +2588,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                    APIs.$fFromJSONFile5
                    0#
                    ipv }) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fToJSONFileMapping ::
     Data.Aeson.Types.Class.ToJSON APIs.FileMapping
   DFunId
@@ -2591,7 +2597,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                   @ APIs.FileMapping
                   APIs.$fToJSONFileMapping_$ctoJSON
                   APIs.$fToJSONFileMapping_$ctoEncoding -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fToJSONFileMapping1 ::
     APIs.FileMapping
     -> Data.Aeson.Types.Generic.Tagged
@@ -2633,7 +2639,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                                       'GHC.Generics.NoSourceUnpackedness
                                       'GHC.Generics.NoSourceStrictness
                                       'GHC.Generics.DecidedLazy)
-                                   (GHC.Generics.K1 GHC.Generics.R GHC.Base.String))
+                                   (GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char]))
                               @ (GHC.Generics.M1
                                    GHC.Generics.S
                                    ('GHC.Generics.MetaSel
@@ -2648,7 +2654,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                               (Trans
                                    (Sym (GHC.Generics.N:K1[0]
                                              <GHC.Generics.R>_P
-                                             <GHC.Base.String>_R
+                                             <[GHC.Types.Char]>_R
                                              <GHC.Prim.Any>_P))
                                    (Sym (GHC.Generics.N:M1[0]
                                              <GHC.Generics.S>_P
@@ -2659,7 +2665,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                                                 'GHC.Generics.DecidedLazy>_P
                                              <GHC.Generics.K1
                                                 GHC.Generics.R
-                                                GHC.Base.String>_R) <GHC.Prim.Any>_N))
+                                                [GHC.Types.Char]>_R) <GHC.Prim.Any>_N))
                               ww3
                                 `cast`
                               (Trans
@@ -2683,7 +2689,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                  (Sym (Data.Aeson.Types.Generic.N:Tagged[0]
                            <Data.Aeson.Types.Generic.True>_P
                            <Data.Aeson.Types.Internal.Value>_R)) } }) -}
-2fe43d73404dca0b1ca9aac64610e3f6
+24c14365565c4c279f890fc300c087ba
   $fToJSONFileMapping2 ::
     Data.Aeson.Types.Internal.Options
     -> GHC.Generics.K1 GHC.Generics.R GHC.Types.Int a1
@@ -2702,7 +2708,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                  case GHC.Integer.Type.smallInteger i of dt { DEFAULT ->
                  Data.Aeson.Types.Internal.Number
                    (Data.Scientific.Scientific dt 0#) } }) -}
-89f3b9fd1debbac062959b2877901108
+23506e8da1906dfecdfc27fd740bb8e2
   $fToJSONFileMapping3 ::
     Data.Aeson.Types.Internal.Options
     -> GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1
@@ -2714,7 +2720,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                    (w1 :: GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1) ->
                  case APIs.$w$dGToJSON1 @ a1 w1 of ww { Unit# ww1 ->
                  Data.Aeson.Types.Internal.String ww1 }) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fToJSONFileMapping_$ctoEncoding ::
     APIs.FileMapping -> Data.Aeson.Types.Internal.Encoding
   {- Arity: 1, Strictness: <S,1*U(U,U,U)>,
@@ -2726,7 +2732,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                   `cast`
                 (<APIs.FileMapping>_R
                  ->_R Sym (Data.Aeson.Types.Internal.N:Encoding[0])) -}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   $fToJSONFileMapping_$ctoJSON ::
     APIs.FileMapping -> Data.Aeson.Types.Internal.Value
   {- Arity: 1, Strictness: <S,1*U(U,U,U)>m1,
@@ -2737,7 +2743,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                  ->_R Data.Aeson.Types.Generic.N:Tagged[0]
                           <Data.Aeson.Types.Generic.True>_P
                           <Data.Aeson.Types.Internal.Value>_R) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fToJSONFile_$ctoEncoding ::
     APIs.File -> Data.Aeson.Types.Internal.Encoding
   {- Arity: 1, Strictness: <S,1*U(1*U,1*U)>,
@@ -2749,7 +2755,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                   `cast`
                 (<APIs.File>_R
                  ->_R Sym (Data.Aeson.Types.Internal.N:Encoding[0])) -}
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   $fToJSONFile_$ctoJSON ::
     APIs.File -> Data.Aeson.Types.Internal.Value
   {- Arity: 1, Strictness: <S,1*U(1*U,1*U)>m1,
@@ -2760,7 +2766,7 @@ aeb0d3fe04d5be6cf56a86072d629382
                  ->_R Data.Aeson.Types.Generic.N:Tagged[0]
                           <Data.Aeson.Types.Generic.True>_P
                           <Data.Aeson.Types.Internal.Value>_R) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fToJSONResponseData ::
     Data.Aeson.Types.Class.ToJSON APIs.ResponseData
   DFunId
@@ -2769,7 +2775,7 @@ f2d055de601eb40cab8ebc79be1c765c
                   @ APIs.ResponseData
                   APIs.$fToJSONResponseData_$ctoJSON
                   APIs.$fToJSONResponseData_$ctoEncoding -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fToJSONResponseData1 ::
     APIs.ResponseData
     -> Data.Aeson.Types.Generic.Tagged
@@ -2801,14 +2807,14 @@ f2d055de601eb40cab8ebc79be1c765c
                  (Sym (Data.Aeson.Types.Generic.N:Tagged[0]
                            <Data.Aeson.Types.Generic.True>_P
                            <Data.Aeson.Types.Internal.Value>_R)) }) -}
-9a110c0eabd339ab448304d12cff900f
+d9398de24dfde0164bd7a11c5490c875
   $fToJSONResponseData2 :: Data.Text.Internal.Text
   {- Unfolding: (case GHC.Magic.runRW#
                         @ 'GHC.Types.PtrRepLifted
                         @ Data.Text.Internal.Text
                         APIs.$fToJSONResponseData3 of ds7 { (#,#) ipv ipv1 ->
                  ipv1 }) -}
-968dee3f92a8d123340d2fb658c5b136
+9b27e1bb768dd3b3b9d433b2baed12b4
   $fToJSONResponseData3 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
@@ -2826,7 +2832,7 @@ f2d055de601eb40cab8ebc79be1c765c
                    APIs.$fFromJSONResponseData6
                    0#
                    ipv }) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fToJSONResponseData_$ctoEncoding ::
     APIs.ResponseData -> Data.Aeson.Types.Internal.Encoding
   {- Arity: 1, Strictness: <L,1*U(1*U)>, Inline: INLINE (sat-args=0),
@@ -2837,7 +2843,7 @@ f2d055de601eb40cab8ebc79be1c765c
                   `cast`
                 (<APIs.ResponseData>_R
                  ->_R Sym (Data.Aeson.Types.Internal.N:Encoding[0])) -}
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   $fToJSONResponseData_$ctoJSON ::
     APIs.ResponseData -> Data.Aeson.Types.Internal.Value
   {- Arity: 1, Strictness: <L,1*U(1*U)>m1,
@@ -2848,92 +2854,92 @@ f2d055de601eb40cab8ebc79be1c765c
                  ->_R Data.Aeson.Types.Generic.N:Tagged[0]
                           <Data.Aeson.Types.Generic.True>_P
                           <Data.Aeson.Types.Internal.Value>_R) -}
-69fb5fb285a9f625c66ee7438351776d
+9813e6b1cfddf11ef7c5d7727a85cfa4
   $tc'File :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   17485366729267787674##
-                   15140195593320340380##
+                   12130869221311977261##
+                   13948075658232927542##
                    APIs.$trModule
                    APIs.$tc'File1) -}
-9dbb6f069d67a441359767478cbbca2b
+f277d8f206f00e25965e165a7dc2782e
   $tc'File1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'File"#) -}
-2a85e2e70e85fddb9030649f9c53bd92
+e2758c4885d57daeb84e815d314cd346
   $tc'FileMapping :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   5457534306782044705##
-                   7962781410782950358##
+                   4669760139897163660##
+                   2548204833641106885##
                    APIs.$trModule
                    APIs.$tc'FileMapping1) -}
-3f5f1768ff33dad7f2fabd9a45faba3e
+51b2dbe1c44614a3e22a1ed269336a02
   $tc'FileMapping1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'FileMapping"#) -}
-e3d090c458827cc3ea73232214556f91
+15f7afb5123be4d23811a6c9b20b6192
   $tc'ResponseData :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   903341712800232147##
-                   15227454612407570964##
+                   12154222708744363534##
+                   16429992564789524996##
                    APIs.$trModule
                    APIs.$tc'ResponseData1) -}
-e69aa534bef791f96c93aa90e5b159e1
+b0c0f18d5c7f92cab827d0addc34d064
   $tc'ResponseData1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'ResponseData"#) -}
-9fdda2636551a54aeafc5839035de031
+49a3a04e044b9e0a630c635f098e8283
   $tcFile :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   18057553228156890022##
-                   4570125422777523394##
+                   15834375062690205164##
+                   18044310872913360057##
                    APIs.$trModule
                    APIs.$tcFile1) -}
-bd187439dacd2c2d2d99e2fce418d061
+9f111ff3662953e9bc980cee94f31fc7
   $tcFile1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "File"#) -}
-2d7593d14e195ec5c736eb298129e3dd
+ef8cfea561d6d39a5e96adca9f397f57
   $tcFileMapping :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   7172240554401786463##
-                   16485939957184108640##
+                   10734931404980183551##
+                   5113536379498286958##
                    APIs.$trModule
                    APIs.$tcFileMapping1) -}
-9e392ba8c02704e97cd80fbd06a0914b
+24a018345472e4d1be9bd5a497a2797b
   $tcFileMapping1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "FileMapping"#) -}
-ac332f68dfdf04a90cf560d076f38c0d
+a61dd78ad885aa35bf85d79dab0db054
   $tcResponseData :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   7714393489629289476##
-                   8604839571089484288##
+                   616235507340133008##
+                   3277654435962553570##
                    APIs.$trModule
                    APIs.$tcResponseData1) -}
-f151447e714d4dc6f46a31f3972f16d7
+7c7d3617434140b836656532038e317e
   $tcResponseData1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "ResponseData"#) -}
-f51dbafeb0c4391625fc4806f4319735
+d21985177e1a65d2a2ca2fa80f7bd5eb
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.Module APIs.$trModule2 APIs.$trModule1) -}
-9eba4103c386a16360c5b45fe190997e
+25c72267bfbb136bd71f578a54a9eba5
   $trModule1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "APIs"#) -}
-1e43781bd0c0ed20bb31522adc80edbe
+3e2821f66858bbe7c8483b442503bbec
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
-                   "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"#) -}
-e0c54bf2e3d6e40d34d576ac16f8b05b
+                   "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"#) -}
+0f21ea7593bf2fffe7c5d77235ca9f55
   $w$cshowsPrec ::
     GHC.Prim.Int#
     -> GHC.Base.String
@@ -2990,11 +2996,11 @@ e0c54bf2e3d6e40d34d576ac16f8b05b
                         @ GHC.Types.Char
                         GHC.Show.shows9
                         (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w)) }) -}
-d145a55e38a3202197a23219fad2c69a
+fdb6275102be0c3e96d28b06eb195557
   $w$cshowsPrec1 ::
     GHC.Prim.Int#
     -> GHC.Base.String
-    -> GHC.Base.String
+    -> [GHC.Types.Char]
     -> GHC.Types.Int
     -> GHC.Base.String
     -> GHC.Base.String
@@ -3002,7 +3008,7 @@ d145a55e38a3202197a23219fad2c69a
      Inline: [0],
      Unfolding: (\ (ww :: GHC.Prim.Int#)
                    (ww1 :: GHC.Base.String)
-                   (ww2 :: GHC.Base.String)
+                   (ww2 :: [GHC.Types.Char])
                    (ww3 :: GHC.Types.Int)
                    (w :: GHC.Base.String) ->
                  let {
@@ -3064,7 +3070,7 @@ d145a55e38a3202197a23219fad2c69a
                         @ GHC.Types.Char
                         GHC.Show.shows9
                         (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w)) }) -}
-5fcaf624813584e35a5ccb2818f056ae
+3735760a5a22c32bb72c57af11018ffa
   $w$cshowsPrec2 ::
     GHC.Prim.Int#
     -> GHC.Base.String -> GHC.Base.String -> GHC.Base.String
@@ -3100,7 +3106,7 @@ d145a55e38a3202197a23219fad2c69a
                         @ GHC.Types.Char
                         GHC.Show.shows9
                         (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w)) }) -}
-f5c5eba4980a10f47895edc1b46fe565
+4166774edc0b6f007cc6527acc7a4728
   $w$ctoJSON ::
     GHC.Base.String
     -> GHC.Base.String -> (# Data.Aeson.Types.Internal.Object #)
@@ -3137,7 +3143,7 @@ f5c5eba4980a10f47895edc1b46fe565
                            @ Data.Text.Internal.Text
                            @ Data.Aeson.Types.Internal.Value) of dt { DEFAULT ->
                  (# dt #) }) -}
-1c56459546536f7e0b18304f0afc4bf4
+c72fc02cef0ca635960fcb20ddbea0fc
   $w$dConsFromJSON' ::
     Data.Aeson.Types.Internal.Options
     -> Data.Aeson.Types.Internal.Value
@@ -3396,7 +3402,7 @@ f5c5eba4980a10f47895edc1b46fe565
                                                  'GHC.Generics.DecidedLazy)
                                               (GHC.Generics.Rec0 GHC.Base.String))
                                            a)>_R))) }) -}
-ec256fc082fed45ea47e1a84b6992e9b
+c49fe6d57ed25b921afed0dae6fef055
   $w$dConsFromJSON'1 ::
     Data.Aeson.Types.Internal.Options
     -> Data.Aeson.Types.Internal.Value
@@ -3417,7 +3423,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                      'GHC.Generics.NoSourceUnpackedness
                      'GHC.Generics.NoSourceStrictness
                      'GHC.Generics.DecidedLazy)
-                  (GHC.Generics.Rec0 GHC.Base.String)
+                  (GHC.Generics.Rec0 [GHC.Types.Char])
                 GHC.Generics.:*: GHC.Generics.S1
                                    ('GHC.Generics.MetaSel
                                       ('GHC.Base.Just "serverPort")
@@ -3447,7 +3453,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                     'GHC.Generics.NoSourceUnpackedness
                                     'GHC.Generics.NoSourceStrictness
                                     'GHC.Generics.DecidedLazy)
-                                 (GHC.Generics.Rec0 GHC.Base.String)
+                                 (GHC.Generics.Rec0 [GHC.Types.Char])
                                GHC.Generics.:*: GHC.Generics.S1
                                                   ('GHC.Generics.MetaSel
                                                      ('GHC.Base.Just "serverPort")
@@ -3476,7 +3482,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                             'GHC.Generics.NoSourceUnpackedness
                                             'GHC.Generics.NoSourceStrictness
                                             'GHC.Generics.DecidedLazy)
-                                         (GHC.Generics.Rec0 GHC.Base.String)
+                                         (GHC.Generics.Rec0 [GHC.Types.Char])
                                        GHC.Generics.:*: GHC.Generics.S1
                                                           ('GHC.Generics.MetaSel
                                                              ('GHC.Base.Just "serverPort")
@@ -3523,7 +3529,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                      'GHC.Generics.NoSourceUnpackedness
                                      'GHC.Generics.NoSourceStrictness
                                      'GHC.Generics.DecidedLazy)
-                                  (GHC.Generics.Rec0 GHC.Base.String)
+                                  (GHC.Generics.Rec0 [GHC.Types.Char])
                                   a)
                         = Data.Aeson.Types.Generic.$fFromRecordM10_$cparseRecord
                             @ ('GHC.Generics.MetaSel
@@ -3531,7 +3537,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                  'GHC.Generics.NoSourceUnpackedness
                                  'GHC.Generics.NoSourceStrictness
                                  'GHC.Generics.DecidedLazy)
-                            @ (GHC.Generics.K1 GHC.Generics.R GHC.Base.String)
+                            @ (GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char])
                             APIs.$fFromJSONFileMapping_$s$fSelectorMetaMetaSel1
                             APIs.$fFromJSONFileMapping6
                               `cast`
@@ -3590,7 +3596,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                            'GHC.Generics.NoSourceUnpackedness
                                            'GHC.Generics.NoSourceStrictness
                                            'GHC.Generics.DecidedLazy)
-                                        (GHC.Generics.Rec0 GHC.Base.String)
+                                        (GHC.Generics.Rec0 [GHC.Types.Char])
                                       GHC.Generics.:*: GHC.Generics.S1
                                                          ('GHC.Generics.MetaSel
                                                             ('GHC.Base.Just "serverPort")
@@ -3635,7 +3641,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                      'GHC.Generics.NoSourceUnpackedness
                                      'GHC.Generics.NoSourceStrictness
                                      'GHC.Generics.DecidedLazy)
-                                  (GHC.Generics.Rec0 GHC.Base.String)
+                                  (GHC.Generics.Rec0 [GHC.Types.Char])
                                   a>_R)
                             @ f
                             @ r
@@ -3648,7 +3654,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                            'GHC.Generics.NoSourceUnpackedness
                                            'GHC.Generics.NoSourceStrictness
                                            'GHC.Generics.DecidedLazy)
-                                        (GHC.Generics.Rec0 GHC.Base.String)
+                                        (GHC.Generics.Rec0 [GHC.Types.Char])
                                         a) ->
                              e `cast`
                              (Data.Aeson.Types.Internal.N:Parser[0]
@@ -3690,7 +3696,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                              'GHC.Generics.NoSourceUnpackedness
                                              'GHC.Generics.NoSourceStrictness
                                              'GHC.Generics.DecidedLazy)
-                                          (GHC.Generics.Rec0 GHC.Base.String)
+                                          (GHC.Generics.Rec0 [GHC.Types.Char])
                                         GHC.Generics.:*: GHC.Generics.S1
                                                            ('GHC.Generics.MetaSel
                                                               ('GHC.Base.Just "serverPort")
@@ -3708,7 +3714,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                                 'GHC.Generics.NoSourceUnpackedness
                                                 'GHC.Generics.NoSourceStrictness
                                                 'GHC.Generics.DecidedLazy)
-                                             (GHC.Generics.Rec0 GHC.Base.String))
+                                             (GHC.Generics.Rec0 [GHC.Types.Char]))
                                         @ (GHC.Generics.M1
                                              GHC.Generics.S
                                              ('GHC.Generics.MetaSel
@@ -3738,7 +3744,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                               'GHC.Generics.NoSourceUnpackedness
                                               'GHC.Generics.NoSourceStrictness
                                               'GHC.Generics.DecidedLazy)
-                                           (GHC.Generics.Rec0 GHC.Base.String)
+                                           (GHC.Generics.Rec0 [GHC.Types.Char])
                                          GHC.Generics.:*: GHC.Generics.S1
                                                             ('GHC.Generics.MetaSel
                                                                ('GHC.Base.Just "serverPort")
@@ -3764,7 +3770,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                                  'GHC.Generics.NoSourceUnpackedness
                                                  'GHC.Generics.NoSourceStrictness
                                                  'GHC.Generics.DecidedLazy)
-                                              (GHC.Generics.Rec0 GHC.Base.String)
+                                              (GHC.Generics.Rec0 [GHC.Types.Char])
                                             GHC.Generics.:*: GHC.Generics.S1
                                                                ('GHC.Generics.MetaSel
                                                                   ('GHC.Base.Just "serverPort")
@@ -3773,7 +3779,7 @@ ec256fc082fed45ea47e1a84b6992e9b
                                                                   'GHC.Generics.DecidedLazy)
                                                                (GHC.Generics.Rec0 GHC.Types.Int))
                                            a)>_R))) }) -}
-e44268242a05602f4ab167a1ff36d009
+24621b0443e0ac540af87b773d7e4984
   $w$dGFromJSON ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser
@@ -3877,7 +3883,7 @@ e44268242a05602f4ab167a1ff36d009
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1>_R))) -}
-555be06d93d958d7b6abbd3c03d320d8
+8961b38451a6ebd3c0a3efdb4e3cc0bf
   $w$dGFromJSON1 ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser
@@ -3981,13 +3987,13 @@ e44268242a05602f4ab167a1ff36d009
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1>_R))) -}
-fa760c84b5c08b26b75f3f78c625ff7b
+d8dc08c66096dfc8ccaf4d6af269f288
   $w$dGFromJSON2 ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser
          (GHC.Generics.K1 GHC.Generics.R GHC.Types.Int a1)
   {- Arity: 1, Strictness: <L,1*U>, Inline: [0] -}
-ca06dda7911312e4577c2b025fec4fe0
+6518e67b19bd729ae6547579e74b2271
   $w$dGFromJSON3 ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser
@@ -4091,7 +4097,7 @@ ca06dda7911312e4577c2b025fec4fe0
                    `cast`
                  (Sym (Data.Aeson.Types.Internal.N:Parser[0]
                            <GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1>_R))) -}
-9b2dcaba8082dd0cc2557939d9cef816
+fccac4c1a4bfa5973537acad09cbe34e
   $w$dGToJSON ::
     GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1
     -> (# Data.Text.Internal.Text #)
@@ -4116,7 +4122,7 @@ ca06dda7911312e4577c2b025fec4fe0
                            ipv }) of ds1 { (#,#) ipv ipv1 ->
                  case ipv1 of dt { Data.Text.Internal.Text ipv2 ipv3 ipv4 ->
                  (# dt #) } }) -}
-5c808ed0ab31c6e44e88566100878a1f
+bc8536c2fce7f63bcb3ecdfcc2ef6403
   $w$dGToJSON1 ::
     GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1
     -> (# Data.Text.Internal.Text #)
@@ -4141,7 +4147,7 @@ ca06dda7911312e4577c2b025fec4fe0
                            ipv }) of ds1 { (#,#) ipv ipv1 ->
                  case ipv1 of dt { Data.Text.Internal.Text ipv2 ipv3 ipv4 ->
                  (# dt #) } }) -}
-0550a36797029db454f0de64693eb0b7
+52e3cf55c08f9d16a49a2def42ea5d82
   $w$dGToJSON2 ::
     GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1
     -> (# Data.Text.Internal.Text #)
@@ -4166,7 +4172,7 @@ ca06dda7911312e4577c2b025fec4fe0
                            ipv }) of ds1 { (#,#) ipv ipv1 ->
                  case ipv1 of dt { Data.Text.Internal.Text ipv2 ipv3 ipv4 ->
                  (# dt #) } }) -}
-2e7cdb1c9411e2916494ee0638a35160
+166c73a0faadbedecd1c46d3a606b24c
   $w$dRecordToPairs ::
     Data.Aeson.Types.Internal.Options
     -> GHC.Generics.M1
@@ -4185,7 +4191,7 @@ ca06dda7911312e4577c2b025fec4fe0
                'GHC.Generics.NoSourceUnpackedness
                'GHC.Generics.NoSourceStrictness
                'GHC.Generics.DecidedLazy)
-            (GHC.Generics.Rec0 GHC.Base.String))
+            (GHC.Generics.Rec0 [GHC.Types.Char]))
          (GHC.Generics.S1
             ('GHC.Generics.MetaSel
                ('GHC.Base.Just "serverPort")
@@ -4216,7 +4222,7 @@ ca06dda7911312e4577c2b025fec4fe0
                                    'GHC.Generics.NoSourceUnpackedness
                                    'GHC.Generics.NoSourceStrictness
                                    'GHC.Generics.DecidedLazy)
-                                (GHC.Generics.Rec0 GHC.Base.String))
+                                (GHC.Generics.Rec0 [GHC.Types.Char]))
                              (GHC.Generics.S1
                                 ('GHC.Generics.MetaSel
                                    ('GHC.Base.Just "serverPort")
@@ -4249,7 +4255,7 @@ ca06dda7911312e4577c2b025fec4fe0
                            'GHC.Generics.NoSourceUnpackedness
                            'GHC.Generics.NoSourceStrictness
                            'GHC.Generics.DecidedLazy)
-                      @ (GHC.Generics.K1 GHC.Generics.R GHC.Base.String)
+                      @ (GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char])
                       APIs.$fFromJSONFileMapping_$s$fSelectorMetaMetaSel1
                       APIs.$fToJSONFileMapping3
                         `cast`
@@ -4274,7 +4280,7 @@ ca06dda7911312e4577c2b025fec4fe0
                          w
                          b1
                          w1) })) -}
-e2d6bea8c3255b370f03b9bfe8af061f
+2323703755b90c57fff5c86337482fe9
   $wouter ::
     Data.Text.Array.MArray GHC.Prim.RealWorld
     -> GHC.Types.Int
@@ -4285,7 +4291,7 @@ e2d6bea8c3255b370f03b9bfe8af061f
           Data.Text.Internal.Text #)
   {- Arity: 5, Strictness: <L,U(U)><L,U(U)><S,1*U><S,U><S,U>,
      Inline: [0] -}
-0ec7bb39f949cf71b20698dc6d74088d
+38d98a36db24357de319b5e36f687e6f
   $wouter1 ::
     Data.Text.Array.MArray GHC.Prim.RealWorld
     -> GHC.Types.Int
@@ -4296,7 +4302,7 @@ e2d6bea8c3255b370f03b9bfe8af061f
           Data.Text.Internal.Text #)
   {- Arity: 5, Strictness: <L,U(U)><L,U(U)><S,1*U><S,U><S,U>,
      Inline: [0] -}
-cc57ef4c0b9bc014a620d5ae3d029f4d
+1bec8949fd085aa6cff937bf8167fc09
   $wouter2 ::
     Data.Text.Array.MArray GHC.Prim.RealWorld
     -> GHC.Types.Int
@@ -4307,7 +4313,7 @@ cc57ef4c0b9bc014a620d5ae3d029f4d
           Data.Text.Internal.Text #)
   {- Arity: 5, Strictness: <L,U(U)><L,U(U)><S,1*U><S,U><S,U>,
      Inline: [0] -}
-0504807efcfa09a57e3e833900734b75
+ec7f64a3393c96bc71c665bd076c5db2
   type DirectoryServerAPI =
     ("search"
      Servant.API.Sub.:> (Servant.API.Capture.Capture
@@ -4328,15 +4334,15 @@ cc57ef4c0b9bc014a620d5ae3d029f4d
                                                                                                         Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                              '[Servant.API.ContentTypes.JSON]
                                                                                                                              APIs.ResponseData))))
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   data File
     = File {name :: GHC.Base.String, contents :: GHC.Base.String}
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   data FileMapping
     = FileMapping {fileName :: GHC.Base.String,
-                   serverName :: GHC.Base.String,
+                   serverName :: [GHC.Types.Char],
                    serverPort :: GHC.Types.Int}
-45ad92b6a58c204ad22e2f98d9cb6500
+00ec945b79dce9b7157bad7c9e6cda1a
   type FileServerAPI =
     ("upload"
      Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
@@ -4361,14 +4367,14 @@ cc57ef4c0b9bc014a620d5ae3d029f4d
                                                                                                                   Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                                                                        '[Servant.API.ContentTypes.JSON]
                                                                                                                                        Data.Time.Clock.UTC.UTCTime))))
-170996e8c68f2da6f12114212ce84a69
+5cc47ec69dd85aa7cd9b5c4b35b7fcc7
   axiom Rep_File::
       GHC.Generics.Rep APIs.File
         = GHC.Generics.D1
             ('GHC.Generics.MetaData
                "File"
                "APIs"
-               "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+               "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                'GHC.Types.False)
             (GHC.Generics.C1
                ('GHC.Generics.MetaCons
@@ -4387,14 +4393,14 @@ cc57ef4c0b9bc014a620d5ae3d029f4d
                                       'GHC.Generics.NoSourceStrictness
                                       'GHC.Generics.DecidedLazy)
                                    (GHC.Generics.Rec0 GHC.Base.String)))
-67f2f9e21e94b10f52bdefd9a051771e
+579955ca0ac2f9fa59c238bbc9f639c5
   axiom Rep_FileMapping::
       GHC.Generics.Rep APIs.FileMapping
         = GHC.Generics.D1
             ('GHC.Generics.MetaData
                "FileMapping"
                "APIs"
-               "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+               "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                'GHC.Types.False)
             (GHC.Generics.C1
                ('GHC.Generics.MetaCons
@@ -4412,7 +4418,7 @@ cc57ef4c0b9bc014a620d5ae3d029f4d
                                        'GHC.Generics.NoSourceUnpackedness
                                        'GHC.Generics.NoSourceStrictness
                                        'GHC.Generics.DecidedLazy)
-                                    (GHC.Generics.Rec0 GHC.Base.String)
+                                    (GHC.Generics.Rec0 [GHC.Types.Char])
                                   GHC.Generics.:*: GHC.Generics.S1
                                                      ('GHC.Generics.MetaSel
                                                         ('GHC.Base.Just "serverPort")
@@ -4420,14 +4426,14 @@ cc57ef4c0b9bc014a620d5ae3d029f4d
                                                         'GHC.Generics.NoSourceStrictness
                                                         'GHC.Generics.DecidedLazy)
                                                      (GHC.Generics.Rec0 GHC.Types.Int))))
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   axiom Rep_ResponseData::
       GHC.Generics.Rep APIs.ResponseData
         = GHC.Generics.D1
             ('GHC.Generics.MetaData
                "ResponseData"
                "APIs"
-               "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+               "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
                'GHC.Types.False)
             (GHC.Generics.C1
                ('GHC.Generics.MetaCons
@@ -4439,44 +4445,44 @@ f2d055de601eb40cab8ebc79be1c765c
                      'GHC.Generics.NoSourceStrictness
                      'GHC.Generics.DecidedLazy)
                   (GHC.Generics.Rec0 GHC.Base.String)))
-f2d055de601eb40cab8ebc79be1c765c
+798535de26bbebf580df9b056fb88f80
   data ResponseData = ResponseData {response :: GHC.Base.String}
-55c46bca00fe336d7ff1d89e5b555871
+3cdf2746b0409818d386d786628c41f9
   contents :: APIs.File -> GHC.Base.String
   RecSel Left APIs.File
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.File) ->
                  case ds of wild { APIs.File ds1 ds2 -> ds2 }) -}
-3b72cf96f3ede5ae926ea65462a926b9
+60f9fbd5a471d673899b0b4962215fa1
   fileName :: APIs.FileMapping -> GHC.Base.String
   RecSel Left APIs.FileMapping
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U,A,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.FileMapping) ->
                  case ds of wild { APIs.FileMapping ds1 ds2 ds3 -> ds1 }) -}
-c88a4044148957a2e5b4ae760d9a0b7e
+2ff0f8366a0b8ebabe042d7b3c23aa00
   name :: APIs.File -> GHC.Base.String
   RecSel Left APIs.File
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.File) ->
                  case ds of wild { APIs.File ds1 ds2 -> ds1 }) -}
-58b09f45285a4a610455ccb0d66f35d3
+bb23ab0dfddc9cb8936b3839cce62de1
   response :: APIs.ResponseData -> GHC.Base.String
   RecSel Left APIs.ResponseData
   {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.ResponseData) ->
                  case ds of wild { APIs.ResponseData ds1 -> ds1 }) -}
-81cee0a3e81bc78022af2a9e997cfb85
-  serverName :: APIs.FileMapping -> GHC.Base.String
+15baedc86f0fcc808adf4d0bfbbf5d7a
+  serverName :: APIs.FileMapping -> [GHC.Types.Char]
   RecSel Left APIs.FileMapping
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.FileMapping) ->
                  case ds of wild { APIs.FileMapping ds1 ds2 ds3 -> ds2 }) -}
-3ffbd50979688189919f2197606faae3
+e3ce33fb861499f2f776f1d7421c10b7
   serverPort :: APIs.FileMapping -> GHC.Types.Int
   RecSel Left APIs.FileMapping
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LLS),1*U(A,A,1*U(U))>m,

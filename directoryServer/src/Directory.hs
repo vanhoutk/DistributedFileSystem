@@ -34,7 +34,7 @@ import            APIs
 type APIHandler = ExceptT ServantErr IO
 
 fileServerPorts :: [Int]
-fileServerPorts = [8081]
+fileServerPorts = [8081, 8082]
 
 startDirectory :: IO ()
 startDirectory = do
@@ -42,12 +42,13 @@ startDirectory = do
   putStrLn "Changing current directory..."
   setCurrentDirectory ("fileservers/")
   putStrLn "Starting app..."
-  initDirectory fileServerPorts
+  fileMappings <- initDirectory fileServerPorts
   run 8080 app
 
 initDirectory :: [Int] -> IO()
 initDirectory ports = do
   fileMappingList <- getFileMappingList ports
+  writeFile "fileMappingList" (fileMappingList)
   return ()
 
 getFileMappingList :: [Int] -> IO [FileMapping]
@@ -67,12 +68,12 @@ getFileMappingList ports = do
           fileMappingList' <- mapM (fileMap port []) files'
           return $ concat fileMappingList'
 
-    fileMap :: Int -> [FileMapping] -> String -> IO[FileMapping]
+    fileMap :: Int -> [FileMapping] -> String -> IO [FileMapping]
     fileMap port a [] = return a
     fileMap port a fileName = do
       let serverNumber = port `mod` 8080
       let serverName = "Server" ++ show serverNumber
-      return $ (fileName, serverName, port):a
+      return $ (FileMapping fileName serverName port):a
 
 app :: Application
 app = serve api server
@@ -89,6 +90,8 @@ server = searchForFile
 
     searchForFile :: String -> APIHandler Int
     searchForFile fileName = do
+      fileMappingList <- readFile "fileMappingList"
+      print fileMappingList
       let returnValue = 1
       return returnValue
       {-liftIO $ do
@@ -129,7 +132,7 @@ getFilesQuery = do
 runGetFilesQuery :: Int -> IO (Maybe [String])
 runGetFilesQuery port = do
   manager <- newManager defaultManagerSettings
-  res <- runClientM getFilesQuery (ClientEnv manager (SC.BaseUrl SC.Http "localhost" port ""))
+  res <- SC.runClientM getFilesQuery (SC.ClientEnv manager (SC.BaseUrl SC.Http "localhost" port ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err

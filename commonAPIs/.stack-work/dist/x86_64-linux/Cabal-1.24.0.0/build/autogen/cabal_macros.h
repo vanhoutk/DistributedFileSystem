@@ -21,12 +21,12 @@
   (major1) == 4 && (major2) <  9 || \
   (major1) == 4 && (major2) == 9 && (minor) <= 0)
 
-/* package servant-server-0.8.1 */
-#define VERSION_servant_server "0.8.1"
+/* package servant-server-0.9.1.1 */
+#define VERSION_servant_server "0.9.1.1"
 #define MIN_VERSION_servant_server(major1,major2,minor) (\
   (major1) <  0 || \
-  (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 1)
+  (major1) == 0 && (major2) <  9 || \
+  (major1) == 0 && (major2) == 9 && (minor) <= 1)
 
 /* package time-1.6.0.1 */
 #define VERSION_time "1.6.0.1"
@@ -105,7 +105,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+#define CURRENT_COMPONENT_ID "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
 
-#define CURRENT_PACKAGE_KEY "commonAPIs-0.1.0.0-20I1xMaN1Go1RrcaJEODb7"
+#define CURRENT_PACKAGE_KEY "commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp"
 

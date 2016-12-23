@@ -33,9 +33,11 @@ type FileServerAPI = "upload"   :> ReqBody '[JSON] File  :> Post '[JSON] Respons
                 :<|> "modifyTime" :> Capture "name" String :> Get '[JSON] UTCTime
 
 data FileMapping = FileMapping { fileName :: String
-                               , serverName :: String
+                               , serverName :: [Char]
                                , serverPort :: Int
                                } deriving (Show, Generic, FromJSON, ToJSON)
+
+--type FileMapping = (String, String, Int)
 
 type DirectoryServerAPI = "search" :> Capture "name" String :> Get '[JSON] Int
                      :<|> "list" :> Get '[JSON] [String]

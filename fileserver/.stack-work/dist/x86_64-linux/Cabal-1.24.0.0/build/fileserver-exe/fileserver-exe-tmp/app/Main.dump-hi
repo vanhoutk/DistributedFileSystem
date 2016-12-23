@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-22 22:32:07.896566 UTC
+2016-12-23 13:41:01.078161 UTC
 
 interface main@main:Main 8001
-  interface hash: 71fd46c1a9a474a36f3a6631194055d8
-  ABI hash: d94aa75f0960e3e11596384ab7a8165d
+  interface hash: 8b479fe16ab47a2827e9cfe7ca6723fd
+  ABI hash: 6c52a507378864b42cf9654175244940
   export-list hash: 7c5966ea76d87c419a2fabc415e61732
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 37b165eaaeeaa24096411e4a8d333c6c
@@ -155,8 +155,12 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed.Base
                          zlib-0.6.1.2@zlib-0.6.1.2-4CWLN1T27kOJhNvXgy46ZV:Codec.Compression.Zlib.Stream
+import  -/  base-4.9.0.0:GHC.List 13d2451194c1c6e53b4f4f07947736dd
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
-import  -/  fileserver-0.1.0.0@fileserver-0.1.0.0-JmzsUrzGHALeNY7ChLqyj:Fileserver 3d3a667eea160ab531ed38175755f650
+import  -/  base-4.9.0.0:System.Environment ee0914a962f5508d0fd404c89ee4999b
+import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
+import  -/  base-4.9.0.0:Text.Read 9c1be14f7e5eac8b18bcb566c5763677
+import  -/  fileserver-0.1.0.0@fileserver-0.1.0.0-JmzsUrzGHALeNY7ChLqyj:Fileserver 4cb9403b6ea8ddb3140bd4dbb4deba19
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module
@@ -170,19 +174,65 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-fd1631f5d17b3381a80b6e3339576277
+96af2500001dd2c1feeaebd856714723
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
-                Fileserver.startServer1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-a98e9edbe00716c480f5a923c8449a37
+                Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
+ac7660c9c14915c92b27252b3a46d3cc
   main1 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1, Strictness: <S,U>,
+     Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case System.Environment.getArgs1 s of ds1 { (#,#) ipv ipv1 ->
+                 Fileserver.startServer1
+                   (case Text.Read.readEither6
+                           @ GHC.Types.Int
+                           (Text.ParserCombinators.ReadP.run
+                              @ GHC.Types.Int
+                              Main.main2
+                              (case ipv1 of wild {
+                                 [] -> GHC.List.badHead @ GHC.Base.String : x ds2 -> x })) of wild {
+                      []
+                      -> GHC.Err.error
+                           @ 'GHC.Types.PtrRepLifted
+                           @ GHC.Types.Int
+                           GHC.Err.errorWithoutStackTrace_wild1
+                             `cast`
+                           (Sym (GHC.Classes.N:IP[0]
+                                     <"callStack">_N <GHC.Stack.Types.CallStack>_N))
+                           Text.Read.readEither4
+                      : x ds
+                      -> case ds of wild1 {
+                           [] -> x
+                           : ipv2 ipv3
+                           -> GHC.Err.error
+                                @ 'GHC.Types.PtrRepLifted
+                                @ GHC.Types.Int
+                                GHC.Err.errorWithoutStackTrace_wild1
+                                  `cast`
+                                (Sym (GHC.Classes.N:IP[0]
+                                          <"callStack">_N <GHC.Stack.Types.CallStack>_N))
+                                Text.Read.readEither2 } })
+                   ipv }) -}
+c356bd6676f7c263267afb1e9ca53b75
+  main2 :: Text.ParserCombinators.ReadP.P GHC.Types.Int
+  {- Unfolding: ((GHC.Read.$fReadInt3
+                    GHC.Read.$fReadInt_$sconvertInt
+                    Text.ParserCombinators.ReadPrec.minPrec)
+                   `cast`
+                 (Text.ParserCombinators.ReadP.N:ReadP[0] <GHC.Types.Int>_R)
+                   @ GHC.Types.Int
+                   (Text.Read.readEither5 @ GHC.Types.Int)) -}
+9b8010fc564ce56c7cfaa5450003bc1e
+  main3 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1,
      Unfolding: (GHC.TopHandler.runMainIO1
                    @ ()
-                   Fileserver.startServer1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
+                   Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:
