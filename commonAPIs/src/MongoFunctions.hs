@@ -80,8 +80,8 @@ defEnv :: Show a
 defEnv env fn def doWarn = lookupEnv env >>= \ e -> case e of
       Just s  -> return $ fn s
       Nothing -> do
-        when doWarn (doLog warningM $ "Environment variable: " ++ env ++
-                                      " is not set. Defaulting to " ++ (show def))
+        --when doWarn (doLog warningM $ "Environment variable: " ++ env ++
+        --                              " is not set. Defaulting to " ++ (show def))
         return def
 
 -- | Logging stuff

@@ -41,10 +41,6 @@ fileServerPorts = [8081, 8082]
 
 startDirectory :: IO ()
 startDirectory = do
-  createDirectoryIfMissing True ("fileservers/")
-  putStrLn "Changing current directory..."
-  setCurrentDirectory ("fileservers/")
-  putStrLn "Starting app..."
   initDirectory fileServerPorts
   run 8080 app
 
@@ -79,7 +75,7 @@ getFileMappingList ports = do
       let fileMapping = (FileMapping fileName serverName (show port))
       print fileMapping
       putStrLn $ "Filename: " ++ fileName ++ " Servername: " ++ serverName
-      withMongoDbConnection $ upsert (select ["fileid" =: fileName, "serverid" =: serverName] "FILE_SERVER_MAPPINGS") $ toBSON fileMapping 
+      withMongoDbConnection $ upsert (select ["fileName" =: fileName, "serverName" =: serverName] "FILE_SERVER_MAPPINGS") $ toBSON fileMapping 
       putStrLn "After withMongoDbConnection"
       return $ (FileMapping fileName serverName (show port)):a
 
@@ -105,14 +101,7 @@ server = searchForFile
           let (FileMapping _ _ port) = fileMapping'
           let port' = (read :: String -> Int) $ port
           return port'
-      --fileMappingList <- readFile "fileMappingList"
-      --print fileMappingList
-      --let returnValue = 1
-      --return returnValue
-      {-liftIO $ do
-        putStrLn $ "Uploading file: " ++ name
-        (writeFile name contents)
-      return (ResponseData "Success")-}
+
       where
         getFileMapping :: String -> APIHandler (Maybe FileMapping)
         getFileMapping name = do
@@ -130,16 +119,36 @@ server = searchForFile
 
     listFiles :: APIHandler [String]
     listFiles = do
-      return []
-      {-putStrLn "Listing files in directory ../files/"
-      (listDirectory("../files/"))-}
+      fileMappings <- liftIO $ withMongoDbConnection $ do
+        docs <- find (select [] "FILE_SERVER_MAPPINGS") >>= drainCursor
+        return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
+      fileNames <- mapM (getFileNames) fileMappings
+      let fileNames' = DL.sort fileNames
+      return fileNames'
 
-    updateLists :: [String] -> Int -> APIHandler ResponseData
-    updateLists files port = do
-      {-contents <- liftIO $ do
-        putStrLn $ "Reading contents of: " ++ name
-        (readFile name)-}
-      return (ResponseData "Success")
+      where
+        getFileNames :: FileMapping -> APIHandler String
+        getFileNames (FileMapping fileName _ _) = return fileName
+
+    updateLists :: String -> Int -> String -> APIHandler ResponseData
+    updateLists updateType port fileName = do
+      case updateType of
+        "delete" -> do
+          let serverNumber = port `mod` 8080
+          let serverName = "Server" ++ show serverNumber
+          liftIO $ withMongoDbConnection $ do
+            delete (select ["fileName" =: fileName, "serverName" =: serverName] "FILE_SERVER_MAPPINGS")
+          return (ResponseData "Success")
+        "update" -> do
+          let serverNumber = port `mod` 8080
+          let serverName = "Server" ++ show serverNumber
+          let serverPort = show port 
+          let fileMapping = (FileMapping fileName serverName serverPort)
+          liftIO $ withMongoDbConnection $ upsert (select ["fileName" =: fileName, "serverName" =: serverName] "FILE_SERVER_MAPPINGS") $ toBSON fileMapping
+          return (ResponseData "Success")
+        _ -> do
+          return (ResponseData "Failure")
+      
 
 -- | File Server
 

@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-23 21:29:11.132873 UTC
+2016-12-24 14:17:13.868776 UTC
 
 interface commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:MongoFunctions 8001
-  interface hash: e6cdad6aa569f0a8d99cb48e416ca285
-  ABI hash: ae07fc173de2d13b9f3eba08d062ae87
+  interface hash: 595a8fa2346a43b79361105d229b38b4
+  ABI hash: b03457b262bf61307b2d0e68a7dab187
   export-list hash: a2c9d0c0761d6b4b4743675fdef1c991
   orphan hash: 2c6b010abcecab75bb41fb14eeb8e675
   flag hash: 232b91cb96073461cf6c3dcd6a42e778
@@ -161,13 +161,23 @@ e788256856f4625824df0d3d5316488e
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM"#) -}
-2d2ea3e1777eb9c7675aaf73aa8b38e6
+42bba2b1163a2a993375e2d53adabc4d
+  $wouter ::
+    Data.Text.Array.MArray GHC.Prim.RealWorld
+    -> GHC.Types.Int
+    -> [GHC.Types.Char]
+    -> GHC.Prim.Int#
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          Data.Text.Internal.Text #)
+  {- Arity: 5, Strictness: <L,U(U)><L,U(U)><S,1*U><S,U><S,U>,
+     Inline: [0] -}
+7d5a1988d727d0c20af206df9a781914
   defEnv ::
     GHC.Show.Show a =>
     GHC.Base.String
     -> (GHC.Base.String -> a) -> a -> GHC.Types.Bool -> GHC.Types.IO a
-  {- Arity: 6,
-     Strictness: <L,1*U(A,1*C1(U),A)><L,U><L,1*C1(U)><L,U><L,1*U><S,U>,
+  {- Arity: 6, Strictness: <L,A><L,U><L,1*C1(U)><L,U><L,A><S,U>,
      Unfolding: InlineRule (0, True, True)
                 MongoFunctions.defEnv1
                   `cast`
@@ -178,7 +188,7 @@ e788256856f4625824df0d3d5316488e
                  ->_R <a>_R
                  ->_R <GHC.Types.Bool>_R
                  ->_R Sym (GHC.Types.N:IO[0] <a>_R)) -}
-c951b99d9d7e9254be6524b09bc2b7c7
+98fd27e89a2f4f8bbfe52274956b8c39
   defEnv1 ::
     GHC.Show.Show a =>
     GHC.Base.String
@@ -187,9 +197,9 @@ c951b99d9d7e9254be6524b09bc2b7c7
     -> GHC.Types.Bool
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
-  {- Arity: 6,
-     Strictness: <L,1*U(A,1*C1(U),A)><L,U><L,1*C1(U)><L,U><L,1*U><S,U>,
-     Unfolding: (\ @ a
+  {- Arity: 6, Strictness: <L,A><L,U><L,1*C1(U)><L,U><L,A><S,U>,
+     Unfolding: InlineRule (6, True, False)
+                (\ @ a
                    ($dShow :: GHC.Show.Show a)
                    (env :: GHC.Base.String)
                    (fn :: GHC.Base.String -> a)
@@ -211,54 +221,22 @@ c951b99d9d7e9254be6524b09bc2b7c7
                          ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.Maybe GHC.Base.String>_R))
                         ipv of ds2 { (#,#) ipv2 ipv3 ->
                  case ipv3 of wild1 {
-                   GHC.Base.Nothing
-                   -> case doWarn of wild2 {
-                        GHC.Types.False -> (# ipv2, def #)
-                        GHC.Types.True
-                        -> case MongoFunctions.defEnv4
-                                  @ ()
-                                  System.Log.Logger.warningM1
-                                    `cast`
-                                  (<GHC.Base.String>_R
-                                   ->_R <GHC.Base.String>_R
-                                   ->_R Sym (GHC.Types.N:IO[0] <()>_R))
-                                  (MongoFunctions.defEnv3
-                                     @ [GHC.Types.Char]
-                                     (GHC.Types.: @ GHC.Types.Char)
-                                     (GHC.Base.++
-                                        @ GHC.Types.Char
-                                        env
-                                        (MongoFunctions.defEnv2
-                                           @ [GHC.Types.Char]
-                                           (GHC.Types.: @ GHC.Types.Char)
-                                           (GHC.Show.show @ a $dShow def))))
-                                  ipv2 of ds3 { (#,#) ipv4 ipv5 ->
-                           (# ipv4, def #) } }
+                   GHC.Base.Nothing -> (# ipv2, def #)
                    GHC.Base.Just s -> (# ipv2, fn s #) } } } }) -}
-5c7275b1da9864b43664e4572f00a0b6
-  defEnv2 :: (GHC.Types.Char -> b -> b) -> b -> b
-  {- Arity: 2, HasNoCafRefs, Strictness: <L,C(C1(U))><L,U>,
-     Unfolding: (\ @ b
-                   (c :: GHC.Types.Char -> b -> b)[OneShot]
-                   (n :: b)[OneShot] ->
-                 GHC.CString.unpackFoldrCString#
-                   @ b
-                   " is not set. Defaulting to "#
-                   c
-                   n) -}
-af7b4c7bb53e8ae1f2c5e1ce7eec6169
-  defEnv3 :: (GHC.Types.Char -> b -> b) -> b -> b
-  {- Arity: 2, HasNoCafRefs, Strictness: <L,C(C1(U))><L,U>,
-     Unfolding: (\ @ b
-                   (c :: GHC.Types.Char -> b -> b)[OneShot]
-                   (n :: b)[OneShot] ->
-                 GHC.CString.unpackFoldrCString#
-                   @ b
-                   "Environment variable: "#
-                   c
-                   n) -}
-31261a1d8daf57aee420b57ce403cda1
-  defEnv4 ::
+59d100ebdc674f6e2b285e2fd148d1e0
+  doLog ::
+    (GHC.Base.String -> [GHC.Types.Char] -> GHC.Types.IO b)
+    -> [GHC.Types.Char] -> GHC.Types.IO b
+  {- Arity: 3, Strictness: <L,1*C1(C1(C1(U(U,U))))><L,U><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                MongoFunctions.doLog1
+                  `cast`
+                (forall (b :: <*>_N).
+                 <GHC.Base.String -> [GHC.Types.Char] -> GHC.Types.IO b>_R
+                 ->_R <[GHC.Types.Char]>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <b>_R)) -}
+ff65b98acedb44a97e10c843461863d6
+  doLog1 ::
     (GHC.Base.String -> [GHC.Types.Char] -> GHC.Types.IO b)
     -> [GHC.Types.Char]
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -281,7 +259,7 @@ af7b4c7bb53e8ae1f2c5e1ce7eec6169
                           (Sym (Data.Time.Format.N:FormatTime[0]
                                     <Data.Time.Clock.UTC.UTCTime>_N))
                           Data.Time.Format.Locale.defaultTimeLocale
-                          MongoFunctions.defEnv5
+                          MongoFunctions.doLog2
                           (case Data.Time.Clock.POSIX.$wposixSecondsToUTCTime
                                   (Data.Time.Clock.POSIX.getCurrentTime2
                                      ipv3) of ww { (#,#) ww1 ww2 ->
@@ -290,21 +268,9 @@ af7b4c7bb53e8ae1f2c5e1ce7eec6169
                    `cast`
                  (GHC.Types.N:IO[0] <b>_R)
                    ipv2 } }) -}
-98ac43469ea488c30f514fd75c567a9b
-  defEnv5 :: [GHC.Types.Char]
+d63ab6c54ccea330552eb7c71d67013e
+  doLog2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "%FT%T%q%z"#) -}
-94f03587ca27cdc84be5f2710420ac45
-  doLog ::
-    (GHC.Base.String -> [GHC.Types.Char] -> GHC.Types.IO b)
-    -> [GHC.Types.Char] -> GHC.Types.IO b
-  {- Arity: 3, Strictness: <L,1*C1(C1(C1(U(U,U))))><L,U><S,U>,
-     Unfolding: InlineRule (0, True, True)
-                MongoFunctions.defEnv4
-                  `cast`
-                (forall (b :: <*>_N).
-                 <GHC.Base.String -> [GHC.Types.Char] -> GHC.Types.IO b>_R
-                 ->_R <[GHC.Types.Char]>_R
-                 ->_R Sym (GHC.Types.N:IO[0] <b>_R)) -}
 7287fd3bc5b50d74d50717a0169f0846
   drainCursor ::
     Database.MongoDB.Query.Cursor
@@ -324,7 +290,7 @@ af7b4c7bb53e8ae1f2c5e1ce7eec6169
          GHC.Types.IO
          [Data.Bson.Document]
   {- Arity: 2, Strictness: <L,U><L,U> -}
-be33a549c3c0f95fb54ddfe8633ea196
+74356966f4918a1cb9bd74a171220c79
   iso8601 :: Data.Time.Clock.UTC.UTCTime -> GHC.Base.String
   {- Arity: 1,
      Unfolding: (Data.Time.Format.formatTime
@@ -334,15 +300,15 @@ be33a549c3c0f95fb54ddfe8633ea196
                    (Sym (Data.Time.Format.N:FormatTime[0]
                              <Data.Time.Clock.UTC.UTCTime>_N))
                    Data.Time.Format.Locale.defaultTimeLocale
-                   MongoFunctions.defEnv5) -}
-b7195cd4dc83811809031c333f622907
+                   MongoFunctions.doLog2) -}
+9da993617f05dadf90756b0fa02e434c
   mongoDbDatabase :: GHC.Types.IO GHC.Base.String
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 MongoFunctions.mongoDbDatabase1
                   `cast`
                 (Sym (GHC.Types.N:IO[0] <[GHC.Types.Char]>_R)) -}
-9f140089e0f8e69ee00b257dba487a84
+60c51996a0e05a003f324e2be3556058
   mongoDbDatabase1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Types.Char] #)
@@ -357,75 +323,29 @@ b7195cd4dc83811809031c333f622907
                  case GHC.Foreign.charIsRepresentable3
                         @ (GHC.Base.Maybe GHC.Base.String)
                         ipv1
-                        MongoFunctions.mongoDbDatabase9
+                        MongoFunctions.mongoDbDatabase3
                         System.Environment.getEnv4
                           `cast`
                         (<Foreign.C.String.CString>_R
                          ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.Maybe GHC.Base.String>_R))
                         ipv of ds2 { (#,#) ipv2 ipv3 ->
                  case ipv3 of wild1 {
-                   GHC.Base.Nothing
-                   -> case MongoFunctions.defEnv4
-                             @ ()
-                             System.Log.Logger.warningM1
-                               `cast`
-                             (<GHC.Base.String>_R
-                              ->_R <GHC.Base.String>_R
-                              ->_R Sym (GHC.Types.N:IO[0] <()>_R))
-                             MongoFunctions.mongoDbDatabase3
-                             ipv2 of ds3 { (#,#) ipv4 ipv5 ->
-                      (# ipv4, MongoFunctions.mongoDbDatabase2 #) }
+                   GHC.Base.Nothing -> (# ipv2, MongoFunctions.mongoDbDatabase2 #)
                    GHC.Base.Just s -> (# ipv2, s #) } } } }) -}
 ec8ab7d1bea7b168da8f95b5c600ac63
   mongoDbDatabase2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "mongoFiles"#) -}
-617ca21a762958643e449aec6463fa5b
+a2804fb4b2c7d09c62482c8050d4a14c
   mongoDbDatabase3 :: [GHC.Types.Char]
-  {- Unfolding: (MongoFunctions.defEnv3
-                   @ [GHC.Types.Char]
-                   (GHC.Types.: @ GHC.Types.Char)
-                   MongoFunctions.mongoDbDatabase4) -}
-2cc5fde3a5a54143aa2a787a1411223d
-  mongoDbDatabase4 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.Base.++
-                   @ GHC.Types.Char
-                   MongoFunctions.mongoDbDatabase9
-                   MongoFunctions.mongoDbDatabase5) -}
-e3f6908d95aa881c65193865a2aef3c1
-  mongoDbDatabase5 :: [GHC.Types.Char]
-  {- Unfolding: (MongoFunctions.defEnv2
-                   @ [GHC.Types.Char]
-                   (GHC.Types.: @ GHC.Types.Char)
-                   MongoFunctions.mongoDbDatabase6) -}
-418181d5fbe42793019f7af46fe1b76f
-  mongoDbDatabase6 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.Types.:
-                   @ GHC.Types.Char
-                   GHC.Show.shows8
-                   MongoFunctions.mongoDbDatabase7) -}
-c180022315f9945a064110c0d8835848
-  mongoDbDatabase7 :: GHC.Base.String
-  {- Unfolding: (GHC.Show.showLitString
-                   MongoFunctions.mongoDbDatabase2
-                   MongoFunctions.mongoDbDatabase8) -}
-15b65e9b3458a0e26153219978333e03
-  mongoDbDatabase8 :: [GHC.Types.Char]
-  {- HasNoCafRefs,
-     Unfolding: (GHC.Types.:
-                   @ GHC.Types.Char
-                   GHC.Show.shows8
-                   (GHC.Types.[] @ GHC.Types.Char)) -}
-a6813005f65572b43b0847e6d10eee81
-  mongoDbDatabase9 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "MONGODB_DATABASE"#) -}
-072354af59cd9178a948ca21602678f5
+a179f89091cca9df01c21b1b3f856c3d
   mongoDbIp :: GHC.Types.IO GHC.Base.String
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 MongoFunctions.mongoDbIp1
                   `cast`
                 (Sym (GHC.Types.N:IO[0] <[GHC.Types.Char]>_R)) -}
-527c535c6be26716d7d329d70abe4b8b
+7c438c9def0cc63dac705ae8fde39fd8
   mongoDbIp1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Types.Char] #)
@@ -440,59 +360,20 @@ a6813005f65572b43b0847e6d10eee81
                  case GHC.Foreign.charIsRepresentable3
                         @ (GHC.Base.Maybe GHC.Base.String)
                         ipv1
-                        MongoFunctions.mongoDbIp8
+                        MongoFunctions.mongoDbIp3
                         System.Environment.getEnv4
                           `cast`
                         (<Foreign.C.String.CString>_R
                          ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.Maybe GHC.Base.String>_R))
                         ipv of ds2 { (#,#) ipv2 ipv3 ->
                  case ipv3 of wild1 {
-                   GHC.Base.Nothing
-                   -> case MongoFunctions.defEnv4
-                             @ ()
-                             System.Log.Logger.warningM1
-                               `cast`
-                             (<GHC.Base.String>_R
-                              ->_R <GHC.Base.String>_R
-                              ->_R Sym (GHC.Types.N:IO[0] <()>_R))
-                             MongoFunctions.mongoDbIp3
-                             ipv2 of ds3 { (#,#) ipv4 ipv5 ->
-                      (# ipv4, MongoFunctions.mongoDbIp2 #) }
+                   GHC.Base.Nothing -> (# ipv2, MongoFunctions.mongoDbIp2 #)
                    GHC.Base.Just s -> (# ipv2, s #) } } } }) -}
 facd99b6d0e7c9155aa32493052efd1c
   mongoDbIp2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "localhost"#) -}
-091dbea0acf5982b9eef3add53e2a558
+6fce3816258a86f01bb5cb6bf7741a9a
   mongoDbIp3 :: [GHC.Types.Char]
-  {- Unfolding: (MongoFunctions.defEnv3
-                   @ [GHC.Types.Char]
-                   (GHC.Types.: @ GHC.Types.Char)
-                   MongoFunctions.mongoDbIp4) -}
-38c0a6934aa04049056ac9e2ed229c8b
-  mongoDbIp4 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.Base.++
-                   @ GHC.Types.Char
-                   MongoFunctions.mongoDbIp8
-                   MongoFunctions.mongoDbIp5) -}
-8766da1b0c0410052f6fa39269295b63
-  mongoDbIp5 :: [GHC.Types.Char]
-  {- Unfolding: (MongoFunctions.defEnv2
-                   @ [GHC.Types.Char]
-                   (GHC.Types.: @ GHC.Types.Char)
-                   MongoFunctions.mongoDbIp6) -}
-5e697f94790096a4dd2a37fd79a687ef
-  mongoDbIp6 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.Types.:
-                   @ GHC.Types.Char
-                   GHC.Show.shows8
-                   MongoFunctions.mongoDbIp7) -}
-d7734db6e4f7a5c46c518f6fa0525e7b
-  mongoDbIp7 :: GHC.Base.String
-  {- Unfolding: (GHC.Show.showLitString
-                   MongoFunctions.mongoDbIp2
-                   MongoFunctions.mongoDbDatabase8) -}
-6737e9eed3fdecf80fa0b365e578de34
-  mongoDbIp8 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "MONGODB_IP"#) -}
 c8640dad2c18d8e131aa6212d6b61b88
   mongoDbPort :: GHC.Types.IO GHC.Integer.Type.Integer
@@ -532,7 +413,7 @@ f1f478326c420364f38afefcc81b65e6
 655faf33c56772d7516e0bce27c970c0
   mongoDbPort3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "MONGODB_PORT"#) -}
-6c4b1e044436ccb77467e130f8ef7fab
+94317864756811d441019b5f551b4d50
   withMongoDbConnection ::
     Database.MongoDB.Query.Action GHC.Types.IO a -> GHC.Types.IO a
   {- Arity: 2, Strictness: <L,1*C1(U)><S,U>,
@@ -542,12 +423,158 @@ f1f478326c420364f38afefcc81b65e6
                 (forall (a :: <*>_N).
                  <Database.MongoDB.Query.Action GHC.Types.IO a>_R
                  ->_R Sym (GHC.Types.N:IO[0] <a>_R)) -}
-795aebc5c17ca56612c4ea3235148768
+3f3a949e4e522c04b78d2ba9226ef1b0
   withMongoDbConnection1 ::
     Database.MongoDB.Query.Action GHC.Types.IO a
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
-  {- Arity: 2, Strictness: <L,1*C1(U)><S,U> -}
+  {- Arity: 2, Strictness: <L,1*C1(U)><S,U>,
+     Unfolding: (\ @ a
+                   (act :: Database.MongoDB.Query.Action GHC.Types.IO a)
+                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.IO.Encoding.getForeignEncoding1 of wild { (,) getForeignEncoding5 setForeignEncoding1 ->
+                 case getForeignEncoding5
+                        `cast`
+                      (GHC.Types.N:IO[0] <GHC.IO.Encoding.Types.TextEncoding>_R)
+                        eta of ds1 { (#,#) ipv ipv1 ->
+                 case GHC.Foreign.charIsRepresentable3
+                        @ (GHC.Base.Maybe GHC.Base.String)
+                        ipv1
+                        MongoFunctions.mongoDbIp3
+                        System.Environment.getEnv4
+                          `cast`
+                        (<Foreign.C.String.CString>_R
+                         ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.Maybe GHC.Base.String>_R))
+                        ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 let {
+                   $j :: GHC.Prim.State# GHC.Prim.RealWorld
+                         -> GHC.Base.String -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+                     {- Arity: 2, Strictness: <S,U><L,U> -}
+                   = \ (ipv4 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot]
+                       (ipv5 :: GHC.Base.String)[OneShot] ->
+                     case getForeignEncoding5
+                            `cast`
+                          (GHC.Types.N:IO[0] <GHC.IO.Encoding.Types.TextEncoding>_R)
+                            ipv4 of ds3 { (#,#) ipv6 ipv7 ->
+                     case GHC.Foreign.charIsRepresentable3
+                            @ (GHC.Base.Maybe GHC.Base.String)
+                            ipv7
+                            MongoFunctions.mongoDbPort3
+                            System.Environment.getEnv4
+                              `cast`
+                            (<Foreign.C.String.CString>_R
+                             ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.Maybe GHC.Base.String>_R))
+                            ipv6 of ds4 { (#,#) ipv8 ipv9 ->
+                     case ipv9 of wild1 { DEFAULT ->
+                     case getForeignEncoding5
+                            `cast`
+                          (GHC.Types.N:IO[0] <GHC.IO.Encoding.Types.TextEncoding>_R)
+                            ipv8 of ds5 { (#,#) ipv10 ipv11 ->
+                     case GHC.Foreign.charIsRepresentable3
+                            @ (GHC.Base.Maybe GHC.Base.String)
+                            ipv11
+                            MongoFunctions.mongoDbDatabase3
+                            System.Environment.getEnv4
+                              `cast`
+                            (<Foreign.C.String.CString>_R
+                             ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.Maybe GHC.Base.String>_R))
+                            ipv10 of ds6 { (#,#) ipv12 ipv13 ->
+                     let {
+                       $j1 :: GHC.Prim.State# GHC.Prim.RealWorld
+                              -> GHC.Base.String -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+                         {- Arity: 2, Strictness: <S,U><L,1*U> -}
+                       = \ (ipv14 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot]
+                           (ipv15 :: GHC.Base.String)[OneShot] ->
+                         case Database.MongoDB.Connection.globalConnectTimeout
+                                `cast`
+                              (GHC.IORef.N:IORef[0] <Database.MongoDB.Connection.Secs>_N) of wild2 { GHC.STRef.STRef var# ->
+                         case GHC.Prim.readMutVar#
+                                @ GHC.Prim.RealWorld
+                                @ Database.MongoDB.Connection.Secs
+                                var#
+                                ipv14 of ds7 { (#,#) ipv16 ipv17 ->
+                         case ipv17 of ww { GHC.Types.D# ww1 ->
+                         case Database.MongoDB.Connection.$wconnect'
+                                ww1
+                                ipv5
+                                Database.MongoDB.Connection.defaultPort
+                                ipv16 of ds8 { (#,#) ipv18 ipv19 ->
+                         case (Control.Monad.Trans.Resource.runResourceT
+                                 @ GHC.Types.IO
+                                 @ a
+                                 Control.Monad.Trans.Control.$fMonadBaseControlIOIO
+                                 (let {
+                                    eta1 :: GHC.Types.IO a
+                                    = act
+                                        `cast`
+                                      (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                           <*>_N
+                                           <Database.MongoDB.Query.MongoContext>_R
+                                           <GHC.Types.IO>_R
+                                           <a>_N)
+                                        (Database.MongoDB.Query.MongoContext
+                                           ipv19
+                                           Database.MongoDB.Query.master
+                                           (case GHC.Magic.runRW#
+                                                   @ 'GHC.Types.PtrRepLifted
+                                                   @ Data.Text.Internal.Text
+                                                   (\ (s1 :: GHC.Prim.State#
+                                                               GHC.Prim.RealWorld)[OneShot] ->
+                                                    case GHC.Prim.newByteArray#
+                                                           @ GHC.Prim.RealWorld
+                                                           8#
+                                                           s1 of ds9 { (#,#) ipv20 ipv21 ->
+                                                    MongoFunctions.$wouter
+                                                      (Data.Text.Array.MArray
+                                                         @ GHC.Prim.RealWorld
+                                                         ipv21)
+                                                      MongoFunctions.withMongoDbConnection3
+                                                      ipv15
+                                                      0#
+                                                      ipv20 }) of ds9 { (#,#) ipv20 ipv21 ->
+                                            ipv21 }))
+                                  } in
+                                  (\ (ds :: GHC.IORef.IORef
+                                              Control.Monad.Trans.Resource.Internal.ReleaseMap) ->
+                                   eta1)
+                                    `cast`
+                                  (Sym (Control.Monad.Trans.Resource.Internal.N:ResourceT[0]
+                                            <GHC.Types.IO>_R <a>_N))))
+                                `cast`
+                              (GHC.Types.N:IO[0] <a>_R)
+                                ipv18 of ds9 { (#,#) ipv20 ipv21 ->
+                         case ipv19 of wild3 { Database.MongoDB.Internal.Protocol.Pipeline ds10 ds11 ds12 ds13 ->
+                         case ds12 of wild4 { GHC.Conc.Sync.ThreadId tid1 ->
+                         case GHC.Prim.killThread#
+                                @ GHC.Exception.SomeException
+                                tid1
+                                MongoFunctions.withMongoDbConnection2
+                                ipv20 of s1 { DEFAULT ->
+                         case ds10 of wild5 { GHC.MVar.MVar mvar# ->
+                         case GHC.Prim.readMVar#
+                                @ GHC.Prim.RealWorld
+                                @ Database.MongoDB.Transport.Transport
+                                mvar#
+                                s1 of ds14 { (#,#) ipv22 ipv23 ->
+                         case ipv23 of wild6 { Database.MongoDB.Transport.Transport ds15 ds16 ds17 ds18 ->
+                         case ds18 `cast` (GHC.Types.N:IO[0] <()>_R)
+                                ipv22 of ds19 { (#,#) ipv24 ipv25 ->
+                         (# ipv24, ipv21 #) } } } } } } } } } } } }
+                     } in
+                     case ipv13 of wild2 {
+                       GHC.Base.Nothing -> $j1 ipv12 MongoFunctions.mongoDbDatabase2
+                       GHC.Base.Just s -> $j1 ipv12 s } } } } } }
+                 } in
+                 case ipv3 of wild1 {
+                   GHC.Base.Nothing -> $j ipv2 MongoFunctions.mongoDbIp2
+                   GHC.Base.Just s -> $j ipv2 s } } } }) -}
+3499571ca9b1a49842d23d41792f96a7
+  withMongoDbConnection2 :: GHC.Exception.SomeException
+  {- Unfolding: (GHC.IO.Exception.$fExceptionAsyncException_$ctoException
+                   GHC.IO.Exception.ThreadKilled) -}
+35748d19fc780a1d034e1fa1fd5b91f2
+  withMongoDbConnection3 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 4#) -}
 "SPEC/MongoFunctions read @ Integer" [ALWAYS] forall ($dRead :: GHC.Read.Read
                                                                   GHC.Integer.Type.Integer)
   Text.Read.read @ GHC.Integer.Type.Integer $dRead

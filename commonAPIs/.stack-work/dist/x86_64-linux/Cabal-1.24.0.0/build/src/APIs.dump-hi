@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-23 20:55:50.486601 UTC
+2016-12-24 14:15:17.176594 UTC
 
 interface commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs [orphan module] [family instance module] 8001
-  interface hash: af98f43d62989ed1f7947bce90692935
-  ABI hash: 10867adb0d9cd57709c4a556ffeebeef
+  interface hash: 6965f83bb5d74c017a918d3d6a5b94cf
+  ABI hash: 42d7c6f7d4b962d25ef20fbe0e90549e
   export-list hash: 2850013e65a96dd04ab1a2d6d673af13
   orphan hash: 3a52bf411b7fd3876360150e30406ac9
   flag hash: b0e3f8b573d72bae0f984477a0acb626
@@ -6884,7 +6884,7 @@ bedef14809ee4c007ce336c98569d5b8
           Data.Text.Internal.Text #)
   {- Arity: 5, Strictness: <L,U(U)><L,U(U)><S,1*U><S,U><S,U>,
      Inline: [0] -}
-e421be06d0a25d4fb10f8d4bf5fc828a
+fee68b35a6a442e14f2ee1c1b1193d47
   type DirectoryServerAPI =
     ("search"
      Servant.API.Sub.:> (Servant.API.Capture.Capture
@@ -6896,15 +6896,18 @@ e421be06d0a25d4fb10f8d4bf5fc828a
                                                         '[Servant.API.ContentTypes.JSON]
                                                         [GHC.Base.String])
                                   Servant.API.Alternative.:<|> ("updateList"
-                                                                Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
-                                                                                      '[Servant.API.ContentTypes.JSON]
-                                                                                      [GHC.Base.String]
+                                                                Servant.API.Sub.:> (Servant.API.Capture.Capture
+                                                                                      "updateType"
+                                                                                      GHC.Base.String
                                                                                     Servant.API.Sub.:> (Servant.API.Capture.Capture
                                                                                                           "port"
                                                                                                           GHC.Types.Int
-                                                                                                        Servant.API.Sub.:> Servant.API.Verbs.Post
-                                                                                                                             '[Servant.API.ContentTypes.JSON]
-                                                                                                                             APIs.ResponseData))))
+                                                                                                        Servant.API.Sub.:> (Servant.API.Capture.Capture
+                                                                                                                              "name"
+                                                                                                                              GHC.Base.String
+                                                                                                                            Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                                                 '[Servant.API.ContentTypes.JSON]
+                                                                                                                                                 APIs.ResponseData)))))
 008d8f59d296e4eeb88612c73cd496dd
   data File
     = File {name :: GHC.Base.String, contents :: GHC.Base.String}

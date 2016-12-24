@@ -45,4 +45,4 @@ deriving instance ToBSON   String
 
 type DirectoryServerAPI = "search" :> Capture "name" String :> Get '[JSON] Int
                      :<|> "list" :> Get '[JSON] [String]
-                     :<|> "updateList" :> ReqBody '[JSON] [String] :> Capture "port" Int :> Post '[JSON] ResponseData
+                     :<|> "updateList" :> Capture "updateType" String :> Capture "port" Int :> Capture "name" String :> Get '[JSON] ResponseData

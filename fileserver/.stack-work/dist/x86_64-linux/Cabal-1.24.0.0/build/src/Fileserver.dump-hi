@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-23 13:40:59.462764 UTC
+2016-12-24 13:46:00.640454 UTC
 
-interface fileserver-0.1.0.0-JmzsUrzGHALeNY7ChLqyj:Fileserver 8001
-  interface hash: a0932a3f860a0a7f3902f018b4b9e403
-  ABI hash: 4cb9403b6ea8ddb3140bd4dbb4deba19
-  export-list hash: 03c426f977cae311d11c158d43729f7e
-  orphan hash: e1c8c53a406e5fea475e180ecc5fadc6
+interface fileserver-0.1.0.0-8miewRONgngLGNnOw5cGNQ:Fileserver 8001
+  interface hash: 4e5372b1fa31c66e52883491520b6e8a
+  ABI hash: 4d97382161ba24931e989d97dcf08f75
+  export-list hash: e5d406f2830178fae2935f37bb1b19dc
+  orphan hash: beb97d089f16750a43b09d9c3b83bd52
   flag hash: 232b91cb96073461cf6c3dcd6a42e778
   sig of: Nothing
   used TH splices: False
@@ -27,11 +27,14 @@ package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz
                       blaze-builder-0.4.0.2@blaze-builder-0.4.0.2-KWDLbdBYSBoALiMW0LHIz1
                       blaze-html-0.8.1.3@blaze-html-0.8.1.3-8MBPJsFNBtBBD2gWERenva
                       blaze-markup-0.7.1.1@blaze-markup-0.7.1.1-IE161DWDHNXF9O8bBguli5
+                      bson-0.3.2.3@bson-0.3.2.3-3QA3aP5EtCyCltXUzEKOsQ
+                      bson-generic-0.0.8@bson-generic-0.0.8-DtORpoUHwQhDReLJ5Keop0
                       byteorder-1.0.4@byteorder-1.0.4-BbL4c17EpZrL9PcZm0xys9
                       bytestring-0.10.8.1@bytestring-0.10.8.1
                       case-insensitive-1.2.0.7@case-insensitive-1.2.0.7-FlqweN7AuKj9EdU2arVEt4
-                      commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp
+                      commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM
                       containers-0.5.7.1@containers-0.5.7.1
+                      cryptohash-0.11.9@cryptohash-0.11.9-9KNu0EEbreBFrmNJAeHgYz
                       cryptonite-0.19@cryptonite-0.19-G9PYO4oOEqhDTta2u9rAaU
                       deepseq-1.4.2.0@deepseq-1.4.2.0 directory-1.2.6.2@directory-1.2.6.2
                       dlist-0.8.0.2@dlist-0.8.0.2-GWAMmbX9rLg3tqrbOizHGv
@@ -93,7 +96,9 @@ orphans: aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz:Data.Aeson.Types.G
          attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzFS6V3sZR:Data.Attoparsec.Text.Internal
          base-4.9.0.0:GHC.Base base-4.9.0.0:GHC.Float
          binary-0.8.3.0@binary-0.8.3.0:Data.Binary.Generic
+         bson-generic-0.0.8@bson-generic-0.0.8-DtORpoUHwQhDReLJ5Keop0:Data.Bson.Generic
          bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Builder
+         commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs
          hashable-1.2.4.0@hashable-1.2.4.0-EMu4H7FB10MAl6hwKw992G:Data.Hashable.Generic
          network-2.6.3.1@network-2.6.3.1-G4Up1CPKbp7DeFsnywOnGG:Network.Socket
          stm-2.4.4.1@stm-2.4.4.1-4z2NRWnB0NIIUvSJsHW0kF:Control.Monad.STM
@@ -116,7 +121,8 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          base-4.9.0.0:Data.Void base-4.9.0.0:GHC.Exts
                          base-4.9.0.0:GHC.Generics base-4.9.0.0:GHC.IO.Exception
                          base-4.9.0.0:GHC.TypeLits
-                         commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp:APIs
+                         bson-generic-0.0.8@bson-generic-0.0.8-DtORpoUHwQhDReLJ5Keop0:Data.Bson.Generic
+                         commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs
                          containers-0.5.7.1@containers-0.5.7.1:Data.IntMap.Base
                          containers-0.5.7.1@containers-0.5.7.1:Data.IntSet.Base
                          containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
@@ -158,12 +164,13 @@ import  -/  aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz:Data.Aeson 94b5
 import  -/  aeson-0.11.2.1@aeson-0.11.2.1-5ZQWuTFmffALcfpzDCXoOz:Data.Aeson.TH 869262ef224a0287f5d5fc093506acd2
 import  -/  base-4.9.0.0:Control.Monad.IO.Class d702028d883e700bd7066b031147030d
 import  -/  base-4.9.0.0:Data.List 49b86831b79b49ce5d4d9416ecba61df
+import  -/  base-4.9.0.0:Data.OldList 0058409f994fb13ae0616e3f1e5b4dae
 import  -/  base-4.9.0.0:Data.Proxy aa86c72628cf3b1ceb0816ca84687d80
 import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
 import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-DOr96YdqMNfDOhrOYxeuFp:APIs 25b44646ef9bc0a57a90219dfc17a1c8
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs 10867adb0d9cd57709c4a556ffeebeef
 import  -/  directory-1.2.6.2@directory-1.2.6.2:System.Directory f7c57c4a392d1767b38addc37d00ceed
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  resourcet-1.1.8.1@resourcet-1.1.8.1-1XWaZ7RmVde330DM5PRI3Z:Control.Monad.Trans.Resource 6add5f57c5a8580f3180b0380a45d977
@@ -179,7 +186,7 @@ import  -/  transformers-0.5.2.0@transformers-0.5.2.0:Control.Monad.Trans.Except
 import  -/  wai-3.2.1.1@wai-3.2.1.1-f77bMYZGLQBAD3XJrvGiW:Network.Wai f10fb472d685284a8637bf34e58bc7f2
 import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.Warp 3da15d24b266d35965cd5350be944ee3
 import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.Warp.Run ef3cbc0ed9598c9652e6b6b9671eb6f3
-c37ba8eda6cd6c58572f028851d15095
+119accae806247b02bad3cb4caa53f26
   $s$fAllCTRender:a ::
     Servant.API.ContentTypes.AllCTRender
       '[Servant.API.ContentTypes.JSON] [GHC.Base.String]
@@ -211,7 +218,7 @@ c37ba8eda6cd6c58572f028851d15095
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
                      Fileserver.$s$fAllCTRender:a_$dAllMimeRender) -}
-8ecb66516c4d7354a8c00bcc0496eb2c
+9cb36f91a879ab4970289aa7433e5eec
   $s$fAllCTRender:a1 ::
     Servant.API.ContentTypes.AllCTRender
       '[Servant.API.ContentTypes.JSON] Data.Time.Clock.UTC.UTCTime
@@ -243,7 +250,7 @@ c37ba8eda6cd6c58572f028851d15095
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
                      Fileserver.$s$fAllCTRender:a_$dAllMimeRender1) -}
-a5c91d54562a430f45a0394fd268fc27
+91a70e699a00256b8b39a9a200d687ff
   $s$fAllCTRender:a2 ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
     -> Data.Time.Clock.UTC.UTCTime
@@ -270,7 +277,7 @@ a5c91d54562a430f45a0394fd268fc27
                    (GHC.Types.[]
                       @ (Network.HTTP.Media.MediaType.Internal.MediaType,
                          Data.ByteString.Lazy.Internal.ByteString))) -}
-ec0c7b072356a236b2fc1e4c4bd658b2
+b318646020d53a4283c9355890a96b20
   $s$fAllCTRender:a3 ::
     Servant.API.ContentTypes.AllCTRender
       '[Servant.API.ContentTypes.JSON] APIs.ResponseData
@@ -302,7 +309,7 @@ ec0c7b072356a236b2fc1e4c4bd658b2
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
                      Fileserver.$s$fAllCTRender:a_$dAllMimeRender2) -}
-118ad208f5254e64f0f10a0c0dc4c441
+5162ec9c28a7950fb612b0b7e6a2d93d
   $s$fAllCTRender:a4 ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
     -> APIs.ResponseData
@@ -326,7 +333,7 @@ ec0c7b072356a236b2fc1e4c4bd658b2
                    (GHC.Types.[]
                       @ (Network.HTTP.Media.MediaType.Internal.MediaType,
                          Data.ByteString.Lazy.Internal.ByteString))) -}
-7ece896de158ac23899bb752f0f22ac2
+57e4a86c85726fe2cd7d500fd7e5c598
   $s$fAllCTRender:a5 ::
     Servant.API.ContentTypes.AllCTRender
       '[Servant.API.ContentTypes.JSON] APIs.File
@@ -358,7 +365,7 @@ ec0c7b072356a236b2fc1e4c4bd658b2
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
                      Fileserver.$s$fAllCTRender:a_$dAllMimeRender3) -}
-fbc84e45f44807696e966b3b56326486
+c4a7b2059c87a700849223ee6ce01183
   $s$fAllCTRender:a6 ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
     -> APIs.File
@@ -382,69 +389,69 @@ fbc84e45f44807696e966b3b56326486
                    (GHC.Types.[]
                       @ (Network.HTTP.Media.MediaType.Internal.MediaType,
                          Data.ByteString.Lazy.Internal.ByteString))) -}
-6bcbc2eeb25d507e7c932c6d77cc0aae
+4be82216b69969a5f53c3f663eee5413
   $s$fAllCTRender:a_$dAllMimeRender ::
     Servant.API.ContentTypes.AllMimeRender
       '[Servant.API.ContentTypes.JSON] [GHC.Base.String]
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a0 -}
-5f727d76ff5aee14ba93ee0cee50a1a7
+60b6ba20cf04d9014b4a616f968fe351
   $s$fAllCTRender:a_$dAllMimeRender1 ::
     Servant.API.ContentTypes.AllMimeRender
       '[Servant.API.ContentTypes.JSON] Data.Time.Clock.UTC.UTCTime
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a1 -}
-a1cbed4415c3483341ba8208f087e2cd
+4e788284c01711d457053fb227c1393d
   $s$fAllCTRender:a_$dAllMimeRender2 ::
     Servant.API.ContentTypes.AllMimeRender
       '[Servant.API.ContentTypes.JSON] APIs.ResponseData
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a2 -}
-f5bb0ed4ab76d253ee8d544ea6364dd2
+ea9440e9b1ab2767b3e1762ec88eea06
   $s$fAllCTRender:a_$dAllMimeRender3 ::
     Servant.API.ContentTypes.AllMimeRender
       '[Servant.API.ContentTypes.JSON] APIs.File
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a3 -}
-b3745d86a3512764e4b1f2a0f3f5a7ea
+d0c38e69c70eecc315e6155d1bbc0354
   $s$fAllCTRender:a_$dMimeRender ::
     Servant.API.ContentTypes.MimeRender
       Servant.API.ContentTypes.JSON [GHC.Base.String]
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa -}
-a4e3d1e22c265ce72714bf07e8a75f23
+9e566460d9313573d253063f766d7504
   $s$fAllCTRender:a_$dMimeRender1 ::
     Servant.API.ContentTypes.MimeRender
       Servant.API.ContentTypes.JSON Data.Time.Clock.UTC.UTCTime
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa1 -}
-6426596293292b19461b13a8819bd949
+f00639a0eab79b15519b69b63009b092
   $s$fAllCTRender:a_$dMimeRender2 ::
     Servant.API.ContentTypes.MimeRender
       Servant.API.ContentTypes.JSON APIs.ResponseData
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa2 -}
-af3c059f001bca96c3205711130a86ca
+dcd8e69594cf728752b455b003a3c72c
   $s$fAllCTRender:a_$dMimeRender3 ::
     Servant.API.ContentTypes.MimeRender
       Servant.API.ContentTypes.JSON APIs.File
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa3 -}
-07d39c6b6031099bdd411e398d02143e
+f743dc42797b70f7f14d4a6a6e2f2ffa
   $s$fAllCTRender:a_$dToJSON ::
     Data.Aeson.Types.Class.ToJSON [GHC.Base.String]
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fToJSON[] -}
-0c6f13f8323b9e2190ffbc64ca478fc4
+1443a85ddefbb8ba95e22736a961de33
   $s$fAllCTRender:a_$s$fAllMimeRender:a0 ::
     Servant.API.ContentTypes.AllMimeRender
       '[Servant.API.ContentTypes.JSON] [GHC.Base.String]
@@ -457,7 +464,7 @@ af3c059f001bca96c3205711130a86ca
                      @ [GHC.Base.String]
                      Fileserver.$s$fAllCTRender:a_$dMimeRender)
                   Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a0_$callMimeRender -}
-f3ddbf512940f5a82f3543ec02a25e0d
+afec28c664bbfd66054a561645fa9240
   $s$fAllCTRender:a_$s$fAllMimeRender:a0_$callMimeRender ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
     -> [GHC.Base.String]
@@ -483,7 +490,7 @@ f3ddbf512940f5a82f3543ec02a25e0d
                    (GHC.Types.[]
                       @ (Network.HTTP.Media.MediaType.Internal.MediaType,
                          Data.ByteString.Lazy.Internal.ByteString))) -}
-6638a81363d247546e177d5f8038dd62
+b06204bbaf1063058d9915cfa0577e12
   $s$fAllCTRender:a_$s$fAllMimeRender:a1 ::
     Servant.API.ContentTypes.AllMimeRender
       '[Servant.API.ContentTypes.JSON] Data.Time.Clock.UTC.UTCTime
@@ -496,7 +503,7 @@ f3ddbf512940f5a82f3543ec02a25e0d
                      @ Data.Time.Clock.UTC.UTCTime
                      Fileserver.$s$fAllCTRender:a_$dMimeRender1)
                   Fileserver.$s$fAllCTRender:a2 -}
-8ad548cc38b4ea18b8aebdf3e12ef3e3
+a7b3e63d9d119a5c2825cbad083ed93a
   $s$fAllCTRender:a_$s$fAllMimeRender:a2 ::
     Servant.API.ContentTypes.AllMimeRender
       '[Servant.API.ContentTypes.JSON] APIs.ResponseData
@@ -509,7 +516,7 @@ f3ddbf512940f5a82f3543ec02a25e0d
                      @ APIs.ResponseData
                      Fileserver.$s$fAllCTRender:a_$dMimeRender2)
                   Fileserver.$s$fAllCTRender:a4 -}
-6dabc1829e41bbcbb4f78ac31bbea9a2
+ad1820cd2595370659ead96fb1ba5060
   $s$fAllCTRender:a_$s$fAllMimeRender:a3 ::
     Servant.API.ContentTypes.AllMimeRender
       '[Servant.API.ContentTypes.JSON] APIs.File
@@ -522,7 +529,7 @@ f3ddbf512940f5a82f3543ec02a25e0d
                      @ APIs.File
                      Fileserver.$s$fAllCTRender:a_$dMimeRender3)
                   Fileserver.$s$fAllCTRender:a6 -}
-e70e22fff999257a54047dee8c721a3d
+7fab4bfca50edc9d4b996cfa636d026d
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa ::
     Servant.API.ContentTypes.MimeRender
       Servant.API.ContentTypes.JSON [GHC.Base.String]
@@ -535,7 +542,7 @@ e70e22fff999257a54047dee8c721a3d
                      @ [GHC.Base.String]
                      Fileserver.$s$fAllCTRender:a_$dToJSON)
                   Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender -}
-8f13b4fdde4afd97f6a1a4467e7adfd2
+cbfec78c2f806f858cc6a5d90f86cc04
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa1 ::
     Servant.API.ContentTypes.MimeRender
       Servant.API.ContentTypes.JSON Data.Time.Clock.UTC.UTCTime
@@ -548,7 +555,7 @@ e70e22fff999257a54047dee8c721a3d
                      @ Data.Time.Clock.UTC.UTCTime
                      Data.Aeson.Types.Instances.$fToJSONUTCTime)
                   Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender1 -}
-55ad0a511e4e0e1bb3af3128168df500
+f7c09f9aed53b6df4bbdefe49432f49e
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa2 ::
     Servant.API.ContentTypes.MimeRender
       Servant.API.ContentTypes.JSON APIs.ResponseData
@@ -561,7 +568,7 @@ e70e22fff999257a54047dee8c721a3d
                      @ APIs.ResponseData
                      APIs.$fToJSONResponseData)
                   Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender2 -}
-834a7a63e1f98a54f7dafcfb8feb05c6
+af4c916314af003c757bda9ebcd6d1dc
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa3 ::
     Servant.API.ContentTypes.MimeRender
       Servant.API.ContentTypes.JSON APIs.File
@@ -574,7 +581,7 @@ e70e22fff999257a54047dee8c721a3d
                      @ APIs.File
                      APIs.$fToJSONFile)
                   Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender3 -}
-f08919474ea8316d7955e6f43198e9c1
+f114923358b72aeed56ed9e92f971019
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> [GHC.Base.String] -> Data.ByteString.Lazy.Internal.ByteString
@@ -636,7 +643,7 @@ f08919474ea8316d7955e6f43198e9c1
                                              @ GHC.Types.Char
                                              Data.ByteString.Builder.Prim.ASCII.char7)
                                           (GHC.Types.C# ']'#)))))) })) -}
-f17630c42ca60c588e445849f128a22c
+97b6c97c4649c477baba230d8cf4cde7
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender1 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.Time.Clock.UTC.UTCTime
@@ -648,7 +655,7 @@ f17630c42ca60c588e445849f128a22c
                  Data.ByteString.Builder.toLazyByteString
                    (Data.Aeson.Types.Internal.fromEncoding
                       (Data.Aeson.Types.Instances.$fToJSONUTCTime_$ctoEncoding eta))) -}
-677c1e85b09638609efbb128c34bcf2f
+b10f83f1d486115baccba2b24543c27e
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender2 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> APIs.ResponseData -> Data.ByteString.Lazy.Internal.ByteString
@@ -662,7 +669,7 @@ f17630c42ca60c588e445849f128a22c
                          (APIs.$fToJSONResponseData_$ctoJSON eta))
                         `cast`
                       (Sym (Data.Aeson.Types.Internal.N:Encoding[0])))) -}
-c745a26ef42c479633b9ed64610b0a34
+db1b7b0891dfdadfda5e1dabeb338146
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender3 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> APIs.File -> Data.ByteString.Lazy.Internal.ByteString
@@ -676,7 +683,7 @@ c745a26ef42c479633b9ed64610b0a34
                          (APIs.$fToJSONFile_$ctoJSON eta))
                         `cast`
                       (Sym (Data.Aeson.Types.Internal.N:Encoding[0])))) -}
-1f6ad604f96ad5687a39d24e91ff51a2
+4ff1d385018247d200ef7964f9d0ed80
   $s$fAllCTRender:a_$s$fToJSON[] ::
     Data.Aeson.Types.Class.ToJSON [[GHC.Types.Char]]
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -717,7 +724,7 @@ c745a26ef42c479633b9ed64610b0a34
                   (Data.Aeson.Types.Instances.$fToJSON[]_$ctoEncoding
                      @ [GHC.Types.Char]
                      Data.Aeson.Types.Instances.$fToJSON[]0) -}
-c4c0bbda16e0128e7060ebe708edb938
+f992d7ec318f7a94731903c5f6c00ccc
   $s$fAllMimeUnrender:a ::
     Servant.API.ContentTypes.AllMimeUnrender
       '[Servant.API.ContentTypes.JSON] APIs.File
@@ -737,14 +744,14 @@ c4c0bbda16e0128e7060ebe708edb938
                      @ '[]
                      Fileserver.$s$fAllMimeUnrender:a_$dMimeUnrender
                      (Servant.API.ContentTypes.$fAllMimeUnrender[]a @ APIs.File)) -}
-576a4871d573d174c393cb2e16ecfd0e
+29f527685008363ec9bdad009da8b552
   $s$fAllMimeUnrender:a_$dMimeUnrender ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.File
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa -}
-460456e498fa4920d3d304d5a82e96d5
+237db82f7edacbba6e15f4a43c696e85
   $s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.File
@@ -759,7 +766,7 @@ c4c0bbda16e0128e7060ebe708edb938
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.File>_N)))
                   Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender -}
-ca85b8e817b4ef32e454d9f2330c7e45
+af45a44f78afc35d4ba9207e609bc58e
   $s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -774,22 +781,22 @@ ca85b8e817b4ef32e454d9f2330c7e45
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.File>_N))
                    eta) -}
-a0073557566e921f93e0aecea838efac
+3fd502432d9d4c437aaf0d4e3f2f7f87
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.Module
                    Fileserver.$trModule2
                    Fileserver.$trModule1) -}
-6ccf9c131483e1768de8b328c7a0f600
+49a63e3cec271cc49e37763e61e2e75a
   $trModule1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "Fileserver"#) -}
-6ea412079032173c183b9a24bb3b547a
+c5910d2063992692282bbd2360058329
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
-                   "fileserver-0.1.0.0-JmzsUrzGHALeNY7ChLqyj"#) -}
-3e0284ec55d1b5c9080b4ed38657bc53
+                   "fileserver-0.1.0.0-8miewRONgngLGNnOw5cGNQ"#) -}
+1baeb4e46fe855902438eb53ba059f29
   $wdt ::
     GHC.Base.String
     -> GHC.Base.String
@@ -808,24 +815,24 @@ a0073557566e921f93e0aecea838efac
                         w of ds1 { (#,#) ipv ipv1 ->
                  case System.IO.writeFile1 ww ww1 ipv of ds2 { (#,#) ipv2 ipv3 ->
                  (# ipv2, Fileserver.startServer46 #) } }) -}
-1a73c64101457176f9f4bb2ce447df2c
+311978cc1db5b1fe5786b58c7a9ba9e4
   type APIHandler =
     Control.Monad.Trans.Except.ExceptT
       Servant.Server.Internal.ServantErr.ServantErr GHC.Types.IO
     :: * -> *
-cdf95b43702f6154641a645741cecf21
+ab942b0097207615e4757cb091ac50fc
   app :: Network.Wai.Application
   {- Arity: 2,
      Unfolding: (Servant.Server.Internal.RoutingApplication.toApplication
                    Fileserver.startServer2) -}
-c1a03be9fdd2d4058272e199e120bf50
+2ee53cc5ed4d89847576873d0811e064
   startServer :: GHC.Types.Int -> GHC.Types.IO ()
   {- Arity: 2, Strictness: <L,U(U)><S,U>,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.startServer1
                   `cast`
                 (<GHC.Types.Int>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-c5315902b0b6bb6cc003acdeb85dcb44
+c40d25a70db17b744baa5087442b6712
   startServer1 ::
     GHC.Types.Int
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -923,7 +930,7 @@ c5315902b0b6bb6cc003acdeb85dcb44
                    (GHC.Base.Nothing @ GHC.Types.Int)
                    Fileserver.app
                    ipv6 } } } }) -}
-4a19d1ea376bae9de9df694ed07b1b61
+84506f75e04d994dc3415090640b4b2b
   startServer10 ::
     Data.Text.Internal.Text
     -> Servant.Server.Internal.RoutingApplication.DelayedIO
@@ -943,7 +950,7 @@ c5315902b0b6bb6cc003acdeb85dcb44
                                         [GHC.Types.Char]>_R))
                       (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                 <[GHC.Types.Char]>_R))) }) -}
-0250e0725269bd422f0b598d3ebcc78c
+ba96cff2480b4ea49dc931b19634ff5f
   startServer11 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       ()
@@ -1004,7 +1011,7 @@ c5315902b0b6bb6cc003acdeb85dcb44
                         (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                   <()>_R)))
                    Fileserver.startServer12) -}
-327d8d044e88902495650fd29ba7c761
+9c8bbe5bf8c75d0dde8b53291f9057b5
   startServer12 ::
     ()
     -> ()
@@ -1024,7 +1031,7 @@ c5315902b0b6bb6cc003acdeb85dcb44
                    (b1 :: ())
                    (req :: Network.Wai.Internal.Request) ->
                  Fileserver.startServer13) -}
-527c924cbcb2c4fa9c19aeba7fba2b56
+ac5ddb4036723c5b9b9229dc68cf8c65
   startServer13 ::
     Servant.Server.Internal.RoutingApplication.RouteResult
       (Servant.Server.Internal.Server
@@ -1088,7 +1095,7 @@ c5315902b0b6bb6cc003acdeb85dcb44
                                             <Control.Monad.Trans.Except.ExceptT
                                                Servant.Server.Internal.ServantErr.ServantErr
                                                GHC.Types.IO>_N)))))) -}
-f9c7135e140a9909018532c6ffb4f35a
+4c43e19b89cc290ff8b8000cb726b24b
   startServer14 ::
     GHC.Base.String
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -1124,7 +1131,7 @@ f9c7135e140a9909018532c6ffb4f35a
                       @ Servant.Server.Internal.ServantErr.ServantErr
                       @ Data.Time.Clock.UTC.UTCTime
                       ipv1 #) }) -}
-8d8153e36e9b388b73442c403667d1e9
+07e8bbd8d476ef88ef8ab57aab66e0d1
   startServer15 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       (Data.Text.Internal.Text, ())
@@ -1162,10 +1169,10 @@ f9c7135e140a9909018532c6ffb4f35a
                            200
                            '[Servant.API.ContentTypes.JSON]
                            Data.Time.Clock.UTC.UTCTime))) -}
-2667e67b3faec050c3ecea032a3c348b
+793af4af0e52e83fab65a544b73f2fbb
   startServer16 :: GHC.Integer.Type.Integer
   {- HasNoCafRefs, Unfolding: (200) -}
-ab0befba2cb830d42605b44e7fd4a31c
+7ef1fa99f424096eecee0c61c2570cc1
   startServer17 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
@@ -1183,10 +1190,10 @@ ab0befba2cb830d42605b44e7fd4a31c
                    Fileserver.startServer18
                    0#
                    ipv }) -}
-97dff429baa3846c7692f1b59752e655
+ffbdda1dce8fe7745fb0f4b7ab2abf35
   startServer18 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "modifyTime"#) -}
-98c11792f9a2d20fa28b9ce7262fdccf
+11922cbf592a824ba62a963b3c8b88c5
   startServer19 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1197,7 +1204,7 @@ ab0befba2cb830d42605b44e7fd4a31c
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-83d8656813e0f35fc0d47508ab831a22
+e63be8f7e534da301b1f7fa1a9921490
   startServer2 ::
     Network.Wai.Internal.Request
     -> (Servant.Server.Internal.RoutingApplication.RouteResult
@@ -1217,7 +1224,7 @@ ab0befba2cb830d42605b44e7fd4a31c
                    GHC.Tuple.()
                    eta
                    eta1) -}
-61fe4c6836c8ca319dc33b24fd5b7bff
+3d4cdbc1b6d146f98458f1fbaacd3b94
   startServer20 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -1244,7 +1251,7 @@ ab0befba2cb830d42605b44e7fd4a31c
                       @ (Servant.Server.Internal.Router.Router'
                            ()
                            Servant.Server.Internal.RoutingApplication.RoutingApplication)) } }) -}
-4813baac4d186221b4cdd23f32b80940
+608cde86537b08495ad2ee8d7c4e7e46
   startServer21 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1252,12 +1259,12 @@ ab0befba2cb830d42605b44e7fd4a31c
                    @ ()
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    Fileserver.startServer22) -}
-8cdf717ad160e66dbcbb609f6b591a4e
+0b550fcec717248de36a944f2c806987
   startServer22 ::
     Servant.Server.Internal.Router.Router (Data.Text.Internal.Text, ())
   {- Unfolding: (Fileserver.startServer28
                    Fileserver.startServer23) -}
-dbc829d3a8112f8fb1a88e0bb7e5d7a1
+077362c4ae7be1054c84b49a0c820d94
   startServer23 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       (Data.Text.Internal.Text, ())
@@ -1305,7 +1312,7 @@ dbc829d3a8112f8fb1a88e0bb7e5d7a1
                                         Servant.Server.Internal.ServantErr.ServantErr
                                         GHC.Types.IO>_N))))_R
                    Fileserver.startServer10) -}
-a44f93c62aaf4edfe2c4ca569e7c4975
+771c7372d02435e7eac0d2b1f0c1397f
   startServer24 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       ()
@@ -1365,7 +1372,7 @@ a44f93c62aaf4edfe2c4ca569e7c4975
                         (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                   <()>_R)))
                    Fileserver.startServer25) -}
-98a63bdbf0f27993ae5d48dd937cbb39
+7f9d67b0c3bca8211d9b24fc55b00d32
   startServer25 ::
     ()
     -> ()
@@ -1384,7 +1391,7 @@ a44f93c62aaf4edfe2c4ca569e7c4975
                    (b1 :: ())
                    (req :: Network.Wai.Internal.Request) ->
                  Fileserver.startServer26) -}
-27f4e83ed23247abcf10b8f2e67ea2f2
+8813780303cd140da73f18cf446d0ce0
   startServer26 ::
     Servant.Server.Internal.RoutingApplication.RouteResult
       (Servant.Server.Internal.Server
@@ -1447,7 +1454,7 @@ a44f93c62aaf4edfe2c4ca569e7c4975
                                             <Control.Monad.Trans.Except.ExceptT
                                                Servant.Server.Internal.ServantErr.ServantErr
                                                GHC.Types.IO>_N)))))) -}
-481b59505fc03ec739d70f32b4bc821c
+6303586d011d27a0562db33650817671
   startServer27 ::
     GHC.Base.String
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -1474,7 +1481,7 @@ a44f93c62aaf4edfe2c4ca569e7c4975
                       @ Servant.Server.Internal.ServantErr.ServantErr
                       @ APIs.File
                       (APIs.File name ipv5) #) } } }) -}
-b3e9207368dc75ffd7e866640c1b981e
+ba9b1abf08a8cb22b82cf9c4b7502052
   startServer28 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       (Data.Text.Internal.Text, ())
@@ -1512,7 +1519,7 @@ b3e9207368dc75ffd7e866640c1b981e
                            200
                            '[Servant.API.ContentTypes.JSON]
                            APIs.File))) -}
-4a9687623ddc30dc27950d750ca2e8d1
+74826e9a469a83e8534c66c2d9691586
   startServer29 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
@@ -1530,7 +1537,7 @@ b3e9207368dc75ffd7e866640c1b981e
                    Fileserver.startServer30
                    0#
                    ipv }) -}
-f2a31bccafb7034bcde310b48bc5b166
+4346fe0426a1f3dc3384dd44c1147925
   startServer3 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1539,10 +1546,10 @@ f2a31bccafb7034bcde310b48bc5b166
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    Fileserver.startServer31
                    Fileserver.startServer4) -}
-5d57485590c8a5b62c99140bf5a6d853
+cb00ce8626f6abbfa7c2f504325b622f
   startServer30 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "download"#) -}
-27d366e2dd911bec2479622a23fe3d9c
+ed3d2f4f81dd1a109d26a9bc29870db2
   startServer31 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1553,7 +1560,7 @@ f2a31bccafb7034bcde310b48bc5b166
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-37adc8a465d1d4a33a9e0d787b9fcb23
+69c40b97cd5d265961d71c228b7d46a2
   startServer32 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -1580,7 +1587,7 @@ f2a31bccafb7034bcde310b48bc5b166
                       @ (Servant.Server.Internal.Router.Router'
                            ()
                            Servant.Server.Internal.RoutingApplication.RoutingApplication)) } }) -}
-d86fcb83bbdf66377a94e0db46c4aed6
+e2b1221654626bff5dd2ceb9aacea18a
   startServer33 :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Fileserver.startServer38
                    Fileserver.startServer34
@@ -1598,7 +1605,7 @@ d86fcb83bbdf66377a94e0db46c4aed6
                                 <Control.Monad.Trans.Except.ExceptT
                                    Servant.Server.Internal.ServantErr.ServantErr
                                    GHC.Types.IO>_N)))_R) -}
-377e72bba5385a1b9de7d4fa044c9490
+f6b6cce922debc31c2cb1b3ba3a50154
   startServer34 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       ()
@@ -1653,7 +1660,7 @@ d86fcb83bbdf66377a94e0db46c4aed6
                         (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                   <()>_R)))
                    Fileserver.startServer35) -}
-753e6aa57c81d75a4cd3a3b053615066
+bbd3beadc1af918c01368ccb3ca9b4e2
   startServer35 ::
     ()
     -> ()
@@ -1670,7 +1677,7 @@ d86fcb83bbdf66377a94e0db46c4aed6
                    (b1 :: ())
                    (req :: Network.Wai.Internal.Request) ->
                  Fileserver.startServer36) -}
-fd05a3a11a2db9c13e292ec5d35567cf
+0fd189b6d19f8f49d30b5458d22e9877
   startServer36 ::
     Servant.Server.Internal.RoutingApplication.RouteResult
       (Servant.Server.Internal.Server
@@ -1688,12 +1695,12 @@ fd05a3a11a2db9c13e292ec5d35567cf
                         (Sym (GHC.Types.N:IO[0]
                                   <Data.Either.Either
                                      Servant.Server.Internal.ServantErr.ServantErr
-                                     [GHC.IO.FilePath]>_R))
+                                     [GHC.Base.String]>_R))
                         (Trans
                              (Sym (Control.Monad.Trans.Except.N:ExceptT[0]
                                        <Servant.Server.Internal.ServantErr.ServantErr>_N
                                        <GHC.Types.IO>_R
-                                       <[GHC.IO.FilePath]>_N))
+                                       <[GHC.Base.String]>_N))
                              (Trans
                                   (Sub (Sym (Servant.Server.Internal.D:R:ServerTTYPEVerbm0[0]
                                                  <Network.HTTP.Types.Method.StdMethod>_N
@@ -1715,14 +1722,15 @@ fd05a3a11a2db9c13e292ec5d35567cf
                                                  <Control.Monad.Trans.Except.ExceptT
                                                     Servant.Server.Internal.ServantErr.ServantErr
                                                     GHC.Types.IO>_N))))))) -}
-68cdfffb8b81faf4b456bdd43d6be176
+ca3e6d9d788c1b7b3afe09b87898aabc
   startServer37 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
           Data.Either.Either
-            Servant.Server.Internal.ServantErr.ServantErr [GHC.IO.FilePath] #)
+            Servant.Server.Internal.ServantErr.ServantErr [GHC.Base.String] #)
   {- Arity: 1, Strictness: <S,U>,
-     Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+     Unfolding: (\ (eta :: GHC.Prim.State#
+                             GHC.Prim.RealWorld)[OneShot] ->
                  case GHC.Prim.catch#
                         @ GHC.IO.FilePath
                         @ GHC.Exception.SomeException
@@ -1730,7 +1738,7 @@ fd05a3a11a2db9c13e292ec5d35567cf
                           `cast`
                         (GHC.Types.N:IO[0] <GHC.IO.FilePath>_R)
                         System.Directory.getCurrentDirectory2
-                        s of ds1 { (#,#) ipv ipv1 ->
+                        eta of ds1 { (#,#) ipv ipv1 ->
                  case GHC.IO.Handle.Text.hPutStr2
                         GHC.IO.Handle.FD.stdout
                         (GHC.CString.unpackAppendCString#
@@ -1745,11 +1753,14 @@ fd05a3a11a2db9c13e292ec5d35567cf
                     Data.Either.Right
                       @ Servant.Server.Internal.ServantErr.ServantErr
                       @ [GHC.IO.FilePath]
-                      (GHC.List.filter
-                         @ [GHC.Types.Char]
-                         System.Directory.listDirectory2
-                         ipv5) #) } } }) -}
-42d325d23d1885e946e59be4c3685283
+                      (Data.OldList.sortBy
+                         @ GHC.IO.FilePath
+                         GHC.Classes.$fOrd[]_$s$ccompare1
+                         (GHC.List.filter
+                            @ [GHC.Types.Char]
+                            System.Directory.listDirectory2
+                            ipv5)) #) } } }) -}
+c4b93cba79014a7c0769990f1a10f804
   startServer38 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       ()
@@ -1786,7 +1797,7 @@ fd05a3a11a2db9c13e292ec5d35567cf
                            200
                            '[Servant.API.ContentTypes.JSON]
                            [GHC.Base.String]))) -}
-fa6e1c574d4860f048ec3fcc8d8717cf
+7bf079ac26dd2043bb03dc46f78af5ac
   startServer39 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1797,7 +1808,7 @@ fa6e1c574d4860f048ec3fcc8d8717cf
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-a3bc112751e5ad9f6b83659e4983fff0
+9c81d82446fcd0bb53169f1b92f82303
   startServer4 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1806,7 +1817,7 @@ a3bc112751e5ad9f6b83659e4983fff0
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    Fileserver.startServer19
                    Fileserver.startServer5) -}
-2a2971ce354f1142957c1e37bd26352e
+ddbd1d6ebbdb1fdb011ca29f145beba0
   startServer40 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -1833,7 +1844,7 @@ a3bc112751e5ad9f6b83659e4983fff0
                       @ (Servant.Server.Internal.Router.Router'
                            ()
                            Servant.Server.Internal.RoutingApplication.RoutingApplication)) } }) -}
-472e4f8654fbecda58a0086925c17673
+60b034ff6a0f17bc6e8fef0060c29361
   startServer41 :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Servant.Server.Internal.$w$croute2
                    @ *
@@ -1885,7 +1896,7 @@ a3bc112751e5ad9f6b83659e4983fff0
                                 <Control.Monad.Trans.Except.ExceptT
                                    Servant.Server.Internal.ServantErr.ServantErr
                                    GHC.Types.IO>_N)))_R) -}
-ad9fce5d6de7e886e6bd6a2a2f87634e
+7a7ca962127e3542852f412c3155e197
   startServer42 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       ()
@@ -1946,7 +1957,7 @@ ad9fce5d6de7e886e6bd6a2a2f87634e
                         (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                   <()>_R)))
                    Fileserver.startServer43) -}
-166d1542199f584e7475b18b962eb314
+1a9175e7dc69de34cd392c10b8f18cc0
   startServer43 ::
     ()
     -> ()
@@ -1966,7 +1977,7 @@ ad9fce5d6de7e886e6bd6a2a2f87634e
                    (b1 :: ())
                    (req :: Network.Wai.Internal.Request) ->
                  Fileserver.startServer44) -}
-69a533543bcfe2bbaf95866dd8803440
+c9985eb6a520c2c1692feb5c0b86074b
   startServer44 ::
     Servant.Server.Internal.RoutingApplication.RouteResult
       (Servant.Server.Internal.Server
@@ -2031,7 +2042,7 @@ ad9fce5d6de7e886e6bd6a2a2f87634e
                                             <Control.Monad.Trans.Except.ExceptT
                                                Servant.Server.Internal.ServantErr.ServantErr
                                                GHC.Types.IO>_N)))))) -}
-7f375591ae2edd0ff7180294f1faf958
+fd8f34c5ce4a66caede2c93ae38b828b
   startServer45 ::
     APIs.File
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -2044,7 +2055,7 @@ ad9fce5d6de7e886e6bd6a2a2f87634e
                    (w1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
                  case w of ww { APIs.File ww1 ww2 ->
                  Fileserver.$wdt ww1 ww2 w1 }) -}
-0f60661654f95d694d55095efaf89bcd
+fe47d6a922e10ff8e5fa6a5d6c3554da
   startServer46 ::
     Data.Either.Either
       Servant.Server.Internal.ServantErr.ServantErr APIs.ResponseData
@@ -2052,13 +2063,13 @@ ad9fce5d6de7e886e6bd6a2a2f87634e
                    @ Servant.Server.Internal.ServantErr.ServantErr
                    @ APIs.ResponseData
                    Fileserver.startServer47) -}
-43432d53a30e9996b2648816b2171054
+32a0ba9bc9891fef36d631e6b7431d62
   startServer47 :: APIs.ResponseData
   {- Unfolding: (APIs.ResponseData Fileserver.startServer48) -}
-3a9cc33565e44401312a8ce91dcbbf19
+6614281310be62599c66c722747d88b9
   startServer48 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Success"#) -}
-9acab7fd19dd1fb4dff3039431082c19
+218f22d7fb9e27d474798573aafb73d9
   startServer49 ::
     Data.Proxy.Proxy
       (Servant.API.Verbs.Verb
@@ -2112,7 +2123,7 @@ ad9fce5d6de7e886e6bd6a2a2f87634e
                            200
                            '[Servant.API.ContentTypes.JSON]
                            APIs.ResponseData)) }) -}
-a32829c4bff6544904315e65a90b19f4
+825c82c47514d00fda73c612137c0251
   startServer5 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -2123,7 +2134,7 @@ a32829c4bff6544904315e65a90b19f4
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-cb3fa66302c1e3122b5a18baa9625247
+ff8b89f4d0dd8e27310d365d5acfdfc0
   startServer50 ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -2140,7 +2151,7 @@ cb3fa66302c1e3122b5a18baa9625247
                    Fileserver.$s$fAllMimeUnrender:a
                    w2
                    w3) -}
-7b6edf21dbbeee119583b26613fec777
+6a0d0648ba67c79cdb16480f832fb0f7
   startServer51 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
@@ -2158,20 +2169,20 @@ cb3fa66302c1e3122b5a18baa9625247
                    Fileserver.startServer52
                    0#
                    ipv }) -}
-769931bb84f077307d47fe9aa1749cac
+040c30536b2159ad79d6a2da4f6e3110
   startServer52 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "upload"#) -}
-20d861b5d407a6dc87c27e3aefcf211f
+e84b9e8c65c5a6c196ba8e2619b057da
   startServer53 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Starting app..."#) -}
-42d015a834c63f227c903a8b6552597d
+0b435b232c92d81e2fe4f80b329652c8
   startServer54 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "Changing current directory..."#) -}
-cd7ddaa545d86e21770ee415102cb97c
+45283e2ea8833a71ba79aebddd9d31ca
   startServer55 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "/"#) -}
-d3f6e0e0bccb55c1e2e726d65ac27e3d
+b61c5923f2c5eeb548d886322a241027
   startServer6 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -2198,7 +2209,7 @@ d3f6e0e0bccb55c1e2e726d65ac27e3d
                       @ (Servant.Server.Internal.Router.Router'
                            ()
                            Servant.Server.Internal.RoutingApplication.RoutingApplication)) } }) -}
-102957111b24470a3d8dec18e855e893
+4eedb6a03be6a59e8b3aad4aebd20ce4
   startServer7 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -2206,11 +2217,11 @@ d3f6e0e0bccb55c1e2e726d65ac27e3d
                    @ ()
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    Fileserver.startServer8) -}
-7349a01044ebf09afaeabd1dec045e51
+e54a52b5469b397f8f23457010790861
   startServer8 ::
     Servant.Server.Internal.Router.Router (Data.Text.Internal.Text, ())
   {- Unfolding: (Fileserver.startServer15 Fileserver.startServer9) -}
-7739e91b5816c7e1d1c3aa122c1bac5d
+42ffbd4819de8170941c9fc20461f48a
   startServer9 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       (Data.Text.Internal.Text, ())
@@ -2258,7 +2269,7 @@ d3f6e0e0bccb55c1e2e726d65ac27e3d
                                         Servant.Server.Internal.ServantErr.ServantErr
                                         GHC.Types.IO>_N))))_R
                    Fileserver.startServer10) -}
-1b0deab470c3ee63deb7a72c10452e63
+27525e5aede14706d0502e4e1d4d0b03
   startServer_r :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Servant.Server.Internal.Router.choice
                    @ ()

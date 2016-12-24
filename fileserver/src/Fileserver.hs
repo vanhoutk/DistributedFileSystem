@@ -59,10 +59,13 @@ server = uploadFile
       return (ResponseData "Success")
 
     getFiles :: APIHandler [String]
-    getFiles = liftIO $ do
-      currentDirectory <- getCurrentDirectory
-      putStrLn $ "Listing files in directory " ++ currentDirectory
-      (listDirectory(currentDirectory))
+    getFiles = do
+      files <- liftIO $ do
+        currentDirectory <- getCurrentDirectory
+        putStrLn $ "Listing files in directory " ++ currentDirectory
+        (listDirectory(currentDirectory))
+      let files' = DL.sort files
+      return files' 
 
     downloadFile :: String -> APIHandler File
     downloadFile name = do
