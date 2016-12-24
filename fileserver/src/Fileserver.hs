@@ -35,18 +35,18 @@ startServer port = do
   putStrLn "Changing current directory..."
   setCurrentDirectory ("files" ++ show port ++ "/")
   putStrLn "Starting app..."
-  run port app
+  run port $ app port
 
-app :: Application
-app = serve api server
+app :: Int -> Application
+app port = serve api $ server port
 
 api :: Proxy FileServerAPI
 api = Proxy
 
-server :: Server FileServerAPI
-server = uploadFile
-    :<|> getFiles
-		:<|> downloadFile
+server :: Int -> Server FileServerAPI
+server port = uploadFile
+         :<|> getFiles
+		     :<|> downloadFile
     :<|> getModifyTime
 
 	where

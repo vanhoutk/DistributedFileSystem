@@ -15,6 +15,7 @@ Student Number: 12301975
 2. Primary Client Application
 
 - ~~Controls all of the API Calls~~
+- Switch to using the directory server to look for files
 
 3. Caching (Client side to start)
 
@@ -26,21 +27,26 @@ Student Number: 12301975
 - ~~Figure out invalidation of files~~
 - Make the cache module less hardcoded (localhost and port number)
   * Might make more sense once directory server has been created
+- Possibly switch to using mongoDB for the cache and store file + port of server it's on for checking updates
 
 4. Directory Server
 
-- Switch to using mongoDB
-- Save FileMapping to DB
-- Figure out update logic
-- 
+- ~~Switch to using mongoDB~~
+- ~~Save FileMapping to DB~~
+- ~~Figure out update logic~~
+- Add upload logic for client/server interaction
 
-5. Replication
+5. FileServer
+- Add delete functionality
+- On update/delete send an update to the directory server
 
-6. Security Service
+6. Replication
 
-7. Transactions
+7. Security Service
 
-8. Lock Service
+8. Transactions
+
+9. Lock Service
 
 ## Comments:
 
