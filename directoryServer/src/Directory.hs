@@ -79,7 +79,7 @@ getFileMappingList ports = do
       let fileMapping = (FileMapping fileName serverName (show port))
       print fileMapping
       putStrLn $ "Filename: " ++ fileName ++ " Servername: " ++ serverName
-      withMongoDbConnection $ upsert (select ["filename" =: fileName] "FILE_SERVER_MAPPINGS") $ toBSON fileMapping 
+      withMongoDbConnection $ upsert (select ["fileid" =: fileName, "serverid" =: serverName] "FILE_SERVER_MAPPINGS") $ toBSON fileMapping 
       putStrLn "After withMongoDbConnection"
       return $ (FileMapping fileName serverName (show port)):a
 
@@ -119,7 +119,8 @@ server = searchForFile
           let serverName = "Server2" :: String
           liftIO $ putStrLn $ "Filename: " ++ name ++ " Servername: " ++ serverName
           fileMap <- liftIO $ withMongoDbConnection $ do
-            docs <- find (select ["filename" =: name] "FILE_SERVER_MAPPINGS") >>= drainCursor
+            docs <- find (select ["fileName" =: name] "FILE_SERVER_MAPPINGS") >>= drainCursor
+            liftIO $ print docs
             return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
 
           liftIO $ print fileMap
