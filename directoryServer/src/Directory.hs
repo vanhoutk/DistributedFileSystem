@@ -153,6 +153,7 @@ server = searchForFile
 -- | File Server
 
 uploadFile :: File -> SC.ClientM ResponseData
+deleteFile :: String -> SC.ClientM ResponseData
 getFiles :: SC.ClientM [String]
 downloadFile :: String -> SC.ClientM File
 getModifyTime :: String -> SC.ClientM UTCTime
@@ -160,7 +161,7 @@ getModifyTime :: String -> SC.ClientM UTCTime
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
 
-uploadFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = SC.client fileserverApi
+uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = SC.client fileserverApi
 
 getFilesQuery :: SC.ClientM([String])
 getFilesQuery = do

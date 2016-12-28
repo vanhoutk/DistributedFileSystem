@@ -23,8 +23,11 @@ library
                      , commonAPIs
                      , directory
                      , hslogger
+                     , http-client
                      , mongoDB
                      , resourcet
+                     , servant
+                     , servant-client
                      , servant-server
                      , text
                      , time

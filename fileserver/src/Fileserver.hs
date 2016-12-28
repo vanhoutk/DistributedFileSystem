@@ -21,10 +21,14 @@ import						Data.Aeson.TH
 import qualified	Data.List                    as DL
 import           	Data.Text                    (pack, unpack)
 import            Data.Time
+import            Network.HTTP.Client          (newManager, defaultManagerSettings)
 import 						Network.Wai
 import 						Network.Wai.Handler.Warp
 import 						Servant
+import qualified  Servant.API                  as SC
+import qualified  Servant.Client               as SC  
 import            System.Directory
+
 import						APIs
 
 type APIHandler = ExceptT ServantErr IO
@@ -45,9 +49,10 @@ api = Proxy
 
 server :: Int -> Server FileServerAPI
 server port = uploadFile
+         :<|> deleteFile
          :<|> getFiles
 		     :<|> downloadFile
-    :<|> getModifyTime
+         :<|> getModifyTime
 
 	where
 
@@ -55,7 +60,16 @@ server port = uploadFile
     uploadFile (File name contents) = do
       liftIO $ do
         putStrLn $ "Uploading file: " ++ name
+        updateListQuery "update" port name
         (writeFile name contents)
+      return (ResponseData "Success")
+
+    deleteFile :: String -> APIHandler ResponseData
+    deleteFile name = do
+      --liftIO $ do
+      --  putStrLn $ "Deleting file: " ++ name
+      --  (removeFile name)
+      --liftIO $ updateListQuery "delete" port name
       return (ResponseData "Success")
 
     getFiles :: APIHandler [String]
@@ -79,3 +93,26 @@ server port = uploadFile
       time <- liftIO $ getModificationTime name
       --liftIO $ do putStrLn $ "Modification time of " ++ name ++ ": " ++ show time
       return (time)
+
+-- | Directry Server Stuff
+
+searchForFile :: String -> SC.ClientM Int
+getFileList :: SC.ClientM [String]
+updateList :: String -> Int -> String -> SC.ClientM ResponseData
+
+directoryServerApi :: Proxy DirectoryServerAPI
+directoryServerApi = Proxy
+
+searchForFile :<|> getFileList :<|> updateList = SC.client directoryServerApi
+
+updateListQuery :: String -> Int -> String -> IO()
+updateListQuery updateType port fileName = do
+  manager <- newManager defaultManagerSettings
+  res <- SC.runClientM (updateList updateType port fileName) (SC.ClientEnv manager (SC.BaseUrl SC.Http "localhost" 8080 ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return ()
+    Right (response) -> do
+      print response
+      return ()

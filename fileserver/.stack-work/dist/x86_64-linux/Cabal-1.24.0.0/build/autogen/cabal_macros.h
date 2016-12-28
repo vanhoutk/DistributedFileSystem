@@ -56,6 +56,13 @@
   (major1) == 1 && (major2) <  2 || \
   (major1) == 1 && (major2) == 2 && (minor) <= 10)
 
+/* package http-client-0.4.31.2 */
+#define VERSION_http_client "0.4.31.2"
+#define MIN_VERSION_http_client(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  4 || \
+  (major1) == 0 && (major2) == 4 && (minor) <= 31)
+
 /* package mongoDB-2.1.1.1 */
 #define VERSION_mongoDB "2.1.1.1"
 #define MIN_VERSION_mongoDB(major1,major2,minor) (\
@@ -69,6 +76,20 @@
   (major1) <  1 || \
   (major1) == 1 && (major2) <  1 || \
   (major1) == 1 && (major2) == 1 && (minor) <= 8)
+
+/* package servant-0.9.1.1 */
+#define VERSION_servant "0.9.1.1"
+#define MIN_VERSION_servant(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  9 || \
+  (major1) == 0 && (major2) == 9 && (minor) <= 1)
+
+/* package servant-client-0.9.1.1 */
+#define VERSION_servant_client "0.9.1.1"
+#define MIN_VERSION_servant_client(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  9 || \
+  (major1) == 0 && (major2) == 9 && (minor) <= 1)
 
 /* package servant-server-0.9.1.1 */
 #define VERSION_servant_server "0.9.1.1"
@@ -175,7 +196,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "fileserver-0.1.0.0-8miewRONgngLGNnOw5cGNQ"
+#define CURRENT_COMPONENT_ID "fileserver-0.1.0.0-xEHHOPWr6kLHbGXlCPXID"
 
-#define CURRENT_PACKAGE_KEY "fileserver-0.1.0.0-8miewRONgngLGNnOw5cGNQ"
+#define CURRENT_PACKAGE_KEY "fileserver-0.1.0.0-xEHHOPWr6kLHbGXlCPXID"
 

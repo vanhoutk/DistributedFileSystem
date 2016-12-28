@@ -26,7 +26,7 @@ Student Number: 12301975
 - ~~Clear the temp folder when the client is closed~~
 - ~~Delete the oldest file when the cache is full and a new file is downloaded~~
 - ~~Figure out invalidation of files~~
-- Make the cache module less hardcoded (localhost and port number)
+- ~~Make the cache module less hardcoded (localhost and port number)~~
   * Might make more sense once directory server has been created
 - Possibly switch to using mongoDB for the cache and store file + port of server it's on for checking updates
 
@@ -38,8 +38,8 @@ Student Number: 12301975
 - Add upload logic for client/server interaction
 
 5. FileServer
-- Add delete functionality
-- On update/delete send an update to the directory server
+- ~~Add delete functionality~~
+- ~~On update/delete send an update to the directory server~~
 
 6. Replication
 

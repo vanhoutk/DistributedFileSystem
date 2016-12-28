@@ -28,6 +28,7 @@ import            Cache
 -- | File Server Stuff
 
 uploadFile :: File -> ClientM ResponseData
+deleteFile :: String -> ClientM ResponseData
 getFiles :: ClientM [String]
 downloadFile :: String -> ClientM File
 getModifyTime :: String -> ClientM UTCTime
@@ -35,7 +36,7 @@ getModifyTime :: String -> ClientM UTCTime
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
 
-uploadFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
+uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
 
 uploadQuery :: String -> String -> ClientM(ResponseData)
 uploadQuery fileName fileContents = do

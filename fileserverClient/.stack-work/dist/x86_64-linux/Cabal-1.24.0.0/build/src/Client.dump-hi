@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-28 15:34:29.883098 UTC
+2016-12-28 15:42:06.695117 UTC
 
 interface fileserverClient-0.1.0.0-D0BM3Nsx9VC6H9aW7nEs8X:Client 8001
-  interface hash: 775972f1119a8113559f944b053a0543
-  ABI hash: 6985e8e08e6ffbe3944366c59c570690
+  interface hash: 0d09d9dfd10b8e25c0565973fcad36df
+  ABI hash: 196390a8cf04533db463cf9cb3023468
   export-list hash: 4e83e0907d898144051cd91577658f97
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: b159a15c55fa7c6870cb2eb79bbae5a5
@@ -159,12 +159,12 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 24b19ef74cea78e4c18332bed9f0491d
-import  -/  Cache ac76772f20bc66d9a93ebc8a835500f9
-  exports: 5a6472a473611cd13a0959a8bacf8bf8
-  clearCache a3beeaac5c64db3057ef39e3bb51dc9a
-  setupCache e7aa2ded25dc4f58fdfa2c18606b65c0
-import  -/  ClientAPI 6de9ab341458c8fe366f421351828e7b
-  exports: f9b27fdc23ef6d33db174d5d9660ec08
+import  -/  Cache 0ccb556f2eaea57738d097e499056f54
+  exports: ae1c228a7ff684dd246807178f17e070
+  clearCache 66609a723f9bf8796aa65c8c1dc6371e
+  setupCache f40674614740e10051f00121400394e0
+import  -/  ClientAPI 7b55534a890551aa1e6935c220105a5a
+  exports: 717c78b9acf01fee0cb0bbca1d8ef43a
   runQuery 6f227699ebd680ec84e801ccac543acd
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 bb7f8950c3f02bdea8eb0f42bd0885a6
@@ -297,12 +297,12 @@ ef881def5b6ea5bd652e0047d9f8aacc
   processUpload5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "Please enter the name of the file to upload"#) -}
-076b2a08a512a5701e2be747ea1f9aa4
+36dfba3f3041852ba04acaebf6b38db2
   startClient :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Client.startClient1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-0616b24af525a0e947883f051ba1de7f
+9cd6d41802cb92d959c4906a69a0e74b
   startClient1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)

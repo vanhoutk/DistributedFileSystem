@@ -28,9 +28,10 @@ data ResponseData = ResponseData { response :: String
 -- Could allow files to be moved
 -- Could allow files to be deleted
 -- Could allow directories to be created
-type FileServerAPI = "upload"   :> ReqBody '[JSON] File  :> Post '[JSON] ResponseData
-                :<|> "download" :> Get '[JSON] [String]
-                :<|> "download" :> Capture "name" String :> Get '[JSON] File
+type FileServerAPI = "upload"     :> ReqBody '[JSON] File  :> Post '[JSON] ResponseData
+                :<|> "delete"     :> Capture "name" String :> Get '[JSON] ResponseData
+                :<|> "download"   :> Get '[JSON] [String]
+                :<|> "download"   :> Capture "name" String :> Get '[JSON] File
                 :<|> "modifyTime" :> Capture "name" String :> Get '[JSON] UTCTime
 
 data FileMapping = FileMapping { fileName :: String

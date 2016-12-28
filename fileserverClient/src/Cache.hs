@@ -145,6 +145,7 @@ listCache path = do
 -- TODO: Make this more modular and less hardcoded (w.r.t. port number and localhost)
 
 uploadFile :: File -> ClientM ResponseData
+deleteFile :: String -> ClientM ResponseData
 getFiles :: ClientM [String]
 downloadFile :: String -> ClientM File
 getModifyTime :: String -> ClientM UTCTime
@@ -152,7 +153,7 @@ getModifyTime :: String -> ClientM UTCTime
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
 
-uploadFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
+uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
 
 downloadQuery :: String -> ClientM(File)
 downloadQuery fileName = do
