@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-28 15:28:46.004139 UTC
+2016-12-28 15:34:29.883098 UTC
 
 interface fileserverClient-0.1.0.0-D0BM3Nsx9VC6H9aW7nEs8X:Client 8001
-  interface hash: 609e9557dc5356bf58863edc4fed4429
+  interface hash: 775972f1119a8113559f944b053a0543
   ABI hash: 6985e8e08e6ffbe3944366c59c570690
   export-list hash: 4e83e0907d898144051cd91577658f97
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -159,8 +159,8 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 24b19ef74cea78e4c18332bed9f0491d
-import  -/  Cache c3b0df593c979f2e2e7ea8d5f50e03c8
-  exports: 30d419ab6fc8b3a68de74e8fb54e5e6a
+import  -/  Cache ac76772f20bc66d9a93ebc8a835500f9
+  exports: 5a6472a473611cd13a0959a8bacf8bf8
   clearCache a3beeaac5c64db3057ef39e3bb51dc9a
   setupCache e7aa2ded25dc4f58fdfa2c18606b65c0
 import  -/  ClientAPI 6de9ab341458c8fe366f421351828e7b

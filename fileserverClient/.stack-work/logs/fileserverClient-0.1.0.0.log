@@ -1,6 +1,7 @@
 Preprocessing library fileserverClient-0.1.0.0...
+[1 of 3] Compiling Cache            ( src/Cache.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Cache.o )
 [2 of 3] Compiling ClientAPI        ( src/ClientAPI.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/ClientAPI.o )
-[3 of 3] Compiling Client           ( src/Client.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Client.o ) [ClientAPI changed]
+[3 of 3] Compiling Client           ( src/Client.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Client.o ) [Cache changed]
 
 src/Client.hs:11:1: warning: [-Wtabs]
     Tab character found here, and in 41 further locations.

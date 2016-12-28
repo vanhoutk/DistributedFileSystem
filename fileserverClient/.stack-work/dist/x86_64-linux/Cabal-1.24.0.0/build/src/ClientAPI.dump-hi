@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-28 15:28:45.8129 UTC
+2016-12-28 15:34:29.707847 UTC
 
 interface fileserverClient-0.1.0.0-D0BM3Nsx9VC6H9aW7nEs8X:ClientAPI 8001
-  interface hash: 8a2d42fb84461a65fd85d607716a0feb
+  interface hash: 41c77f384c0bcd07103b92eda126df43
   ABI hash: 6de9ab341458c8fe366f421351828e7b
   export-list hash: f9b27fdc23ef6d33db174d5d9660ec08
   orphan hash: 9d9cff27d8c727ddbed1355cd7560b41
@@ -164,8 +164,8 @@ import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM:APIs c82f112df80da17d590b9c993ec631e9
 import  -/  directory-1.2.7.1@directory-1.2.7.1-6xbYYKdoE266LLlc7GOex4:System.Directory 970e76f5d7f7d1c2bb4871bad753c6c1
-import  -/  Cache c3b0df593c979f2e2e7ea8d5f50e03c8
-  exports: 30d419ab6fc8b3a68de74e8fb54e5e6a
+import  -/  Cache ac76772f20bc66d9a93ebc8a835500f9
+  exports: 5a6472a473611cd13a0959a8bacf8bf8
   getFileFromCache ff52d97812b4a0351742b50b181f7edf
   storeNewFileInCache 000e4960f03f4e546127cca4ab08e756
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c

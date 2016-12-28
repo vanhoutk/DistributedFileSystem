@@ -200,7 +200,7 @@ searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
 searchForFileQuery :: String -> IO (Maybe Int)
 searchForFileQuery fileName = do
   manager <- newManager defaultManagerSettings
-  res <- runClientM (searchForFile fileName) (ClientEnv manager (BaseUrl Http "localhost" 8081 ""))
+  res <- runClientM (searchForFile fileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
