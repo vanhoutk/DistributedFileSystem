@@ -67,7 +67,7 @@ runQuery queryType fileName fileContents = do
           print upload_file
     "listfiles" -> do
       putStrLn $ "Getting list of files in directory..."
-      res <- runClientM getFilesQuery (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+      res <- runClientM getFileListQuery (ClientEnv manager (BaseUrl Http "localhost" 8081 ""))
       case res of
         Left err -> putStrLn $ "Error: " ++ show err
         Right (get_files) -> do
@@ -78,15 +78,49 @@ runQuery queryType fileName fileContents = do
       case isCached of
         False -> do
           putStrLn $ "Attempting to download file from server: " ++ fileName
-          res <- runClientM (downloadQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
-          case res of
-            Left err -> putStrLn $ "Error: " ++ show err
-            Right (download_file) -> do
-              storeNewFileInCache download_file
-              print download_file
+          serverPort <- searchForFileQuery fileName
+          case serverPort of
+            Nothing -> do
+              putStrLn "Unable to find file on directory server"
+              return ()
+            Just serverPort' -> do
+              res <- runClientM (downloadQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" serverPort' ""))
+              case res of
+                Left err -> putStrLn $ "Error: " ++ show err
+                Right (download_file) -> do
+                  storeNewFileInCache download_file
+                  print download_file
         True -> do
           putStrLn $ "Retrieving file from cache..."
           download_file <- getFileFromCache fileName
           print download_file
     _ -> do
       putStrLn "Invalid Command."
+
+-- | Directry Server Stuff
+
+searchForFile :: String -> ClientM Int
+getFileList :: ClientM [String]
+updateList :: String -> Int -> String -> ClientM ResponseData
+
+directoryServerApi :: Proxy DirectoryServerAPI
+directoryServerApi = Proxy
+
+searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
+
+searchForFileQuery :: String -> IO (Maybe Int)
+searchForFileQuery fileName = do
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (searchForFile fileName) (ClientEnv manager (BaseUrl Http "localhost" 8081 ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return Nothing
+    Right (server_port) -> do
+      return (Just server_port)
+
+getFileListQuery :: ClientM [String]
+getFileListQuery = do
+  fileList <- getFileList
+  return fileList
+

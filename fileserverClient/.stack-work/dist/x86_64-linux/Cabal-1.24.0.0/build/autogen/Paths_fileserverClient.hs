@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/home/protoman/Documents/CS4532/DFS/fileserverClient/.stack-work/install/x86_64-linux/lts-7.13/8.0.1/bin"
-libdir     = "/home/protoman/Documents/CS4532/DFS/fileserverClient/.stack-work/install/x86_64-linux/lts-7.13/8.0.1/lib/x86_64-linux-ghc-8.0.1/fileserverClient-0.1.0.0-FEhXdnCxLoFJf5C7AREYok"
+libdir     = "/home/protoman/Documents/CS4532/DFS/fileserverClient/.stack-work/install/x86_64-linux/lts-7.13/8.0.1/lib/x86_64-linux-ghc-8.0.1/fileserverClient-0.1.0.0-D0BM3Nsx9VC6H9aW7nEs8X"
 datadir    = "/home/protoman/Documents/CS4532/DFS/fileserverClient/.stack-work/install/x86_64-linux/lts-7.13/8.0.1/share/x86_64-linux-ghc-8.0.1/fileserverClient-0.1.0.0"
 libexecdir = "/home/protoman/Documents/CS4532/DFS/fileserverClient/.stack-work/install/x86_64-linux/lts-7.13/8.0.1/libexec"
 sysconfdir = "/home/protoman/Documents/CS4532/DFS/fileserverClient/.stack-work/install/x86_64-linux/lts-7.13/8.0.1/etc"

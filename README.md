@@ -15,7 +15,8 @@ Student Number: 12301975
 2. Primary Client Application
 
 - ~~Controls all of the API Calls~~
-- Switch to using the directory server to look for files
+- ~~Switch to using the directory server to look for files~~
+- Figure out how to decide which fileserver to upload to
 
 3. Caching (Client side to start)
 

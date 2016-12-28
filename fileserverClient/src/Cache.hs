@@ -56,68 +56,29 @@ checkForUpdate delay = do
 checkFileForUpdate :: String -> IO()
 checkFileForUpdate fileName = do
   localFileTime <- getAccessTime fileName -- Note: This is getAccessTime as opposed to getModificationTime, while the fileserver uses getModificationTime
-  remoteFileTime <- fileModifyTimeQuery fileName
-  case remoteFileTime of
+  serverPort <- searchForFileQuery fileName
+  case serverPort of
     Nothing -> do
-      putStrLn "Remote file does not exist"
+      putStrLn "Couldn't find file in Directory Server."
       return ()
-    Just time -> do
-      if(time >= localFileTime) then do
-        putStrLn "Changes made to remote file..."
-        file <- downloadFileQuery fileName
-        case file of
-          Nothing -> return()
-          Just file' -> do
-            storeNewFileInCache file'
+    Just serverPort' -> do
+      remoteFileTime <- fileModifyTimeQuery serverPort' fileName
+      case remoteFileTime of
+        Nothing -> do
+          putStrLn "Remote file does not exist"
+          return ()
+        Just time -> do
+          if(time >= localFileTime) then do
+            putStrLn "Changes made to remote file..."
+            file <- downloadFileQuery serverPort' fileName
+            case file of
+              Nothing -> return()
+              Just file' -> do
+                storeNewFileInCache file'
+                return()
+          else do
+            putStrLn "No changes made to remote file..."
             return()
-      else do
-        putStrLn "No changes made to remote file..."
-        return()
-
--- | File server bits
--- TODO: Make this more modular and less hardcoded (w.r.t. port number and localhost)
-
-uploadFile :: File -> ClientM ResponseData
-getFiles :: ClientM [String]
-downloadFile :: String -> ClientM File
-getModifyTime :: String -> ClientM UTCTime
-
-fileserverApi :: Proxy FileServerAPI
-fileserverApi = Proxy
-
-uploadFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
-
-downloadQuery :: String -> ClientM(File)
-downloadQuery fileName = do
-  download_file <- downloadFile (fileName)
-  return (download_file)
-
-downloadFileQuery :: String -> IO (Maybe File)
-downloadFileQuery fileName = do
-  manager <- newManager defaultManagerSettings
-  res <- runClientM (downloadQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
-  case res of
-    Left err -> do
-      putStrLn $ "Error: " ++ show err
-      return Nothing
-    Right (download_file) -> do
-      return (Just download_file)
-
-modifyTimeQuery :: String -> ClientM(UTCTime)
-modifyTimeQuery fileName = do
-  fileModTime <- getModifyTime (fileName)
-  return (fileModTime)
-
-fileModifyTimeQuery :: String -> IO (Maybe UTCTime)
-fileModifyTimeQuery fileName = do
-  manager <- newManager defaultManagerSettings
-  res <- runClientM (modifyTimeQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
-  case res of
-    Left err -> do
-      putStrLn $ "Error: " ++ show err
-      return Nothing
-    Right (fileModTime) -> do
-      return (Just fileModTime)
 
 -- | Cache stuff
 
@@ -179,3 +140,70 @@ listCache path = do
       isdir <- doesFileExist p 
       if isdir then  return $ (sz, act, p):a 
         else  return a
+
+-- | File server bits
+-- TODO: Make this more modular and less hardcoded (w.r.t. port number and localhost)
+
+uploadFile :: File -> ClientM ResponseData
+getFiles :: ClientM [String]
+downloadFile :: String -> ClientM File
+getModifyTime :: String -> ClientM UTCTime
+
+fileserverApi :: Proxy FileServerAPI
+fileserverApi = Proxy
+
+uploadFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
+
+downloadQuery :: String -> ClientM(File)
+downloadQuery fileName = do
+  download_file <- downloadFile (fileName)
+  return (download_file)
+
+downloadFileQuery :: Int -> String -> IO (Maybe File)
+downloadFileQuery port fileName = do
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (downloadQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return Nothing
+    Right (download_file) -> do
+      return (Just download_file)
+
+modifyTimeQuery :: String -> ClientM(UTCTime)
+modifyTimeQuery fileName = do
+  fileModTime <- getModifyTime (fileName)
+  return (fileModTime)
+
+fileModifyTimeQuery :: Int -> String -> IO (Maybe UTCTime)
+fileModifyTimeQuery port fileName = do
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (modifyTimeQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return Nothing
+    Right (fileModTime) -> do
+      return (Just fileModTime)
+
+-- | Directry Server Stuff
+
+searchForFile :: String -> ClientM Int
+getFileList :: ClientM [String]
+updateList :: String -> Int -> String -> ClientM ResponseData
+
+directoryServerApi :: Proxy DirectoryServerAPI
+directoryServerApi = Proxy
+
+searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
+
+searchForFileQuery :: String -> IO (Maybe Int)
+searchForFileQuery fileName = do
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (searchForFile fileName) (ClientEnv manager (BaseUrl Http "localhost" 8081 ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return Nothing
+    Right (server_port) -> do
+      return (Just server_port)
