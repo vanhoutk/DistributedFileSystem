@@ -36,6 +36,7 @@ Student Number: 12301975
   - ~~Save FileMapping to DB~~
   - ~~Figure out update logic~~
   - Add upload logic for client/server interaction
+  - Move the Directory Server port to the common APIs folder
 
 5. FileServer
   - ~~Add delete functionality~~
@@ -44,6 +45,8 @@ Student Number: 12301975
 6. Replication
 
 7. Security Service
+
+  - Authentication Server
 
 8. Transactions
 
