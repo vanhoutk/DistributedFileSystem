@@ -13,6 +13,7 @@ module AS
     ( startAuthentication
     ) where
 
+import            Control.Monad
 import            Control.Monad.IO.Class
 import            Control.Monad.Trans.Except
 import            Control.Monad.Trans.Resource
@@ -31,6 +32,7 @@ import            Servant
 import qualified  Servant.API                   as SC
 import qualified  Servant.Client                as SC
 import            System.Directory
+import            System.Random
 import            APIs
 import            MongoFunctions
 
@@ -52,7 +54,7 @@ server = loginUser
 
   where
 
-    loginUser :: LoginRequest -> APIHandler ResponseData
+    loginUser :: LoginRequest -> APIHandler AuthToken
     loginUser (LoginRequest userName encMessage) = do
       userAccount <- liftIO $ withMongoDbConnection $ do
         userAccount' <- find (select ["username" =: userName] "USER_ACCOUNTS") >>= drainCursor
@@ -60,14 +62,22 @@ server = loginUser
 
       liftIO $ print userAccount
       case (length userAccount) of
-        0 -> return (ResponseData "Username not found")
+        0 -> return (AuthToken "Failed" "Username not found")
         _ -> do
           let (AccountData _ password) = head userAccount
           let decMessage = encryptDecrypt password encMessage
           if (decMessage == userName) then do
-            return (ResponseData "Success")
+            sessionKey <- liftIO $ generateRandomString
+            let encSessionKey = encryptDecrypt password sessionKey
+            let ticket = encryptDecrypt sharedServerSecret sessionKey
+            let encTicket = encryptDecrypt password sessionKey
+            return (AuthToken encTicket encSessionKey)
           else do
-            return (ResponseData "Encryption Failure")
+            return (AuthToken "Failed" "Encryption failed")
+
+      where
+        generateRandomString :: IO String
+        generateRandomString = liftM (take 10 . randomRs ('a','z')) newStdGen
 
     addNewUser :: String -> String -> APIHandler ResponseData
     addNewUser username password = do

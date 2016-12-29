@@ -23,6 +23,7 @@ library
                      , directory
                      , http-client
                      , mongoDB
+                     , random
                      , resourcet
                      , servant
                      , servant-client

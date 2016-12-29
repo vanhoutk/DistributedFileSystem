@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/home/protoman/Documents/CS4532/DFS/authenticationServer/.stack-work/install/x86_64-linux/lts-7.14/8.0.1/bin"
-libdir     = "/home/protoman/Documents/CS4532/DFS/authenticationServer/.stack-work/install/x86_64-linux/lts-7.14/8.0.1/lib/x86_64-linux-ghc-8.0.1/authenticationServer-0.1.0.0-82QdDWbSJ2892qT53d1Rzo"
+libdir     = "/home/protoman/Documents/CS4532/DFS/authenticationServer/.stack-work/install/x86_64-linux/lts-7.14/8.0.1/lib/x86_64-linux-ghc-8.0.1/authenticationServer-0.1.0.0-HAZsg9CEbgBLZToVyxuvOd"
 datadir    = "/home/protoman/Documents/CS4532/DFS/authenticationServer/.stack-work/install/x86_64-linux/lts-7.14/8.0.1/share/x86_64-linux-ghc-8.0.1/authenticationServer-0.1.0.0"
 libexecdir = "/home/protoman/Documents/CS4532/DFS/authenticationServer/.stack-work/install/x86_64-linux/lts-7.14/8.0.1/libexec"
 sysconfdir = "/home/protoman/Documents/CS4532/DFS/authenticationServer/.stack-work/install/x86_64-linux/lts-7.14/8.0.1/etc"

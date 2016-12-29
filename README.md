@@ -46,7 +46,15 @@ Student Number: 12301975
 
 7. Security Service
 
-  - Authentication Server
+  - ~~Authentication Server~~
+  - Add authentiction to:
+    * Client
+      - Switch order of cache and login in start of client and pass token to cache
+    * Fileserver
+    * Directory Server
+    * Cache
+    * APIs
+      - Figure out how to encrypt the [String] and UTCTime responses.
 
 8. Transactions
 

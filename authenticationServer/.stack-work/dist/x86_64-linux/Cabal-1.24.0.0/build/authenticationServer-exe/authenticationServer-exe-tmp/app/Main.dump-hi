@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-28 21:40:11.093774 UTC
+2016-12-28 22:46:06.35799 UTC
 
 interface main@main:Main 8001
-  interface hash: 4298ed38d99b8d24916cb18a0446da5f
-  ABI hash: 26eaddb6490741f8985442376eae6332
-  export-list hash: 3f25e388fc192a9219d305020b562166
+  interface hash: 545f424cc127a8a669eeb8852b9422e0
+  ABI hash: 4ade12faa0d6428b3c93325d6859a2cf
+  export-list hash: 740d094771858202e25903c09d9f238d
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: f060012934fc647ee3f43009b050259d
   sig of: Nothing
@@ -20,7 +20,7 @@ package dependencies: MonadRandom-0.4.2.3@MonadRandom-0.4.2.3-8TfCm6PGvGYB7omozO
                       array-0.5.1.1@array-0.5.1.1
                       async-2.1.1@async-2.1.1-xFiBzw9xoB8HPZAuxUY2o
                       attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzFS6V3sZR
-                      authenticationServer-0.1.0.0@authenticationServer-0.1.0.0-82QdDWbSJ2892qT53d1Rzo
+                      authenticationServer-0.1.0.0@authenticationServer-0.1.0.0-HAZsg9CEbgBLZToVyxuvOd
                       auto-update-0.1.4@auto-update-0.1.4-GAesfFmqoZzBz6e09kRyzb
                       base-4.9.0.0
                       base-compat-0.9.1@base-compat-0.9.1-tmPpmtbHbvIDjFWbkjGrR
@@ -187,7 +187,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed.Base
                          zlib-0.6.1.2@zlib-0.6.1.2-4CWLN1T27kOJhNvXgy46ZV:Codec.Compression.Zlib.Stream
-import  -/  authenticationServer-0.1.0.0@authenticationServer-0.1.0.0-82QdDWbSJ2892qT53d1Rzo:AS 21d8a2e9d3cc69309c87e09ece314e61
+import  -/  authenticationServer-0.1.0.0@authenticationServer-0.1.0.0-HAZsg9CEbgBLZToVyxuvOd:AS 50a96e74caab0a7fd56fca6d1760803a
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 d6831ef04cb9301b090dfae6f7bb7ec7
@@ -202,12 +202,12 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-733a2ae98c22cf55562349cbe852c4a6
+7d589f34650fc4b9059718b80d0e2099
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 AS.startAuthentication1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-83021a04324226b8aa0d4c2c270fe985
+820a14f7ec3b2a0c91a1baf93ad2f49f
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
