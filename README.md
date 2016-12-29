@@ -89,7 +89,8 @@ Student Number: 12301975
 
   - There are many possible schemes – use you imagination – but be sure to have valid reasons in mind when you finally settle on one or more solutions.
 
-One for the advanced – consider how applications could be provided with support to enable them to usefully share files simultaneously. For example, an event service could let applications know when someone else modifies a file they are modifying – what would this be useful for? A groupware lock service?
+  - One for the advanced – consider how applications could be provided with support to enable them to usefully share files simultaneously. For example, an event service could let applications know when someone else modifies a file they are modifying – what would this be useful for? A groupware lock service?
+  
 ## Comments:
 
 The caching currently uses polling every minute <- Something which should be discussed in the report.
