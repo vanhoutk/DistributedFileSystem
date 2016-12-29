@@ -43,6 +43,7 @@ Student Number: 12301975
   - ~~On update/delete send an update to the directory server~~
 
 6. Replication
+  - TODO: Figure out how this should work
 
 7. Security Service
 
@@ -60,9 +61,10 @@ Student Number: 12301975
       - Figure out how to encrypt the [String], UTCTime and Int responses.
 
 8. Transactions
+  - TODO: Figure out how this should work
 
 9. Lock Service
-
+  - TODO: Figure out how this should work
 ## Comments:
 
 The caching currently uses polling every minute <- Something which should be discussed in the report.
