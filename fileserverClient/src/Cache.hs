@@ -36,33 +36,33 @@ type FileSet = (Int, UTCTime, FilePath)
 maxCacheSize :: Int
 maxCacheSize = 50 -- Size is detemined by number of characters. TODO: Make this bigger
 
-setupCache :: IO()
-setupCache = do
+setupCache :: AuthToken -> IO()
+setupCache token = do
   putStrLn "Initialising client-side cache..."
   createDirectoryIfMissing True ("temp/")
   putStrLn "Changing current directory..."
   setCurrentDirectory ("temp/")
-  forkIO $ checkForUpdate 60
+  forkIO $ checkForUpdate token 60
   return ()
 
-checkForUpdate :: Int -> IO()
-checkForUpdate delay = do
+checkForUpdate :: AuthToken -> Int -> IO()
+checkForUpdate token delay = do
   threadDelay $ delay * 1000000 -- Wait 1 minute
   putStrLn "Checking Cache for invalidations..."
   fileList <- listDirectory "../temp/"
-  mapM_ (checkFileForUpdate) fileList
-  checkForUpdate delay -- Tail recursion
+  mapM_ (checkFileForUpdate token) fileList
+  checkForUpdate token delay -- Tail recursion
 
-checkFileForUpdate :: String -> IO()
-checkFileForUpdate fileName = do
+checkFileForUpdate :: AuthToken -> String -> IO()
+checkFileForUpdate token@(AuthToken decTicket decSessionKey) fileName = do
   localFileTime <- getAccessTime fileName -- Note: This is getAccessTime as opposed to getModificationTime, while the fileserver uses getModificationTime
-  serverPort <- searchForFileQuery fileName
+  serverPort <- searchForFileQuery token fileName
   case serverPort of
     Nothing -> do
       putStrLn "Couldn't find file in Directory Server."
       return ()
     Just serverPort' -> do
-      remoteFileTime <- fileModifyTimeQuery serverPort' fileName
+      remoteFileTime <- fileModifyTimeQuery token serverPort' fileName
       case remoteFileTime of
         Nothing -> do
           putStrLn "Remote file does not exist"
@@ -70,11 +70,15 @@ checkFileForUpdate fileName = do
         Just time -> do
           if(time >= localFileTime) then do
             putStrLn "Changes made to remote file..."
-            file <- downloadFileQuery serverPort' fileName
+            file <- downloadFileQuery token serverPort' fileName
             case file of
               Nothing -> return()
               Just file' -> do
-                storeNewFileInCache file'
+                let (SecureFile (File name contents)) = file'
+                let decName = encryptDecrypt decSessionKey name
+                let decContents = encryptDecrypt decSessionKey contents
+                let decryptedFile = (File decName decContents)
+                storeNewFileInCache decryptedFile
                 return()
           else do
             putStrLn "No changes made to remote file..."
@@ -142,28 +146,28 @@ listCache path = do
         else  return a
 
 -- | File server bits
--- TODO: Make this more modular and less hardcoded (w.r.t. port number and localhost)
 
-uploadFile :: File -> ClientM ResponseData
-deleteFile :: String -> ClientM ResponseData
+uploadFile :: SecureFileUpload -> ClientM SecureResponseData
+deleteFile :: SecureFileName -> ClientM SecureResponseData
 getFiles :: ClientM [String]
-downloadFile :: String -> ClientM File
-getModifyTime :: String -> ClientM UTCTime
+downloadFile :: SecureFileName -> ClientM SecureFile
+getModifyTime :: SecureFileName -> ClientM UTCTime
 
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
 
 uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
 
-downloadQuery :: String -> ClientM(File)
-downloadQuery fileName = do
-  download_file <- downloadFile (fileName)
+downloadQuery :: String -> String -> ClientM(SecureFile)
+downloadQuery ticket fileName = do
+  download_file <- downloadFile (SecureFileName ticket fileName)
   return (download_file)
 
-downloadFileQuery :: Int -> String -> IO (Maybe File)
-downloadFileQuery port fileName = do
+downloadFileQuery :: AuthToken -> Int -> String -> IO (Maybe SecureFile)
+downloadFileQuery token@(AuthToken decTicket decSessionKey) port fileName = do
+  let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (downloadQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
+  res <- runClientM (downloadQuery decTicket encFileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -171,15 +175,16 @@ downloadFileQuery port fileName = do
     Right (download_file) -> do
       return (Just download_file)
 
-modifyTimeQuery :: String -> ClientM(UTCTime)
-modifyTimeQuery fileName = do
-  fileModTime <- getModifyTime (fileName)
+modifyTimeQuery :: String -> String -> ClientM(UTCTime)
+modifyTimeQuery ticket fileName = do
+  fileModTime <- getModifyTime (SecureFileName ticket fileName)
   return (fileModTime)
 
-fileModifyTimeQuery :: Int -> String -> IO (Maybe UTCTime)
-fileModifyTimeQuery port fileName = do
+fileModifyTimeQuery :: AuthToken -> Int -> String -> IO (Maybe UTCTime)
+fileModifyTimeQuery token@(AuthToken decTicket decSessionKey) port fileName = do
+  let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (modifyTimeQuery fileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
+  res <- runClientM (modifyTimeQuery decTicket encFileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -189,7 +194,7 @@ fileModifyTimeQuery port fileName = do
 
 -- | Directry Server Stuff
 
-searchForFile :: String -> ClientM Int
+searchForFile :: SecureFileName -> ClientM Int
 getFileList :: ClientM [String]
 updateList :: String -> Int -> String -> ClientM ResponseData
 
@@ -198,10 +203,16 @@ directoryServerApi = Proxy
 
 searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
 
-searchForFileQuery :: String -> IO (Maybe Int)
-searchForFileQuery fileName = do
+searchQuery :: String -> String -> ClientM Int
+searchQuery ticket fileName = do
+  searchResult <- searchForFile (SecureFileName ticket fileName)
+  return searchResult
+
+searchForFileQuery :: AuthToken -> String -> IO (Maybe Int)
+searchForFileQuery token@(AuthToken decTicket decSessionKey) fileName = do
+  let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (searchForFile fileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+  res <- runClientM (searchQuery decTicket encFileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err

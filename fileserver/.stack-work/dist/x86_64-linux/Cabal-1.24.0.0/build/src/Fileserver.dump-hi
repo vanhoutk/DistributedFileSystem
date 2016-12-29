@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-28 16:54:59.134059 UTC
+2016-12-29 17:57:31.820724 UTC
 
 interface fileserver-0.1.0.0-xEHHOPWr6kLHbGXlCPXID:Fileserver 8001
-  interface hash: b81a991ba128ba15872ab0ef2ddf12d0
-  ABI hash: c3122336147eb7db106315a1706d2dda
-  export-list hash: a6ad71c711514138ec6a2395632833d1
-  orphan hash: defe78d0ec80e32ab6f863e6c62878ff
+  interface hash: a029dfe867380afcc91f074f447a52c4
+  ABI hash: d0db67372261235d4a1b914c969ebd1b
+  export-list hash: 841dc8d2f1c9b13c9d24b5cb036e0fcd
+  orphan hash: f6661c66c19c13aa0530d049f8844ba9
   flag hash: 232b91cb96073461cf6c3dcd6a42e778
   sig of: Nothing
   used TH splices: False
@@ -181,7 +181,7 @@ import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
 import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs 985a220f8207fd2334b23de7fc1d37c2
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs ed70d67281469c3834b45796d98538ca
 import  -/  directory-1.2.6.2@directory-1.2.6.2:System.Directory f7c57c4a392d1767b38addc37d00ceed
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  http-client-0.4.31.2@http-client-0.4.31.2-81NyMkNcWWADaJ0Cq5FYRE:Network.HTTP.Client 8c31602f44dbd2cc18bd07c76bc0453c
@@ -242,23 +242,23 @@ import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.War
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a0 -}
-92c17962faa40d112c6a247565ec22f9
+7e4a06013facbf7108e6993555675eac
   $s$fAllCTRender:a10 ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
-    -> APIs.ResponseData
+    -> APIs.SecureFile
     -> [(Network.HTTP.Media.MediaType.Internal.MediaType,
          Data.ByteString.Lazy.Internal.ByteString)]
-  {- Arity: 2, Strictness: <L,A><L,1*U(1*U)>m2,
+  {- Arity: 2, Strictness: <L,A><L,1*U(1*U(1*U,1*U))>m2,
      Unfolding: InlineRule (2, True, False)
                 (\ (eta :: Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON])
-                   (eta1 :: APIs.ResponseData) ->
+                   (eta1 :: APIs.SecureFile) ->
                  GHC.Types.:
                    @ (Network.HTTP.Media.MediaType.Internal.MediaType,
                       Data.ByteString.Lazy.Internal.ByteString)
                    (Servant.API.ContentTypes.$fAcceptTYPEJSON1,
                     Data.ByteString.Builder.toLazyByteString
                       (Data.Aeson.Encode.Builder.encodeToBuilder
-                         (APIs.$fToJSONResponseData1 eta1)
+                         (APIs.$fToJSONSecureFile1 eta1)
                            `cast`
                          (Data.Aeson.Types.Generic.N:Tagged[0]
                               <Data.Aeson.Types.Generic.True>_P
@@ -266,25 +266,25 @@ import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.War
                    (GHC.Types.[]
                       @ (Network.HTTP.Media.MediaType.Internal.MediaType,
                          Data.ByteString.Lazy.Internal.ByteString))) -}
-16c290fdb12a6d3256cf1d8507c2d2e8
+b9bf0bc5c926401bc6b9d0edd6092fa7
   $s$fAllCTRender:a11 ::
     Servant.API.ContentTypes.MimeRender
-      Servant.API.ContentTypes.JSON APIs.ResponseData
+      Servant.API.ContentTypes.JSON APIs.SecureFile
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa2 -}
-12abd32f352c00913b3cea7a4adbdd3b
+288711051c75467838bae7718b813666
   $s$fAllCTRender:a12 ::
     Servant.API.ContentTypes.AllCTRender
-      '[Servant.API.ContentTypes.JSON] APIs.File
+      '[Servant.API.ContentTypes.JSON] APIs.SecureResponseData
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ '[Servant.API.ContentTypes.JSON]
-                  @ APIs.File
+                  @ APIs.SecureResponseData
                   (Servant.API.ContentTypes.$fAllCTRender:a_$cp1AllCTRender
                      @ Servant.API.ContentTypes.JSON
                      @ '[]
-                     @ APIs.File
+                     @ APIs.SecureResponseData
                      Servant.API.ContentTypes.$fAcceptTYPEJSON_$ccontentType
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:Accept[0]
@@ -296,7 +296,7 @@ import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.War
                   (Servant.API.ContentTypes.$fAllCTRender:a_$chandleAcceptH
                      @ Servant.API.ContentTypes.JSON
                      @ '[]
-                     @ APIs.File
+                     @ APIs.SecureResponseData
                      Servant.API.ContentTypes.$fAcceptTYPEJSON_$ccontentType
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:Accept[0]
@@ -305,30 +305,30 @@ import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.War
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
                      Fileserver.$s$fAllCTRender:a13) -}
-d97909a0a4aa2ebacfe57dc5eb414ce6
+720a1e38e2eb39ff8bea6d04461c7281
   $s$fAllCTRender:a13 ::
     Servant.API.ContentTypes.AllMimeRender
-      '[Servant.API.ContentTypes.JSON] APIs.File
+      '[Servant.API.ContentTypes.JSON] APIs.SecureResponseData
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a3 -}
-a5a173ca9c928b86ae90e14c1caace7f
+8c5f1d43619ef23887f7385957dc18eb
   $s$fAllCTRender:a14 ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
-    -> APIs.File
+    -> APIs.SecureResponseData
     -> [(Network.HTTP.Media.MediaType.Internal.MediaType,
          Data.ByteString.Lazy.Internal.ByteString)]
-  {- Arity: 2, Strictness: <L,A><L,1*U(1*U,1*U)>m2,
+  {- Arity: 2, Strictness: <L,A><L,1*U(1*U)>m2,
      Unfolding: InlineRule (2, True, False)
                 (\ (eta :: Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON])
-                   (eta1 :: APIs.File) ->
+                   (eta1 :: APIs.SecureResponseData) ->
                  GHC.Types.:
                    @ (Network.HTTP.Media.MediaType.Internal.MediaType,
                       Data.ByteString.Lazy.Internal.ByteString)
                    (Servant.API.ContentTypes.$fAcceptTYPEJSON1,
                     Data.ByteString.Builder.toLazyByteString
                       (Data.Aeson.Encode.Builder.encodeToBuilder
-                         (APIs.$fToJSONFile1 eta1)
+                         (APIs.$fToJSONSecureResponseData1 eta1)
                            `cast`
                          (Data.Aeson.Types.Generic.N:Tagged[0]
                               <Data.Aeson.Types.Generic.True>_P
@@ -336,10 +336,10 @@ a5a173ca9c928b86ae90e14c1caace7f
                    (GHC.Types.[]
                       @ (Network.HTTP.Media.MediaType.Internal.MediaType,
                          Data.ByteString.Lazy.Internal.ByteString))) -}
-30163cfa7ffc27b5c0d8a6380661f095
+9f187a3e6893ee44b33890e3573732cb
   $s$fAllCTRender:a15 ::
     Servant.API.ContentTypes.MimeRender
-      Servant.API.ContentTypes.JSON APIs.File
+      Servant.API.ContentTypes.JSON APIs.SecureResponseData
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa3 -}
@@ -429,18 +429,18 @@ ee90f1a91b12e05e910e597528a8bdae
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa1 -}
-c2bcc310125aa11c0121972af2e842e7
+7e6184354899c57ae4a5aacbb88248be
   $s$fAllCTRender:a8 ::
     Servant.API.ContentTypes.AllCTRender
-      '[Servant.API.ContentTypes.JSON] APIs.ResponseData
+      '[Servant.API.ContentTypes.JSON] APIs.SecureFile
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ '[Servant.API.ContentTypes.JSON]
-                  @ APIs.ResponseData
+                  @ APIs.SecureFile
                   (Servant.API.ContentTypes.$fAllCTRender:a_$cp1AllCTRender
                      @ Servant.API.ContentTypes.JSON
                      @ '[]
-                     @ APIs.ResponseData
+                     @ APIs.SecureFile
                      Servant.API.ContentTypes.$fAcceptTYPEJSON_$ccontentType
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:Accept[0]
@@ -452,7 +452,7 @@ c2bcc310125aa11c0121972af2e842e7
                   (Servant.API.ContentTypes.$fAllCTRender:a_$chandleAcceptH
                      @ Servant.API.ContentTypes.JSON
                      @ '[]
-                     @ APIs.ResponseData
+                     @ APIs.SecureFile
                      Servant.API.ContentTypes.$fAcceptTYPEJSON_$ccontentType
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:Accept[0]
@@ -461,10 +461,10 @@ c2bcc310125aa11c0121972af2e842e7
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
                      Fileserver.$s$fAllCTRender:a9) -}
-f952ba428fa272088482918b20c43da1
+c241a12bc96e6073f144d7155273cc91
   $s$fAllCTRender:a9 ::
     Servant.API.ContentTypes.AllMimeRender
-      '[Servant.API.ContentTypes.JSON] APIs.ResponseData
+      '[Servant.API.ContentTypes.JSON] APIs.SecureFile
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a2 -}
@@ -520,30 +520,30 @@ ced24811e19fe8333018620260f4349d
                      @ Data.Time.Clock.UTC.UTCTime
                      Fileserver.$s$fAllCTRender:a7)
                   Fileserver.$s$fAllCTRender:a6 -}
-dad955772e19de5ba66e022782a31400
+c29b50aa1f8aa6a95da41bb6ea11b18f
   $s$fAllCTRender:a_$s$fAllMimeRender:a2 ::
     Servant.API.ContentTypes.AllMimeRender
-      '[Servant.API.ContentTypes.JSON] APIs.ResponseData
+      '[Servant.API.ContentTypes.JSON] APIs.SecureFile
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ '[Servant.API.ContentTypes.JSON]
-                  @ APIs.ResponseData
+                  @ APIs.SecureFile
                   (Servant.API.ContentTypes.$fAllMimeRender:a0_$cp1AllMimeRender
                      @ Servant.API.ContentTypes.JSON
-                     @ APIs.ResponseData
+                     @ APIs.SecureFile
                      Fileserver.$s$fAllCTRender:a11)
                   Fileserver.$s$fAllCTRender:a10 -}
-1311817d856e4febc5818fb3f184a058
+b4973751fe918d936da6c7a9fead77e1
   $s$fAllCTRender:a_$s$fAllMimeRender:a3 ::
     Servant.API.ContentTypes.AllMimeRender
-      '[Servant.API.ContentTypes.JSON] APIs.File
+      '[Servant.API.ContentTypes.JSON] APIs.SecureResponseData
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ '[Servant.API.ContentTypes.JSON]
-                  @ APIs.File
+                  @ APIs.SecureResponseData
                   (Servant.API.ContentTypes.$fAllMimeRender:a0_$cp1AllMimeRender
                      @ Servant.API.ContentTypes.JSON
-                     @ APIs.File
+                     @ APIs.SecureResponseData
                      Fileserver.$s$fAllCTRender:a15)
                   Fileserver.$s$fAllCTRender:a14 -}
 dc8e64080b156967cd1c6f8e513dbef6
@@ -572,31 +572,31 @@ dc8e64080b156967cd1c6f8e513dbef6
                      @ Data.Time.Clock.UTC.UTCTime
                      Data.Aeson.Types.Instances.$fToJSONUTCTime)
                   Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender1 -}
-203fbc6259f1ca12b4fbb1975d745250
+32539ca1d2676574fb62cf77264c9f5f
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa2 ::
     Servant.API.ContentTypes.MimeRender
-      Servant.API.ContentTypes.JSON APIs.ResponseData
+      Servant.API.ContentTypes.JSON APIs.SecureFile
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ *
                   @ Servant.API.ContentTypes.JSON
-                  @ APIs.ResponseData
+                  @ APIs.SecureFile
                   (Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cp1MimeRender
-                     @ APIs.ResponseData
-                     APIs.$fToJSONResponseData)
+                     @ APIs.SecureFile
+                     APIs.$fToJSONSecureFile)
                   Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender2 -}
-5d9edcc0ea093195499b9c4b01b91997
+33df7c0e5290463a65e87c26816a2bb3
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa3 ::
     Servant.API.ContentTypes.MimeRender
-      Servant.API.ContentTypes.JSON APIs.File
+      Servant.API.ContentTypes.JSON APIs.SecureResponseData
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ *
                   @ Servant.API.ContentTypes.JSON
-                  @ APIs.File
+                  @ APIs.SecureResponseData
                   (Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cp1MimeRender
-                     @ APIs.File
-                     APIs.$fToJSONFile)
+                     @ APIs.SecureResponseData
+                     APIs.$fToJSONSecureResponseData)
                   Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender3 -}
 23a66a2649f1c25fde4c8ceee53cff25
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender ::
@@ -672,32 +672,33 @@ dc8e64080b156967cd1c6f8e513dbef6
                  Data.ByteString.Builder.toLazyByteString
                    (Data.Aeson.Types.Internal.fromEncoding
                       (Data.Aeson.Types.Instances.$fToJSONUTCTime_$ctoEncoding eta))) -}
-8f0961e4837df6ce6545d0ba15862ce7
+5c062cc2ab6af71e2fac756287d7e6ad
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender2 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
-    -> APIs.ResponseData -> Data.ByteString.Lazy.Internal.ByteString
+    -> APIs.SecureFile -> Data.ByteString.Lazy.Internal.ByteString
+  {- Arity: 2, Strictness: <L,A><L,1*U(1*U(1*U,1*U))>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds2 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
+                   (eta :: APIs.SecureFile) ->
+                 Data.ByteString.Builder.toLazyByteString
+                   (Data.Aeson.Types.Internal.fromEncoding
+                      (Data.Aeson.Encode.Builder.encodeToBuilder
+                         (APIs.$fToJSONSecureFile_$ctoJSON eta))
+                        `cast`
+                      (Sym (Data.Aeson.Types.Internal.N:Encoding[0])))) -}
+f4bc9c58da2e0c2b2094a2b5ad85b2fc
+  $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender3 ::
+    Data.Proxy.Proxy Servant.API.ContentTypes.JSON
+    -> APIs.SecureResponseData
+    -> Data.ByteString.Lazy.Internal.ByteString
   {- Arity: 2, Strictness: <L,A><L,1*U(1*U)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds2 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
-                   (eta :: APIs.ResponseData) ->
+                   (eta :: APIs.SecureResponseData) ->
                  Data.ByteString.Builder.toLazyByteString
                    (Data.Aeson.Types.Internal.fromEncoding
                       (Data.Aeson.Encode.Builder.encodeToBuilder
-                         (APIs.$fToJSONResponseData_$ctoJSON eta))
-                        `cast`
-                      (Sym (Data.Aeson.Types.Internal.N:Encoding[0])))) -}
-f81e9718fdf04d9ffca807074c685613
-  $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender3 ::
-    Data.Proxy.Proxy Servant.API.ContentTypes.JSON
-    -> APIs.File -> Data.ByteString.Lazy.Internal.ByteString
-  {- Arity: 2, Strictness: <L,A><L,1*U(1*U,1*U)>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (ds2 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
-                   (eta :: APIs.File) ->
-                 Data.ByteString.Builder.toLazyByteString
-                   (Data.Aeson.Types.Internal.fromEncoding
-                      (Data.Aeson.Encode.Builder.encodeToBuilder
-                         (APIs.$fToJSONFile_$ctoJSON eta))
+                         (APIs.$fToJSONSecureResponseData_$ctoJSON eta))
                         `cast`
                       (Sym (Data.Aeson.Types.Internal.N:Encoding[0])))) -}
 e49329970de3445d83b86de8394dfd0b
@@ -741,64 +742,129 @@ e49329970de3445d83b86de8394dfd0b
                   (Data.Aeson.Types.Instances.$fToJSON[]_$ctoEncoding
                      @ [GHC.Types.Char]
                      Data.Aeson.Types.Instances.$fToJSON[]0) -}
-4bb0a2ef41f23c373ff112cecd7407f7
+f229ded6e65b0e5fc40e97e61940acff
   $s$fAllMimeUnrender:a ::
     Servant.API.ContentTypes.AllMimeUnrender
-      '[Servant.API.ContentTypes.JSON] APIs.File
+      '[Servant.API.ContentTypes.JSON] APIs.SecureFileName
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ '[Servant.API.ContentTypes.JSON]
-                  @ APIs.File
+                  @ APIs.SecureFileName
                   (Servant.API.ContentTypes.$fAllMimeUnrender:a_$cp1AllMimeUnrender
                      @ Servant.API.ContentTypes.JSON
-                     @ APIs.File
+                     @ APIs.SecureFileName
                      @ '[]
                      Fileserver.$s$fAllMimeUnrender:a1
-                     (Servant.API.ContentTypes.$fAllMimeUnrender[]a @ APIs.File))
+                     (Servant.API.ContentTypes.$fAllMimeUnrender[]a
+                        @ APIs.SecureFileName))
                   (Servant.API.ContentTypes.$fAllMimeUnrender:a_$callMimeUnrender
                      @ Servant.API.ContentTypes.JSON
-                     @ APIs.File
+                     @ APIs.SecureFileName
                      @ '[]
                      Fileserver.$s$fAllMimeUnrender:a1
-                     (Servant.API.ContentTypes.$fAllMimeUnrender[]a @ APIs.File)) -}
-da436cb03e01c793d18e3adbe0c3a00e
+                     (Servant.API.ContentTypes.$fAllMimeUnrender[]a
+                        @ APIs.SecureFileName)) -}
+a2cb665f0916b68535eee4162456bb3b
   $s$fAllMimeUnrender:a1 ::
     Servant.API.ContentTypes.MimeUnrender
-      Servant.API.ContentTypes.JSON APIs.File
+      Servant.API.ContentTypes.JSON APIs.SecureFileName
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa -}
-6b797ed78a5c0f0e62c544eb0ff623d6
+55cef43a50ed209f71b492164efa0245
+  $s$fAllMimeUnrender:a2 ::
+    Servant.API.ContentTypes.AllMimeUnrender
+      '[Servant.API.ContentTypes.JSON] APIs.SecureFileUpload
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ '[Servant.API.ContentTypes.JSON]
+                  @ APIs.SecureFileUpload
+                  (Servant.API.ContentTypes.$fAllMimeUnrender:a_$cp1AllMimeUnrender
+                     @ Servant.API.ContentTypes.JSON
+                     @ APIs.SecureFileUpload
+                     @ '[]
+                     Fileserver.$s$fAllMimeUnrender:a3
+                     (Servant.API.ContentTypes.$fAllMimeUnrender[]a
+                        @ APIs.SecureFileUpload))
+                  (Servant.API.ContentTypes.$fAllMimeUnrender:a_$callMimeUnrender
+                     @ Servant.API.ContentTypes.JSON
+                     @ APIs.SecureFileUpload
+                     @ '[]
+                     Fileserver.$s$fAllMimeUnrender:a3
+                     (Servant.API.ContentTypes.$fAllMimeUnrender[]a
+                        @ APIs.SecureFileUpload)) -}
+b08d12766d9198682f0660807973875b
+  $s$fAllMimeUnrender:a3 ::
+    Servant.API.ContentTypes.MimeUnrender
+      Servant.API.ContentTypes.JSON APIs.SecureFileUpload
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa1 -}
+475896f7fe8f3f10190c938a9311417b
   $s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa ::
     Servant.API.ContentTypes.MimeUnrender
-      Servant.API.ContentTypes.JSON APIs.File
+      Servant.API.ContentTypes.JSON APIs.SecureFileName
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ *
                   @ Servant.API.ContentTypes.JSON
-                  @ APIs.File
+                  @ APIs.SecureFileName
                   (Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cp1MimeUnrender
-                     @ APIs.File
-                     APIs.$fFromJSONFile_$cparseJSON
+                     @ APIs.SecureFileName
+                     APIs.$fFromJSONSecureFileName_$cparseJSON
                        `cast`
-                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.File>_N)))
+                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
+                               <APIs.SecureFileName>_N)))
                   Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender -}
-d5bbe556a2ebc7a8237374356e7497e7
+fd7893c01e5e39837545359d7be65199
+  $s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa1 ::
+    Servant.API.ContentTypes.MimeUnrender
+      Servant.API.ContentTypes.JSON APIs.SecureFileUpload
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ *
+                  @ Servant.API.ContentTypes.JSON
+                  @ APIs.SecureFileUpload
+                  (Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cp1MimeUnrender
+                     @ APIs.SecureFileUpload
+                     APIs.$fFromJSONSecureFileUpload_$cparseJSON
+                       `cast`
+                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
+                               <APIs.SecureFileUpload>_N)))
+                  Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 -}
+e196456710fe2acb89cf7cebb58c9c1b
   $s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
-    -> Data.Either.Either GHC.Base.String APIs.File
+    -> Data.Either.Either GHC.Base.String APIs.SecureFileName
   {- Arity: 2, Strictness: <L,A><S,1*U>,
      Unfolding: InlineRule (1, True, True)
                 (\ (ds2 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
                    (eta :: Data.ByteString.Lazy.Internal.ByteString) ->
                  Servant.API.ContentTypes.eitherDecodeLenient
-                   @ APIs.File
-                   APIs.$fFromJSONFile_$cparseJSON
+                   @ APIs.SecureFileName
+                   APIs.$fFromJSONSecureFileName_$cparseJSON
                      `cast`
-                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.File>_N))
+                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
+                             <APIs.SecureFileName>_N))
                    eta) -}
-380c427eea82cefe6c92dca1c9ddd6d8
+48bbaf942e36e2610f6f5bc6d30f7318
+  $s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 ::
+    Data.Proxy.Proxy Servant.API.ContentTypes.JSON
+    -> Data.ByteString.Lazy.Internal.ByteString
+    -> Data.Either.Either GHC.Base.String APIs.SecureFileUpload
+  {- Arity: 2, Strictness: <L,A><S,1*U>,
+     Unfolding: InlineRule (1, True, True)
+                (\ (ds2 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
+                   (eta :: Data.ByteString.Lazy.Internal.ByteString) ->
+                 Servant.API.ContentTypes.eitherDecodeLenient
+                   @ APIs.SecureFileUpload
+                   APIs.$fFromJSONSecureFileUpload_$cparseJSON
+                     `cast`
+                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
+                             <APIs.SecureFileUpload>_N))
+                   eta) -}
+8007e57adf0d6465414836f85a1ca26e
   $s$fMimeUnrenderTYPEJSONa7 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.ResponseData
@@ -813,7 +879,7 @@ d5bbe556a2ebc7a8237374356e7497e7
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.ResponseData>_N)))
                   Fileserver.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 -}
-799633cc8faf6d73546c92a8e8328851
+057b293b83683524776c56af77d3cb6f
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -828,7 +894,7 @@ d5bbe556a2ebc7a8237374356e7497e7
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.ResponseData>_N))
                    eta) -}
-2b842d3b0148a24f388461dae89e5adb
+0da415eb5c469f6e2755316885fd74a8
   $sclient2 ::
     Data.Proxy.Proxy
       (Servant.API.Capture.Capture "port" GHC.Types.Int
@@ -900,7 +966,7 @@ d5bbe556a2ebc7a8237374356e7497e7
                                                                   APIs.ResponseData)))
                    w4
                    w5 }) -}
-77f6456118128287bca8559fe1dbfc38
+f76d6000eb3adae7a5ac54ec7381631f
   $sclient3 ::
     Data.Proxy.Proxy
       (Servant.API.Capture.Capture "name" [GHC.Types.Char]
@@ -958,7 +1024,7 @@ d5bbe556a2ebc7a8237374356e7497e7
                                               APIs.ResponseData))
                    w4
                    w5 }) -}
-7bc0d4c7fb3b4fe9cffaa78b7744bebf
+e06666499b741caae0694571653b36a0
   $sclient4 ::
     Data.Proxy.Proxy
       (Servant.API.Verbs.Verb
@@ -1028,37 +1094,38 @@ d5bbe556a2ebc7a8237374356e7497e7
                    @ '[Servant.API.ContentTypes.JSON]
                    @ '[Servant.API.ContentTypes.JSON]
                    @~ <'[Servant.API.ContentTypes.JSON]>_N) -}
-d0fd3e56393919327124a769bc6671bf
+d250cfd9efe54c42100f3cd815bc62cf
   $sserve2 ::
     Data.Proxy.Proxy
       (("upload"
         Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
-                              '[Servant.API.ContentTypes.JSON] APIs.File
+                              '[Servant.API.ContentTypes.JSON] APIs.SecureFileUpload
                             Servant.API.Sub.:> Servant.API.Verbs.Post
                                                  '[Servant.API.ContentTypes.JSON]
-                                                 APIs.ResponseData))
+                                                 APIs.SecureResponseData))
        Servant.API.Alternative.:<|> (("delete"
-                                      Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                            "name" GHC.Base.String
-                                                          Servant.API.Sub.:> Servant.API.Verbs.Get
+                                      Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                            '[Servant.API.ContentTypes.JSON]
+                                                            APIs.SecureFileName
+                                                          Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                '[Servant.API.ContentTypes.JSON]
-                                                                               APIs.ResponseData))
+                                                                               APIs.SecureResponseData))
                                      Servant.API.Alternative.:<|> (("download"
                                                                     Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                          '[Servant.API.ContentTypes.JSON]
                                                                                          [GHC.Base.String])
                                                                    Servant.API.Alternative.:<|> (("download"
-                                                                                                  Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                        "name"
-                                                                                                                        GHC.Base.String
-                                                                                                                      Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                  Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                        '[Servant.API.ContentTypes.JSON]
+                                                                                                                        APIs.SecureFileName
+                                                                                                                      Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                            '[Servant.API.ContentTypes.JSON]
-                                                                                                                                           APIs.File))
+                                                                                                                                           APIs.SecureFile))
                                                                                                  Servant.API.Alternative.:<|> ("modifyTime"
-                                                                                                                               Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                                     "name"
-                                                                                                                                                     GHC.Base.String
-                                                                                                                                                   Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                               Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                                     '[Servant.API.ContentTypes.JSON]
+                                                                                                                                                     APIs.SecureFileName
+                                                                                                                                                   Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                         '[Servant.API.ContentTypes.JSON]
                                                                                                                                                                         Data.Time.Clock.UTC.UTCTime))))))
     -> Servant.Server.Internal.Context.Context '[]
@@ -1067,32 +1134,33 @@ d0fd3e56393919327124a769bc6671bf
          (Servant.Server.Internal.Server
             (("upload"
               Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
-                                    '[Servant.API.ContentTypes.JSON] APIs.File
+                                    '[Servant.API.ContentTypes.JSON] APIs.SecureFileUpload
                                   Servant.API.Sub.:> Servant.API.Verbs.Post
                                                        '[Servant.API.ContentTypes.JSON]
-                                                       APIs.ResponseData))
+                                                       APIs.SecureResponseData))
              Servant.API.Alternative.:<|> (("delete"
-                                            Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                  "name" GHC.Base.String
-                                                                Servant.API.Sub.:> Servant.API.Verbs.Get
+                                            Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                  '[Servant.API.ContentTypes.JSON]
+                                                                  APIs.SecureFileName
+                                                                Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                      '[Servant.API.ContentTypes.JSON]
-                                                                                     APIs.ResponseData))
+                                                                                     APIs.SecureResponseData))
                                            Servant.API.Alternative.:<|> (("download"
                                                                           Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                                '[Servant.API.ContentTypes.JSON]
                                                                                                [GHC.Base.String])
                                                                          Servant.API.Alternative.:<|> (("download"
-                                                                                                        Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                              "name"
-                                                                                                                              GHC.Base.String
-                                                                                                                            Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                        Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                              '[Servant.API.ContentTypes.JSON]
+                                                                                                                              APIs.SecureFileName
+                                                                                                                            Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                  '[Servant.API.ContentTypes.JSON]
-                                                                                                                                                 APIs.File))
+                                                                                                                                                 APIs.SecureFile))
                                                                                                        Servant.API.Alternative.:<|> ("modifyTime"
-                                                                                                                                     Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                                           "name"
-                                                                                                                                                           GHC.Base.String
-                                                                                                                                                         Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                                     Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                                           '[Servant.API.ContentTypes.JSON]
+                                                                                                                                                           APIs.SecureFileName
+                                                                                                                                                         Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                               '[Servant.API.ContentTypes.JSON]
                                                                                                                                                                               Data.Time.Clock.UTC.UTCTime)))))))
     -> Servant.Server.Internal.Router.Router'
@@ -1103,33 +1171,34 @@ d0fd3e56393919327124a769bc6671bf
                    (w :: Data.Proxy.Proxy
                            (("upload"
                              Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
-                                                   '[Servant.API.ContentTypes.JSON] APIs.File
+                                                   '[Servant.API.ContentTypes.JSON]
+                                                   APIs.SecureFileUpload
                                                  Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                       '[Servant.API.ContentTypes.JSON]
-                                                                      APIs.ResponseData))
+                                                                      APIs.SecureResponseData))
                             Servant.API.Alternative.:<|> (("delete"
-                                                           Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                 "name"
-                                                                                 GHC.Base.String
-                                                                               Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                           Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                 '[Servant.API.ContentTypes.JSON]
+                                                                                 APIs.SecureFileName
+                                                                               Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                     '[Servant.API.ContentTypes.JSON]
-                                                                                                    APIs.ResponseData))
+                                                                                                    APIs.SecureResponseData))
                                                           Servant.API.Alternative.:<|> (("download"
                                                                                          Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                                               '[Servant.API.ContentTypes.JSON]
                                                                                                               [GHC.Base.String])
                                                                                         Servant.API.Alternative.:<|> (("download"
-                                                                                                                       Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                             "name"
-                                                                                                                                             GHC.Base.String
-                                                                                                                                           Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                       Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                             '[Servant.API.ContentTypes.JSON]
+                                                                                                                                             APIs.SecureFileName
+                                                                                                                                           Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                 '[Servant.API.ContentTypes.JSON]
-                                                                                                                                                                APIs.File))
+                                                                                                                                                                APIs.SecureFile))
                                                                                                                       Servant.API.Alternative.:<|> ("modifyTime"
-                                                                                                                                                    Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                                                          "name"
-                                                                                                                                                                          GHC.Base.String
-                                                                                                                                                                        Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                                                    Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                                                          '[Servant.API.ContentTypes.JSON]
+                                                                                                                                                                          APIs.SecureFileName
+                                                                                                                                                                        Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                                              '[Servant.API.ContentTypes.JSON]
                                                                                                                                                                                              Data.Time.Clock.UTC.UTCTime)))))))
                    (w1 :: Servant.Server.Internal.Context.Context '[])
@@ -1138,33 +1207,34 @@ d0fd3e56393919327124a769bc6671bf
                             (Servant.Server.Internal.Server
                                (("upload"
                                  Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
-                                                       '[Servant.API.ContentTypes.JSON] APIs.File
+                                                       '[Servant.API.ContentTypes.JSON]
+                                                       APIs.SecureFileUpload
                                                      Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                           '[Servant.API.ContentTypes.JSON]
-                                                                          APIs.ResponseData))
+                                                                          APIs.SecureResponseData))
                                 Servant.API.Alternative.:<|> (("delete"
-                                                               Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                     "name"
-                                                                                     GHC.Base.String
-                                                                                   Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                               Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                     '[Servant.API.ContentTypes.JSON]
+                                                                                     APIs.SecureFileName
+                                                                                   Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                         '[Servant.API.ContentTypes.JSON]
-                                                                                                        APIs.ResponseData))
+                                                                                                        APIs.SecureResponseData))
                                                               Servant.API.Alternative.:<|> (("download"
                                                                                              Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                                                   '[Servant.API.ContentTypes.JSON]
                                                                                                                   [GHC.Base.String])
                                                                                             Servant.API.Alternative.:<|> (("download"
-                                                                                                                           Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                                 "name"
-                                                                                                                                                 GHC.Base.String
-                                                                                                                                               Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                           Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                                 '[Servant.API.ContentTypes.JSON]
+                                                                                                                                                 APIs.SecureFileName
+                                                                                                                                               Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                     '[Servant.API.ContentTypes.JSON]
-                                                                                                                                                                    APIs.File))
+                                                                                                                                                                    APIs.SecureFile))
                                                                                                                           Servant.API.Alternative.:<|> ("modifyTime"
-                                                                                                                                                        Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                                                              "name"
-                                                                                                                                                                              GHC.Base.String
-                                                                                                                                                                            Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                                                        Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                                                              '[Servant.API.ContentTypes.JSON]
+                                                                                                                                                                              APIs.SecureFileName
+                                                                                                                                                                            Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                                                  '[Servant.API.ContentTypes.JSON]
                                                                                                                                                                                                  Data.Time.Clock.UTC.UTCTime)))))))) ->
                  case w of w3 { Data.Proxy.Proxy ->
@@ -1174,32 +1244,34 @@ d0fd3e56393919327124a769bc6671bf
                       @ *
                       @ (("upload"
                           Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
-                                                '[Servant.API.ContentTypes.JSON] APIs.File
+                                                '[Servant.API.ContentTypes.JSON]
+                                                APIs.SecureFileUpload
                                               Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                    '[Servant.API.ContentTypes.JSON]
-                                                                   APIs.ResponseData))
+                                                                   APIs.SecureResponseData))
                          Servant.API.Alternative.:<|> (("delete"
-                                                        Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                              "name" GHC.Base.String
-                                                                            Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                        Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                              '[Servant.API.ContentTypes.JSON]
+                                                                              APIs.SecureFileName
+                                                                            Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                  '[Servant.API.ContentTypes.JSON]
-                                                                                                 APIs.ResponseData))
+                                                                                                 APIs.SecureResponseData))
                                                        Servant.API.Alternative.:<|> (("download"
                                                                                       Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                                            '[Servant.API.ContentTypes.JSON]
                                                                                                            [GHC.Base.String])
                                                                                      Servant.API.Alternative.:<|> (("download"
-                                                                                                                    Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                          "name"
-                                                                                                                                          GHC.Base.String
-                                                                                                                                        Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                    Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                          '[Servant.API.ContentTypes.JSON]
+                                                                                                                                          APIs.SecureFileName
+                                                                                                                                        Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                              '[Servant.API.ContentTypes.JSON]
-                                                                                                                                                             APIs.File))
+                                                                                                                                                             APIs.SecureFile))
                                                                                                                    Servant.API.Alternative.:<|> ("modifyTime"
-                                                                                                                                                 Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                                                       "name"
-                                                                                                                                                                       GHC.Base.String
-                                                                                                                                                                     Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                                                 Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                                                       '[Servant.API.ContentTypes.JSON]
+                                                                                                                                                                       APIs.SecureFileName
+                                                                                                                                                                     Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                                           '[Servant.API.ContentTypes.JSON]
                                                                                                                                                                                           Data.Time.Clock.UTC.UTCTime)))))))
                    w1
@@ -1219,37 +1291,38 @@ d47bc04cbc092a4e4776498ad3833000
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "fileserver-0.1.0.0-xEHHOPWr6kLHbGXlCPXID"#) -}
-c1a0584b3b45a35d1da060452ecea84b
+ce38d7144655cb16075eeb35c121f71d
   $w$dHasServer ::
     Data.Proxy.Proxy
       (("upload"
         Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
-                              '[Servant.API.ContentTypes.JSON] APIs.File
+                              '[Servant.API.ContentTypes.JSON] APIs.SecureFileUpload
                             Servant.API.Sub.:> Servant.API.Verbs.Post
                                                  '[Servant.API.ContentTypes.JSON]
-                                                 APIs.ResponseData))
+                                                 APIs.SecureResponseData))
        Servant.API.Alternative.:<|> (("delete"
-                                      Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                            "name" GHC.Base.String
-                                                          Servant.API.Sub.:> Servant.API.Verbs.Get
+                                      Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                            '[Servant.API.ContentTypes.JSON]
+                                                            APIs.SecureFileName
+                                                          Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                '[Servant.API.ContentTypes.JSON]
-                                                                               APIs.ResponseData))
+                                                                               APIs.SecureResponseData))
                                      Servant.API.Alternative.:<|> (("download"
                                                                     Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                          '[Servant.API.ContentTypes.JSON]
                                                                                          [GHC.Base.String])
                                                                    Servant.API.Alternative.:<|> (("download"
-                                                                                                  Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                        "name"
-                                                                                                                        GHC.Base.String
-                                                                                                                      Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                  Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                        '[Servant.API.ContentTypes.JSON]
+                                                                                                                        APIs.SecureFileName
+                                                                                                                      Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                            '[Servant.API.ContentTypes.JSON]
-                                                                                                                                           APIs.File))
+                                                                                                                                           APIs.SecureFile))
                                                                                                  Servant.API.Alternative.:<|> ("modifyTime"
-                                                                                                                               Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                                     "name"
-                                                                                                                                                     GHC.Base.String
-                                                                                                                                                   Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                               Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                                     '[Servant.API.ContentTypes.JSON]
+                                                                                                                                                     APIs.SecureFileName
+                                                                                                                                                   Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                         '[Servant.API.ContentTypes.JSON]
                                                                                                                                                                         Data.Time.Clock.UTC.UTCTime))))))
     -> Servant.Server.Internal.Context.Context '[]
@@ -1258,32 +1331,33 @@ c1a0584b3b45a35d1da060452ecea84b
          (Servant.Server.Internal.Server
             (("upload"
               Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
-                                    '[Servant.API.ContentTypes.JSON] APIs.File
+                                    '[Servant.API.ContentTypes.JSON] APIs.SecureFileUpload
                                   Servant.API.Sub.:> Servant.API.Verbs.Post
                                                        '[Servant.API.ContentTypes.JSON]
-                                                       APIs.ResponseData))
+                                                       APIs.SecureResponseData))
              Servant.API.Alternative.:<|> (("delete"
-                                            Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                  "name" GHC.Base.String
-                                                                Servant.API.Sub.:> Servant.API.Verbs.Get
+                                            Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                  '[Servant.API.ContentTypes.JSON]
+                                                                  APIs.SecureFileName
+                                                                Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                      '[Servant.API.ContentTypes.JSON]
-                                                                                     APIs.ResponseData))
+                                                                                     APIs.SecureResponseData))
                                            Servant.API.Alternative.:<|> (("download"
                                                                           Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                                '[Servant.API.ContentTypes.JSON]
                                                                                                [GHC.Base.String])
                                                                          Servant.API.Alternative.:<|> (("download"
-                                                                                                        Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                              "name"
-                                                                                                                              GHC.Base.String
-                                                                                                                            Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                        Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                              '[Servant.API.ContentTypes.JSON]
+                                                                                                                              APIs.SecureFileName
+                                                                                                                            Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                  '[Servant.API.ContentTypes.JSON]
-                                                                                                                                                 APIs.File))
+                                                                                                                                                 APIs.SecureFile))
                                                                                                        Servant.API.Alternative.:<|> ("modifyTime"
-                                                                                                                                     Servant.API.Sub.:> (Servant.API.Capture.Capture
-                                                                                                                                                           "name"
-                                                                                                                                                           GHC.Base.String
-                                                                                                                                                         Servant.API.Sub.:> Servant.API.Verbs.Get
+                                                                                                                                     Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
+                                                                                                                                                           '[Servant.API.ContentTypes.JSON]
+                                                                                                                                                           APIs.SecureFileName
+                                                                                                                                                         Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                               '[Servant.API.ContentTypes.JSON]
                                                                                                                                                                               Data.Time.Clock.UTC.UTCTime)))))))
     -> Servant.Server.Internal.Router.Router'
@@ -1307,34 +1381,34 @@ c1a0584b3b45a35d1da060452ecea84b
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 2, Strictness: <L,U(U)><S,U> -}
-"SPEC/Fileserver $fAllCTRender:a @ JSON @ '[] @ File" [ALWAYS] forall ($dAccept :: Servant.API.ContentTypes.Accept
-                                                                                     Servant.API.ContentTypes.JSON)
-                                                                      ($dAllMime :: Servant.API.ContentTypes.AllMime
-                                                                                      '[])
-                                                                      ($dAllMimeRender :: Servant.API.ContentTypes.AllMimeRender
-                                                                                            '[Servant.API.ContentTypes.JSON]
-                                                                                            APIs.File)
+"SPEC/Fileserver $fAllCTRender:a @ JSON @ '[] @ SecureFile" [ALWAYS] forall ($dAccept :: Servant.API.ContentTypes.Accept
+                                                                                           Servant.API.ContentTypes.JSON)
+                                                                            ($dAllMime :: Servant.API.ContentTypes.AllMime
+                                                                                            '[])
+                                                                            ($dAllMimeRender :: Servant.API.ContentTypes.AllMimeRender
+                                                                                                  '[Servant.API.ContentTypes.JSON]
+                                                                                                  APIs.SecureFile)
   Servant.API.ContentTypes.$fAllCTRender:a @ Servant.API.ContentTypes.JSON
                                            @ '[]
-                                           @ APIs.File
-                                           $dAccept
-                                           $dAllMime
-                                           $dAllMimeRender
-  = Fileserver.$s$fAllCTRender:a12
-"SPEC/Fileserver $fAllCTRender:a @ JSON @ '[] @ ResponseData" [ALWAYS] forall ($dAccept :: Servant.API.ContentTypes.Accept
-                                                                                             Servant.API.ContentTypes.JSON)
-                                                                              ($dAllMime :: Servant.API.ContentTypes.AllMime
-                                                                                              '[])
-                                                                              ($dAllMimeRender :: Servant.API.ContentTypes.AllMimeRender
-                                                                                                    '[Servant.API.ContentTypes.JSON]
-                                                                                                    APIs.ResponseData)
-  Servant.API.ContentTypes.$fAllCTRender:a @ Servant.API.ContentTypes.JSON
-                                           @ '[]
-                                           @ APIs.ResponseData
+                                           @ APIs.SecureFile
                                            $dAccept
                                            $dAllMime
                                            $dAllMimeRender
   = Fileserver.$s$fAllCTRender:a8
+"SPEC/Fileserver $fAllCTRender:a @ JSON @ '[] @ SecureResponseData" [ALWAYS] forall ($dAccept :: Servant.API.ContentTypes.Accept
+                                                                                                   Servant.API.ContentTypes.JSON)
+                                                                                    ($dAllMime :: Servant.API.ContentTypes.AllMime
+                                                                                                    '[])
+                                                                                    ($dAllMimeRender :: Servant.API.ContentTypes.AllMimeRender
+                                                                                                          '[Servant.API.ContentTypes.JSON]
+                                                                                                          APIs.SecureResponseData)
+  Servant.API.ContentTypes.$fAllCTRender:a @ Servant.API.ContentTypes.JSON
+                                           @ '[]
+                                           @ APIs.SecureResponseData
+                                           $dAccept
+                                           $dAllMime
+                                           $dAllMimeRender
+  = Fileserver.$s$fAllCTRender:a12
 "SPEC/Fileserver $fAllCTRender:a @ JSON @ '[] @ UTCTime" [ALWAYS] forall ($dAccept :: Servant.API.ContentTypes.Accept
                                                                                         Servant.API.ContentTypes.JSON)
                                                                          ($dAllMime :: Servant.API.ContentTypes.AllMime
@@ -1363,20 +1437,20 @@ c1a0584b3b45a35d1da060452ecea84b
                                            $dAllMime
                                            $dAllMimeRender
   = Fileserver.$s$fAllCTRender:a
-"SPEC/Fileserver $fAllMimeRender:a0 @ JSON @ File" [ALWAYS] forall ($dMimeRender :: Servant.API.ContentTypes.MimeRender
-                                                                                      Servant.API.ContentTypes.JSON
-                                                                                      APIs.File)
+"SPEC/Fileserver $fAllMimeRender:a0 @ JSON @ SecureFile" [ALWAYS] forall ($dMimeRender :: Servant.API.ContentTypes.MimeRender
+                                                                                            Servant.API.ContentTypes.JSON
+                                                                                            APIs.SecureFile)
   Servant.API.ContentTypes.$fAllMimeRender:a0 @ Servant.API.ContentTypes.JSON
-                                              @ APIs.File
-                                              $dMimeRender
-  = Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a3
-"SPEC/Fileserver $fAllMimeRender:a0 @ JSON @ ResponseData" [ALWAYS] forall ($dMimeRender :: Servant.API.ContentTypes.MimeRender
-                                                                                              Servant.API.ContentTypes.JSON
-                                                                                              APIs.ResponseData)
-  Servant.API.ContentTypes.$fAllMimeRender:a0 @ Servant.API.ContentTypes.JSON
-                                              @ APIs.ResponseData
+                                              @ APIs.SecureFile
                                               $dMimeRender
   = Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a2
+"SPEC/Fileserver $fAllMimeRender:a0 @ JSON @ SecureResponseData" [ALWAYS] forall ($dMimeRender :: Servant.API.ContentTypes.MimeRender
+                                                                                                    Servant.API.ContentTypes.JSON
+                                                                                                    APIs.SecureResponseData)
+  Servant.API.ContentTypes.$fAllMimeRender:a0 @ Servant.API.ContentTypes.JSON
+                                              @ APIs.SecureResponseData
+                                              $dMimeRender
+  = Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a3
 "SPEC/Fileserver $fAllMimeRender:a0 @ JSON @ UTCTime" [ALWAYS] forall ($dMimeRender :: Servant.API.ContentTypes.MimeRender
                                                                                          Servant.API.ContentTypes.JSON
                                                                                          Data.Time.Clock.UTC.UTCTime)
@@ -1398,27 +1472,40 @@ c1a0584b3b45a35d1da060452ecea84b
                                                               @ [GHC.Base.String]
                                                               $dMimeRender
   = Fileserver.$s$fAllCTRender:a_$s$fAllMimeRender:a0_$callMimeRender
-"SPEC/Fileserver $fAllMimeUnrender:a @ JSON @ File @ '[]" [ALWAYS] forall ($dMimeUnrender :: Servant.API.ContentTypes.MimeUnrender
-                                                                                               Servant.API.ContentTypes.JSON
-                                                                                               APIs.File)
-                                                                          ($dAllMimeUnrender :: Servant.API.ContentTypes.AllMimeUnrender
-                                                                                                  '[]
-                                                                                                  APIs.File)
+"SPEC/Fileserver $fAllMimeUnrender:a @ JSON @ SecureFileName @ '[]" [ALWAYS] forall ($dMimeUnrender :: Servant.API.ContentTypes.MimeUnrender
+                                                                                                         Servant.API.ContentTypes.JSON
+                                                                                                         APIs.SecureFileName)
+                                                                                    ($dAllMimeUnrender :: Servant.API.ContentTypes.AllMimeUnrender
+                                                                                                            '[]
+                                                                                                            APIs.SecureFileName)
   Servant.API.ContentTypes.$fAllMimeUnrender:a @ Servant.API.ContentTypes.JSON
-                                               @ APIs.File
+                                               @ APIs.SecureFileName
                                                @ '[]
                                                $dMimeUnrender
                                                $dAllMimeUnrender
   = Fileserver.$s$fAllMimeUnrender:a
-"SPEC/Fileserver $fMimeRenderTYPEJSONa @ File" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
-                                                                              APIs.File)
-  Servant.API.ContentTypes.$fMimeRenderTYPEJSONa @ APIs.File $dToJSON
-  = Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa3
-"SPEC/Fileserver $fMimeRenderTYPEJSONa @ ResponseData" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
-                                                                                      APIs.ResponseData)
-  Servant.API.ContentTypes.$fMimeRenderTYPEJSONa @ APIs.ResponseData
+"SPEC/Fileserver $fAllMimeUnrender:a @ JSON @ SecureFileUpload @ '[]" [ALWAYS] forall ($dMimeUnrender :: Servant.API.ContentTypes.MimeUnrender
+                                                                                                           Servant.API.ContentTypes.JSON
+                                                                                                           APIs.SecureFileUpload)
+                                                                                      ($dAllMimeUnrender :: Servant.API.ContentTypes.AllMimeUnrender
+                                                                                                              '[]
+                                                                                                              APIs.SecureFileUpload)
+  Servant.API.ContentTypes.$fAllMimeUnrender:a @ Servant.API.ContentTypes.JSON
+                                               @ APIs.SecureFileUpload
+                                               @ '[]
+                                               $dMimeUnrender
+                                               $dAllMimeUnrender
+  = Fileserver.$s$fAllMimeUnrender:a2
+"SPEC/Fileserver $fMimeRenderTYPEJSONa @ SecureFile" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
+                                                                                    APIs.SecureFile)
+  Servant.API.ContentTypes.$fMimeRenderTYPEJSONa @ APIs.SecureFile
                                                  $dToJSON
   = Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa2
+"SPEC/Fileserver $fMimeRenderTYPEJSONa @ SecureResponseData" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
+                                                                                            APIs.SecureResponseData)
+  Servant.API.ContentTypes.$fMimeRenderTYPEJSONa @ APIs.SecureResponseData
+                                                 $dToJSON
+  = Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa3
 "SPEC/Fileserver $fMimeRenderTYPEJSONa @ UTCTime" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
                                                                                  Data.Time.Clock.UTC.UTCTime)
   Servant.API.ContentTypes.$fMimeRenderTYPEJSONa @ Data.Time.Clock.UTC.UTCTime
@@ -1429,16 +1516,16 @@ c1a0584b3b45a35d1da060452ecea84b
   Servant.API.ContentTypes.$fMimeRenderTYPEJSONa @ [GHC.Base.String]
                                                  $dToJSON
   = Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa
-"SPEC/Fileserver $fMimeRenderTYPEJSONa_$cmimeRender @ File" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
-                                                                                           APIs.File)
-  Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cmimeRender @ APIs.File
-                                                              $dToJSON
-  = Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender3
-"SPEC/Fileserver $fMimeRenderTYPEJSONa_$cmimeRender @ ResponseData" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
-                                                                                                   APIs.ResponseData)
-  Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cmimeRender @ APIs.ResponseData
+"SPEC/Fileserver $fMimeRenderTYPEJSONa_$cmimeRender @ SecureFile" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
+                                                                                                 APIs.SecureFile)
+  Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cmimeRender @ APIs.SecureFile
                                                               $dToJSON
   = Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender2
+"SPEC/Fileserver $fMimeRenderTYPEJSONa_$cmimeRender @ SecureResponseData" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
+                                                                                                         APIs.SecureResponseData)
+  Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cmimeRender @ APIs.SecureResponseData
+                                                              $dToJSON
+  = Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender3
 "SPEC/Fileserver $fMimeRenderTYPEJSONa_$cmimeRender @ UTCTime" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
                                                                                               Data.Time.Clock.UTC.UTCTime)
   Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cmimeRender @ Data.Time.Clock.UTC.UTCTime
@@ -1449,26 +1536,36 @@ c1a0584b3b45a35d1da060452ecea84b
   Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cmimeRender @ [GHC.Base.String]
                                                               $dToJSON
   = Fileserver.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender
-"SPEC/Fileserver $fMimeUnrenderTYPEJSONa @ File" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
-                                                                                  APIs.File)
-  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.File
-                                                   $dFromJSON
-  = Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa
 "SPEC/Fileserver $fMimeUnrenderTYPEJSONa @ ResponseData" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                           APIs.ResponseData)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.ResponseData
                                                    $dFromJSON
   = Fileserver.$s$fMimeUnrenderTYPEJSONa7
-"SPEC/Fileserver $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ File" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
-                                                                                                 APIs.File)
-  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.File
-                                                                  $dFromJSON
-  = Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender
+"SPEC/Fileserver $fMimeUnrenderTYPEJSONa @ SecureFileName" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
+                                                                                            APIs.SecureFileName)
+  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecureFileName
+                                                   $dFromJSON
+  = Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa
+"SPEC/Fileserver $fMimeUnrenderTYPEJSONa @ SecureFileUpload" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
+                                                                                              APIs.SecureFileUpload)
+  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecureFileUpload
+                                                   $dFromJSON
+  = Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa1
 "SPEC/Fileserver $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ ResponseData" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                                          APIs.ResponseData)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.ResponseData
                                                                   $dFromJSON
   = Fileserver.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2
+"SPEC/Fileserver $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ SecureFileName" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
+                                                                                                           APIs.SecureFileName)
+  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecureFileName
+                                                                  $dFromJSON
+  = Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender
+"SPEC/Fileserver $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ SecureFileUpload" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
+                                                                                                             APIs.SecureFileUpload)
+  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecureFileUpload
+                                                                  $dFromJSON
+  = Fileserver.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1
 "SPEC/Fileserver $fToJSON[] @ [Char]" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
                                                                      [GHC.Types.Char])
   Data.Aeson.Types.Instances.$fToJSON[] @ [GHC.Types.Char] $dToJSON

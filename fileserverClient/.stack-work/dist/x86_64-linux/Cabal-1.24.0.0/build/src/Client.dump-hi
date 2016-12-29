@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-28 23:58:19.902453 UTC
+2016-12-29 17:37:11.354554 UTC
 
 interface fileserverClient-0.1.0.0-D0BM3Nsx9VC6H9aW7nEs8X:Client 8001
-  interface hash: 78bcb33ffb3c83a1e2f1bf7bfc8c78e4
-  ABI hash: b43ab3ab7f723081094c72874634be2e
+  interface hash: b43edb7274a41d0cc6378dc5e772eb92
+  ABI hash: 67e09c0a4555b83b363cb938e11d7684
   export-list hash: 4e83e0907d898144051cd91577658f97
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: b159a15c55fa7c6870cb2eb79bbae5a5
@@ -160,16 +160,16 @@ import  -/  base-4.9.0.0:Data.OldList 0058409f994fb13ae0616e3f1e5b4dae
 import  -/  base-4.9.0.0:GHC.List 13d2451194c1c6e53b4f4f07947736dd
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM:APIs c50cf462343b6ede305a35fabd4a295b
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM:APIs e005b466b86db6f1b81cccaf6260169f
 import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 24b19ef74cea78e4c18332bed9f0491d
-import  -/  Cache 034642d7155d71f14333086120a7a5cf
-  exports: a67d56f1b654882b56bd09512a80a37e
-  clearCache 66609a723f9bf8796aa65c8c1dc6371e
-  setupCache f40674614740e10051f00121400394e0
-import  -/  ClientAPI df60fb730c8ef543031bba416beb0822
-  exports: a49a24afbf9139883ce8fbb68721c35e
+import  -/  Cache 0fac7e30c8da84f092d4fa85e7de79a3
+  exports: 71b22f47e366d1e621b1f726d07cada5
+  clearCache a3beeaac5c64db3057ef39e3bb51dc9a
+  setupCache 9d05f88304c36229a7ce9f633d368601
+import  -/  ClientAPI 574d72d9b8de520941a8b0a21108146e
+  exports: 5e51da769047dea159b42cb485d90dd6
   loginClient e7247e7dbb5ad06ec03fe4f0e6ae0527
-  runQuery 3bd264cd09ccc3bbc20344b2afd175b5
+  runQuery 4f4bb5568bbf65f7e3f1dba234538a79
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 bb7f8950c3f02bdea8eb0f42bd0885a6
   $trModule :: GHC.Types.Module
@@ -186,37 +186,37 @@ bb7f8950c3f02bdea8eb0f42bd0885a6
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "fileserverClient-0.1.0.0-D0BM3Nsx9VC6H9aW7nEs8X"#) -}
-c7a572890b40e9316eeab89c01f3365e
+424d0a1da4c429c83fcd8f5834175d52
   clientLoop :: APIs.AuthToken -> GHC.Types.IO ()
-  {- Arity: 2, Strictness: <L,1*H><S,U>,
+  {- Arity: 2, Strictness: <L,1*U(U,U)><S,U>,
      Unfolding: InlineRule (0, True, True)
                 Client.clientLoop1
                   `cast`
                 (<APIs.AuthToken>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-5d34c6cef843f0c70be88766c0c4010c
+44e20555e98678553bc8335e11d51dfc
   clientLoop1 ::
     APIs.AuthToken
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 2, Strictness: <L,1*H><S,U> -}
-f02772fb8f84e63e63d26be07b690471
+  {- Arity: 2, Strictness: <L,1*U(U,U)><S,U> -}
+6de7e43f911a08394a529065aa74e7fe
   processDownload :: APIs.AuthToken -> GHC.Types.IO ()
-  {- Arity: 2, Strictness: <L,1*H><S,U>,
+  {- Arity: 2, Strictness: <L,1*U(U,U)><S,U>,
      Unfolding: InlineRule (0, True, True)
                 Client.processDownload1
                   `cast`
                 (<APIs.AuthToken>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-a1f2ea62c4186476b151e1b6192b41e0
+c7c9f500912bde451095831b8ffe0fa2
   processDownload1 ::
     APIs.AuthToken
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 2, Strictness: <L,1*H><S,U>,
+  {- Arity: 2, Strictness: <L,1*U(U,U)><S,U>,
      Unfolding: (\ (token :: APIs.AuthToken)
                    (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
                  case GHC.IO.Handle.Text.hPutStr2
                         GHC.IO.Handle.FD.stdout
-                        Client.processDownload4
+                        Client.processDownload3
                         GHC.Types.True
                         s of ds1 { (#,#) ipv ipv1 ->
                  case GHC.IO.Handle.Internals.wantReadableHandle_1
@@ -228,36 +228,34 @@ a1f2ea62c4186476b151e1b6192b41e0
                         (<GHC.IO.Handle.Types.Handle__>_R
                          ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R))
                         ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 case token of ww { APIs.AuthToken ww1 ww2 ->
                  case ClientAPI.$wrunQuery
-                        token
-                        Client.processDownload3
-                        ipv3
+                        ww1
+                        ww2
                         Client.processDownload2
+                        ipv3
                         ipv2 of ds3 { (#,#) ipv4 ipv5 ->
-                 Client.clientLoop1 token ipv4 } } }) -}
-6d2f0d58a55156978b1ae0b33c148dfa
+                 Client.clientLoop1 ww ipv4 } } } }) -}
+74e263e2a53b36d6ead63d741cca5760
   processDownload2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "fileContents"#) -}
-b931f4f58e421ffaaff031c1ca85444d
-  processDownload3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "download"#) -}
-3a1f72600b5f5460319205123f438010
-  processDownload4 :: [GHC.Types.Char]
+1137daaa4816026643b603bcb2020391
+  processDownload3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "Please enter the name of the file you wish to download"#) -}
-6dcf9c1dbfde62deb37cca8f3b7da1b1
+d2b3d708839939160ba3e5ed16854379
   processUpload :: APIs.AuthToken -> GHC.Types.IO ()
-  {- Arity: 2, Strictness: <L,1*H><S,U>,
+  {- Arity: 2, Strictness: <L,1*U(U,U)><S,U>,
      Unfolding: InlineRule (0, True, True)
                 Client.processUpload1
                   `cast`
                 (<APIs.AuthToken>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-8c4faf542d60f87e7901a3e20ecb3632
+5bae6fb4efd0f805f8396e5e6edea444
   processUpload1 ::
     APIs.AuthToken
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 2, Strictness: <L,1*H><S,U>,
+  {- Arity: 2, Strictness: <L,1*U(U,U)><S,U>,
      Unfolding: (\ (token :: APIs.AuthToken)
                    (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
                  case GHC.IO.Handle.Text.hPutStr2
@@ -288,13 +286,14 @@ b931f4f58e421ffaaff031c1ca85444d
                         (<GHC.IO.Handle.Types.Handle__>_R
                          ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R))
                         ipv4 of ds4 { (#,#) ipv6 ipv7 ->
+                 case token of ww { APIs.AuthToken ww1 ww2 ->
                  case ClientAPI.$wrunQuery
-                        token
+                        ww1
+                        ww2
                         Client.processUpload2
                         ipv3
-                        ipv7
                         ipv6 of ds5 { (#,#) ipv8 ipv9 ->
-                 Client.clientLoop1 token ipv8 } } } } }) -}
+                 Client.clientLoop1 ww ipv8 } } } } } }) -}
 99b9e3dc8c7bf6efd713f319a206d794
   processUpload2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "upload"#) -}
@@ -306,16 +305,26 @@ b931f4f58e421ffaaff031c1ca85444d
   processUpload4 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "Please enter the name of the file to upload"#) -}
-cea17be079e95ae73e9ee08492eb9615
+009f510ee6ed708599d9425d43240af1
   startClient :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Client.startClient1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-cbceaf1f734c69d53088b058f1b9f8f0
+d09c055ac6b19ad887545625e6c6dcd2
   startClient1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Strictness: <S,U> -}
+  {- Arity: 1, Strictness: <S,U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case ClientAPI.loginClient1 s of ds1 { (#,#) ipv ipv1 ->
+                 Client.startClient2 ipv1 ipv }) -}
+789629c148037190195754df8ef07dbb
+  startClient2 ::
+    GHC.Base.Maybe APIs.AuthToken
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 2, Strictness: <S,1*U><S,U> -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

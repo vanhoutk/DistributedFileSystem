@@ -56,21 +56,28 @@ server port = uploadFile
 
 	where
 
-    uploadFile :: File -> APIHandler ResponseData
-    uploadFile (File name contents) = do
+    uploadFile :: SecureFileUpload -> APIHandler SecureResponseData
+    uploadFile (SecureFileUpload ticket (File encName encContents)) = do
+      let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decName = encryptDecrypt sessionKey encName
+      let decContents = encryptDecrypt sessionKey encContents
       liftIO $ do
-        putStrLn $ "Uploading file: " ++ name
-        updateListQuery "update" port name
-        (writeFile name contents)
-      return (ResponseData "Success")
+        putStrLn $ "Uploading file: " ++ decName
+        updateListQuery "update" port decName
+        (writeFile decName decContents)
+      let encResponse = encryptDecrypt sessionKey "Success"
+      return (SecureResponseData encResponse)
 
-    deleteFile :: String -> APIHandler ResponseData
-    deleteFile name = do
-      --liftIO $ do
-      --  putStrLn $ "Deleting file: " ++ name
-      --  (removeFile name)
-      --liftIO $ updateListQuery "delete" port name
-      return (ResponseData "Success")
+    deleteFile :: SecureFileName -> APIHandler SecureResponseData
+    deleteFile (SecureFileName ticket encName) = do
+      let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decName = encryptDecrypt sessionKey encName
+      liftIO $ do
+        putStrLn $ "Deleting file: " ++ decName
+        (removeFile decName)
+      liftIO $ updateListQuery "delete" port decName
+      let encResponse = encryptDecrypt sessionKey "Success"
+      return (SecureResponseData encResponse)
 
     getFiles :: APIHandler [String]
     getFiles = do
@@ -81,22 +88,27 @@ server port = uploadFile
       let files' = DL.sort files
       return files' 
 
-    downloadFile :: String -> APIHandler File
-    downloadFile name = do
+    downloadFile :: SecureFileName -> APIHandler SecureFile
+    downloadFile (SecureFileName ticket encName) = do
+      let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decName = encryptDecrypt sessionKey encName
       contents <- liftIO $ do
-        putStrLn $ "Reading contents of: " ++ name
-        (readFile name)
-      return (File name contents)
+        putStrLn $ "Reading contents of: " ++ decName
+        (readFile decName)
+      let encContents = encryptDecrypt sessionKey contents
+      return (SecureFile (File encName encContents))
 
-    getModifyTime :: String -> APIHandler UTCTime
-    getModifyTime name = do
-      time <- liftIO $ getModificationTime name
+    getModifyTime :: SecureFileName -> APIHandler UTCTime
+    getModifyTime (SecureFileName ticket encName) = do
+      let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decName = encryptDecrypt sessionKey encName
+      time <- liftIO $ getModificationTime decName
       --liftIO $ do putStrLn $ "Modification time of " ++ name ++ ": " ++ show time
       return (time)
 
 -- | Directry Server Stuff
 
-searchForFile :: String -> SC.ClientM Int
+searchForFile :: SecureFileName -> SC.ClientM Int
 getFileList :: SC.ClientM [String]
 updateList :: String -> Int -> String -> SC.ClientM ResponseData
 

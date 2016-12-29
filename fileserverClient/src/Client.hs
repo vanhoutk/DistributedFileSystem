@@ -9,13 +9,13 @@ import ClientAPI
 
 startClient :: IO()
 startClient = do
-  setupCache
   token <- loginClient
   case token of
     Nothing -> do
       putStrLn "Error with username and password. Please try again."
       startClient
     Just token' -> do
+      setupCache token'
       clientLoop token'
 
 clientLoop :: AuthToken -> IO()

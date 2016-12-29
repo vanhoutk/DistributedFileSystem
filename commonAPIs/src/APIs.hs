@@ -64,7 +64,7 @@ deriving instance ToBSON   String
 directoryPort :: Int
 directoryPort = 8080
 
-type DirectoryServerAPI = "search"      :> Capture "name" String       :> Get '[JSON] Int
+type DirectoryServerAPI = "search"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] Int
                      :<|> "list"        :> Get '[JSON] [String]
                      :<|> "updateList"  :> Capture "updateType" String :> Capture "port" Int :> Capture "name" String :> Get '[JSON] ResponseData
 

@@ -66,13 +66,13 @@ runQuery token@(AuthToken decTicket decSessionKey) queryType fileName fileConten
   case queryType of
     "upload" -> do
       putStrLn $ "Uploading file: " ++ fileName
-      res <- runClientM (uploadQuery encFileName encFileContents) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+      res <- runClientM (uploadQuery decTicket encFileName encFileContents) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
       case res of
         Left err -> putStrLn $ "Error: " ++ show err
-        Right (uploadFileResponse) -> do
-          let uploadFileResponse' = encryptDecrypt decSessionKey uploadFileResponse
-          putStrLn $ "Encrypted upload response: " ++ uploadFileResponse
-          putStrLn $ "Decrypted upload response: " ++ uploadFileResponse'
+        Right (uploadFileResponse@(SecureResponseData encResponse)) -> do
+          let decResponse = encryptDecrypt decSessionKey encResponse
+          putStrLn $ "Encrypted upload response: " ++ encResponse
+          putStrLn $ "Decrypted upload response: " ++ decResponse
     "listfiles" -> do
       putStrLn $ "Getting list of files in directory..."
       res <- runClientM getFileListQuery (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
@@ -86,7 +86,7 @@ runQuery token@(AuthToken decTicket decSessionKey) queryType fileName fileConten
       case isCached of
         False -> do
           putStrLn $ "Attempting to download file from server: " ++ fileName
-          serverPort <- searchForFileQuery fileName
+          serverPort <- searchForFileQuery token fileName
           case serverPort of
             Nothing -> do
               putStrLn "Unable to find file on directory server"
@@ -111,7 +111,7 @@ runQuery token@(AuthToken decTicket decSessionKey) queryType fileName fileConten
 
 -- | Directry Server Stuff
 
-searchForFile :: String -> ClientM Int
+searchForFile :: SecureFileName -> ClientM Int
 getFileList :: ClientM [String]
 updateList :: String -> Int -> String -> ClientM ResponseData
 
@@ -120,10 +120,16 @@ directoryServerApi = Proxy
 
 searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
 
-searchForFileQuery :: String -> IO (Maybe Int)
-searchForFileQuery fileName = do
+searchQuery :: String -> String -> ClientM Int
+searchQuery ticket fileName = do 
+  searchResult <- searchForFile (SecureFileName ticket fileName)
+  return searchResult
+
+searchForFileQuery :: AuthToken -> String -> IO (Maybe Int)
+searchForFileQuery token@(AuthToken decTicket decSessionKey) fileName = do
+  let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (searchForFile fileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+  res <- runClientM (searchQuery decTicket encFileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err

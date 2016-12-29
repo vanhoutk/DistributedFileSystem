@@ -36,7 +36,7 @@ Student Number: 12301975
   - ~~Save FileMapping to DB~~
   - ~~Figure out update logic~~
   - Add upload logic for client/server interaction
-  - Move the Directory Server port to the common APIs folder
+  - ~~Move the Directory Server port to the common APIs folder~~
 
 5. FileServer
   - ~~Add delete functionality~~
@@ -48,13 +48,15 @@ Student Number: 12301975
 
   - ~~Authentication Server~~
   - Add authentiction to:
-    * Client
-      - Switch order of cache and login in start of client and pass token to cache
+    * ~~Client~~
+      - ~~Switch order of cache and login in start of client and pass token to cache~~
     * Fileserver
+      - Add logic for detection of incorrect encryption?
     * Directory Server
-    * Cache
+      - Add logic for detection of incorrect encryption?
+    * ~~Cache~~
     * APIs
-      - Figure out how to encrypt the [String] and UTCTime responses.
+      - Figure out how to encrypt the [String], UTCTime and Int responses.
 
 8. Transactions
 

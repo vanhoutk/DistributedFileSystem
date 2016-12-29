@@ -92,9 +92,11 @@ server = searchForFile
 
   where
 
-    searchForFile :: String -> APIHandler Int
-    searchForFile fileName = do
-      fileMapping <- getFileMapping fileName
+    searchForFile :: SecureFileName -> APIHandler Int
+    searchForFile (SecureFileName ticket encFileName) = do
+      let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decFileName = encryptDecrypt sessionKey encFileName
+      fileMapping <- getFileMapping decFileName
       case fileMapping of
         Nothing -> return 0
         Just fileMapping' -> do
@@ -152,11 +154,11 @@ server = searchForFile
 
 -- | File Server
 
-uploadFile :: File -> SC.ClientM ResponseData
-deleteFile :: String -> SC.ClientM ResponseData
+uploadFile :: SecureFileUpload -> SC.ClientM SecureResponseData
+deleteFile :: SecureFileName -> SC.ClientM SecureResponseData
 getFiles :: SC.ClientM [String]
-downloadFile :: String -> SC.ClientM File
-getModifyTime :: String -> SC.ClientM UTCTime
+downloadFile :: SecureFileName -> SC.ClientM SecureFile
+getModifyTime :: SecureFileName -> SC.ClientM UTCTime
 
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
