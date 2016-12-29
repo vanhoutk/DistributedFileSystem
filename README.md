@@ -52,6 +52,7 @@ Student Number: 12301975
       - ~~Switch order of cache and login in start of client and pass token to cache~~
     * Fileserver
       - Add logic for detection of incorrect encryption?
+      - Can pass encTicket along with ticket and compare the decTicket with the ticket?
     * Directory Server
       - Add logic for detection of incorrect encryption?
     * ~~Cache~~

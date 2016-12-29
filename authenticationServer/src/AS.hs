@@ -40,7 +40,17 @@ type APIHandler = ExceptT ServantErr IO
 
 startAuthentication :: IO()
 startAuthentication = do
+  putStrLn "Starting Authentication Server..."
+  str <- generateRandomString
+  putStrLn $ "Randomly generated string: " ++ str
+  let encStr = encryptDecrypt "key" str
+  let decStr = encryptDecrypt "key" encStr
+  putStrLn $ "Encrypted string: " ++ encStr
+  putStrLn $ "Decrypted string: " ++ decStr
   run asPort app
+
+generateRandomString :: IO String
+generateRandomString = liftM (take 10 . randomRs ('a','z')) newStdGen
 
 app :: Application
 app = serve api server
@@ -69,15 +79,18 @@ server = loginUser
           if (decMessage == userName) then do
             sessionKey <- liftIO $ generateRandomString
             let encSessionKey = encryptDecrypt password sessionKey
+            let decSessionKey = encryptDecrypt password encSessionKey
             let ticket = encryptDecrypt sharedServerSecret sessionKey
-            let encTicket = encryptDecrypt password sessionKey
+            let encTicket = encryptDecrypt password ticket
+            liftIO $ do
+              putStrLn $ "SessionKey: " ++ sessionKey
+              putStrLn $ "EncSessionKey: " ++ encSessionKey
+              putStrLn $ "DecSessionKey: " ++ decSessionKey
+              putStrLn $ "Ticket: " ++ ticket
+              putStrLn $ "EncTicket: " ++ encTicket
             return (AuthToken encTicket encSessionKey)
           else do
             return (AuthToken "Failed" "Encryption failed")
-
-      where
-        generateRandomString :: IO String
-        generateRandomString = liftM (take 10 . randomRs ('a','z')) newStdGen
 
     addNewUser :: String -> String -> APIHandler ResponseData
     addNewUser username password = do

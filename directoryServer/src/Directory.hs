@@ -96,6 +96,7 @@ server = searchForFile
     searchForFile (SecureFileName ticket encFileName) = do
       let sessionKey = encryptDecrypt sharedServerSecret ticket
       let decFileName = encryptDecrypt sessionKey encFileName
+      liftIO $ putStrLn $ ticket ++ " " ++ sessionKey ++ " " ++ encFileName ++ " " ++ decFileName
       fileMapping <- getFileMapping decFileName
       case fileMapping of
         Nothing -> return 0
