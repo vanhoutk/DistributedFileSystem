@@ -92,18 +92,21 @@ server = searchForFile
 
   where
 
-    searchForFile :: SecureFileName -> APIHandler Int
+    searchForFile :: SecureFileName -> APIHandler SecurePort
     searchForFile (SecureFileName ticket encFileName) = do
       let sessionKey = encryptDecrypt sharedServerSecret ticket
       let decFileName = encryptDecrypt sessionKey encFileName
       liftIO $ putStrLn $ ticket ++ " " ++ sessionKey ++ " " ++ encFileName ++ " " ++ decFileName
       fileMapping <- getFileMapping decFileName
       case fileMapping of
-        Nothing -> return 0
+        Nothing -> do
+          let encPort = encryptPort sessionKey 0
+          return (SecurePort encPort)
         Just fileMapping' -> do
           let (FileMapping _ _ port) = fileMapping'
           let port' = (read :: String -> Int) $ port
-          return port'
+          let encPort = encryptPort sessionKey port'
+          return (SecurePort encPort)
 
       where
         getFileMapping :: String -> APIHandler (Maybe FileMapping)
@@ -120,14 +123,16 @@ server = searchForFile
             0 -> return Nothing 
             _ -> return (Just (head fileMap))
 
-    listFiles :: APIHandler [String]
-    listFiles = do
+    listFiles :: SecureTicket -> APIHandler [String]
+    listFiles (SecureTicket ticket) = do
+      let sessionKey = encryptDecrypt sharedServerSecret ticket
       fileMappings <- liftIO $ withMongoDbConnection $ do
         docs <- find (select [] "FILE_SERVER_MAPPINGS") >>= drainCursor
         return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
       fileNames <- mapM (getFileNames) fileMappings
       let fileNames' = DL.sort fileNames
-      return fileNames'
+      let encFileNames = encryptDecryptArray sessionKey fileNames'
+      return encFileNames
 
       where
         getFileNames :: FileMapping -> APIHandler String
@@ -159,7 +164,7 @@ uploadFile :: SecureFileUpload -> SC.ClientM SecureResponseData
 deleteFile :: SecureFileName -> SC.ClientM SecureResponseData
 getFiles :: SC.ClientM [String]
 downloadFile :: SecureFileName -> SC.ClientM SecureFile
-getModifyTime :: SecureFileName -> SC.ClientM UTCTime
+getModifyTime :: SecureFileName -> SC.ClientM SecureTime
 
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy

@@ -98,18 +98,19 @@ server port = uploadFile
       let encContents = encryptDecrypt sessionKey contents
       return (SecureFile (File encName encContents))
 
-    getModifyTime :: SecureFileName -> APIHandler UTCTime
+    getModifyTime :: SecureFileName -> APIHandler SecureTime
     getModifyTime (SecureFileName ticket encName) = do
       let sessionKey = encryptDecrypt sharedServerSecret ticket
       let decName = encryptDecrypt sessionKey encName
       time <- liftIO $ getModificationTime decName
+      let encTime = encryptTime sessionKey time
       --liftIO $ do putStrLn $ "Modification time of " ++ name ++ ": " ++ show time
-      return (time)
+      return (SecureTime encTime)
 
 -- | Directry Server Stuff
 
-searchForFile :: SecureFileName -> SC.ClientM Int
-getFileList :: SC.ClientM [String]
+searchForFile :: SecureFileName -> SC.ClientM SecurePort
+getFileList :: SecureTicket -> SC.ClientM [String]
 updateList :: String -> Int -> String -> SC.ClientM ResponseData
 
 directoryServerApi :: Proxy DirectoryServerAPI

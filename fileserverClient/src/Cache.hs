@@ -151,7 +151,7 @@ uploadFile :: SecureFileUpload -> ClientM SecureResponseData
 deleteFile :: SecureFileName -> ClientM SecureResponseData
 getFiles :: ClientM [String]
 downloadFile :: SecureFileName -> ClientM SecureFile
-getModifyTime :: SecureFileName -> ClientM UTCTime
+getModifyTime :: SecureFileName -> ClientM SecureTime
 
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
@@ -175,7 +175,7 @@ downloadFileQuery token@(AuthToken decTicket decSessionKey) port fileName = do
     Right (download_file) -> do
       return (Just download_file)
 
-modifyTimeQuery :: String -> String -> ClientM(UTCTime)
+modifyTimeQuery :: String -> String -> ClientM(SecureTime)
 modifyTimeQuery ticket fileName = do
   fileModTime <- getModifyTime (SecureFileName ticket fileName)
   return (fileModTime)
@@ -189,13 +189,14 @@ fileModifyTimeQuery token@(AuthToken decTicket decSessionKey) port fileName = do
     Left err -> do
       putStrLn $ "Error: " ++ show err
       return Nothing
-    Right (fileModTime) -> do
-      return (Just fileModTime)
+    Right (SecureTime encTime) -> do
+      let decTime = decryptTime decSessionKey encTime
+      return (Just decTime)
 
 -- | Directry Server Stuff
 
-searchForFile :: SecureFileName -> ClientM Int
-getFileList :: ClientM [String]
+searchForFile :: SecureFileName -> ClientM SecurePort
+getFileList :: SecureTicket -> ClientM [String]
 updateList :: String -> Int -> String -> ClientM ResponseData
 
 directoryServerApi :: Proxy DirectoryServerAPI
@@ -203,7 +204,7 @@ directoryServerApi = Proxy
 
 searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
 
-searchQuery :: String -> String -> ClientM Int
+searchQuery :: String -> String -> ClientM SecurePort
 searchQuery ticket fileName = do
   searchResult <- searchForFile (SecureFileName ticket fileName)
   return searchResult
@@ -217,5 +218,6 @@ searchForFileQuery token@(AuthToken decTicket decSessionKey) fileName = do
     Left err -> do
       putStrLn $ "Error: " ++ show err
       return Nothing
-    Right (server_port) -> do
-      return (Just server_port)
+    Right (SecurePort encPort) -> do
+      let decPort = decryptPort decSessionKey encPort
+      return (Just decPort)

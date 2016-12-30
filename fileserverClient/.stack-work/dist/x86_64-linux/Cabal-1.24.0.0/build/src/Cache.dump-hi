@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-29 17:29:30.150128 UTC
+2016-12-30 12:58:46.286474 UTC
 
 interface fileserverClient-0.1.0.0-D0BM3Nsx9VC6H9aW7nEs8X:Cache 8001
-  interface hash: f57e6a8ad775f68cca90be7fb0f28016
-  ABI hash: 0fac7e30c8da84f092d4fa85e7de79a3
-  export-list hash: 71b22f47e366d1e621b1f726d07cada5
-  orphan hash: e42dc05556b688907117c3fa8c14e5b7
+  interface hash: db863393575703c44843126151378a4f
+  ABI hash: eb690b471dbcba9885662b1420eec72f
+  export-list hash: cfe92c6e96a7c0009e5b19d35679a86f
+  orphan hash: a8b3c6a622e8dddf69f42be411bcef8e
   flag hash: efd4ed697d0068b78aa6b2b9cd064e37
   sig of: Nothing
   used TH splices: False
@@ -177,7 +177,7 @@ import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.Environment ee0914a962f5508d0fd404c89ee4999b
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  base-4.9.0.0:Text.Read 9c1be14f7e5eac8b18bcb566c5763677
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM:APIs e005b466b86db6f1b81cccaf6260169f
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM:APIs a9f61dca29a18d63e50c3c9bda116beb
 import  -/  directory-1.2.7.1@directory-1.2.7.1-6xbYYKdoE266LLlc7GOex4:System.Directory 970e76f5d7f7d1c2bb4871bad753c6c1
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
@@ -190,37 +190,36 @@ import  -/  servant-client-0.9.1.1@servant-client-0.9.1.1-8jdRCDQwhgFBXqAXqJ8SyZ
 import  -/  servant-client-0.9.1.1@servant-client-0.9.1.1-8jdRCDQwhgFBXqAXqJ8SyZ:Servant.Common.Req 3bb9b81ac135ba6ce1a9e908beaecfad
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time 11aa6bb0881cf13119ff057ae5c21663
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e496610c238
-b06dd70875a874366301463c73dadb9f
+829f400567f157faf9fc342a9e052cdf
   $s$fMimeUnrenderTYPEJSONa6 ::
     Servant.API.ContentTypes.MimeUnrender
-      Servant.API.ContentTypes.JSON GHC.Types.Int
+      Servant.API.ContentTypes.JSON APIs.SecureTime
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ *
                   @ Servant.API.ContentTypes.JSON
-                  @ GHC.Types.Int
+                  @ APIs.SecureTime
                   (Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cp1MimeUnrender
-                     @ GHC.Types.Int
-                     Data.Aeson.Types.Instances.$fFromJSONInt_$cparseJSON
+                     @ APIs.SecureTime
+                     APIs.$fFromJSONSecureTime_$cparseJSON
                        `cast`
-                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <GHC.Types.Int>_N)))
+                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureTime>_N)))
                   Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 -}
-01f7adc89485c6b1d4a710624dafa284
-  $s$fMimeUnrenderTYPEJSONa7 ::
+9bf77931c84e05fca5bc72be1a6d38a4
+  $s$fMimeUnrenderTYPEJSONa8 ::
     Servant.API.ContentTypes.MimeUnrender
-      Servant.API.ContentTypes.JSON Data.Time.Clock.UTC.UTCTime
+      Servant.API.ContentTypes.JSON APIs.SecurePort
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ *
                   @ Servant.API.ContentTypes.JSON
-                  @ Data.Time.Clock.UTC.UTCTime
+                  @ APIs.SecurePort
                   (Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cp1MimeUnrender
-                     @ Data.Time.Clock.UTC.UTCTime
-                     Data.Aeson.Types.Instances.$fFromJSONUTCTime_$cparseJSON
+                     @ APIs.SecurePort
+                     APIs.$fFromJSONSecurePort_$cparseJSON
                        `cast`
-                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
-                               <Data.Time.Clock.UTC.UTCTime>_N)))
-                  Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 -}
+                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecurePort>_N)))
+                  Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 -}
 c0a6507c58e9e55a214c2f6fcd88954f
   $s$fMimeUnrenderTYPEJSONa9 ::
     Servant.API.ContentTypes.MimeUnrender
@@ -236,36 +235,35 @@ c0a6507c58e9e55a214c2f6fcd88954f
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureFile>_N)))
                   Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender4 -}
-6c16badf6e719219447d5b3984101dec
+9215a761fdf964cf3f67f870d6c9254a
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
-    -> Data.Either.Either GHC.Base.String GHC.Types.Int
+    -> Data.Either.Either GHC.Base.String APIs.SecureTime
   {- Arity: 2, Strictness: <L,A><S,1*U>,
      Unfolding: InlineRule (1, True, True)
                 (\ (ds :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
                    (eta :: Data.ByteString.Lazy.Internal.ByteString) ->
                  Servant.API.ContentTypes.eitherDecodeLenient
-                   @ GHC.Types.Int
-                   Data.Aeson.Types.Instances.$fFromJSONInt_$cparseJSON
+                   @ APIs.SecureTime
+                   APIs.$fFromJSONSecureTime_$cparseJSON
                      `cast`
-                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <GHC.Types.Int>_N))
+                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureTime>_N))
                    eta) -}
-03add879d2d97b72b1887967c55733f9
-  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 ::
+0553cd18bef2a2a8feecc43e349b0381
+  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
-    -> Data.Either.Either GHC.Base.String Data.Time.Clock.UTC.UTCTime
+    -> Data.Either.Either GHC.Base.String APIs.SecurePort
   {- Arity: 2, Strictness: <L,A><S,1*U>,
      Unfolding: InlineRule (1, True, True)
                 (\ (ds :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
                    (eta :: Data.ByteString.Lazy.Internal.ByteString) ->
                  Servant.API.ContentTypes.eitherDecodeLenient
-                   @ Data.Time.Clock.UTC.UTCTime
-                   Data.Aeson.Types.Instances.$fFromJSONUTCTime_$cparseJSON
+                   @ APIs.SecurePort
+                   APIs.$fFromJSONSecurePort_$cparseJSON
                      `cast`
-                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
-                             <Data.Time.Clock.UTC.UTCTime>_N))
+                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecurePort>_N))
                    eta) -}
 cba0ad6c2bfabfd7a82584b96aa4f7c9
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender4 ::
@@ -324,13 +322,13 @@ a838d98f9fc24d25a8e6463a4b6309fa
                                      GHC.Show.shows_$cshowList ww3 eta3)
                                     (GHC.Types.[] @ GHC.Show.ShowS)))) of ww6 { (#,#) ww7 ww8 ->
                     GHC.Types.: @ GHC.Types.Char ww7 ww8 } }) }) -}
-1ab8818373a5e021f2c31108affaf9fd
-  $sclient11 :: [GHC.Types.Char]
+8150b8f049bd7cd607aa3bfbad0ebe52
+  $sclient12 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackAppendCString#
                    "/"#
-                   Cache.$sclient12) -}
-f20bae1cd01d88ac0ffbbbcb21cdee6f
-  $sclient12 :: [GHC.Types.Char]
+                   Cache.$sclient13) -}
+72cf1c84f3cd98f874fdffd14d76b220
+  $sclient13 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "search"#) -}
 bd3f5c63a54c99af01df516b4f6f620e
   $trModule :: GHC.Types.Module
@@ -624,36 +622,36 @@ c6466b7f053960c7f1088ca356fae417
 f56790759d2d41ffb1212a3e6b23052a
   storeNewFileInCache_go :: [[Cache.FileSet]] -> [Cache.FileSet]
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
-"SPEC/Cache $fMimeUnrenderTYPEJSONa @ Int" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
-                                                                            GHC.Types.Int)
-  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ GHC.Types.Int
-                                                   $dFromJSON
-  = Cache.$s$fMimeUnrenderTYPEJSONa6
 "SPEC/Cache $fMimeUnrenderTYPEJSONa @ SecureFile" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                    APIs.SecureFile)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecureFile
                                                    $dFromJSON
   = Cache.$s$fMimeUnrenderTYPEJSONa9
-"SPEC/Cache $fMimeUnrenderTYPEJSONa @ UTCTime" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
-                                                                                Data.Time.Clock.UTC.UTCTime)
-  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ Data.Time.Clock.UTC.UTCTime
+"SPEC/Cache $fMimeUnrenderTYPEJSONa @ SecurePort" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
+                                                                                   APIs.SecurePort)
+  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecurePort
                                                    $dFromJSON
-  = Cache.$s$fMimeUnrenderTYPEJSONa7
-"SPEC/Cache $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ Int" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
-                                                                                           GHC.Types.Int)
-  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ GHC.Types.Int
-                                                                  $dFromJSON
-  = Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1
+  = Cache.$s$fMimeUnrenderTYPEJSONa8
+"SPEC/Cache $fMimeUnrenderTYPEJSONa @ SecureTime" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
+                                                                                   APIs.SecureTime)
+  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecureTime
+                                                   $dFromJSON
+  = Cache.$s$fMimeUnrenderTYPEJSONa6
 "SPEC/Cache $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ SecureFile" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                                   APIs.SecureFile)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecureFile
                                                                   $dFromJSON
   = Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender4
-"SPEC/Cache $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ UTCTime" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
-                                                                                               Data.Time.Clock.UTC.UTCTime)
-  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ Data.Time.Clock.UTC.UTCTime
+"SPEC/Cache $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ SecurePort" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
+                                                                                                  APIs.SecurePort)
+  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecurePort
                                                                   $dFromJSON
-  = Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2
+  = Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3
+"SPEC/Cache $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ SecureTime" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
+                                                                                                  APIs.SecureTime)
+  Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecureTime
+                                                                  $dFromJSON
+  = Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

@@ -32,7 +32,7 @@ uploadFile :: SecureFileUpload -> ClientM SecureResponseData
 deleteFile :: SecureFileName -> ClientM SecureResponseData
 getFiles :: ClientM [String]
 downloadFile :: SecureFileName -> ClientM SecureFile
-getModifyTime :: SecureFileName -> ClientM UTCTime
+getModifyTime :: SecureFileName -> ClientM SecureTime
 
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
@@ -75,11 +75,12 @@ runQuery token@(AuthToken decTicket decSessionKey) queryType fileName fileConten
           putStrLn $ "Decrypted upload response: " ++ decResponse
     "listfiles" -> do
       putStrLn $ "Getting list of files in directory..."
-      res <- runClientM getFileListQuery (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+      res <- runClientM (getFileListQuery decTicket) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
       case res of
         Left err -> putStrLn $ "Error: " ++ show err
-        Right (get_files) -> do
-          print get_files
+        Right (encFiles) -> do
+          let decFiles = encryptDecryptArray decSessionKey encFiles
+          print decFiles
     "download" -> do
       putStrLn $ "Checking if file is already in cache: " ++ fileName
       isCached <- doesFileExist fileName
@@ -111,8 +112,8 @@ runQuery token@(AuthToken decTicket decSessionKey) queryType fileName fileConten
 
 -- | Directry Server Stuff
 
-searchForFile :: SecureFileName -> ClientM Int
-getFileList :: ClientM [String]
+searchForFile :: SecureFileName -> ClientM SecurePort
+getFileList :: SecureTicket -> ClientM [String]
 updateList :: String -> Int -> String -> ClientM ResponseData
 
 directoryServerApi :: Proxy DirectoryServerAPI
@@ -120,7 +121,7 @@ directoryServerApi = Proxy
 
 searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
 
-searchQuery :: String -> String -> ClientM Int
+searchQuery :: String -> String -> ClientM SecurePort
 searchQuery ticket fileName = do 
   searchResult <- searchForFile (SecureFileName ticket fileName)
   return searchResult
@@ -134,12 +135,13 @@ searchForFileQuery token@(AuthToken decTicket decSessionKey) fileName = do
     Left err -> do
       putStrLn $ "Error: " ++ show err
       return Nothing
-    Right (server_port) -> do
-      return (Just server_port)
+    Right (SecurePort encPort) -> do
+      let decPort = decryptPort decSessionKey encPort
+      return (Just decPort)
 
-getFileListQuery :: ClientM [String]
-getFileListQuery = do
-  fileList <- getFileList
+getFileListQuery :: String -> ClientM [String]
+getFileListQuery ticket = do
+  fileList <- getFileList (SecureTicket ticket)
   return fileList
 
 -- | Authentication Stuff

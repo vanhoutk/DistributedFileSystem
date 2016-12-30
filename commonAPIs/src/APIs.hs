@@ -42,6 +42,15 @@ data ResponseData = ResponseData { response :: String
 data SecureResponseData = SecureResponseData { encResponse :: String -- Encrypted Response
                                              } deriving (Generic, ToJSON, FromJSON, Show)
 
+data SecureTime = SecureTime { encTime :: String
+                             } deriving (Generic, ToJSON, FromJSON, Show)
+
+data SecurePort = SecurePort { encPort :: String
+                             } deriving (Generic, ToJSON, FromJSON, Show)
+
+data SecureTicket = SecureTicket { secTicket :: String
+                                 } deriving (Generic, ToJSON, FromJSON, Show)
+
 -- Could allow directory change
 -- Could allow files to be moved
 -- Could allow files to be deleted
@@ -50,7 +59,7 @@ type FileServerAPI = "upload"     :> ReqBody '[JSON] SecureFileUpload :> Post '[
                 :<|> "delete"     :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureResponseData
                 :<|> "download"   :> Get '[JSON] [String] --Doesn't need to be encrypted as only called from Directory Server
                 :<|> "download"   :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureFile
-                :<|> "modifyTime" :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] UTCTime
+                :<|> "modifyTime" :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureTime
 
 data FileMapping = FileMapping { fileName :: String
                                , serverName :: String
@@ -64,8 +73,8 @@ deriving instance ToBSON   String
 directoryPort :: Int
 directoryPort = 8080
 
-type DirectoryServerAPI = "search"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] Int
-                     :<|> "list"        :> Get '[JSON] [String]
+type DirectoryServerAPI = "search"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecurePort
+                     :<|> "list"        :> ReqBody '[JSON] SecureTicket :> Post '[JSON] [String]
                      :<|> "updateList"  :> Capture "updateType" String :> Capture "port" Int :> Capture "name" String :> Get '[JSON] ResponseData
 
 asPort :: Int
@@ -89,6 +98,21 @@ sharedServerSecret = "This is the shared server secret."
 encryptDecrypt :: String -> String -> String
 encryptDecrypt key text = zipWith (\a b -> chr $ xor (ord a) (ord b)) (cycle key) text
 -- XOR each element of the text with a corresponding element of the key
+
+encryptTime :: String  -> UTCTime  -> String
+encryptTime key time = encryptDecrypt key (show(time) :: String)
+
+decryptTime :: String  -> String  -> UTCTime
+decryptTime key text = (read $ encryptDecrypt key text) :: UTCTime
+
+encryptPort :: String  -> Int  -> String
+encryptPort key port = encryptDecrypt key (show(port) :: String)
+
+decryptPort :: String  -> String  -> Int
+decryptPort key text = (read $ encryptDecrypt key text) :: Int
+
+encryptDecryptArray :: String -> [String] -> [String]
+encryptDecryptArray key array = mapM (encryptDecrypt key) array
 
 type AuthenticationServerAPI = "login"      :> ReqBody '[JSON] LoginRequest :> Post '[JSON] AuthToken
                           :<|> "addNewUser" :> Capture "username" String    :> Capture "password" String :> Get '[JSON] ResponseData

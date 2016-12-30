@@ -140,7 +140,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM"
+#define CURRENT_COMPONENT_ID "commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM"
 
-#define CURRENT_PACKAGE_KEY "commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM"
+#define CURRENT_PACKAGE_KEY "commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM"
 
