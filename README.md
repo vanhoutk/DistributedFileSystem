@@ -27,8 +27,6 @@ Student Number: 12301975
   - ~~Delete the oldest file when the cache is full and a new file is downloaded~~
   - ~~Figure out invalidation of files~~
   - ~~Make the cache module less hardcoded (localhost and port number)~~
-    * Might make more sense once directory server has been created
-  - Possibly switch to using mongoDB for the cache and store file + port of server it's on for checking updates
 
 4. Directory Server
 
@@ -61,7 +59,7 @@ Student Number: 12301975
       - Add logic for detection of incorrect encryption?
     * ~~Cache~~
     * APIs
-      - Figure out how to encrypt the [String], UTCTime and Int responses.
+      - ~~Figure out how to encrypt the [String], UTCTime and Int responses.~~
 
 8. Transactions
   - TODO: Figure out how this should work
