@@ -72,7 +72,7 @@ server = loginUser
 
       liftIO $ print userAccount
       case (length userAccount) of
-        0 -> return (AuthToken "Failed" "Username not found")
+        0 -> return (AuthToken "Failed" "Username not found" "Failed")
         _ -> do
           let (AccountData _ password) = head userAccount
           let decMessage = encryptDecrypt password encMessage
@@ -82,15 +82,21 @@ server = loginUser
             let decSessionKey = encryptDecrypt password encSessionKey
             let ticket = encryptDecrypt sharedServerSecret sessionKey
             let encTicket = encryptDecrypt password ticket
+
+            currentTime <- liftIO $ getCurrentTime
+            let oneHour = 60 * 60
+            let tokenTimeOut = addUTCTime oneHour currentTime
+            let encTimeOut = encryptTime sharedServerSecret tokenTimeOut 
+
             liftIO $ do
               putStrLn $ "SessionKey: " ++ sessionKey
               putStrLn $ "EncSessionKey: " ++ encSessionKey
               putStrLn $ "DecSessionKey: " ++ decSessionKey
               putStrLn $ "Ticket: " ++ ticket
               putStrLn $ "EncTicket: " ++ encTicket
-            return (AuthToken encTicket encSessionKey)
+            return (AuthToken encTicket encSessionKey encTimeOut)
           else do
-            return (AuthToken "Failed" "Encryption failed")
+            return (AuthToken "Failed" "Encryption failed" "Failed")
 
     addNewUser :: String -> String -> APIHandler ResponseData
     addNewUser username password = do

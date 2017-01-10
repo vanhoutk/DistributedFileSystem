@@ -39,14 +39,14 @@ fileserverApi = Proxy
 
 uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
 
-uploadQuery :: String -> String -> String -> ClientM(SecureResponseData)
-uploadQuery ticket fileName fileContents = do
-  upload_file <- uploadFile (SecureFileUpload ticket (File fileName fileContents))
+uploadQuery :: String -> String -> String -> String -> ClientM(SecureResponseData)
+uploadQuery ticket encTimeOut fileName fileContents = do
+  upload_file <- uploadFile (SecureFileUpload ticket encTimeOut (File fileName fileContents))
   return (upload_file)
 
-downloadQuery :: String -> String -> ClientM(SecureFile)
-downloadQuery ticket fileName = do
-  download_file <- downloadFile (SecureFileName ticket fileName)
+downloadQuery :: String -> String -> String -> ClientM(SecureFile)
+downloadQuery ticket encTimeOut fileName = do
+  download_file <- downloadFile (SecureFileName ticket encTimeOut fileName)
   return (download_file)
 
 getFilesQuery :: ClientM([String])
@@ -56,7 +56,7 @@ getFilesQuery = do
 
 -- TODO: Might need to change the return type to return something
 runQuery :: AuthToken -> String -> String -> String -> IO()
-runQuery token@(AuthToken decTicket decSessionKey) queryType fileName fileContents = do
+runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName fileContents = do
   putStrLn "Running Query..."
 
   let encFileName = encryptDecrypt decSessionKey fileName
@@ -66,7 +66,7 @@ runQuery token@(AuthToken decTicket decSessionKey) queryType fileName fileConten
   case queryType of
     "upload" -> do
       putStrLn $ "Uploading file: " ++ fileName
-      res <- runClientM (uploadQuery decTicket encFileName encFileContents) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+      res <- runClientM (uploadQuery decTicket encTimeOut encFileName encFileContents) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
       case res of
         Left err -> putStrLn $ "Error: " ++ show err
         Right (uploadFileResponse@(SecureResponseData encResponse)) -> do
@@ -75,7 +75,7 @@ runQuery token@(AuthToken decTicket decSessionKey) queryType fileName fileConten
           putStrLn $ "Decrypted upload response: " ++ decResponse
     "listfiles" -> do
       putStrLn $ "Getting list of files in directory..."
-      res <- runClientM (getFileListQuery decTicket) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+      res <- runClientM (getFileListQuery decTicket encTimeOut) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
       case res of
         Left err -> putStrLn $ "Error: " ++ show err
         Right (encFiles) -> do
@@ -93,7 +93,7 @@ runQuery token@(AuthToken decTicket decSessionKey) queryType fileName fileConten
               putStrLn "Unable to find file on directory server"
               return ()
             Just serverPort' -> do
-              res <- runClientM (downloadQuery decTicket encFileName) (ClientEnv manager (BaseUrl Http "localhost" serverPort' ""))
+              res <- runClientM (downloadQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" serverPort' ""))
               case res of
                 Left err -> putStrLn $ "Error: " ++ show err
                 Right (downloadFile) -> do
@@ -121,16 +121,16 @@ directoryServerApi = Proxy
 
 searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
 
-searchQuery :: String -> String -> ClientM SecurePort
-searchQuery ticket fileName = do 
-  searchResult <- searchForFile (SecureFileName ticket fileName)
+searchQuery :: String -> String -> String -> ClientM SecurePort
+searchQuery ticket encTimeOut fileName = do 
+  searchResult <- searchForFile (SecureFileName ticket encTimeOut fileName)
   return searchResult
 
 searchForFileQuery :: AuthToken -> String -> IO (Maybe Int)
-searchForFileQuery token@(AuthToken decTicket decSessionKey) fileName = do
+searchForFileQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (searchQuery decTicket encFileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+  res <- runClientM (searchQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -139,9 +139,9 @@ searchForFileQuery token@(AuthToken decTicket decSessionKey) fileName = do
       let decPort = decryptPort decSessionKey encPort
       return (Just decPort)
 
-getFileListQuery :: String -> ClientM [String]
-getFileListQuery ticket = do
-  fileList <- getFileList (SecureTicket ticket)
+getFileListQuery :: String -> String -> ClientM [String]
+getFileListQuery ticket encTimeOut = do
+  fileList <- getFileList (SecureTicket ticket encTimeOut)
   return fileList
 
 -- | Authentication Stuff
@@ -178,7 +178,12 @@ loginClient = do
       putStrLn $ "Error: " ++ show err
       return Nothing
     Right (authToken) -> do
-      let (AuthToken encTicket encSessionKey) = authToken
-      let decTicket = encryptDecrypt password encTicket
-      let decSessionKey = encryptDecrypt password encSessionKey
-      return (Just (AuthToken decTicket decSessionKey))
+      let (AuthToken encTicket encSessionKey encTimeOut) = authToken
+      case encTicket of
+        "Failed" -> do
+          putStrLn $ "Failed with error: " ++ encSessionKey
+          return Nothing
+        _ -> do
+          let decTicket = encryptDecrypt password encTicket
+          let decSessionKey = encryptDecrypt password encSessionKey
+          return (Just (AuthToken decTicket decSessionKey encTimeOut))

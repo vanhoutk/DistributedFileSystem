@@ -57,27 +57,39 @@ server port = uploadFile
 	where
 
     uploadFile :: SecureFileUpload -> APIHandler SecureResponseData
-    uploadFile (SecureFileUpload ticket (File encName encContents)) = do
+    uploadFile (SecureFileUpload ticket encTimeOut (File encName encContents)) = do
+      let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
-      let decName = encryptDecrypt sessionKey encName
-      let decContents = encryptDecrypt sessionKey encContents
-      liftIO $ do
-        putStrLn $ "Uploading file: " ++ decName
-        updateListQuery "update" port decName
-        (writeFile decName decContents)
-      let encResponse = encryptDecrypt sessionKey "Success"
-      return (SecureResponseData encResponse)
+      currentTime <- liftIO $ getCurrentTime
+      if (currentTime > decTimeOut) then do
+        let encResponse = encryptDecrypt sessionKey "Failed - SessionKey has expired."
+        return (SecureResponseData encResponse)
+      else do
+        let decName = encryptDecrypt sessionKey encName
+        let decContents = encryptDecrypt sessionKey encContents
+        liftIO $ do
+          putStrLn $ "Uploading file: " ++ decName
+          updateListQuery "update" port decName
+          (writeFile decName decContents)
+        let encResponse = encryptDecrypt sessionKey "Success"
+        return (SecureResponseData encResponse)
 
     deleteFile :: SecureFileName -> APIHandler SecureResponseData
-    deleteFile (SecureFileName ticket encName) = do
+    deleteFile (SecureFileName ticket encTimeOut encName) = do
+      let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
-      let decName = encryptDecrypt sessionKey encName
-      liftIO $ do
-        putStrLn $ "Deleting file: " ++ decName
-        (removeFile decName)
-      liftIO $ updateListQuery "delete" port decName
-      let encResponse = encryptDecrypt sessionKey "Success"
-      return (SecureResponseData encResponse)
+      currentTime <- liftIO $ getCurrentTime
+      if (currentTime > decTimeOut) then do
+        let encResponse = encryptDecrypt sessionKey "Failed - SessionKey has expired."
+        return (SecureResponseData encResponse)
+      else do
+        let decName = encryptDecrypt sessionKey encName
+        liftIO $ do
+          putStrLn $ "Deleting file: " ++ decName
+          (removeFile decName)
+        liftIO $ updateListQuery "delete" port decName
+        let encResponse = encryptDecrypt sessionKey "Success"
+        return (SecureResponseData encResponse)
 
     getFiles :: APIHandler [String]
     getFiles = do
@@ -89,17 +101,23 @@ server port = uploadFile
       return files' 
 
     downloadFile :: SecureFileName -> APIHandler SecureFile
-    downloadFile (SecureFileName ticket encName) = do
+    downloadFile (SecureFileName ticket encTimeOut encName) = do
+      let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
-      let decName = encryptDecrypt sessionKey encName
-      contents <- liftIO $ do
-        putStrLn $ "Reading contents of: " ++ decName
-        (readFile decName)
-      let encContents = encryptDecrypt sessionKey contents
-      return (SecureFile (File encName encContents))
+      currentTime <- liftIO $ getCurrentTime
+      if (currentTime > decTimeOut) then do
+        let encContents = encryptDecrypt sessionKey "Failed - SessionKey has expired."
+        return (SecureFile (File encName encContents))
+      else do
+        let decName = encryptDecrypt sessionKey encName
+        contents <- liftIO $ do
+          putStrLn $ "Reading contents of: " ++ decName
+          (readFile decName)
+        let encContents = encryptDecrypt sessionKey contents
+        return (SecureFile (File encName encContents))
 
     getModifyTime :: SecureFileName -> APIHandler SecureTime
-    getModifyTime (SecureFileName ticket encName) = do
+    getModifyTime (SecureFileName ticket encTimeOut encName) = do
       let sessionKey = encryptDecrypt sharedServerSecret ticket
       let decName = encryptDecrypt sessionKey encName
       time <- liftIO $ getModificationTime decName

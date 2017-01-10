@@ -54,7 +54,7 @@ checkForUpdate token delay = do
   checkForUpdate token delay -- Tail recursion
 
 checkFileForUpdate :: AuthToken -> String -> IO()
-checkFileForUpdate token@(AuthToken decTicket decSessionKey) fileName = do
+checkFileForUpdate token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   localFileTime <- getAccessTime fileName -- Note: This is getAccessTime as opposed to getModificationTime, while the fileserver uses getModificationTime
   serverPort <- searchForFileQuery token fileName
   case serverPort of
@@ -158,16 +158,16 @@ fileserverApi = Proxy
 
 uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
 
-downloadQuery :: String -> String -> ClientM(SecureFile)
-downloadQuery ticket fileName = do
-  download_file <- downloadFile (SecureFileName ticket fileName)
+downloadQuery :: String -> String -> String -> ClientM(SecureFile)
+downloadQuery ticket encTimeOut fileName = do
+  download_file <- downloadFile (SecureFileName ticket encTimeOut fileName)
   return (download_file)
 
 downloadFileQuery :: AuthToken -> Int -> String -> IO (Maybe SecureFile)
-downloadFileQuery token@(AuthToken decTicket decSessionKey) port fileName = do
+downloadFileQuery token@(AuthToken decTicket decSessionKey encTimeOut) port fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (downloadQuery decTicket encFileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
+  res <- runClientM (downloadQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -175,16 +175,16 @@ downloadFileQuery token@(AuthToken decTicket decSessionKey) port fileName = do
     Right (download_file) -> do
       return (Just download_file)
 
-modifyTimeQuery :: String -> String -> ClientM(SecureTime)
-modifyTimeQuery ticket fileName = do
-  fileModTime <- getModifyTime (SecureFileName ticket fileName)
+modifyTimeQuery :: String -> String -> String -> ClientM(SecureTime)
+modifyTimeQuery ticket encTimeOut fileName = do
+  fileModTime <- getModifyTime (SecureFileName ticket encTimeOut fileName)
   return (fileModTime)
 
 fileModifyTimeQuery :: AuthToken -> Int -> String -> IO (Maybe UTCTime)
-fileModifyTimeQuery token@(AuthToken decTicket decSessionKey) port fileName = do
+fileModifyTimeQuery token@(AuthToken decTicket decSessionKey encTimeOut) port fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (modifyTimeQuery decTicket encFileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
+  res <- runClientM (modifyTimeQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -204,16 +204,16 @@ directoryServerApi = Proxy
 
 searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
 
-searchQuery :: String -> String -> ClientM SecurePort
-searchQuery ticket fileName = do
-  searchResult <- searchForFile (SecureFileName ticket fileName)
+searchQuery :: String -> String -> String -> ClientM SecurePort
+searchQuery ticket encTimeOut fileName = do
+  searchResult <- searchForFile (SecureFileName ticket encTimeOut fileName)
   return searchResult
 
 searchForFileQuery :: AuthToken -> String -> IO (Maybe Int)
-searchForFileQuery token@(AuthToken decTicket decSessionKey) fileName = do
+searchForFileQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (searchQuery decTicket encFileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+  res <- runClientM (searchQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err

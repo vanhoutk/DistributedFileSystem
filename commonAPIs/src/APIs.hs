@@ -26,10 +26,12 @@ data File = File  { name :: String
                   } deriving (Show, Generic, FromJSON, ToJSON)
 
 data SecureFileUpload = SecureFileUpload { ticket :: String
+                                         , encTimeout :: String
                                          , encryptedFile :: File -- Encrypted File
                                          } deriving (Show, Generic, FromJSON, ToJSON)
 
 data SecureFileName = SecureFileName { ticket' :: String
+                                     , encTimeout' :: String
                                      , encFileName :: String
                                      } deriving (Show, Generic, FromJSON, ToJSON)
 
@@ -49,6 +51,7 @@ data SecurePort = SecurePort { encPort :: String
                              } deriving (Generic, ToJSON, FromJSON, Show)
 
 data SecureTicket = SecureTicket { secTicket :: String
+                                 , secTimeOut :: String
                                  } deriving (Generic, ToJSON, FromJSON, Show)
 
 -- Could allow directory change
@@ -90,6 +93,7 @@ data LoginRequest = LoginRequest { userName :: String
 
 data AuthToken = AuthToken { encTicket :: String -- Client password encrypted ticket, which is itself a server password encrypted session key
                            , encSessionKey :: String -- Client password encrypted sessionKey
+                           , encTokenTimeout :: String -- Token Timeout encryted with server password
                            } deriving (Show, Generic, FromJSON, ToJSON)
 
 sharedServerSecret :: String
@@ -112,7 +116,9 @@ decryptPort :: String  -> String  -> Int
 decryptPort key text = (read $ encryptDecrypt key text) :: Int
 
 encryptDecryptArray :: String -> [String] -> [String]
-encryptDecryptArray key array = mapM (encryptDecrypt key) array
+encryptDecryptArray key array = do
+  encryptedArray <- map (encryptDecrypt key) array
+  return encryptedArray
 
 type AuthenticationServerAPI = "login"      :> ReqBody '[JSON] LoginRequest :> Post '[JSON] AuthToken
                           :<|> "addNewUser" :> Capture "username" String    :> Capture "password" String :> Get '[JSON] ResponseData

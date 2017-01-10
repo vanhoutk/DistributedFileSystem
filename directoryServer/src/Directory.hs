@@ -93,20 +93,26 @@ server = searchForFile
   where
 
     searchForFile :: SecureFileName -> APIHandler SecurePort
-    searchForFile (SecureFileName ticket encFileName) = do
+    searchForFile (SecureFileName ticket encTimeOut encFileName) = do
+      let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
-      let decFileName = encryptDecrypt sessionKey encFileName
-      liftIO $ putStrLn $ ticket ++ " " ++ sessionKey ++ " " ++ encFileName ++ " " ++ decFileName
-      fileMapping <- getFileMapping decFileName
-      case fileMapping of
-        Nothing -> do
-          let encPort = encryptPort sessionKey 0
-          return (SecurePort encPort)
-        Just fileMapping' -> do
-          let (FileMapping _ _ port) = fileMapping'
-          let port' = (read :: String -> Int) $ port
-          let encPort = encryptPort sessionKey port'
-          return (SecurePort encPort)
+      currentTime <- liftIO $ getCurrentTime
+      if (currentTime > decTimeOut) then do
+        let encPort = encryptPort sessionKey 0
+        return (SecurePort encPort)
+      else do
+        let decFileName = encryptDecrypt sessionKey encFileName
+        liftIO $ putStrLn $ ticket ++ " " ++ sessionKey ++ " " ++ encFileName ++ " " ++ decFileName
+        fileMapping <- getFileMapping decFileName
+        case fileMapping of
+          Nothing -> do
+            let encPort = encryptPort sessionKey 0
+            return (SecurePort encPort)
+          Just fileMapping' -> do
+            let (FileMapping _ _ port) = fileMapping'
+            let port' = (read :: String -> Int) $ port
+            let encPort = encryptPort sessionKey port'
+            return (SecurePort encPort)
 
       where
         getFileMapping :: String -> APIHandler (Maybe FileMapping)
@@ -124,15 +130,25 @@ server = searchForFile
             _ -> return (Just (head fileMap))
 
     listFiles :: SecureTicket -> APIHandler [String]
-    listFiles (SecureTicket ticket) = do
+    listFiles (SecureTicket ticket encTimeOut) = do
+      liftIO $ putStrLn "ListFiles"
+      let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
-      fileMappings <- liftIO $ withMongoDbConnection $ do
-        docs <- find (select [] "FILE_SERVER_MAPPINGS") >>= drainCursor
-        return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
-      fileNames <- mapM (getFileNames) fileMappings
-      let fileNames' = DL.sort fileNames
-      let encFileNames = encryptDecryptArray sessionKey fileNames'
-      return encFileNames
+      currentTime <- liftIO $ getCurrentTime
+      if (currentTime > decTimeOut) then do
+        let failedArray = ["Failed", "SessionKey has timed out."]
+        let encFileNames = encryptDecryptArray sessionKey failedArray
+        return encFileNames
+      else do
+        fileMappings <- liftIO $ withMongoDbConnection $ do
+          docs <- find (select [] "FILE_SERVER_MAPPINGS") >>= drainCursor
+          return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
+        fileNames <- mapM (getFileNames) fileMappings
+        let fileNames' = DL.sort fileNames
+        liftIO $ print fileNames'
+        let encFileNames = encryptDecryptArray sessionKey fileNames'
+        liftIO $ print encFileNames
+        return encFileNames
 
       where
         getFileNames :: FileMapping -> APIHandler String

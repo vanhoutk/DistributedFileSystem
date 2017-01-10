@@ -49,14 +49,10 @@ Student Number: 12301975
 7. Security Service
 
   - ~~Authentication Server~~
+  - ~~Add a timeout to the token~~
   - Add authentiction to:
     * ~~Client~~
       - ~~Switch order of cache and login in start of client and pass token to cache~~
-    * Fileserver
-      - Add logic for detection of incorrect encryption?
-      - Can pass encTicket along with ticket and compare the decTicket with the ticket?
-    * Directory Server
-      - Add logic for detection of incorrect encryption?
     * ~~Cache~~
     * APIs
       - ~~Figure out how to encrypt the [String], UTCTime and Int responses.~~
@@ -97,3 +93,5 @@ The fileserver and caching both works with local directories (files/ and temp/ r
 
 Caching should ideally be slightly more modular with respect to the polling.
 
+No check on the fact that the sessionKey (or rather the ticket hasn't been tampered with) <- Discuss in report
+Didn't put a time check on the ticket query for the file modify time. Too much effort and not very important.
