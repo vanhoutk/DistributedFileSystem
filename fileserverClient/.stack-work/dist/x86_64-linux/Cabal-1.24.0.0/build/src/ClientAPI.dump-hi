@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-10 23:38:26.136896 UTC
+2017-01-11 01:26:34.60785 UTC
 
 interface fileserverClient-0.1.0.0-D0BM3Nsx9VC6H9aW7nEs8X:ClientAPI 8001
-  interface hash: a554dbad50c68ea3ed281d654d9024ca
-  ABI hash: c3646b56cf3561fd8c0451ed6ad3fff6
-  export-list hash: 49d58f5b947fc4f2c5f25dee037f162f
-  orphan hash: 787bc863ea0176a531f62248d9338ea2
+  interface hash: 15e97796696cd9eafc9b924b8190d6e1
+  ABI hash: 1c5fa396bfa57a720a4bb6e98fd8c405
+  export-list hash: b76e8f4304d827438ae32f5baa4d6d22
+  orphan hash: ca0313b83abfe5c4851a548a79915929
   flag hash: 13c201de8bfdf7e69351b49f9035b3fa
   sig of: Nothing
   used TH splices: False
@@ -163,12 +163,12 @@ import  -/  base-4.9.0.0:GHC.Generics 8e2a7658e8b966c1d29d0d5fd4129f38
 import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM:APIs 18eea2be92476d20542b4bd4abedf9ea
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM:APIs 49b563736d2765ce34ce93f3ec221e9f
 import  -/  directory-1.2.7.1@directory-1.2.7.1-6xbYYKdoE266LLlc7GOex4:System.Directory 970e76f5d7f7d1c2bb4871bad753c6c1
-import  -/  Cache 61050dca178314a3472cbe6bc9ff3fec
-  exports: 03f7a1acaf34a4a503cca6010185cb33
-  getFileFromCache 9ba354ec0cdf892b2682d51f071b4536
-  storeNewFileInCache a53d90c2fb14435eaa7049acea66e52d
+import  -/  Cache 209ea26bf2c27bc134a113d66c2bf25c
+  exports: c8a6dc44fe979cbc2ab1dd5dc95dd27b
+  getFileFromCache e8f3ba7b12623928ee506c99f313bee4
+  storeNewFileInCache ee8b51c62183e549857910b91687c539
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  http-client-0.4.31.2@http-client-0.4.31.2-22JDLRDi4cqJNyCfT1wj4e:Network.HTTP.Client 544aaf3c3ee192cc642318dacb39ee6e
 import  -/  http-client-0.4.31.2@http-client-0.4.31.2-22JDLRDi4cqJNyCfT1wj4e:Network.HTTP.Client.Manager 9929816e5db2a227629dbf4f61af0184
@@ -204,7 +204,7 @@ c00b3169400a0ffe3dcd60141b1698a9
                    (<Data.Vector.Vector Data.Aeson.Types.Internal.Value>_R
                     ->_R Sym (Data.Aeson.Types.Internal.N:Parser[0]
                                   <[[GHC.Types.Char]]>_R))) -}
-e1705db49803e803bc23cd40a115f1e5
+4aca15255022588bfe2eb1ca7f13b317
   $s$fMimeUnrenderTYPEJSONa10 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.SecureResponseData
@@ -288,7 +288,7 @@ d89de575b62ab65a183014d457172a3e
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.AuthToken>_N)))
                   ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 -}
-336abb288d3b914feaefa3e07ad6b2bc
+dbac38b15323886cf8ad72f1d2ad68c5
   $s$fMimeUnrenderTYPEJSONa7 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.SecureFile
@@ -303,7 +303,7 @@ d89de575b62ab65a183014d457172a3e
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureFile>_N)))
                   ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 -}
-952f4547dea280c12842b10cd406b36d
+94b0a62a73ba4dab34b5f023a267b39f
   $s$fMimeUnrenderTYPEJSONa8 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.SecurePort
@@ -355,7 +355,7 @@ d89de575b62ab65a183014d457172a3e
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.AuthToken>_N))
                    eta) -}
-503096242f7cf47cfa9d2c6de7f1f267
+187be1ea8eb9e3267b2e64423b19fbcd
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -370,7 +370,7 @@ d89de575b62ab65a183014d457172a3e
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureFile>_N))
                    eta) -}
-ff1e570cc63ccc1c8b989770b3f50342
+4d738507d7b8073b0acd7cc111c19b2c
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -385,7 +385,7 @@ ff1e570cc63ccc1c8b989770b3f50342
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecurePort>_N))
                    eta) -}
-9119cacd130c0aedf0a36aee18e039ed
+0da49df416de35713f2bf30f1781a134
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender5 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString

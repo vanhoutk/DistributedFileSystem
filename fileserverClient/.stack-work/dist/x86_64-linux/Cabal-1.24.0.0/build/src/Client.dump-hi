@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-10 23:38:26.458773 UTC
+2017-01-11 01:26:34.853528 UTC
 
 interface fileserverClient-0.1.0.0-D0BM3Nsx9VC6H9aW7nEs8X:Client 8001
-  interface hash: 413956e265def4b84bf810a67f5d2448
+  interface hash: 0cbd07c1825d35c6688bff2db2af9039
   ABI hash: 05ef020743a787ddead65db15992dc76
   export-list hash: 4e83e0907d898144051cd91577658f97
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -160,14 +160,14 @@ import  -/  base-4.9.0.0:Data.OldList 0058409f994fb13ae0616e3f1e5b4dae
 import  -/  base-4.9.0.0:GHC.List 13d2451194c1c6e53b4f4f07947736dd
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM:APIs 18eea2be92476d20542b4bd4abedf9ea
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-HG5f3m8j2i08xkd4uhISM:APIs 49b563736d2765ce34ce93f3ec221e9f
 import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 24b19ef74cea78e4c18332bed9f0491d
-import  -/  Cache 61050dca178314a3472cbe6bc9ff3fec
-  exports: 03f7a1acaf34a4a503cca6010185cb33
+import  -/  Cache 209ea26bf2c27bc134a113d66c2bf25c
+  exports: c8a6dc44fe979cbc2ab1dd5dc95dd27b
   clearCache a3beeaac5c64db3057ef39e3bb51dc9a
   setupCache 0a9ee491f6bf5bc6fac13b5bad0a6fe2
-import  -/  ClientAPI c3646b56cf3561fd8c0451ed6ad3fff6
-  exports: 49d58f5b947fc4f2c5f25dee037f162f
+import  -/  ClientAPI 1c5fa396bfa57a720a4bb6e98fd8c405
+  exports: b76e8f4304d827438ae32f5baa4d6d22
   loginClient 2b4a77ebdcd8653bf6a582d4b1cde798
   runQuery 0202e01cc76c5d26c769cf50138ad737
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c

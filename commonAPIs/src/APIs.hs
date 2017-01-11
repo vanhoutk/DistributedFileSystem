@@ -122,3 +122,17 @@ encryptDecryptArray key array = do
 
 type AuthenticationServerAPI = "login"      :> ReqBody '[JSON] LoginRequest :> Post '[JSON] AuthToken
                           :<|> "addNewUser" :> Capture "username" String    :> Capture "password" String :> Get '[JSON] ResponseData
+
+lsPort :: Int
+lsPort = 8091
+
+data Lock = Lock { lockFileName :: String
+                 , lockStatus :: Bool
+                 } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
+
+deriving instance FromBSON Bool  -- we need these as BSON does not provide
+deriving instance ToBSON   Bool
+
+type LockServerAPI = "lock"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecureResponseData
+                :<|> "unlock"    :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecureResponseData
+                :<|> "checkLock" :> ReqBody '[JSON] SecureFileName :> Post '[JSON] Bool

@@ -46,15 +46,15 @@ Student Number: 12301975
 
   - A scheme based on the gossip architecture is possible, but a model based on a primary copy will most likely be good enough. If you choose to implement a gossip style solution, and an NFS style file system model is being implemented, then replicas should talk frequently to each other. If an upload/download model is in place then communication need only occur when files are closed!
 
-7. Security Service
+7. ~~Security Service~~
 
   - ~~Authentication Server~~
   - ~~Add a timeout to the token~~
-  - Add authentiction to:
+  - ~~Add authentiction to:~~
     * ~~Client~~
       - ~~Switch order of cache and login in start of client and pass token to cache~~
     * ~~Cache~~
-    * APIs
+    * ~~APIs~~
       - ~~Figure out how to encrypt the [String], UTCTime and Int responses.~~
 
 8. Transactions
@@ -76,14 +76,13 @@ Student Number: 12301975
 
 
 9. Lock Service
-  - TODO: Figure out how this should work
-  - The lock service is an important user tool. Certain classes of user applications will modify (deliberately) the same files in a distributed file system. Such tools will need exclusive access to the files they modify. To provide this exclusive access, the client proxy can make use of a lock server. This server simply holds a semaphore for each file it is told about. Any client wishing to access a file could simply ask for access from the lock server. Providing all other clients do the same, it can be sure that ot has exclusive access when access is granted.
+  - ~~Create a locking server~~
+  - ~~Add locking server functions to client API~~
+  - Allow client to make use of locking
 
-  - This service could be exposed (via the client proxies user API) to user applications. Alternatively, it could be provided as an attribute for particular directories. If, for example, the directory service was designed to allow particular directories to be marked as lockable, then the client proxy could be designed to use the locking service for access to files in that directory. This would mean that clients need not be aware of locking but would still benefit from it – ie. Transparency.
+10. Add Proper Logging Messages
 
-  - There are many possible schemes – use you imagination – but be sure to have valid reasons in mind when you finally settle on one or more solutions.
-
-  - One for the advanced – consider how applications could be provided with support to enable them to usefully share files simultaneously. For example, an event service could let applications know when someone else modifies a file they are modifying – what would this be useful for? A groupware lock service?
+11. Comment Code
   
 ## Comments:
 
@@ -95,3 +94,5 @@ Caching should ideally be slightly more modular with respect to the polling.
 
 No check on the fact that the sessionKey (or rather the ticket hasn't been tampered with) <- Discuss in report
 Didn't put a time check on the ticket query for the file modify time. Too much effort and not very important.
+
+TimeOut might not be fully secure, should possibly be encrypted with the sessionKey first, then the sharedSecret. Otherwise a new connection could be used to impersonate a different user. Potentially.

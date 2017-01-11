@@ -39,12 +39,12 @@ fileserverApi = Proxy
 
 uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
 
-uploadQuery :: String -> String -> String -> String -> ClientM(SecureResponseData)
+uploadQuery :: String -> String -> String -> String -> ClientM SecureResponseData
 uploadQuery ticket encTimeOut fileName fileContents = do
   upload_file <- uploadFile (SecureFileUpload ticket encTimeOut (File fileName fileContents))
   return (upload_file)
 
-downloadQuery :: String -> String -> String -> ClientM(SecureFile)
+downloadQuery :: String -> String -> String -> ClientM SecureFile
 downloadQuery ticket encTimeOut fileName = do
   download_file <- downloadFile (SecureFileName ticket encTimeOut fileName)
   return (download_file)
@@ -130,7 +130,7 @@ searchForFileQuery :: AuthToken -> String -> IO (Maybe Int)
 searchForFileQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (searchQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+  res <- runClientM (searchQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" directoryPort ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -165,7 +165,7 @@ addNewUserQuery username password = do
   response <- addNewUser username password
   return response-}
 
-loginClient :: IO(Maybe AuthToken)
+loginClient :: IO (Maybe AuthToken)
 loginClient = do
   putStrLn "Please enter username: "
   username <- getLine
@@ -187,3 +187,69 @@ loginClient = do
           let decTicket = encryptDecrypt password encTicket
           let decSessionKey = encryptDecrypt password encSessionKey
           return (Just (AuthToken decTicket decSessionKey encTimeOut))
+
+-- | Lock Server Stuff
+
+lockFile :: SecureFileName -> ClientM SecureResponseData
+unlockFile :: SecureFileName -> ClientM SecureResponseData
+checkLockFile :: SecureFileName -> ClientM Bool
+
+lockServerAPI :: Proxy LockServerAPI
+lockServerAPI = Proxy
+
+lockFile :<|> unlockFile :<|> checkLockFile = client lockServerAPI
+
+lockQuery :: String -> String -> String -> ClientM SecureResponseData
+lockQuery ticket encTimeOut fileName = do
+  lockQ <- lockFile (SecureFileName ticket encTimeOut fileName)
+  return lockQ
+
+lockF :: AuthToken -> String -> IO ()
+lockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
+  let encFileName = encryptDecrypt decSessionKey fileName
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (lockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" lsPort ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return ()
+    Right (SecureResponseData encResponse) -> do
+      let decResonse = encryptDecrypt decSessionKey encResponse
+      putStrLn $ "Locking Response: " ++ decResonse
+      return ()
+
+unlockQuery :: String -> String -> String -> ClientM SecureResponseData
+unlockQuery ticket encTimeOut fileName = do
+  unlockQ <- unlockFile (SecureFileName ticket encTimeOut fileName)
+  return unlockQ
+
+unlockF :: AuthToken -> String -> IO ()
+unlockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
+  let encFileName = encryptDecrypt decSessionKey fileName
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (unlockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" lsPort ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return ()
+    Right (SecureResponseData encResponse) -> do
+      let decResonse = encryptDecrypt decSessionKey encResponse
+      putStrLn $ "Unlocking Response: " ++ decResonse
+      return ()
+
+checkLockQuery :: String -> String -> String -> ClientM Bool
+checkLockQuery ticket encTimeOut fileName = do
+  checkLockQ <- checkLockFile (SecureFileName ticket encTimeOut fileName)
+  return checkLockQ
+
+checkLockF :: AuthToken -> String -> IO (Maybe Bool)
+checkLockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
+  let encFileName = encryptDecrypt decSessionKey fileName
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (checkLockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" lsPort ""))
+  case res of
+    Left err -> do
+      putStrLn $ "Error: " ++ show err
+      return Nothing
+    Right (isLocked) -> do
+      return (Just isLocked)
