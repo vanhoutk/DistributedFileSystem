@@ -49,6 +49,28 @@ downloadQuery ticket encTimeOut fileName = do
   download_file <- downloadFile (SecureFileName ticket encTimeOut fileName)
   return (download_file)
 
+downloadQ :: AuthToken -> String -> IO ()
+downloadQ token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
+  putStrLn $ "Encrypted File Name: " ++ fileName
+  let encFileName = encryptDecrypt decSessionKey fileName
+  serverPort <- searchForFileQuery token fileName
+  manager <- newManager defaultManagerSettings
+  case serverPort of
+    Nothing -> do
+      putStrLn "Unable to find file on directory server"
+      return ()
+    Just serverPort' -> do
+      res <- runClientM (downloadQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" serverPort' ""))
+      case res of
+        Left err -> putStrLn $ "Error: " ++ show err
+        Right (downloadFile) -> do
+          let (SecureFile (File name contents)) = downloadFile
+          let decName = encryptDecrypt decSessionKey name
+          let decContents = encryptDecrypt decSessionKey contents
+          let decryptedFile = (File decName decContents)
+          storeNewFileInCache decryptedFile
+          print decryptedFile
+
 getFilesQuery :: ClientM([String])
 getFilesQuery = do
   get_files <- getFiles
@@ -56,11 +78,11 @@ getFilesQuery = do
 
 -- TODO: Might need to change the return type to return something
 runQuery :: AuthToken -> String -> String -> String -> IO()
-runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName fileContents = do
+runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName contentsOrType = do
   putStrLn "Running Query..."
 
   let encFileName = encryptDecrypt decSessionKey fileName
-  let encFileContents = encryptDecrypt decSessionKey fileName
+  let encFileContents = encryptDecrypt decSessionKey contentsOrType
 
   manager <- newManager defaultManagerSettings
   case queryType of
@@ -87,22 +109,21 @@ runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName
       case isCached of
         False -> do
           putStrLn $ "Attempting to download file from server: " ++ fileName
-          serverPort <- searchForFileQuery token fileName
-          case serverPort of
-            Nothing -> do
-              putStrLn "Unable to find file on directory server"
-              return ()
-            Just serverPort' -> do
-              res <- runClientM (downloadQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" serverPort' ""))
-              case res of
-                Left err -> putStrLn $ "Error: " ++ show err
-                Right (downloadFile) -> do
-                  let (SecureFile (File name contents)) = downloadFile
-                  let decName = encryptDecrypt decSessionKey name
-                  let decContents = encryptDecrypt decSessionKey contents
-                  let decryptedFile = (File decName decContents)
-                  storeNewFileInCache decryptedFile
-                  print decryptedFile
+          case contentsOrType of
+            "write" -> do
+              isLocked <- checkLockF token fileName
+              case isLocked of
+                Nothing -> do
+                  putStrLn "Error when checking lock on file."
+                Just isLocked' -> do
+                  case isLocked' of
+                    False -> do
+                      lockF token fileName
+                      downloadQ token fileName
+                    True -> do
+                      putStrLn "Unable to get write access to this file. There is already a lock on it."
+            "read" -> do
+              downloadQ token fileName
         True -> do
           putStrLn $ "Retrieving file from cache..."
           downloadFile <- getFileFromCache fileName

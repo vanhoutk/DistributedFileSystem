@@ -11,6 +11,7 @@ Student Number: 12301975
   - ~~Interactive~~
   - ~~Includes the first Client Application~~
   - Change into more of a text editor
+  - Change upload logic to upload a file rather than text input
 
 2. Primary Client Application
 
@@ -78,7 +79,10 @@ Student Number: 12301975
 9. Lock Service
   - ~~Create a locking server~~
   - ~~Add locking server functions to client API~~
-  - Allow client to make use of locking
+  - ~~Allow client to make use of locking~~
+  - ~~Added a ten minute timeout to locks~~
+  - Could add current user who locked the file potentially (discuss in report)
+  - Clear locks on upload
 
 10. Add Proper Logging Messages
 

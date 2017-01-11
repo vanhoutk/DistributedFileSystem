@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-11 01:23:54.883471 UTC
+2017-01-11 15:07:38.951981 UTC
 
 interface lockServer-0.1.0.0-7PbJ57tJ75PIb86aqn1tPz:LockServer 8001
-  interface hash: 38ed633b6713da7c899761e70a981cee
-  ABI hash: 134097027539309ca5f01beddd5e5d34
-  export-list hash: a6a5f27c0e23f816f248c668ac089e91
-  orphan hash: c541badf1a0f55a5989361cd975689af
+  interface hash: 1e5a41a81bab02bb31573a983c97926a
+  ABI hash: 38c63c65dd9cc7d8340494aa2267bf7c
+  export-list hash: 9bf08d1b1af78b34f2bba60c482fc3eb
+  orphan hash: c64eec36371484ead7a10073cfa7d011
   flag hash: 232b91cb96073461cf6c3dcd6a42e778
   sig of: Nothing
   used TH splices: False
@@ -193,10 +193,13 @@ import  -/  base-4.9.0.0:Data.List 49b86831b79b49ce5d4d9416ecba61df
 import  -/  base-4.9.0.0:Data.Maybe 5f2ba364cbe65c060bc5436bc0b9d049
 import  -/  base-4.9.0.0:Data.Proxy aa86c72628cf3b1ceb0816ca84687d80
 import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
+import  -/  base-4.9.0.0:GHC.Num 48f506a8f4ecf06285d0a0706594dcc0
+import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
+import  -/  base-4.9.0.0:Text.Read 9c1be14f7e5eac8b18bcb566c5763677
 import  -/  bson-0.3.2.3@bson-0.3.2.3-3QA3aP5EtCyCltXUzEKOsQ:Data.Bson 609b35b07f554dfa69c4b31dfeed380e
 import  -/  bson-generic-0.0.8@bson-generic-0.0.8-DtORpoUHwQhDReLJ5Keop0:Data.Bson.Generic 8688e6671f6f36dd3a9c6c1c23977c50
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2DdD74FJu2hIlPaJJTfr4G:APIs e9ac3a12601d08c31bf4514716b74d57
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2DdD74FJu2hIlPaJJTfr4G:APIs 1eab2c2fbd9cdf07504a6d1b3732d83a
 import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2DdD74FJu2hIlPaJJTfr4G:MongoFunctions c7be246be90cbd6d666ff4c9baabe9b7
 import  -/  directory-1.2.6.2@directory-1.2.6.2:System.Directory f7c57c4a392d1767b38addc37d00ceed
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
@@ -216,6 +219,8 @@ import  -/  servant-server-0.9.1.1@servant-server-0.9.1.1-LFuyAsEIjBa7hjmDWq24Jx
 import  -/  text-1.2.2.1@text-1.2.2.1-5QpmrLQApEZ4Ly9nMHWY0s:Data.Text 6515f3179e27a91345842b6e634f584c
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time 11aa6bb0881cf13119ff057ae5c21663
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.POSIX a0c5708011f4e3cb1d85608a99ae773a
+import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e496610c238
+import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTCDiff b148dd2062658696231213b1e8198eea
 import  -/  transformers-0.5.2.0@transformers-0.5.2.0:Control.Monad.Trans.Except 71b1d86204f6908788cb5223e3c73193
 import  -/  wai-3.2.1.1@wai-3.2.1.1-6aLno43QbUULx8BWJCDctS:Network.Wai 539700c7c7ef0f1fff2d555267a001df
 import  -/  warp-3.2.9@warp-3.2.9-HcIrWPv7rr38iQXdncQRau:Network.Wai.Handler.Warp c9fb1878fc7b26a983b6b24c8ba74641
@@ -442,7 +447,7 @@ b99b722ab6e9e3cb1a371b85ff8987a0
                       (Data.Aeson.Encode.Builder.bool eta)
                         `cast`
                       (Sym (Data.Aeson.Types.Internal.N:Encoding[0])))) -}
-2fd06303bdfed1e530af02c93f71070d
+1d7ab1953fabde068492443d6baeb2bb
   $s$fAllMimeUnrender:a ::
     Servant.API.ContentTypes.AllMimeUnrender
       '[Servant.API.ContentTypes.JSON] APIs.SecureFileName
@@ -464,14 +469,14 @@ b99b722ab6e9e3cb1a371b85ff8987a0
                      LockServer.$s$fAllMimeUnrender:a1
                      (Servant.API.ContentTypes.$fAllMimeUnrender[]a
                         @ APIs.SecureFileName)) -}
-735ec83e3902e60a5a3ddfd8bf59a847
+9a13ec464cb13992f1d9a0890c4131ba
   $s$fAllMimeUnrender:a1 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.SecureFileName
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 LockServer.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa -}
-906aba0e9b5e6f5f2397036f491839d3
+6d36312b212d498662e505a97fa63781
   $s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.SecureFileName
@@ -487,7 +492,7 @@ b99b722ab6e9e3cb1a371b85ff8987a0
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
                                <APIs.SecureFileName>_N)))
                   LockServer.$s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender -}
-c5fb8295b0c38be0c879648ffec27d6b
+a079141c4feebe8a6e097dc6fd52730d
   $s$fAllMimeUnrender:a_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -624,7 +629,7 @@ dba0fb9fc3b7a0457511578290c47b5d
                            200
                            '[Servant.API.ContentTypes.JSON]
                            APIs.SecureResponseData)) }) -}
-c9c031eb03bcd9ea1fe057aec7e51766
+cfb8955690df98ff42f4c59cf3f9be99
   $sserve9 ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
     -> Data.ByteString.Lazy.Internal.ByteString
@@ -657,7 +662,7 @@ b35cd97370eedaf8c4dd911cc60d1b06
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "lockServer-0.1.0.0-7PbJ57tJ75PIb86aqn1tPz"#) -}
-a7b289f80cd77651e9bb465a84cb8885
+dad0ebcaeef81bff3ac9a0943a3b2878
   $wdt ::
     GHC.Base.String
     -> GHC.Base.String
@@ -666,7 +671,7 @@ a7b289f80cd77651e9bb465a84cb8885
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
           Data.Either.Either
             Servant.Server.Internal.ServantErr.ServantErr GHC.Types.Bool #)
-  {- Arity: 4, Strictness: <L,U><L,1*U><L,U><S,U>, Inline: [0] -}
+  {- Arity: 4, Strictness: <L,1*U><L,1*U><L,1*U><S,U>, Inline: [0] -}
 65a3d07b3df62330ed615c02fc1a8edc
   $wdt1 ::
     GHC.Base.String
@@ -694,14 +699,14 @@ e9e77f053f93365c1d1be5ad0709f434
     Control.Monad.Trans.Except.ExceptT
       Servant.Server.Internal.ServantErr.ServantErr GHC.Types.IO
     :: * -> *
-54a0b8c51f4fa6f7211feba55774db57
+6cc63a3f400b8f903744877db749a25c
   startLockServer :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 LockServer.startLockServer1
                   `cast`
                 (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-52682e7135fca3c34138c78f38520983
+c6dc3743a56bf0dee3de591dbd84ae44
   startLockServer1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -761,7 +766,7 @@ e9e77f053f93365c1d1be5ad0709f434
                    (GHC.Base.Nothing @ GHC.Types.Int)
                    LockServer.startLockServer2
                    eta1) -}
-3a44e1671ef39bf8dc17f850580f7c19
+6eb8e962e6071b5d764d9a9982115178
   startLockServer10 ::
     Servant.Server.Internal.RoutingApplication.RouteResult
       (Servant.Server.Internal.Server
@@ -826,14 +831,15 @@ e9e77f053f93365c1d1be5ad0709f434
                                             <Control.Monad.Trans.Except.ExceptT
                                                Servant.Server.Internal.ServantErr.ServantErr
                                                GHC.Types.IO>_N)))))) -}
-e6e8f6a0ff6970eb459677877fe3672b
+c2a3d38a41ce053e26544d19781df9de
   startLockServer11 ::
     APIs.SecureFileName
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
           Data.Either.Either
             Servant.Server.Internal.ServantErr.ServantErr GHC.Types.Bool #)
-  {- Arity: 2, Strictness: <S,1*U(U,1*U,U)><S,U>, Inline: INLINE[0],
+  {- Arity: 2, Strictness: <S,1*U(1*U,1*U,1*U)><S,U>,
+     Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
                 (\ (w :: APIs.SecureFileName)
                    (w1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
@@ -893,7 +899,7 @@ e6e8f6a0ff6970eb459677877fe3672b
                            200
                            '[Servant.API.ContentTypes.JSON]
                            GHC.Types.Bool)) }) -}
-a90a8ec42752d1cae1fc24cb9612f415
+8136708be804abee62222b96c747b73c
   startLockServer13 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -904,7 +910,7 @@ a90a8ec42752d1cae1fc24cb9612f415
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-ba0fb72fe4d51872076a434017bf3159
+435be71b104bd331fb3c89d1cd547030
   startLockServer14 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -931,7 +937,7 @@ ba0fb72fe4d51872076a434017bf3159
                       @ (Servant.Server.Internal.Router.Router'
                            ()
                            Servant.Server.Internal.RoutingApplication.RoutingApplication)) } }) -}
-2c3704a42356fc97f36f4fe15f62f1b2
+b8df70238c26ec57a9a7c82649254658
   startLockServer15 :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Servant.Server.Internal.$w$croute2
                    @ *
@@ -983,7 +989,7 @@ ba0fb72fe4d51872076a434017bf3159
                                 <Control.Monad.Trans.Except.ExceptT
                                    Servant.Server.Internal.ServantErr.ServantErr
                                    GHC.Types.IO>_N)))_R) -}
-803a8156c7709801ee26b51ff2f2333c
+4de1954dc364a2bb2a929e7ae5f7b9ec
   startLockServer16 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       ()
@@ -1044,7 +1050,7 @@ ba0fb72fe4d51872076a434017bf3159
                         (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                   <()>_R)))
                    LockServer.startLockServer17) -}
-d03acc037fc30863f4af9ca890cd28a8
+9047a70d6d52f27398a00236b3f0c280
   startLockServer17 ::
     ()
     -> ()
@@ -1064,7 +1070,7 @@ d03acc037fc30863f4af9ca890cd28a8
                    (b1 :: ())
                    (req :: Network.Wai.Internal.Request) ->
                  LockServer.startLockServer18) -}
-c1d08a1b498af622227874703b8ca3d2
+219f0ee04e3d89a1cf6bcd104f83a0ce
   startLockServer18 ::
     Servant.Server.Internal.RoutingApplication.RouteResult
       (Servant.Server.Internal.Server
@@ -1129,7 +1135,7 @@ c1d08a1b498af622227874703b8ca3d2
                                             <Control.Monad.Trans.Except.ExceptT
                                                Servant.Server.Internal.ServantErr.ServantErr
                                                GHC.Types.IO>_N)))))) -}
-aa520a2a94e0c01fbd4948ac44d42a93
+c701130aaeb6711d2db765be5eaf51c1
   startLockServer19 ::
     APIs.SecureFileName
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -1144,12 +1150,12 @@ aa520a2a94e0c01fbd4948ac44d42a93
                    (w1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
                  case w of ww { APIs.SecureFileName ww1 ww2 ww3 ->
                  LockServer.$wdt1 ww1 ww2 ww3 w1 }) -}
-e6abe009a91897b4efac4d62da6ed54a
+b9fa6230d6b9a8b64c01578e58c3be3b
   startLockServer2 :: Network.Wai.Application
   {- Arity: 2,
      Unfolding: (Servant.Server.Internal.RoutingApplication.toApplication
                    LockServer.startLockServer3) -}
-2e61b285889f8d2f2d25e803015240a5
+e43b1fcbfe9c15d73181b947d8a81308
   startLockServer20 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1160,7 +1166,7 @@ e6abe009a91897b4efac4d62da6ed54a
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-3d945d783858150a342e37cc6b2564af
+a5a1c1df0bcc46de33e3a2abd61ad8ac
   startLockServer21 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -1187,7 +1193,7 @@ e6abe009a91897b4efac4d62da6ed54a
                       @ (Servant.Server.Internal.Router.Router'
                            ()
                            Servant.Server.Internal.RoutingApplication.RoutingApplication)) } }) -}
-a30d8206f41856dbc726d4e9a23f4b70
+427d9519dfcac3ea0d1fcc82fc7c5b4a
   startLockServer22 :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Servant.Server.Internal.$w$croute2
                    @ *
@@ -1239,7 +1245,7 @@ a30d8206f41856dbc726d4e9a23f4b70
                                 <Control.Monad.Trans.Except.ExceptT
                                    Servant.Server.Internal.ServantErr.ServantErr
                                    GHC.Types.IO>_N)))_R) -}
-0f42036bd19cf3b34b6429f04539a072
+7054993f1c4821fd9798717a10aab3e7
   startLockServer23 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       ()
@@ -1300,7 +1306,7 @@ a30d8206f41856dbc726d4e9a23f4b70
                         (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                   <()>_R)))
                    LockServer.startLockServer24) -}
-1518e6aa61531c33179d98397e3dbd6a
+80d133bd88aae2603799a22782f7c322
   startLockServer24 ::
     ()
     -> ()
@@ -1320,7 +1326,7 @@ a30d8206f41856dbc726d4e9a23f4b70
                    (b1 :: ())
                    (req :: Network.Wai.Internal.Request) ->
                  LockServer.startLockServer25) -}
-5b006d5dd29f5a61b066f278a0ba499f
+2077cc03ec867cd4f26a18219916f830
   startLockServer25 ::
     Servant.Server.Internal.RoutingApplication.RouteResult
       (Servant.Server.Internal.Server
@@ -1385,7 +1391,7 @@ a30d8206f41856dbc726d4e9a23f4b70
                                             <Control.Monad.Trans.Except.ExceptT
                                                Servant.Server.Internal.ServantErr.ServantErr
                                                GHC.Types.IO>_N)))))) -}
-c39d4c13e7c30d82f3d32e18a877c3ce
+c9a3471422a9fe7f17a8b62b15344b2d
   startLockServer26 ::
     APIs.SecureFileName
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -1400,7 +1406,7 @@ c39d4c13e7c30d82f3d32e18a877c3ce
                    (w1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
                  case w of ww { APIs.SecureFileName ww1 ww2 ww3 ->
                  LockServer.$wdt2 ww1 ww2 ww3 w1 }) -}
-fee568595d94e7a12495816e9cc17eb6
+7672a6909d817605ff8cf07f8d87d860
   startLockServer3 ::
     Network.Wai.Internal.Request
     -> (Servant.Server.Internal.RoutingApplication.RouteResult
@@ -1418,7 +1424,7 @@ fee568595d94e7a12495816e9cc17eb6
                    GHC.Tuple.()
                    eta
                    eta1) -}
-05b1d5199730705a9acec6115229d0a9
+31a1ce23931c19fc820da7497c5e73f6
   startLockServer4 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1427,7 +1433,7 @@ fee568595d94e7a12495816e9cc17eb6
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    LockServer.startLockServer13
                    LockServer.startLockServer5) -}
-662986ed07d9b995bed5360b183a19f9
+96eaa924b787d57fbdf1489e6d7abe5a
   startLockServer5 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1438,7 +1444,7 @@ fee568595d94e7a12495816e9cc17eb6
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-37e59abf8450a60c062c2bde96668452
+4c1f4e1e145c2857b8ea9c121248c482
   startLockServer6 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -1465,7 +1471,7 @@ fee568595d94e7a12495816e9cc17eb6
                       @ (Servant.Server.Internal.Router.Router'
                            ()
                            Servant.Server.Internal.RoutingApplication.RoutingApplication)) } }) -}
-2241d45c6133089bb23ec53af57429b8
+6f02fca13e2299869a0b6377a0b50913
   startLockServer7 :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Servant.Server.Internal.$w$croute2
                    @ *
@@ -1517,7 +1523,7 @@ fee568595d94e7a12495816e9cc17eb6
                                 <Control.Monad.Trans.Except.ExceptT
                                    Servant.Server.Internal.ServantErr.ServantErr
                                    GHC.Types.IO>_N)))_R) -}
-5b3ceebfa555e1abdfd2c52ac53da3f2
+1ea33f9329bdb90733c6faa359cb5354
   startLockServer8 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       ()
@@ -1578,7 +1584,7 @@ fee568595d94e7a12495816e9cc17eb6
                         (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                   <()>_R)))
                    LockServer.startLockServer9) -}
-45b82d3ed41f28b410517949abbf3ac9
+c4dddd7a98647abd7aef5fce2d174a1f
   startLockServer9 ::
     ()
     -> ()
@@ -1598,7 +1604,7 @@ fee568595d94e7a12495816e9cc17eb6
                    (b1 :: ())
                    (req :: Network.Wai.Internal.Request) ->
                  LockServer.startLockServer10) -}
-44598c4178fa83ade5029ad152d80090
+afc6996521a4704844e1df43ea40fbd1
   startLockServer_r :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Servant.Server.Internal.Router.choice
                    @ ()

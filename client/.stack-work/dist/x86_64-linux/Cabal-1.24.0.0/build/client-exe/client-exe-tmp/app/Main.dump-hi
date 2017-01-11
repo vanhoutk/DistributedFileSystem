@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-11 01:37:53.225067 UTC
+2017-01-11 13:21:44.125646 UTC
 
 interface main@main:Main 8001
-  interface hash: 767ce0cbba2718a801616f6d13e4a760
+  interface hash: fc9aababc12f093ea82498cef5a7d837
   ABI hash: 70bdc19a788f93c86c080cf72456ddbb
   export-list hash: cd97cf3dfc9113623d670437724b234d
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -155,7 +155,7 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          vector-0.11.0.0@vector-0.11.0.0-BEDZb5o2QOhGbIm6ky7rl6:Data.Vector.Unboxed.Base
                          zlib-0.6.1.2@zlib-0.6.1.2-4CWLN1T27kOJhNvXgy46ZV:Codec.Compression.Zlib.Stream
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
-import  -/  client-0.1.0.0@client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W:Client 6ca214e9bd14923997139a6ea6381992
+import  -/  client-0.1.0.0@client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W:Client dc07d9000dbe7f08d667396736a851d3
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module

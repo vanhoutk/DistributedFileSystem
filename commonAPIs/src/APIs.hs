@@ -128,6 +128,7 @@ lsPort = 8091
 
 data Lock = Lock { lockFileName :: String
                  , lockStatus :: Bool
+                 , lockTime :: String
                  } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
 
 deriving instance FromBSON Bool  -- we need these as BSON does not provide

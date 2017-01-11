@@ -97,6 +97,7 @@ server = searchForFile
       let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
       currentTime <- liftIO $ getCurrentTime
+      liftIO $ putStrLn $ "EncFileName = " ++ encFileName
       if (currentTime > decTimeOut) then do
         let encPort = encryptPort sessionKey 0
         return (SecurePort encPort)

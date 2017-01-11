@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-11 01:37:50.855212 UTC
+2017-01-11 15:06:42.289668 UTC
 
 interface client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W:Cache 8001
-  interface hash: 6919f66471f663915bfba0b4b7ebae47
-  ABI hash: 52ea995fe7d4571abcb795106ba46f80
-  export-list hash: 46c958bb480fed77846c2807c84f3ed1
-  orphan hash: cb7ddc18b3003447b78a84b267c3eeca
+  interface hash: 12d5da9b8a80a5bc349069c0d2165ed0
+  ABI hash: d38028dbc8cfff2491349e24f215bc49
+  export-list hash: 59efdc6bf4f7753f9a2049276bfb40c5
+  orphan hash: 7315c8d1ee69f4415545816aec30fcc0
   flag hash: efd4ed697d0068b78aa6b2b9cd064e37
   sig of: Nothing
   used TH splices: False
@@ -177,7 +177,7 @@ import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.Environment ee0914a962f5508d0fd404c89ee4999b
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  base-4.9.0.0:Text.Read 9c1be14f7e5eac8b18bcb566c5763677
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs 009356d0f361cfba490a9f2b97c9f751
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs 17f9ead1abfaf079e739762c817a3065
 import  -/  directory-1.2.7.1@directory-1.2.7.1-6xbYYKdoE266LLlc7GOex4:System.Directory 970e76f5d7f7d1c2bb4871bad753c6c1
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
@@ -205,8 +205,8 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureTime>_N)))
                   Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 -}
-9c5a51bdcf4f7a78c3d36167bd7e9b48
-  $s$fMimeUnrenderTYPEJSONa8 ::
+22e51e95ce9fa54812a3620ebbd0726f
+  $s$fMimeUnrenderTYPEJSONa7 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.SecurePort
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -219,9 +219,9 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e
                      APIs.$fFromJSONSecurePort_$cparseJSON
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecurePort>_N)))
-                  Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 -}
-53f1ba1f20e24588fce37047e689e057
-  $s$fMimeUnrenderTYPEJSONa9 ::
+                  Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 -}
+e90266819f5310fa51ceb1d90dce419f
+  $s$fMimeUnrenderTYPEJSONa8 ::
     Servant.API.ContentTypes.MimeUnrender
       Servant.API.ContentTypes.JSON APIs.SecureFile
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -234,7 +234,7 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e
                      APIs.$fFromJSONSecureFile_$cparseJSON
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureFile>_N)))
-                  Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender4 -}
+                  Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 -}
 0c3dd91ee0839d2916ec369075710e93
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
@@ -250,8 +250,8 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureTime>_N))
                    eta) -}
-6a60b12ec45408642a58e71ae6403146
-  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 ::
+5c57914a0afe6428e64605f61fdfa0f0
+  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
     -> Data.Either.Either GHC.Base.String APIs.SecurePort
@@ -265,8 +265,8 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecurePort>_N))
                    eta) -}
-162f20aeff39275f8f8fa048d404bda7
-  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender4 ::
+ff8424f0191c2e4ca6a5b73720d8530b
+  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
     -> Data.Either.Either GHC.Base.String APIs.SecureFile
@@ -322,13 +322,13 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e
                                      GHC.Show.shows_$cshowList ww3 eta3)
                                     (GHC.Types.[] @ GHC.Show.ShowS)))) of ww6 { (#,#) ww7 ww8 ->
                     GHC.Types.: @ GHC.Types.Char ww7 ww8 } }) }) -}
-39563a91767338f8adf46a3b0fbeffbd
-  $sclient12 :: [GHC.Types.Char]
+fdb66bb9f5681510740944ffac09d68a
+  $sclient10 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackAppendCString#
                    "/"#
-                   Cache.$sclient13) -}
-0426ca4e508ece7dc762c471e5890ac2
-  $sclient13 :: [GHC.Types.Char]
+                   Cache.$sclient11) -}
+14259525afb706bc5bb58f706dc6676e
+  $sclient11 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "search"#) -}
 074a63a2ae5698c5adcc9e908a23d1de
   $trModule :: GHC.Types.Module
@@ -392,14 +392,14 @@ bd87463e4169b4370b41048fec471fca
   clearCache3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "Clearing client-side cache..."#) -}
-1f5cbdf171a26cdadd6018cf9d3646f1
+d17197c512729232825ec657d462c04a
   getFileFromCache :: GHC.Base.String -> GHC.Types.IO APIs.File
   {- Arity: 2, Strictness: <L,U><S,U>,
      Unfolding: InlineRule (0, True, True)
                 Cache.getFileFromCache1
                   `cast`
                 (<GHC.Base.String>_R ->_R Sym (GHC.Types.N:IO[0] <APIs.File>_R)) -}
-fdf1776e8c9384ee104c7cdeb5396b4c
+027e38f694cb872eac8bfb7ae10119b9
   getFileFromCache1 ::
     GHC.Base.String
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -517,14 +517,14 @@ c967d013775e8d0e0a7ea751ca8062ed
   setupCache6 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "Initialising client-side cache..."#) -}
-b90f114e787a609d6b66b5b12fb656f3
+4906463b6c5541bbb6cf544b8a885d90
   storeNewFileInCache :: APIs.File -> GHC.Types.IO ()
   {- Arity: 2, Strictness: <S,1*U(U,U)><S,U>,
      Unfolding: InlineRule (0, True, True)
                 Cache.storeNewFileInCache1
                   `cast`
                 (<APIs.File>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-1486820ed29b1ff1e507f8a4b323e837
+1f5c007d0c87bdda03ccce78fd37f440
   storeNewFileInCache1 ::
     APIs.File
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -626,12 +626,12 @@ ce18169ead54d8f6a341b6582a4c3dd7
                                                                                    APIs.SecureFile)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecureFile
                                                    $dFromJSON
-  = Cache.$s$fMimeUnrenderTYPEJSONa9
+  = Cache.$s$fMimeUnrenderTYPEJSONa8
 "SPEC/Cache $fMimeUnrenderTYPEJSONa @ SecurePort" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                    APIs.SecurePort)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecurePort
                                                    $dFromJSON
-  = Cache.$s$fMimeUnrenderTYPEJSONa8
+  = Cache.$s$fMimeUnrenderTYPEJSONa7
 "SPEC/Cache $fMimeUnrenderTYPEJSONa @ SecureTime" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                    APIs.SecureTime)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecureTime
@@ -641,12 +641,12 @@ ce18169ead54d8f6a341b6582a4c3dd7
                                                                                                   APIs.SecureFile)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecureFile
                                                                   $dFromJSON
-  = Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender4
+  = Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3
 "SPEC/Cache $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ SecurePort" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                                   APIs.SecurePort)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecurePort
                                                                   $dFromJSON
-  = Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3
+  = Cache.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2
 "SPEC/Cache $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ SecureTime" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                                   APIs.SecureTime)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecureTime

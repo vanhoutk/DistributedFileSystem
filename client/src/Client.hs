@@ -47,7 +47,9 @@ processDownload :: AuthToken -> IO()
 processDownload token = do
   putStrLn "Please enter the name of the file you wish to download"
   fileName <- getLine
-  runQuery token "download" fileName "fileContents"
+  putStrLn "Would you like to read or write to this file? Enter: read/write"
+  downloadType <- getLine
+  runQuery token "download" fileName downloadType
   --file <- downloadFileQuery fileName
   --print file
   clientLoop token
