@@ -88,6 +88,7 @@ runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName
   case queryType of
     "upload" -> do
       putStrLn $ "Uploading file: " ++ fileName
+      unlockF token fileName
       res <- runClientM (uploadQuery decTicket encTimeOut encFileName encFileContents) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
       case res of
         Left err -> putStrLn $ "Error: " ++ show err

@@ -82,7 +82,8 @@ Student Number: 12301975
   - ~~Allow client to make use of locking~~
   - ~~Added a ten minute timeout to locks~~
   - Could add current user who locked the file potentially (discuss in report)
-  - Clear locks on upload
+  - ~~Clear locks on upload~~
+    * Note: No check that the client who unlocks had the lock. Assuming only uploading files that had write access.
 
 10. Add Proper Logging Messages
 
