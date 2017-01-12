@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-11 15:07:26.175131 UTC
+2017-01-12 16:45:25.565038 UTC
 
 interface commonAPIs-0.1.0.0-2DdD74FJu2hIlPaJJTfr4G:MongoFunctions 8001
-  interface hash: e999b018f7b6d6e595bfcf4356e3ba97
-  ABI hash: c7be246be90cbd6d666ff4c9baabe9b7
-  export-list hash: 9f45cf6737df148f6414266f3a3c0926
+  interface hash: 5a9ace3d8c438a596a21f994231d5b9d
+  ABI hash: 855433429a07084d66c134c2919df671
+  export-list hash: a20eb5dc24565c120b33f4eba889f624
   orphan hash: 02ad8194d63c848ce3e780c3f97ed9a7
   flag hash: 232b91cb96073461cf6c3dcd6a42e778
   sig of: Nothing
@@ -13,9 +13,7 @@ interface commonAPIs-0.1.0.0-2DdD74FJu2hIlPaJJTfr4G:MongoFunctions 8001
   where
 exports:
   MongoFunctions.defEnv
-  MongoFunctions.doLog
   MongoFunctions.drainCursor
-  MongoFunctions.iso8601
   MongoFunctions.mongoDbDatabase
   MongoFunctions.mongoDbIp
   MongoFunctions.mongoDbPort
@@ -127,10 +125,7 @@ import  -/  mongoDB-2.1.1.1@mongoDB-2.1.1.1-5wYXyk7zdwHHB6m4bwUEQN:Database.Mong
 import  -/  resourcet-1.1.9@resourcet-1.1.9-965WSCM4zVm5AReELsOl9B:Control.Monad.Trans.Resource c010320cf17f1b72910542cfc8478fff
 import  -/  text-1.2.2.1@text-1.2.2.1-5QpmrLQApEZ4Ly9nMHWY0s:Data.Text 6515f3179e27a91345842b6e634f584c
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock b91051c7767d1f23314064be1d4311d7
-import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.POSIX a0c5708011f4e3cb1d85608a99ae773a
-import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e496610c238
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Format b6d4cc5df3f9159b1156baa52a254cf6
-import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Format.Locale 2ce8413933ae0199a4bf6c15ee5db27c
 200196a8719e99ce0b423ff0e79f3b71
   $sread :: GHC.Base.String -> GHC.Integer.Type.Integer
   {- Arity: 1, Strictness: <L,U>,
@@ -223,54 +218,6 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Format.Locale 2ce8413933ae0199a4
                  case ipv3 of wild1 {
                    GHC.Base.Nothing -> (# ipv2, def #)
                    GHC.Base.Just s -> (# ipv2, fn s #) } } } }) -}
-999b7128db8ca49c9f8d8af250556259
-  doLog ::
-    (GHC.Base.String -> [GHC.Types.Char] -> GHC.Types.IO b)
-    -> [GHC.Types.Char] -> GHC.Types.IO b
-  {- Arity: 3, Strictness: <L,1*C1(C1(C1(U(U,U))))><L,U><S,U>,
-     Unfolding: InlineRule (0, True, True)
-                MongoFunctions.doLog1
-                  `cast`
-                (forall (b :: <*>_N).
-                 <GHC.Base.String -> [GHC.Types.Char] -> GHC.Types.IO b>_R
-                 ->_R <[GHC.Types.Char]>_R
-                 ->_R Sym (GHC.Types.N:IO[0] <b>_R)) -}
-1f5c3c73afd0b4a6c1f573349d97d74f
-  doLog1 ::
-    (GHC.Base.String -> [GHC.Types.Char] -> GHC.Types.IO b)
-    -> [GHC.Types.Char]
-    -> GHC.Prim.State# GHC.Prim.RealWorld
-    -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
-  {- Arity: 3, Strictness: <L,1*C1(C1(C1(U(U,U))))><L,U><S,U>,
-     Unfolding: (\ @ b
-                   (f :: GHC.Base.String -> [GHC.Types.Char] -> GHC.Types.IO b)
-                   (s :: [GHC.Types.Char])
-                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                 case System.Environment.getProgName1 eta of ds1 { (#,#) ipv ipv1 ->
-                 case Data.Time.Clock.CTimeval.getCTimeval1
-                        ipv of ds { (#,#) ipv2 ipv3 ->
-                 (f ipv1
-                    (GHC.Base.++
-                       @ GHC.Types.Char
-                       (Data.Time.Format.formatTime
-                          @ Data.Time.Clock.UTC.UTCTime
-                          Data.Time.Format.$fFormatTimeUTCTime_$cformatCharacter
-                            `cast`
-                          (Sym (Data.Time.Format.N:FormatTime[0]
-                                    <Data.Time.Clock.UTC.UTCTime>_N))
-                          Data.Time.Format.Locale.defaultTimeLocale
-                          MongoFunctions.doLog2
-                          (case Data.Time.Clock.POSIX.$wposixSecondsToUTCTime
-                                  (Data.Time.Clock.POSIX.getCurrentTime2
-                                     ipv3) of ww { (#,#) ww1 ww2 ->
-                           Data.Time.Clock.UTC.UTCTime ww1 ww2 }))
-                       (GHC.CString.unpackAppendCString# " "# s)))
-                   `cast`
-                 (GHC.Types.N:IO[0] <b>_R)
-                   ipv2 } }) -}
-714a4ccfddcddf315d541c1b473834ad
-  doLog2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "%FT%T%q%z"#) -}
 3088263b80f68d801e298aa5f0bd634b
   drainCursor ::
     Database.MongoDB.Query.Cursor
@@ -290,17 +237,6 @@ f35ee1905416d9293e0b8991d55d7e0a
          GHC.Types.IO
          [Data.Bson.Document]
   {- Arity: 2, Strictness: <L,U><L,U> -}
-4f077ff02054ee45061e31e5c45ee34d
-  iso8601 :: Data.Time.Clock.UTC.UTCTime -> GHC.Base.String
-  {- Arity: 1,
-     Unfolding: (Data.Time.Format.formatTime
-                   @ Data.Time.Clock.UTC.UTCTime
-                   Data.Time.Format.$fFormatTimeUTCTime_$cformatCharacter
-                     `cast`
-                   (Sym (Data.Time.Format.N:FormatTime[0]
-                             <Data.Time.Clock.UTC.UTCTime>_N))
-                   Data.Time.Format.Locale.defaultTimeLocale
-                   MongoFunctions.doLog2) -}
 fcf3bbdb1138ab4f83052e087d125f9c
   mongoDbDatabase :: GHC.Types.IO GHC.Base.String
   {- Arity: 1, Strictness: <S,U>,

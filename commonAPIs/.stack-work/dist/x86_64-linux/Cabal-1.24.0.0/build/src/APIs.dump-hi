@@ -1,25 +1,32 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-11 15:07:30.343214 UTC
+2017-01-12 16:59:40.1192 UTC
 
 interface commonAPIs-0.1.0.0-2DdD74FJu2hIlPaJJTfr4G:APIs [orphan module] [family instance module] 8001
-  interface hash: 6a37c4e9a600714c6be6ac77396d2098
-  ABI hash: 1eab2c2fbd9cdf07504a6d1b3732d83a
-  export-list hash: c963f376604b1c21947f6abed2b6a0fb
-  orphan hash: 291d827606fc703738bb25a2683840e1
+  interface hash: 7446853219878787d59557e7ee496b33
+  ABI hash: 93600093e2ae28cb17f12724acbb0d20
+  export-list hash: 7850a0fcd6022d1d34dafca32fd197c9
+  orphan hash: bf59957b21997208e91d0628ed089212
   flag hash: b0e3f8b573d72bae0f984477a0acb626
   sig of: Nothing
   used TH splices: False
   where
 exports:
   APIs.asPort
+  APIs.authServerLogging
+  APIs.cacheLogging
+  APIs.clientLogging
   APIs.decryptPort
   APIs.decryptTime
+  APIs.dirServerLogging
   APIs.directoryPort
   APIs.encryptDecrypt
   APIs.encryptDecryptArray
   APIs.encryptPort
   APIs.encryptTime
+  APIs.fileserverLogging
+  APIs.lockServerLogging
+  APIs.logMessage
   APIs.lsPort
   APIs.sharedServerSecret
   APIs.AccountData{APIs.AccountData password username}
@@ -173,9 +180,11 @@ import  -/  base-4.9.0.0:GHC.Generics 8e2a7658e8b966c1d29d0d5fd4129f38
 import  -/  base-4.9.0.0:GHC.List 13d2451194c1c6e53b4f4f07947736dd
 import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
+import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  base-4.9.0.0:Text.Read 9c1be14f7e5eac8b18bcb566c5763677
 import  -/  bson-generic-0.0.8@bson-generic-0.0.8-DtORpoUHwQhDReLJ5Keop0:Data.Bson.Generic 8688e6671f6f36dd3a9c6c1c23977c50
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  servant-0.9.1.1@servant-0.9.1.1-1Ihcrf7Gi5TGO9PMJWJCN4:Servant.API.Alternative 7b9580ccf98b77f38316dd9c56f9c836
 import  -/  servant-0.9.1.1@servant-0.9.1.1-1Ihcrf7Gi5TGO9PMJWJCN4:Servant.API.Capture 069adb5f598ba9cb957f1c7e97be37fd
 import  -/  servant-0.9.1.1@servant-0.9.1.1-1Ihcrf7Gi5TGO9PMJWJCN4:Servant.API.ContentTypes 16a02a2daa05b8167b3e606d582f5519
@@ -707,7 +716,7 @@ c69b3e3fcc7ccf463bcc901a1f235613
 d4a7c9ed5910cd57a5920cde7a8f2987
   $fFromBSONBool_lvl47 :: GHC.Types.Int
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 2#) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fFromBSONFileMapping ::
     Data.Bson.Generic.FromBSON APIs.FileMapping
   DFunId
@@ -857,7 +866,7 @@ fa964615506005d2ec7d203cff5cf290
 309f092b36f6ef065bddc5771f42a8df
   $fFromBSONFileMapping9 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "serverName"#) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fFromBSONFileMapping_$cfromBSON ::
     Data.Bson.Document -> GHC.Base.Maybe APIs.FileMapping
   {- Arity: 1, Strictness: <S,U>,
@@ -942,7 +951,7 @@ e10e3b67a0c19ea87148d2ea211ef672
                                                                                         (GHC.Generics.Rec0
                                                                                            GHC.Base.String)))>_R))
                                      (Sub (Sym (APIs.Rep_FileMapping[0])))) <GHC.Prim.Any>_N)) }) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fFromBSONFileMapping_$cto ::
     GHC.Generics.Rep APIs.FileMapping x -> APIs.FileMapping
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(U,1*U(U,U))>m,
@@ -1323,7 +1332,7 @@ e10e3b67a0c19ea87148d2ea211ef672
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  APIs.$fFromBSONFileMapping13) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fFromBSONLock :: Data.Bson.Generic.FromBSON APIs.Lock
   DFunId
   {- Arity: 1, Strictness: <S,U>, Inline: INLINE (sat-args=0),
@@ -1470,7 +1479,7 @@ b91202abd8d276c84d37e560a569ed00
 8273c3f1b8918d076356e1093550556d
   $fFromBSONLock9 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "lockStatus"#) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fFromBSONLock_$cfromBSON ::
     Data.Bson.Document -> GHC.Base.Maybe APIs.Lock
   {- Arity: 1, Strictness: <S,U>,
@@ -1553,7 +1562,7 @@ b91202abd8d276c84d37e560a569ed00
                                                                                         (GHC.Generics.Rec0
                                                                                            GHC.Base.String)))>_R))
                                      (Sub (Sym (APIs.Rep_Lock[0])))) <GHC.Prim.Any>_N)) }) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fFromBSONLock_$cto :: GHC.Generics.Rep APIs.Lock x -> APIs.Lock
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(U,1*U(U,U))>m,
      Unfolding: InlineRule (1, True, False)
@@ -3528,7 +3537,7 @@ ddbc851d4a42452ab152b359fb477133
                    (Trans
                         (Sym (GHC.TypeLits.N:SSymbol[0] <"contents">_P))
                         (Sym (GHC.TypeLits.N:KnownSymbol[0]) <"contents">_N))) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fFromJSONFileMapping ::
     Data.Aeson.Types.Class.FromJSON APIs.FileMapping
   DFunId
@@ -3644,7 +3653,7 @@ e69d5bd57dd9918fcb0d68f449259bee
                                                  (GHC.Generics.Rec0 GHC.Base.String))
                              a) ->
                  GHC.Types.False) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fFromJSONFileMapping_$cparseJSON ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser APIs.FileMapping
@@ -4220,7 +4229,7 @@ f7176d0f436159a76ff2c8264aca4f05
                                 'GHC.Generics.NoSourceStrictness
                                 'GHC.Generics.DecidedLazy) f a) ->
                  APIs.$fFromJSONFile10) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fFromJSONLock :: Data.Aeson.Types.Class.FromJSON APIs.Lock
   DFunId
   {- Arity: 1, Strictness: <L,U>, Inline: INLINE (sat-args=0),
@@ -4349,7 +4358,7 @@ ca034f06e013b0aa3b841bbe9118a306
                                                  (GHC.Generics.Rec0 GHC.Base.String))
                              a) ->
                  GHC.Types.False) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fFromJSONLock_$cparseJSON ::
     Data.Aeson.Types.Internal.Value
     -> Data.Aeson.Types.Internal.Parser APIs.Lock
@@ -9438,7 +9447,7 @@ a0cc8e2207e7bec3e2a70ac17948745e
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ APIs.File APIs.$fGenericFile_$cfrom APIs.$fGenericFile_$cto -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fGenericFileMapping :: GHC.Generics.Generic APIs.FileMapping
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -9446,7 +9455,7 @@ e10e3b67a0c19ea87148d2ea211ef672
                   @ APIs.FileMapping
                   APIs.$fGenericFileMapping_$cfrom
                   APIs.$fFromBSONFileMapping_$cto -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fGenericFileMapping_$cfrom ::
     APIs.FileMapping -> GHC.Generics.Rep APIs.FileMapping x
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,U)>m,
@@ -9801,13 +9810,13 @@ a0cc8e2207e7bec3e2a70ac17948745e
                              <GHC.Generics.K1 GHC.Generics.R GHC.Base.String>_R <x>_N)
                         (GHC.Generics.N:K1[0]
                              <GHC.Generics.R>_P <GHC.Base.String>_R <x>_P)) }) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fGenericLock :: GHC.Generics.Generic APIs.Lock
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ APIs.Lock APIs.$fGenericLock_$cfrom APIs.$fFromBSONLock_$cto -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fGenericLock_$cfrom :: APIs.Lock -> GHC.Generics.Rep APIs.Lock x
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,U)>m,
      Unfolding: InlineRule (1, True, False)
@@ -11469,7 +11478,7 @@ a0cc8e2207e7bec3e2a70ac17948745e
 898e475052eb8e0a3ce54a58ee956fe2
   $fShowFile4 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "File {"#) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fShowFileMapping :: GHC.Show.Show APIs.FileMapping
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -11478,7 +11487,7 @@ e10e3b67a0c19ea87148d2ea211ef672
                   APIs.$fShowFileMapping_$cshowsPrec
                   APIs.$fShowFileMapping_$cshow
                   APIs.$fShowFileMapping_$cshowList -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fShowFileMapping1 :: APIs.FileMapping -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (\ (w :: APIs.FileMapping) (w1 :: GHC.Base.String) ->
@@ -11496,7 +11505,7 @@ c6419f6f62aea43b070e18fa308b0c20
 fe30b7f7ff84fcfc9dbdf3623c694055
   $fShowFileMapping5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "FileMapping {"#) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fShowFileMapping_$cshow :: APIs.FileMapping -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U(1*U,1*U,1*U)>,
      Unfolding: InlineRule (1, True, False)
@@ -11505,14 +11514,14 @@ e10e3b67a0c19ea87148d2ea211ef672
                    GHC.Show.shows22
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fShowFileMapping_$cshowList ::
     [APIs.FileMapping] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__
                    @ APIs.FileMapping
                    APIs.$fShowFileMapping1) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fShowFileMapping_$cshowsPrec ::
     GHC.Types.Int -> APIs.FileMapping -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U,1*U,1*U)><L,U>,
@@ -11549,7 +11558,7 @@ a0cc8e2207e7bec3e2a70ac17948745e
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { APIs.File ww3 ww4 ->
                  APIs.$w$cshowsPrec2 ww1 ww3 ww4 w2 } }) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fShowLock :: GHC.Show.Show APIs.Lock
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -11558,7 +11567,7 @@ a0cc8e2207e7bec3e2a70ac17948745e
                   APIs.$fShowLock_$cshowsPrec
                   APIs.$fShowLock_$cshow
                   APIs.$fShowLock_$cshowList -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fShowLock1 :: APIs.Lock -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (\ (w :: APIs.Lock) (w1 :: GHC.Base.String) ->
@@ -11576,7 +11585,7 @@ f6399149a4a3e4383d6b9818490f2c10
 843b9816d7cb73ce8396d4e0a33f9519
   $fShowLock5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Lock {"#) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fShowLock_$cshow :: APIs.Lock -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U(1*U,1*U,1*U)>,
      Unfolding: InlineRule (1, True, False)
@@ -11585,11 +11594,11 @@ f6399149a4a3e4383d6b9818490f2c10
                    GHC.Show.shows22
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fShowLock_$cshowList :: [APIs.Lock] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__ @ APIs.Lock APIs.$fShowLock1) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fShowLock_$cshowsPrec ::
     GHC.Types.Int -> APIs.Lock -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U,1*U,1*U)><L,U>,
@@ -12328,59 +12337,187 @@ a0bf5ce01277065c03f87b710771efa0
                      GHC.Generics.$WSTrue
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Types.Bool>_N <'GHC.Types.True>_N)) -}
-a07835a48790ad546c3fcf3fc7142a4c
+47a58cc51cbdccf325f91ad376e5f976
   $fToBSONBool :: Data.Bson.Generic.ToBSON GHC.Types.Bool
   DFunId
   {- Arity: 1, Strictness: <S,1*U>, Inline: INLINE (sat-args=0),
      Unfolding: InlineRule (0, False, True)
-                APIs.$fToBSONBool_$ctoBSON
+                APIs.$fToBSONBool_$s$dmtoBSON
                   `cast`
                 (Sym (Data.Bson.Generic.N:ToBSON[0] <GHC.Types.Bool>_N)) -}
-b2147281b1b13054ad8ebe6e852c8e4d
-  $fToBSONBool1 :: Data.Bson.Document
-  {- Unfolding: (Data.Bson.Generic.$w$cgenericToBSON1
-                   @ GHC.Generics.U1
-                   @ ('GHC.Generics.MetaCons
-                        "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
-                   Data.Bson.Generic.$fGToBSONU1_$cgenericToBSON
-                     `cast`
-                   (Sym (Data.Bson.Generic.N:GToBSON[0] <GHC.Generics.U1>_N))
-                   APIs.$fToBSONBool_$s$fConstructorMetaMetaCons
-                   @ GHC.Prim.Any
-                   2#
-                   (GHC.Generics.U1 @ GHC.Prim.Any)
-                     `cast`
-                   (Sym (GHC.Generics.N:M1[0]
-                             <GHC.Generics.C>_P
-                             <'GHC.Generics.MetaCons
-                                "True" 'GHC.Generics.PrefixI 'GHC.Types.False>_P
-                             <GHC.Generics.U1>_R) <GHC.Prim.Any>_N)) -}
-7173abade6aaa5ffa7ff898e62ff88d6
-  $fToBSONBool2 :: Data.Bson.Document
-  {- Unfolding: (Data.Bson.Generic.$w$cgenericToBSON1
-                   @ GHC.Generics.U1
-                   @ ('GHC.Generics.MetaCons
-                        "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
-                   Data.Bson.Generic.$fGToBSONU1_$cgenericToBSON
-                     `cast`
-                   (Sym (Data.Bson.Generic.N:GToBSON[0] <GHC.Generics.U1>_N))
-                   APIs.$fToBSONBool_$s$fConstructorMetaMetaCons1
-                   @ GHC.Prim.Any
-                   2#
-                   (GHC.Generics.U1 @ GHC.Prim.Any)
-                     `cast`
-                   (Sym (GHC.Generics.N:M1[0]
-                             <GHC.Generics.C>_P
-                             <'GHC.Generics.MetaCons
-                                "False" 'GHC.Generics.PrefixI 'GHC.Types.False>_P
-                             <GHC.Generics.U1>_R) <GHC.Prim.Any>_N)) -}
-d8c6a4ea8cc6f369c6d008ff7fdabf28
-  $fToBSONBool_$ctoBSON :: GHC.Types.Bool -> Data.Bson.Document
+372c6e8246b72f2735ecdf0023133da6
+  $fToBSONBool1 ::
+    Data.Bson.Generic.GConstructorCount
+      (GHC.Generics.D1
+         ('GHC.Generics.MetaData
+            "Bool" "GHC.Types" "ghc-prim" 'GHC.Types.False)
+         (GHC.Generics.C1
+            ('GHC.Generics.MetaCons
+               "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+            GHC.Generics.U1
+          GHC.Generics.:+: GHC.Generics.C1
+                             ('GHC.Generics.MetaCons
+                                "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                             GHC.Generics.U1))
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,A>m,
+     Unfolding: InlineRule (0, True, True)
+                APIs.$fToBSONBool2
+                  `cast`
+                (Trans
+                     (forall (a1 :: <*>_N).
+                      Sym (GHC.Generics.N:M1[0]
+                               <GHC.Generics.D>_P
+                               <'GHC.Generics.MetaData
+                                  "Bool" "GHC.Types" "ghc-prim" 'GHC.Types.False>_P
+                               <GHC.Generics.C1
+                                  ('GHC.Generics.MetaCons
+                                     "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                  GHC.Generics.U1
+                                GHC.Generics.:+: GHC.Generics.C1
+                                                   ('GHC.Generics.MetaCons
+                                                      "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                                   GHC.Generics.U1>_R) <a1>_N
+                      ->_R <GHC.Types.Int>_R)
+                     (Sym (Data.Bson.Generic.N:GConstructorCount[0]
+                               <GHC.Generics.D1
+                                  ('GHC.Generics.MetaData
+                                     "Bool" "GHC.Types" "ghc-prim" 'GHC.Types.False)
+                                  (GHC.Generics.C1
+                                     ('GHC.Generics.MetaCons
+                                        "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                     GHC.Generics.U1
+                                   GHC.Generics.:+: GHC.Generics.C1
+                                                      ('GHC.Generics.MetaCons
+                                                         "True"
+                                                         'GHC.Generics.PrefixI
+                                                         'GHC.Types.False)
+                                                      GHC.Generics.U1)>_N))) -}
+c465b02c64d6087259e93e1a01bbd1b5
+  $fToBSONBool2 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      a1
+    -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,A>m,
+     Unfolding: InlineRule (1, True, True)
+                (\ @ a1
+                   (ds :: (GHC.Generics.:+:)
+                            (GHC.Generics.M1
+                               GHC.Generics.C
+                               ('GHC.Generics.MetaCons
+                                  "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                               GHC.Generics.U1)
+                            (GHC.Generics.M1
+                               GHC.Generics.C
+                               ('GHC.Generics.MetaCons
+                                  "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                               GHC.Generics.U1)
+                            a1) ->
+                 APIs.$fFromBSONBool_lvl47) -}
+4ee7a2e2f7d097209ea38b85501a7f90
+  $fToBSONBool3 ::
+    Data.Bson.Generic.GToBSON
+      (GHC.Generics.D1
+         ('GHC.Generics.MetaData
+            "Bool" "GHC.Types" "ghc-prim" 'GHC.Types.False)
+         (GHC.Generics.C1
+            ('GHC.Generics.MetaCons
+               "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+            GHC.Generics.U1
+          GHC.Generics.:+: GHC.Generics.C1
+                             ('GHC.Generics.MetaCons
+                                "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                             GHC.Generics.U1))
+  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U>,
+     Unfolding: InlineRule (0, True, True)
+                APIs.$fToBSONBool4
+                  `cast`
+                (Trans
+                     (forall (a1 :: <*>_N).
+                      <GHC.Types.Int>_R
+                      ->_R Sym (GHC.Generics.N:M1[0]
+                                    <GHC.Generics.D>_P
+                                    <'GHC.Generics.MetaData
+                                       "Bool" "GHC.Types" "ghc-prim" 'GHC.Types.False>_P
+                                    <GHC.Generics.C1
+                                       ('GHC.Generics.MetaCons
+                                          "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                       GHC.Generics.U1
+                                     GHC.Generics.:+: GHC.Generics.C1
+                                                        ('GHC.Generics.MetaCons
+                                                           "True"
+                                                           'GHC.Generics.PrefixI
+                                                           'GHC.Types.False)
+                                                        GHC.Generics.U1>_R) <a1>_N
+                      ->_R <Data.Bson.Document>_R)
+                     (Sym (Data.Bson.Generic.N:GToBSON[0]
+                               <GHC.Generics.D1
+                                  ('GHC.Generics.MetaData
+                                     "Bool" "GHC.Types" "ghc-prim" 'GHC.Types.False)
+                                  (GHC.Generics.C1
+                                     ('GHC.Generics.MetaCons
+                                        "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                     GHC.Generics.U1
+                                   GHC.Generics.:+: GHC.Generics.C1
+                                                      ('GHC.Generics.MetaCons
+                                                         "True"
+                                                         'GHC.Generics.PrefixI
+                                                         'GHC.Types.False)
+                                                      GHC.Generics.U1)>_N))) -}
+5d917eaa2759428a3a9e3f4e7b2add97
+  $fToBSONBool4 ::
+    GHC.Types.Int
+    -> (GHC.Generics.:+:)
+         (GHC.Generics.M1
+            GHC.Generics.C
+            ('GHC.Generics.MetaCons
+               "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+            GHC.Generics.U1)
+         (GHC.Generics.M1
+            GHC.Generics.C
+            ('GHC.Generics.MetaCons
+               "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+            GHC.Generics.U1)
+         a1
+    -> Data.Bson.Document
+  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a1
+                   (w :: GHC.Types.Int)
+                   (w1 :: (GHC.Generics.:+:)
+                            (GHC.Generics.M1
+                               GHC.Generics.C
+                               ('GHC.Generics.MetaCons
+                                  "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                               GHC.Generics.U1)
+                            (GHC.Generics.M1
+                               GHC.Generics.C
+                               ('GHC.Generics.MetaCons
+                                  "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                               GHC.Generics.U1)
+                            a1) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 APIs.$w$dGToBSON1 @ a1 ww1 w1 }) -}
+48fc17a0be8f4ca0269d7849f2138720
+  $fToBSONBool_$s$dmtoBSON :: GHC.Types.Bool -> Data.Bson.Document
   {- Arity: 1, Strictness: <S,1*U>,
-     Unfolding: (\ (a1 :: GHC.Types.Bool) ->
-                 case a1 of wild {
-                   GHC.Types.False -> APIs.$fToBSONBool2
-                   GHC.Types.True -> APIs.$fToBSONBool1 }) -}
+     Unfolding: InlineRule (-4, True, False)
+                (\ (a1 :: GHC.Types.Bool) ->
+                 APIs.$fToBSONBool3
+                   `cast`
+                 (Data.Bson.Generic.N:GToBSON[0] (Sym (GHC.Generics.Rep_Bool[0])))
+                   @ GHC.Prim.Any
+                   (APIs.$fToBSONBool_$sconstructorCount a1)
+                   (GHC.Generics.$fGenericBool_$cfrom @ GHC.Prim.Any a1)) -}
 ea019ac1e96392825ce2900b1071af1e
   $fToBSONBool_$s$fConstructorMetaMetaCons ::
     GHC.Generics.Constructor
@@ -12491,7 +12628,18 @@ ea019ac1e96392825ce2900b1071af1e
                      GHC.Generics.$WSFalse
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Types.Bool>_N <'GHC.Types.False>_N)) -}
-e10e3b67a0c19ea87148d2ea211ef672
+9fe0eba0fc5ee0d34b0d4cf99cb28a0d
+  $fToBSONBool_$sconstructorCount :: GHC.Types.Bool -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,A>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: GHC.Types.Bool) ->
+                 APIs.$fToBSONBool1
+                   `cast`
+                 (Data.Bson.Generic.N:GConstructorCount[0]
+                      (Sym (GHC.Generics.Rep_Bool[0])))
+                   @ GHC.Prim.Any
+                   (GHC.Generics.$fGenericBool_$cfrom @ GHC.Prim.Any x)) -}
+c4f1933b754b2ac76dad17832526dbe8
   $fToBSONFileMapping :: Data.Bson.Generic.ToBSON APIs.FileMapping
   DFunId
   {- Arity: 1, Strictness: <L,1*U(U,U,U)>,
@@ -12646,7 +12794,7 @@ c358c7a659bf1da834de4cc475348440
                                                                         GHC.Base.String))))
                             a1) ->
                  Data.Bson.Generic.$dmfromBSON1) -}
-b669886ebce33a5f23d0839639f07bf1
+2c4019ae0d4e1661942703862475b5c7
   $fToBSONFileMapping3 ::
     Data.Bson.Generic.GToBSON
       (GHC.Generics.D1
@@ -12717,7 +12865,7 @@ b669886ebce33a5f23d0839639f07bf1
                                                                          'GHC.Generics.DecidedLazy)
                                                                       (GHC.Generics.Rec0
                                                                          GHC.Base.String))))>_N)) -}
-240a821e567ee957cb559daab854f9ef
+d650a34a690ac4f3e76a6709151e7c66
   $fToBSONFileMapping4 ::
     GHC.Types.Int
     -> GHC.Generics.M1
@@ -12885,7 +13033,7 @@ b669886ebce33a5f23d0839639f07bf1
 8681c76810e685232e47022756d86cc8
   $fToBSONFileMapping5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "FileMapping"#) -}
-f7b4abed44df99eeba7636c6f4fa4a23
+56e57f700312707841374be9261c1c91
   $fToBSONFileMapping6 ::
     GHC.Types.Int
     -> (GHC.Generics.:*:)
@@ -12943,7 +13091,7 @@ f7b4abed44df99eeba7636c6f4fa4a23
                                                 (GHC.Generics.Rec0 GHC.Base.String))
                             a1) ->
                  case w1 of ww { GHC.Generics.:*: ww1 ww2 ->
-                 APIs.$w$dGToBSON1 @ a1 ww1 ww2 }) -}
+                 APIs.$w$dGToBSON2 @ a1 ww1 ww2 }) -}
 96d9c3442af113a1d46cf0ceb13d1ed1
   $fToBSONFileMapping7 ::
     GHC.Prim.State# GHC.Prim.RealWorld
@@ -12998,7 +13146,7 @@ f7b4abed44df99eeba7636c6f4fa4a23
                    APIs.$fFromBSONFileMapping13
                    0#
                    ipv }) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fToBSONFileMapping_$s$dmtoBSON ::
     APIs.FileMapping -> Data.Bson.Document
   {- Arity: 1, Strictness: <L,1*U(U,U,U)>,
@@ -13065,7 +13213,7 @@ ef61c3dd89d44a32814e2504de4ef9b5
                      GHC.Generics.$WSTrue
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Types.Bool>_N <'GHC.Types.True>_N)) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fToBSONFileMapping_$sconstructorCount ::
     APIs.FileMapping -> GHC.Types.Int
   {- Arity: 1, HasNoCafRefs, Strictness: <L,A>m,
@@ -13077,7 +13225,7 @@ e10e3b67a0c19ea87148d2ea211ef672
                       (Sym (APIs.Rep_FileMapping[0])))
                    @ GHC.Prim.Any
                    (APIs.$fGenericFileMapping_$cfrom @ GHC.Prim.Any x)) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fToBSONLock :: Data.Bson.Generic.ToBSON APIs.Lock
   DFunId
   {- Arity: 1, Strictness: <L,1*U(U,U,U)>,
@@ -13230,7 +13378,7 @@ e10e3b67a0c19ea87148d2ea211ef672
                                                                         GHC.Base.String))))
                             a1) ->
                  Data.Bson.Generic.$dmfromBSON1) -}
-c355096ff1944bc857c5e2e039f92c02
+f60d884093ffebb177cc2a6d7ac0d2d5
   $fToBSONLock3 ::
     Data.Bson.Generic.GToBSON
       (GHC.Generics.D1
@@ -13300,7 +13448,7 @@ c355096ff1944bc857c5e2e039f92c02
                                                                          'GHC.Generics.DecidedLazy)
                                                                       (GHC.Generics.Rec0
                                                                          GHC.Base.String))))>_N)) -}
-825a3597c165fdee5fefedd036612f10
+318aeb1e511e4301b875b745e7589a72
   $fToBSONLock4 ::
     GHC.Types.Int
     -> GHC.Generics.M1
@@ -13467,7 +13615,7 @@ c355096ff1944bc857c5e2e039f92c02
 b93df467ad1f8ef582f3d2e1dc658f33
   $fToBSONLock5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Lock"#) -}
-0319631ba018f397573c997373cc0ca4
+2c126caeab3f260b8ff7eebe10bb507f
   $fToBSONLock6 ::
     GHC.Types.Int
     -> (GHC.Generics.:*:)
@@ -13525,7 +13673,7 @@ b93df467ad1f8ef582f3d2e1dc658f33
                                                 (GHC.Generics.Rec0 GHC.Base.String))
                             a1) ->
                  case w1 of ww { GHC.Generics.:*: ww1 ww2 ->
-                 APIs.$w$dGToBSON2 @ a1 ww1 ww2 }) -}
+                 APIs.$w$dGToBSON3 @ a1 ww1 ww2 }) -}
 211d72586e812a4f7882cbc3b9748744
   $fToBSONLock7 ::
     GHC.Prim.State# GHC.Prim.RealWorld
@@ -13580,7 +13728,7 @@ b93df467ad1f8ef582f3d2e1dc658f33
                    APIs.$fFromBSONLock13
                    0#
                    ipv }) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fToBSONLock_$s$dmtoBSON :: APIs.Lock -> Data.Bson.Document
   {- Arity: 1, Strictness: <L,1*U(U,U,U)>,
      Unfolding: InlineRule (-4, True, False)
@@ -13646,7 +13794,7 @@ b93df467ad1f8ef582f3d2e1dc658f33
                      GHC.Generics.$WSTrue
                        `cast`
                      (Sym (GHC.Generics.N:SingI[0]) <GHC.Types.Bool>_N <'GHC.Types.True>_N)) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fToBSONLock_$sconstructorCount :: APIs.Lock -> GHC.Types.Int
   {- Arity: 1, HasNoCafRefs, Strictness: <L,A>m,
      Unfolding: InlineRule (1, True, False)
@@ -13656,7 +13804,7 @@ b93df467ad1f8ef582f3d2e1dc658f33
                  (Data.Bson.Generic.N:GConstructorCount[0] (Sym (APIs.Rep_Lock[0])))
                    @ GHC.Prim.Any
                    (APIs.$fGenericLock_$cfrom @ GHC.Prim.Any x)) -}
-ea16a05798e82d9b159025a30af0e094
+e49b4ef6cae15506065677610959712a
   $fToBSON[] :: Data.Bson.Generic.ToBSON [GHC.Types.Char]
   DFunId
   {- Arity: 1, Strictness: <S,1*U>, Inline: INLINE (sat-args=0),
@@ -13819,7 +13967,7 @@ c5b13269532cc11f929deafc452bd1aa
                                                    (GHC.Generics.Rec0 [GHC.Types.Char])))
                             a1) ->
                  APIs.$fFromBSONBool_lvl47) -}
-b5596371818427ff0f596a7c9dc2e1b7
+b56eebc1eacb3207c3b076a45c456761
   $fToBSON[]3 ::
     Data.Bson.Generic.GToBSON
       (GHC.Generics.D1
@@ -13914,7 +14062,7 @@ b5596371818427ff0f596a7c9dc2e1b7
                                                                              'GHC.Generics.DecidedLazy)
                                                                           (GHC.Generics.Rec0
                                                                              [GHC.Types.Char])))>_N))) -}
-8c4728bf99c292f1cbe460f16068c654
+078c3a50fd01b8268ff536bf91175058
   $fToBSON[]4 ::
     GHC.Types.Int
     -> (GHC.Generics.:+:)
@@ -13977,7 +14125,7 @@ b5596371818427ff0f596a7c9dc2e1b7
                                                    (GHC.Generics.Rec0 [GHC.Types.Char])))
                             a1) ->
                  case w of ww { GHC.Types.I# ww1 ->
-                 APIs.$w$dGToBSON3 @ a1 ww1 w1 }) -}
+                 APIs.$w$dGToBSON4 @ a1 ww1 w1 }) -}
 9c9ed0ee83b4ae7d0832c38bcbe4d113
   $fToBSON[]5 ::
     GHC.Generics.SingI
@@ -14005,7 +14153,7 @@ d2705db620f2ab200f88c888b074a09a
 7c338ad42a3c5e53d59524a3c1686aa2
   $fToBSON[]7 :: GHC.Integer.Type.Integer
   {- HasNoCafRefs, Unfolding: (9) -}
-cbba88bad17536db9c6e60a7c912e5c1
+f9f2a30822649e48b81e1cf5b9554c8f
   $fToBSON[]8 ::
     GHC.Types.Int
     -> (GHC.Generics.:*:)
@@ -14051,7 +14199,7 @@ cbba88bad17536db9c6e60a7c912e5c1
                                (GHC.Generics.Rec0 [GHC.Types.Char]))
                             a1) ->
                  case w1 of ww { GHC.Generics.:*: ww1 ww2 ->
-                 APIs.$w$dGToBSON4 @ a1 ww1 ww2 }) -}
+                 APIs.$w$dGToBSON5 @ a1 ww1 ww2 }) -}
 5338bf0dc40cba74571b965bc770becf
   $fToBSON[]9 ::
     GHC.Prim.State# GHC.Prim.RealWorld
@@ -14070,7 +14218,7 @@ cbba88bad17536db9c6e60a7c912e5c1
                    (GHC.Types.[] @ GHC.Types.Char)
                    0#
                    ipv }) -}
-51c3143ff65db488f5c591df35496907
+579ce76df0661a6a0ec50faa1a322cd2
   $fToBSON[]_$s$dmtoBSON :: [GHC.Types.Char] -> Data.Bson.Document
   {- Arity: 1, Strictness: <S,1*U>,
      Unfolding: InlineRule (-4, True, False)
@@ -14518,7 +14666,7 @@ ed7fc7d8029bb269855ac664c23291a4
                    APIs.$fFromJSONFile5
                    0#
                    ipv }) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fToJSONFileMapping ::
     Data.Aeson.Types.Class.ToJSON APIs.FileMapping
   DFunId
@@ -14527,7 +14675,7 @@ e10e3b67a0c19ea87148d2ea211ef672
                   @ APIs.FileMapping
                   APIs.$fToJSONFileMapping_$ctoJSON
                   APIs.$fToJSONFileMapping_$ctoEncoding -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fToJSONFileMapping1 ::
     APIs.FileMapping
     -> Data.Aeson.Types.Generic.Tagged
@@ -14634,7 +14782,7 @@ d2165c39431fa70adde87199d59bfabc
                    (w1 :: GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1) ->
                  case APIs.$w$dGToJSON3 @ a1 w1 of ww { Unit# ww1 ->
                  Data.Aeson.Types.Internal.String ww1 }) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fToJSONFileMapping_$ctoEncoding ::
     APIs.FileMapping -> Data.Aeson.Types.Internal.Encoding
   {- Arity: 1, Strictness: <S,1*U(U,U,U)>,
@@ -14646,7 +14794,7 @@ e10e3b67a0c19ea87148d2ea211ef672
                   `cast`
                 (<APIs.FileMapping>_R
                  ->_R Sym (Data.Aeson.Types.Internal.N:Encoding[0])) -}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   $fToJSONFileMapping_$ctoJSON ::
     APIs.FileMapping -> Data.Aeson.Types.Internal.Value
   {- Arity: 1, Strictness: <S,1*U(U,U,U)>m1,
@@ -14680,7 +14828,7 @@ a0cc8e2207e7bec3e2a70ac17948745e
                  ->_R Data.Aeson.Types.Generic.N:Tagged[0]
                           <Data.Aeson.Types.Generic.True>_P
                           <Data.Aeson.Types.Internal.Value>_R) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fToJSONLock :: Data.Aeson.Types.Class.ToJSON APIs.Lock
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -14688,7 +14836,7 @@ a0cc8e2207e7bec3e2a70ac17948745e
                   @ APIs.Lock
                   APIs.$fToJSONLock_$ctoJSON
                   APIs.$fToJSONLock_$ctoEncoding -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fToJSONLock1 ::
     APIs.Lock
     -> Data.Aeson.Types.Generic.Tagged
@@ -14809,7 +14957,7 @@ e3098c17989db6ba832d8adf08123857
                    (w1 :: GHC.Generics.K1 GHC.Generics.R [GHC.Types.Char] a1) ->
                  case APIs.$w$dGToJSON4 @ a1 w1 of ww { Unit# ww1 ->
                  Data.Aeson.Types.Internal.String ww1 }) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fToJSONLock_$ctoEncoding ::
     APIs.Lock -> Data.Aeson.Types.Internal.Encoding
   {- Arity: 1, Strictness: <S,1*U(U,U,U)>,
@@ -14821,7 +14969,7 @@ e3098c17989db6ba832d8adf08123857
                   `cast`
                 (<APIs.Lock>_R
                  ->_R Sym (Data.Aeson.Types.Internal.N:Encoding[0])) -}
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   $fToJSONLock_$ctoJSON ::
     APIs.Lock -> Data.Aeson.Types.Internal.Value
   {- Arity: 1, Strictness: <S,1*U(U,U,U)>m1,
@@ -22472,8 +22620,64 @@ e3c9891db318710cb55a273148f59805
                                        ipv7 }) of ds2 { (#,#) ipv7 ipv8 ->
                              ipv8 })) } })
                       (GHC.Types.[] @ Data.Bson.Field))) -}
-4626c6d3b6ed53017ba026bc99b17c8c
+6e37786e16dd9ccb33a611cd7c11d7a2
   $w$dGToBSON1 ::
+    GHC.Prim.Int#
+    -> (GHC.Generics.:+:)
+         (GHC.Generics.M1
+            GHC.Generics.C
+            ('GHC.Generics.MetaCons
+               "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+            GHC.Generics.U1)
+         (GHC.Generics.M1
+            GHC.Generics.C
+            ('GHC.Generics.MetaCons
+               "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+            GHC.Generics.U1)
+         a1
+    -> Data.Bson.Document
+  {- Arity: 2, Strictness: <S,U><S,1*U>, Inline: [0],
+     Unfolding: (\ @ a1
+                   (ww :: GHC.Prim.Int#)
+                   (w :: (GHC.Generics.:+:)
+                           (GHC.Generics.M1
+                              GHC.Generics.C
+                              ('GHC.Generics.MetaCons
+                                 "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                              GHC.Generics.U1)
+                           (GHC.Generics.M1
+                              GHC.Generics.C
+                              ('GHC.Generics.MetaCons
+                                 "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                              GHC.Generics.U1)
+                           a1) ->
+                 case w of wild {
+                   GHC.Generics.L1 x
+                   -> Data.Bson.Generic.$w$cgenericToBSON1
+                        @ GHC.Generics.U1
+                        @ ('GHC.Generics.MetaCons
+                             "False" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        Data.Bson.Generic.$fGToBSONU1_$cgenericToBSON
+                          `cast`
+                        (Sym (Data.Bson.Generic.N:GToBSON[0] <GHC.Generics.U1>_N))
+                        APIs.$fToBSONBool_$s$fConstructorMetaMetaCons1
+                        @ a1
+                        ww
+                        x
+                   GHC.Generics.R1 x
+                   -> Data.Bson.Generic.$w$cgenericToBSON1
+                        @ GHC.Generics.U1
+                        @ ('GHC.Generics.MetaCons
+                             "True" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        Data.Bson.Generic.$fGToBSONU1_$cgenericToBSON
+                          `cast`
+                        (Sym (Data.Bson.Generic.N:GToBSON[0] <GHC.Generics.U1>_N))
+                        APIs.$fToBSONBool_$s$fConstructorMetaMetaCons
+                        @ a1
+                        ww
+                        x }) -}
+41c8ac5a1e5c57182d337ec1714c4107
+  $w$dGToBSON2 ::
     GHC.Generics.M1
       GHC.Generics.S
       ('GHC.Generics.MetaSel
@@ -22647,8 +22851,8 @@ e3c9891db318710cb55a273148f59805
                                           ipv7 }) of ds2 { (#,#) ipv7 ipv8 ->
                                 ipv8 })) } })
                          (GHC.Types.[] @ Data.Bson.Field)) })) -}
-1d87fae8088901b1059cf06c368e0310
-  $w$dGToBSON2 ::
+7ebd24a5497cb78a63598d16f88cb3aa
+  $w$dGToBSON3 ::
     GHC.Generics.M1
       GHC.Generics.S
       ('GHC.Generics.MetaSel
@@ -22807,8 +23011,8 @@ e3c9891db318710cb55a273148f59805
                                           ipv7 }) of ds2 { (#,#) ipv7 ipv8 ->
                                 ipv8 })) } })
                          (GHC.Types.[] @ Data.Bson.Field)) })) -}
-3ca208ca7df60b473ad6e6165ccaba1e
-  $w$dGToBSON3 ::
+81514f62949826314f34850301b27a54
+  $w$dGToBSON4 ::
     GHC.Prim.Int#
     -> (GHC.Generics.:+:)
          (GHC.Generics.M1
@@ -22924,8 +23128,8 @@ e3c9891db318710cb55a273148f59805
                         @ a1
                         ww
                         x }) -}
-35018b711b8dc3480e0fe146ab263650
-  $w$dGToBSON4 ::
+30b2bf53888a070675e0332a2f3f5ef2
+  $w$dGToBSON5 ::
     GHC.Generics.M1
       GHC.Generics.S
       ('GHC.Generics.MetaSel
@@ -24101,7 +24305,7 @@ a58b0f1d7800cc5c6004b51f901f597f
 a0cc8e2207e7bec3e2a70ac17948745e
   data File
     = File {name :: GHC.Base.String, contents :: GHC.Base.String}
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   data FileMapping
     = FileMapping {fileName :: GHC.Base.String,
                    serverName :: GHC.Base.String,
@@ -24139,7 +24343,7 @@ c4aca4f9a9bb8b038799ee9eff8810c7
                                                                                                                                                 Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                                                                                                                      '[Servant.API.ContentTypes.JSON]
                                                                                                                                                                      APIs.SecureTime)))))
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   data Lock
     = Lock {lockFileName :: GHC.Base.String,
             lockStatus :: GHC.Types.Bool,
@@ -24255,7 +24459,7 @@ a0cc8e2207e7bec3e2a70ac17948745e
                                       'GHC.Generics.NoSourceStrictness
                                       'GHC.Generics.DecidedLazy)
                                    (GHC.Generics.Rec0 GHC.Base.String)))
-e10e3b67a0c19ea87148d2ea211ef672
+c4f1933b754b2ac76dad17832526dbe8
   axiom Rep_FileMapping::
       GHC.Generics.Rep APIs.FileMapping
         = GHC.Generics.D1
@@ -24288,7 +24492,7 @@ e10e3b67a0c19ea87148d2ea211ef672
                                                         'GHC.Generics.NoSourceStrictness
                                                         'GHC.Generics.DecidedLazy)
                                                      (GHC.Generics.Rec0 GHC.Base.String))))
-0673f7cc33683be669081555b4fba2a1
+dbaa7ef752f8b75edf5edcc35d16ce77
   axiom Rep_Lock::
       GHC.Generics.Rep APIs.Lock
         = GHC.Generics.D1
@@ -24562,6 +24766,18 @@ d2c6a7f0c758d67ee1f12af0eef29fea
 dd15ac8404af8de038ce7190b55562a2
   asPort :: GHC.Types.Int
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 8090#) -}
+a56d1cac7105c8f8f54222bfe7036def
+  authServerLogging :: GHC.Types.Bool
+  {- HasNoCafRefs,
+     Unfolding: InlineRule (0, True, True) GHC.Types.True -}
+75830956fcc436c80e779e1a9f2310dd
+  cacheLogging :: GHC.Types.Bool
+  {- HasNoCafRefs,
+     Unfolding: InlineRule (0, True, True) GHC.Types.True -}
+d4cfe1b1814a00dca08466572304c426
+  clientLogging :: GHC.Types.Bool
+  {- HasNoCafRefs,
+     Unfolding: InlineRule (0, True, True) GHC.Types.True -}
 a4b3351527f20772ccbfd6c6f3c9ad08
   contents :: APIs.File -> GHC.Base.String
   RecSel Left APIs.File
@@ -24644,6 +24860,10 @@ e7e1269c918467b324925771d50b791b
     [(Data.Time.Clock.UTC.UTCTime, GHC.Base.String)]
     -> [(Data.Time.Clock.UTC.UTCTime, GHC.Base.String)]
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+ebd259f42385b0743bc979c98ffdc807
+  dirServerLogging :: GHC.Types.Bool
+  {- HasNoCafRefs,
+     Unfolding: InlineRule (0, True, True) GHC.Types.True -}
 24c66c9ef01d832154c8774d606b0ee6
   directoryPort :: GHC.Types.Int
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 8080#) -}
@@ -24837,34 +25057,70 @@ b122726635a732cc25db117a659a409d
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.SecureFileUpload) ->
                  case ds of wild { APIs.SecureFileUpload ds1 ds2 ds3 -> ds3 }) -}
-d82165b0439b2ac0964f41f09d5bf06a
+34f1f022d283b4902668aa19fe8f81d2
   fileName :: APIs.FileMapping -> GHC.Base.String
   RecSel Left APIs.FileMapping
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U,A,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.FileMapping) ->
                  case ds of wild { APIs.FileMapping ds1 ds2 ds3 -> ds1 }) -}
-02ae081ce39616342571368c09d5fa32
+39031da2fd1980169dffbf8c255b960b
+  fileserverLogging :: GHC.Types.Bool
+  {- HasNoCafRefs,
+     Unfolding: InlineRule (0, True, True) GHC.Types.True -}
+ab9db6d49de4a7b3c824a85b19bcf6da
   lockFileName :: APIs.Lock -> GHC.Base.String
   RecSel Left APIs.Lock
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U,A,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.Lock) ->
                  case ds of wild { APIs.Lock ds1 ds2 ds3 -> ds1 }) -}
-d090a6647e5e7421717f1ae68c4ec1bb
+822016e5c9a82380b8ea829d72d98163
+  lockServerLogging :: GHC.Types.Bool
+  {- HasNoCafRefs,
+     Unfolding: InlineRule (0, True, True) GHC.Types.True -}
+8b45ba03c1f2b03068e64ec486243bb5
   lockStatus :: APIs.Lock -> GHC.Types.Bool
   RecSel Left APIs.Lock
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.Lock) ->
                  case ds of wild { APIs.Lock ds1 ds2 ds3 -> ds2 }) -}
-af10c3efd8b5e557525d564f59fb4fed
+490011778b070418b2022835586ed481
   lockTime :: APIs.Lock -> GHC.Base.String
   RecSel Left APIs.Lock
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LLS),1*U(A,A,1*U)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.Lock) ->
                  case ds of wild { APIs.Lock ds1 ds2 ds3 -> ds3 }) -}
+6f1929fadbe01f7868e71a3360404264
+  logMessage :: GHC.Types.Bool -> GHC.Base.String -> GHC.Types.IO ()
+  {- Arity: 3, Strictness: <S,1*U><L,1*U><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                APIs.logMessage1
+                  `cast`
+                (<GHC.Types.Bool>_R
+                 ->_R <GHC.Base.String>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
+493fa912282d96b032edb543549df062
+  logMessage1 ::
+    GHC.Types.Bool
+    -> GHC.Base.String
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 3, Strictness: <S,1*U><L,1*U><S,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (logBool :: GHC.Types.Bool)
+                   (message :: GHC.Base.String)
+                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case logBool of wild {
+                   GHC.Types.False -> (# eta, GHC.Tuple.() #)
+                   GHC.Types.True
+                   -> GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        message
+                        GHC.Types.True
+                        eta }) -}
 dfef747f9e8922fd34e3f7f7f7b37cca
   lsPort :: GHC.Types.Int
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 8091#) -}
@@ -24903,14 +25159,14 @@ f7e03494cf47682f9599d1c983cc32a6
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.SecureTicket) ->
                  case ds of wild { APIs.SecureTicket ds1 ds2 -> ds2 }) -}
-a5396ad4cd4a9c847706ed481dafe935
+fe1692e62655c4fd5b06be8ad8eb0243
   serverName :: APIs.FileMapping -> GHC.Base.String
   RecSel Left APIs.FileMapping
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: APIs.FileMapping) ->
                  case ds of wild { APIs.FileMapping ds1 ds2 ds3 -> ds2 }) -}
-e0eade50d251aa2f071529e2722d8402
+77c0645f9a3b056fffe6e7eac1121682
   serverPort :: APIs.FileMapping -> GHC.Base.String
   RecSel Left APIs.FileMapping
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LLS),1*U(A,A,1*U)>,
@@ -25094,6 +25350,20 @@ family instance GHC.Generics.Rep [APIs.SecureFileName]
 family instance GHC.Generics.Rep [APIs.SecureFileUpload]
   = APIs.Rep_SecureFileUpload
 family instance GHC.Generics.Rep [APIs.File] = APIs.Rep_File
+"SPEC/APIs $dmtoBSON @ Bool" [ALWAYS] forall ($dToBSON :: Data.Bson.Generic.ToBSON
+                                                            GHC.Types.Bool)
+                                             ($dGeneric :: GHC.Generics.Generic GHC.Types.Bool)
+                                             ($dGConstructorCount :: Data.Bson.Generic.GConstructorCount
+                                                                       (GHC.Generics.Rep
+                                                                          GHC.Types.Bool))
+                                             ($dGToBSON :: Data.Bson.Generic.GToBSON
+                                                             (GHC.Generics.Rep GHC.Types.Bool))
+  Data.Bson.Generic.$dmtoBSON @ GHC.Types.Bool
+                              $dToBSON
+                              $dGeneric
+                              $dGConstructorCount
+                              $dGToBSON
+  = APIs.$fToBSONBool_$s$dmtoBSON
 "SPEC/APIs $dmtoBSON @ FileMapping" [ALWAYS] forall ($dToBSON :: Data.Bson.Generic.ToBSON
                                                                    APIs.FileMapping)
                                                     ($dGeneric :: GHC.Generics.Generic
@@ -26361,6 +26631,15 @@ family instance GHC.Generics.Rep [APIs.File] = APIs.Rep_File
                                                $dSingI2
                                                $dSingI3
   = APIs.$fFromBSONAccountData_$s$fSelectorMetaMetaSel_$cselName1
+"SPEC/APIs constructorCount @ Bool" [ALWAYS] forall ($dGeneric :: GHC.Generics.Generic
+                                                                    GHC.Types.Bool)
+                                                    ($dGConstructorCount :: Data.Bson.Generic.GConstructorCount
+                                                                              (GHC.Generics.Rep
+                                                                                 GHC.Types.Bool))
+  Data.Bson.Generic.constructorCount @ GHC.Types.Bool
+                                     $dGeneric
+                                     $dGConstructorCount
+  = APIs.$fToBSONBool_$sconstructorCount
 "SPEC/APIs constructorCount @ FileMapping" [ALWAYS] forall ($dGeneric :: GHC.Generics.Generic
                                                                            APIs.FileMapping)
                                                            ($dGConstructorCount :: Data.Bson.Generic.GConstructorCount

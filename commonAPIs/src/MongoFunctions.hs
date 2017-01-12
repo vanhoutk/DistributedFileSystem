@@ -83,11 +83,3 @@ defEnv env fn def doWarn = lookupEnv env >>= \ e -> case e of
         --when doWarn (doLog warningM $ "Environment variable: " ++ env ++
         --                              " is not set. Defaulting to " ++ (show def))
         return def
-
--- | Logging stuff
-iso8601 :: UTCTime -> String
-iso8601 = formatTime defaultTimeLocale "%FT%T%q%z"
-
-doLog f s = getProgName >>= \ p -> do
-                t <- getCurrentTime
-                f p $ (iso8601 t) ++ " " ++ s

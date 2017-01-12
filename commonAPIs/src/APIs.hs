@@ -19,7 +19,44 @@ import            GHC.Generics
 import            Servant
 
 
--- | File Server API
+-- | Logging Variables
+
+fileserverLogging :: Bool
+fileserverLogging = True
+
+authServerLogging :: Bool
+authServerLogging = True
+
+dirServerLogging :: Bool
+dirServerLogging = True
+
+lockServerLogging :: Bool
+lockServerLogging = True
+
+clientLogging :: Bool
+clientLogging = True
+
+cacheLogging :: Bool
+cacheLogging = True
+
+logMessage :: Bool -> String -> IO()
+logMessage logBool message = do
+  if(logBool) then putStrLn message
+  else return ()
+
+-- | Port Variables
+
+directoryPort :: Int
+directoryPort = 8080
+
+asPort :: Int
+asPort = 8090
+
+lsPort :: Int
+lsPort = 8091
+
+
+-- | Data Declarations
 
 data File = File  { name :: String
                   , contents :: String
@@ -54,34 +91,10 @@ data SecureTicket = SecureTicket { secTicket :: String
                                  , secTimeOut :: String
                                  } deriving (Generic, ToJSON, FromJSON, Show)
 
--- Could allow directory change
--- Could allow files to be moved
--- Could allow files to be deleted
--- Could allow directories to be created
-type FileServerAPI = "upload"     :> ReqBody '[JSON] SecureFileUpload :> Post '[JSON] SecureResponseData
-                :<|> "delete"     :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureResponseData
-                :<|> "download"   :> Get '[JSON] [String] --Doesn't need to be encrypted as only called from Directory Server
-                :<|> "download"   :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureFile
-                :<|> "modifyTime" :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureTime
-
 data FileMapping = FileMapping { fileName :: String
                                , serverName :: String
                                , serverPort :: String
                                } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
-
-deriving instance FromBSON String  -- we need these as BSON does not provide
-deriving instance ToBSON   String
-
---type FileMapping = (String, String, Int)
-directoryPort :: Int
-directoryPort = 8080
-
-type DirectoryServerAPI = "search"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecurePort
-                     :<|> "list"        :> ReqBody '[JSON] SecureTicket :> Post '[JSON] [String]
-                     :<|> "updateList"  :> Capture "updateType" String :> Capture "port" Int :> Capture "name" String :> Get '[JSON] ResponseData
-
-asPort :: Int
-asPort = 8090
 
 data AccountData = AccountData { username :: String
                                , password :: String
@@ -95,6 +108,40 @@ data AuthToken = AuthToken { encTicket :: String -- Client password encrypted ti
                            , encSessionKey :: String -- Client password encrypted sessionKey
                            , encTokenTimeout :: String -- Token Timeout encryted with server password
                            } deriving (Show, Generic, FromJSON, ToJSON)
+
+data Lock = Lock { lockFileName :: String
+                 , lockStatus :: Bool
+                 , lockTime :: String
+                 } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
+
+deriving instance FromBSON String  -- we need these as BSON does not provide
+deriving instance ToBSON   String
+
+deriving instance FromBSON Bool  -- we need these as BSON does not provide
+deriving instance ToBSON   Bool
+
+
+-- | API Declarations
+
+type FileServerAPI = "upload"     :> ReqBody '[JSON] SecureFileUpload :> Post '[JSON] SecureResponseData
+                :<|> "delete"     :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureResponseData
+                :<|> "download"   :> Get '[JSON] [String] --Doesn't need to be encrypted as only called from Directory Server
+                :<|> "download"   :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureFile
+                :<|> "modifyTime" :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureTime
+
+type DirectoryServerAPI = "search"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecurePort
+                     :<|> "list"        :> ReqBody '[JSON] SecureTicket :> Post '[JSON] [String]
+                     :<|> "updateList"  :> Capture "updateType" String :> Capture "port" Int :> Capture "name" String :> Get '[JSON] ResponseData
+
+type AuthenticationServerAPI = "login"      :> ReqBody '[JSON] LoginRequest :> Post '[JSON] AuthToken
+                          :<|> "addNewUser" :> Capture "username" String    :> Capture "password" String :> Get '[JSON] ResponseData
+
+type LockServerAPI = "lock"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecureResponseData
+                :<|> "unlock"    :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecureResponseData
+                :<|> "checkLock" :> ReqBody '[JSON] SecureFileName :> Post '[JSON] Bool
+
+
+-- | Encryption Variable and Functions
 
 sharedServerSecret :: String
 sharedServerSecret = "This is the shared server secret."
@@ -119,21 +166,3 @@ encryptDecryptArray :: String -> [String] -> [String]
 encryptDecryptArray key array = do
   encryptedArray <- map (encryptDecrypt key) array
   return encryptedArray
-
-type AuthenticationServerAPI = "login"      :> ReqBody '[JSON] LoginRequest :> Post '[JSON] AuthToken
-                          :<|> "addNewUser" :> Capture "username" String    :> Capture "password" String :> Get '[JSON] ResponseData
-
-lsPort :: Int
-lsPort = 8091
-
-data Lock = Lock { lockFileName :: String
-                 , lockStatus :: Bool
-                 , lockTime :: String
-                 } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
-
-deriving instance FromBSON Bool  -- we need these as BSON does not provide
-deriving instance ToBSON   Bool
-
-type LockServerAPI = "lock"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecureResponseData
-                :<|> "unlock"    :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecureResponseData
-                :<|> "checkLock" :> ReqBody '[JSON] SecureFileName :> Post '[JSON] Bool
