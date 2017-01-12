@@ -42,12 +42,12 @@
   (major1) == 2 && (major2) <  1 || \
   (major1) == 2 && (major2) == 1 && (minor) <= 1)
 
-/* package resourcet-1.1.9 */
-#define VERSION_resourcet "1.1.9"
+/* package resourcet-1.1.8.1 */
+#define VERSION_resourcet "1.1.8.1"
 #define MIN_VERSION_resourcet(major1,major2,minor) (\
   (major1) <  1 || \
   (major1) == 1 && (major2) <  1 || \
-  (major1) == 1 && (major2) == 1 && (minor) <= 9)
+  (major1) == 1 && (major2) == 1 && (minor) <= 8)
 
 /* package servant-server-0.9.1.1 */
 #define VERSION_servant_server "0.9.1.1"
@@ -140,7 +140,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "commonAPIs-0.1.0.0-2DdD74FJu2hIlPaJJTfr4G"
+#define CURRENT_COMPONENT_ID "commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM"
 
-#define CURRENT_PACKAGE_KEY "commonAPIs-0.1.0.0-2DdD74FJu2hIlPaJJTfr4G"
+#define CURRENT_PACKAGE_KEY "commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM"
 

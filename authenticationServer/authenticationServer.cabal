@@ -2,12 +2,12 @@ name:                authenticationServer
 version:             0.1.0.0
 synopsis:            Initial project template from stack
 description:         Please see README.md
-homepage:            https://github.com/githubuser/authenticationServer#readme
+homepage:            https://github.com/vanhoutk/DistributedFileSystem/authenticationServer#readme
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2016 Author name here
+author:              Kris Vanhoutte
+maintainer:          vanhoutk@tcd.ie
+copyright:           2017 Kris Vanhoutte
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md
@@ -54,4 +54,4 @@ test-suite authenticationServer-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/authenticationServer
+  location: https://github.com/vanhoutk/DistributedFileSystem/authenticationServer

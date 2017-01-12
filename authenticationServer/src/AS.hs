@@ -40,17 +40,8 @@ type APIHandler = ExceptT ServantErr IO
 
 startAuthentication :: IO()
 startAuthentication = do
-  putStrLn "Starting Authentication Server..."
-  str <- generateRandomString
-  putStrLn $ "Randomly generated string: " ++ str
-  let encStr = encryptDecrypt "key" str
-  let decStr = encryptDecrypt "key" encStr
-  putStrLn $ "Encrypted string: " ++ encStr
-  putStrLn $ "Decrypted string: " ++ decStr
+  logMessage authServerLogging ("Starting Authentication Server...")
   run asPort app
-
-generateRandomString :: IO String
-generateRandomString = liftM (take 10 . randomRs ('a','z')) newStdGen
 
 app :: Application
 app = serve api server
@@ -66,42 +57,53 @@ server = loginUser
 
     loginUser :: LoginRequest -> APIHandler AuthToken
     loginUser (LoginRequest userName encMessage) = do
-      userAccount <- liftIO $ withMongoDbConnection $ do
+      liftIO $ logMessage authServerLogging ("Login Request for " ++ userName)
+      userAccount <- liftIO $ withMongoDbConnection $ do -- Search for the user in the database
         userAccount' <- find (select ["username" =: userName] "USER_ACCOUNTS") >>= drainCursor
         return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe AccountData) userAccount'
 
-      liftIO $ print userAccount
       case (length userAccount) of
-        0 -> return (AuthToken "Failed" "Username not found" "Failed")
-        _ -> do
+        0 -> do -- No user found
+          liftIO $ logMessage authServerLogging ("Login Request failed. User " ++ userName ++ " not found.")
+          return (AuthToken "Failed" "Username not found" "Failed")
+        
+        _ -> do -- User found
           let (AccountData _ password) = head userAccount
+          liftIO $ logMessage authServerLogging ("User found:  " ++ userName ++ ". Password: " ++ password)
           let decMessage = encryptDecrypt password encMessage
-          if (decMessage == userName) then do
+          if (decMessage == userName) then do -- User used a correct password
+
+            -- Create a token for the user
             sessionKey <- liftIO $ generateRandomString
             let encSessionKey = encryptDecrypt password sessionKey
-            let decSessionKey = encryptDecrypt password encSessionKey
             let ticket = encryptDecrypt sharedServerSecret sessionKey
             let encTicket = encryptDecrypt password ticket
 
+            -- Generate a timeout for the token
             currentTime <- liftIO $ getCurrentTime
             let oneHour = 60 * 60
             let tokenTimeOut = addUTCTime oneHour currentTime
             let encTimeOut = encryptTime sharedServerSecret tokenTimeOut 
 
-            liftIO $ do
-              putStrLn $ "SessionKey: " ++ sessionKey
-              putStrLn $ "EncSessionKey: " ++ encSessionKey
-              putStrLn $ "DecSessionKey: " ++ decSessionKey
-              putStrLn $ "Ticket: " ++ ticket
-              putStrLn $ "EncTicket: " ++ encTicket
+            liftIO $ logMessage authServerLogging ("SessionKey: " ++ sessionKey ++ "/n" ++
+                                                    "EncSessionKey: " ++ encSessionKey ++ "/n" ++
+                                                    "Ticket: " ++ ticket ++ "/n" ++
+                                                    "EncTicket: " ++ encTicket ++ "/n" ++
+                                                    "Timeout: " ++ (show tokenTimeOut) ++ "/n")
+
             return (AuthToken encTicket encSessionKey encTimeOut)
-          else do
+          else do -- User used an incorrect password
+            liftIO $ logMessage authServerLogging ("Login Request failed. User " ++ userName ++ " used an incorrect password.")
             return (AuthToken "Failed" "Encryption failed" "Failed")
+
+      where
+        generateRandomString :: IO String
+        generateRandomString = liftM (take 10 . randomRs ('a','z')) newStdGen
 
     addNewUser :: String -> String -> APIHandler ResponseData
     addNewUser username password = do
       liftIO $ do
-        putStrLn $ "Inserting new user: " ++ username ++ " with password: " ++ password
+        logMessage authServerLogging ("Inserting new user: " ++ username ++ " with password: " ++ password)
         let accountData = (AccountData username password)
         withMongoDbConnection $ upsert (select ["username" =: username] "USER_ACCOUNTS") $ toBSON accountData 
       return (ResponseData "Successfully added new user")

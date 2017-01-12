@@ -7,7 +7,7 @@ license:             BSD3
 license-file:        LICENSE
 author:              Kris Vanhoutte
 maintainer:          vanhoutk@tcd.ie
-copyright:           2016 Kris Vanhoutte
+copyright:           2017 Kris Vanhoutte
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md

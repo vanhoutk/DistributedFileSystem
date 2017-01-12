@@ -57,6 +57,7 @@ Student Number: 12301975
     * ~~Cache~~
     * ~~APIs~~
       - ~~Figure out how to encrypt the [String], UTCTime and Int responses.~~
+  - **Should possibly encrypt the timeout with the user's password?**
 
 8. Transactions
   - TODO: Figure out how this should work
@@ -89,18 +90,22 @@ Student Number: 12301975
   - ~~LockServer~~
   - Client
   - Cache
-  - AuthenticationServer
+  - ~~AuthenticationServer~~
   - DirectoryServer
   - FileServer
+  - TransactionServer
+  - ReplicationServer
 
 11. Comment Code
   - ~~LockServer~~
   - ~~CommonAPIs~~
   - Client
   - Cache
-  - AuthenticationServer
+  - ~~AuthenticationServer~~
   - DirectoryServer
   - FileServer
+  - TransactionServer
+  - ReplicationServer
   
 ## Comments:
 
