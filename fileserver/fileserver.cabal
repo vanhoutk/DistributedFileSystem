@@ -2,12 +2,12 @@ name:                fileserver
 version:             0.1.0.0
 synopsis:            Initial project template from stack
 description:         Please see README.md
-homepage:            https://github.com/vanhoutk/fileserver#readme
+homepage:            https://github.com/vanhoutk/DistributedFileSystem/fileserver#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Kris Vanhoutte
 maintainer:          vanhoutk@tcd.ie
-copyright:           2016 Kris Vanhoutte
+copyright:           2017 Kris Vanhoutte
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md
@@ -56,4 +56,4 @@ test-suite fileserver-test
 
 source-repository head
   type:     git
-  location: https://github.com/vanhoutk/DistributedFileSystem
+  location: https://github.com/vanhoutk/DistributedFileSystem/fileserver

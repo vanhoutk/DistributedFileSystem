@@ -6,7 +6,7 @@ Student Number: 12301975
 
 ## Lock Server
 
-This directory the locking service for the distributed file system.
+This directory contains the locking service for the distributed file system.
 
 The three functions of the locking service are:
 

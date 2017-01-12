@@ -6,7 +6,7 @@ Student Number: 12301975
 
 ## Authentication Server
 
-This directory the authentication service for the distributed file system.
+This directory contains the authentication service for the distributed file system.
 
 The two functions of the authentication service are:
 

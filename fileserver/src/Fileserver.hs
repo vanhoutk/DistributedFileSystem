@@ -35,10 +35,11 @@ type APIHandler = ExceptT ServantErr IO
 
 startServer :: Int -> IO ()
 startServer port = do
+  logMessage fileServerLogging ("Creating directory files" ++ show port ++ "/ ...")
   createDirectoryIfMissing True ("files" ++ show port ++ "/")
-  putStrLn "Changing current directory..."
+  logMessage fileServerLogging ("Changing current directory...")
   setCurrentDirectory ("files" ++ show port ++ "/")
-  putStrLn "Starting app..."
+  logMessage fileServerLogging ("Starting fileserver on port " ++ show port ++ "...")
   run port $ app port
 
 app :: Int -> Application
@@ -60,16 +61,20 @@ server port = uploadFile
     uploadFile (SecureFileUpload ticket encTimeOut (File encName encContents)) = do
       let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decName = encryptDecrypt sessionKey encName
+
+      liftIO $ logMessage fileServerLogging ("Upload Request received for file: " ++ decName)
+
       currentTime <- liftIO $ getCurrentTime
-      if (currentTime > decTimeOut) then do
+      if (currentTime > decTimeOut) then do -- Token has expired
+        liftIO $ logMessage fileServerLogging ("Client's authentication token has expired.")
         let encResponse = encryptDecrypt sessionKey "Failed - SessionKey has expired."
         return (SecureResponseData encResponse)
-      else do
-        let decName = encryptDecrypt sessionKey encName
+      else do -- Token still valid
         let decContents = encryptDecrypt sessionKey encContents
         liftIO $ do
-          putStrLn $ "Uploading file: " ++ decName
-          updateListQuery "update" port decName
+          logMessage fileServerLogging ("Storing file: " ++ decName ++ " ...")
+          updateListQuery "update" port decName -- Send a message to the directory server letting it know a file has been uploaded
           (writeFile decName decContents)
         let encResponse = encryptDecrypt sessionKey "Success"
         return (SecureResponseData encResponse)
@@ -78,16 +83,20 @@ server port = uploadFile
     deleteFile (SecureFileName ticket encTimeOut encName) = do
       let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decName = encryptDecrypt sessionKey encName
+
+      liftIO $ logMessage fileServerLogging ("Delete Request received for file: " ++ decName)
+
       currentTime <- liftIO $ getCurrentTime
-      if (currentTime > decTimeOut) then do
+      if (currentTime > decTimeOut) then do -- Token has expired
+        liftIO $ logMessage fileServerLogging ("Client's authentication token has expired.")
         let encResponse = encryptDecrypt sessionKey "Failed - SessionKey has expired."
         return (SecureResponseData encResponse)
-      else do
-        let decName = encryptDecrypt sessionKey encName
+      else do -- Token still valid
         liftIO $ do
-          putStrLn $ "Deleting file: " ++ decName
+          logMessage fileServerLogging ("Deleting file: " ++ decName ++ " ...")
+          updateListQuery "delete" port decName -- Send a message to the directory server letting it know a file has been deleted
           (removeFile decName)
-        liftIO $ updateListQuery "delete" port decName
         let encResponse = encryptDecrypt sessionKey "Success"
         return (SecureResponseData encResponse)
 
@@ -95,7 +104,7 @@ server port = uploadFile
     getFiles = do
       files <- liftIO $ do
         currentDirectory <- getCurrentDirectory
-        putStrLn $ "Listing files in directory " ++ currentDirectory
+        logMessage fileServerLogging ("Listing Files in directory: " ++ currentDirectory ++ " ...")
         (listDirectory(currentDirectory))
       let files' = DL.sort files
       return files' 
@@ -104,14 +113,18 @@ server port = uploadFile
     downloadFile (SecureFileName ticket encTimeOut encName) = do
       let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decName = encryptDecrypt sessionKey encName
+
+      liftIO $ logMessage fileServerLogging ("Download Request received for file: " ++ decName)
+
       currentTime <- liftIO $ getCurrentTime
       if (currentTime > decTimeOut) then do
+        liftIO $ logMessage fileServerLogging ("Client's authentication token has expired.")
         let encContents = encryptDecrypt sessionKey "Failed - SessionKey has expired."
         return (SecureFile (File encName encContents))
       else do
-        let decName = encryptDecrypt sessionKey encName
         contents <- liftIO $ do
-          putStrLn $ "Reading contents of: " ++ decName
+          logMessage fileServerLogging ("Reading contents of: " ++ decName)
           (readFile decName)
         let encContents = encryptDecrypt sessionKey contents
         return (SecureFile (File encName encContents))
@@ -120,12 +133,14 @@ server port = uploadFile
     getModifyTime (SecureFileName ticket encTimeOut encName) = do
       let sessionKey = encryptDecrypt sharedServerSecret ticket
       let decName = encryptDecrypt sessionKey encName
+      liftIO $ logMessage fileServerLogging ("Modification Time Request received for file: " ++ decName)
       time <- liftIO $ getModificationTime decName
+      liftIO $ logMessage fileServerLogging ("Modification time of " ++ decName ++ ": " ++ show time)
       let encTime = encryptTime sessionKey time
-      --liftIO $ do putStrLn $ "Modification time of " ++ name ++ ": " ++ show time
       return (SecureTime encTime)
 
--- | Directry Server Stuff
+
+-- | Directory Server Stuff
 
 searchForFile :: SecureFileName -> SC.ClientM SecurePort
 getFileList :: SecureTicket -> SC.ClientM [String]
@@ -139,11 +154,11 @@ searchForFile :<|> getFileList :<|> updateList = SC.client directoryServerApi
 updateListQuery :: String -> Int -> String -> IO()
 updateListQuery updateType port fileName = do
   manager <- newManager defaultManagerSettings
-  res <- SC.runClientM (updateList updateType port fileName) (SC.ClientEnv manager (SC.BaseUrl SC.Http "localhost" 8080 ""))
+  res <- SC.runClientM (updateList updateType port fileName) (SC.ClientEnv manager (SC.BaseUrl SC.Http host dsPort ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      logMessage fileServerLogging ("Error updating directory list: " ++ show err)
       return ()
-    Right (response) -> do
-      print response
+    Right (ResponseData response) -> do
+      logMessage fileServerLogging ("Response from directory updateListQuery: " ++ response)
       return ()

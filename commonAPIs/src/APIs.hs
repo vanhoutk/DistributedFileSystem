@@ -21,8 +21,8 @@ import            Servant
 
 -- | Logging Variables
 
-fileserverLogging :: Bool
-fileserverLogging = True
+fileServerLogging :: Bool
+fileServerLogging = True
 
 authServerLogging :: Bool
 authServerLogging = True
@@ -46,14 +46,17 @@ logMessage logBool message = do
 
 -- | Port Variables
 
-directoryPort :: Int
-directoryPort = 8080
+dsPort :: Int
+dsPort = 8080
 
 asPort :: Int
 asPort = 8090
 
 lsPort :: Int
 lsPort = 8091
+
+host :: String
+host = "localhost"
 
 
 -- | Data Declarations

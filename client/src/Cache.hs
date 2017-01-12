@@ -182,7 +182,7 @@ downloadFileQuery :: AuthToken -> Int -> String -> IO (Maybe SecureFile)
 downloadFileQuery token@(AuthToken decTicket decSessionKey encTimeOut) port fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (downloadQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
+  res <- runClientM (downloadQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host port ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -199,7 +199,7 @@ fileModifyTimeQuery :: AuthToken -> Int -> String -> IO (Maybe UTCTime)
 fileModifyTimeQuery token@(AuthToken decTicket decSessionKey encTimeOut) port fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (modifyTimeQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" port ""))
+  res <- runClientM (modifyTimeQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host port ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -228,7 +228,7 @@ searchForFileQuery :: AuthToken -> String -> IO (Maybe Int)
 searchForFileQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (searchQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" 8080 ""))
+  res <- runClientM (searchQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host 8080 ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -258,7 +258,7 @@ unlockF :: AuthToken -> String -> IO ()
 unlockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (unlockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" lsPort ""))
+  res <- runClientM (unlockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host lsPort ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
@@ -277,7 +277,7 @@ checkLockF :: AuthToken -> String -> IO (Maybe Bool)
 checkLockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   let encFileName = encryptDecrypt decSessionKey fileName
   manager <- newManager defaultManagerSettings
-  res <- runClientM (checkLockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http "localhost" lsPort ""))
+  res <- runClientM (checkLockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host lsPort ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err

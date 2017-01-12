@@ -42,7 +42,7 @@ fileServerPorts = [8081, 8082]
 startDirectory :: IO ()
 startDirectory = do
   initDirectory fileServerPorts
-  run 8080 app
+  run dsPort app
 
 initDirectory :: [Int] -> IO()
 initDirectory ports = do
@@ -196,7 +196,7 @@ getFilesQuery = do
 runGetFilesQuery :: Int -> IO (Maybe [String])
 runGetFilesQuery port = do
   manager <- newManager defaultManagerSettings
-  res <- SC.runClientM getFilesQuery (SC.ClientEnv manager (SC.BaseUrl SC.Http "localhost" port ""))
+  res <- SC.runClientM getFilesQuery (SC.ClientEnv manager (SC.BaseUrl SC.Http host port ""))
   case res of
     Left err -> do
       putStrLn $ "Error: " ++ show err
