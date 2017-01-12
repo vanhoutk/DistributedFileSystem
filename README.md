@@ -86,8 +86,21 @@ Student Number: 12301975
     * Note: No check that the client who unlocks had the lock. Assuming only uploading files that had write access.
 
 10. Add Proper Logging Messages
+  - ~~LockServer~~
+  - Client
+  - Cache
+  - AuthenticationServer
+  - DirectoryServer
+  - FileServer
 
 11. Comment Code
+  - ~~LockServer~~
+  - ~~CommonAPIs~~
+  - Client
+  - Cache
+  - AuthenticationServer
+  - DirectoryServer
+  - FileServer
   
 ## Comments:
 
