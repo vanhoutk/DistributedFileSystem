@@ -38,38 +38,40 @@ maxCacheSize = 50 -- Size is detemined by number of characters. TODO: Make this 
 
 setupCache :: AuthToken -> IO()
 setupCache token = do
-  putStrLn "Initialising client-side cache..."
+  logMessage cacheLogging ("Initialising client-side cache...")
   createDirectoryIfMissing True ("temp/")
-  putStrLn "Changing current directory..."
+  logMessage cacheLogging ("Changing current directory...")
   setCurrentDirectory ("temp/")
-  forkIO $ checkForUpdate token 60
+  logMessage cacheLogging ("Starting invalidation polling...")
+  forkIO $ checkForUpdate token 60 -- Poll every 60 seconds. TODO: Change this to 5 minutes.
   return ()
 
 checkForUpdate :: AuthToken -> Int -> IO()
 checkForUpdate token delay = do
   threadDelay $ delay * 1000000 -- Wait 1 minute
-  putStrLn "Checking Cache for invalidations..."
+  logMessage cacheLogging ("Checking Cache for invalidations...")
   fileList <- listDirectory "../temp/"
   mapM_ (checkFileForUpdate token) fileList
   checkForUpdate token delay -- Tail recursion
 
 checkFileForUpdate :: AuthToken -> String -> IO()
 checkFileForUpdate token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
+  logMessage cacheLogging ("Checking for update to file: " ++ fileName)
   localFileTime <- getAccessTime fileName -- Note: This is getAccessTime as opposed to getModificationTime, while the fileserver uses getModificationTime
   serverPort <- searchForFileQuery token fileName
   case serverPort of
     Nothing -> do
-      putStrLn "Couldn't find file in Directory Server."
+      logMessage cacheLogging ("Couldn't find file in Directory Server.")
       return ()
     Just serverPort' -> do
       remoteFileTime <- fileModifyTimeQuery token serverPort' fileName
       case remoteFileTime of
         Nothing -> do
-          putStrLn "Remote file does not exist"
+          logMessage cacheLogging ("Remote file does not exist on the file server.")
           return ()
         Just time -> do
           if(time >= localFileTime) then do
-            putStrLn "Changes made to remote file..."
+            logMessage cacheLogging ("Changes made to remote file, updating local copy...")
             file <- downloadFileQuery token serverPort' fileName
             case file of
               Nothing -> return()
@@ -81,54 +83,36 @@ checkFileForUpdate token@(AuthToken decTicket decSessionKey encTimeOut) fileName
                 storeNewFileInCache decryptedFile
                 return()
           else do
-            putStrLn "No changes made to remote file..."
+            logMessage cacheLogging ("No changes made to remote file.")
             return()
-
--- | Cache stuff
 
 storeNewFileInCache :: File -> IO()
 storeNewFileInCache (File name contents) = do
-  putStrLn $ "Storing file in cache: " ++ name
+  logMessage cacheLogging ("Storing file in cache: " ++ name)
   writeFile name contents
-  putStrLn "Updating cache..."
+  logMessage cacheLogging ("Updating cache...")
   updateCache
 
 getFileFromCache :: String -> IO(File)
 getFileFromCache fileName = do
+  logMessage cacheLogging ("Reading file from cache: " ++ fileName)
   contents <- readFile fileName
   return (File fileName contents)
 
 removeFileFromCache :: String -> IO()
 removeFileFromCache fileName = do
-  putStrLn $ "Removing file from cache: " ++ fileName
+  logMessage cacheLogging ("Removing file from cache: " ++ fileName)
   removeFile fileName
 
 clearCache :: IO()
 clearCache = do
-{-putStrLn "Unlocking any held locks..."
-  unsortedCache <- listCache "../temp/"
-  let sortedCache = sortBy (\(_,a,_) (_,b,_) -> compare a b) unsortedCache
-  print unsortedCache
-  print sortedCache
-  unlockLocks token sortedCache-}
-  putStrLn "Clearing client-side cache..."
+  logMessage cacheLogging ("Clearing client-side cache...")
   removeDirectoryRecursive("../temp/")
-
-{-  where 
-    unlockLocks token@(AuthToken decTicket decSessionKey encTimeOut) cache
-      | (size cache == 0) = return()
-      | otherwise do
-        let (_,fileName,_) = head cache-}
-
-
-
 
 updateCache :: IO()
 updateCache = do
   unsortedCache <- listCache "../temp/"
   let sortedCache = sortBy (\(_,a,_) (_,b,_) -> compare a b) unsortedCache
-  print unsortedCache
-  print sortedCache
   clearSpaceCache sortedCache
 
   where
@@ -138,12 +122,14 @@ updateCache = do
       | otherwise = do
         let (_,_,filePath) = head cache
         let sizeOfCache = size cache
-        print ("Size of cache: " ++ (show sizeOfCache) ++ " Deleting file: " ++ filePath)
+        logMessage cacheLogging ("Cache has exceeded maximum size...")
+        logMessage cacheLogging ("Size of cache: " ++ show sizeOfCache ++ " , Deleting file: " ++ filePath)
         removeFileFromCache filePath
         clearSpaceCache $ tail cache
    
 listCache:: FilePath -> IO [FileSet]
 listCache path = do
+  logMessage cacheLogging ("Getting list of files in cache...")
   files <- listDirectory path
   fileSet <- mapM (fileinfo []) files
   return $ concat fileSet
@@ -160,7 +146,8 @@ listCache path = do
       if isdir then  return $ (sz, act, p):a 
         else  return a
 
--- | File server bits
+
+-- | File Server
 
 uploadFile :: SecureFileUpload -> ClientM SecureResponseData
 deleteFile :: SecureFileName -> ClientM SecureResponseData
@@ -185,7 +172,7 @@ downloadFileQuery token@(AuthToken decTicket decSessionKey encTimeOut) port file
   res <- runClientM (downloadQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host port ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      logMessage cacheLogging ("Error downloading file: " ++ show err)
       return Nothing
     Right (download_file) -> do
       return (Just download_file)
@@ -202,13 +189,14 @@ fileModifyTimeQuery token@(AuthToken decTicket decSessionKey encTimeOut) port fi
   res <- runClientM (modifyTimeQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host port ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      logMessage cacheLogging ("Error getting file modify time: " ++ show err)
       return Nothing
     Right (SecureTime encTime) -> do
       let decTime = decryptTime decSessionKey encTime
       return (Just decTime)
 
--- | Directry Server Stuff
+
+-- | Directory Server
 
 searchForFile :: SecureFileName -> ClientM SecurePort
 getFileList :: SecureTicket -> ClientM [String]
@@ -231,56 +219,8 @@ searchForFileQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName
   res <- runClientM (searchQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host 8080 ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      logMessage cacheLogging ("Error searching for file: " ++ show err)
       return Nothing
     Right (SecurePort encPort) -> do
       let decPort = decryptPort decSessionKey encPort
       return (Just decPort)
-
-
--- | Lock Server Stuff
-
-lockFile :: SecureFileName -> ClientM SecureResponseData
-unlockFile :: SecureFileName -> ClientM SecureResponseData
-checkLockFile :: SecureFileName -> ClientM Bool
-
-lockServerAPI :: Proxy LockServerAPI
-lockServerAPI = Proxy
-
-lockFile :<|> unlockFile :<|> checkLockFile = client lockServerAPI
-
-unlockQuery :: String -> String -> String -> ClientM SecureResponseData
-unlockQuery ticket encTimeOut fileName = do
-  unlockQ <- unlockFile (SecureFileName ticket encTimeOut fileName)
-  return unlockQ
-
-unlockF :: AuthToken -> String -> IO ()
-unlockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
-  let encFileName = encryptDecrypt decSessionKey fileName
-  manager <- newManager defaultManagerSettings
-  res <- runClientM (unlockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host lsPort ""))
-  case res of
-    Left err -> do
-      putStrLn $ "Error: " ++ show err
-      return ()
-    Right (SecureResponseData encResponse) -> do
-      let decResonse = encryptDecrypt decSessionKey encResponse
-      putStrLn $ "Unlocking Response: " ++ decResonse
-      return ()
-
-checkLockQuery :: String -> String -> String -> ClientM Bool
-checkLockQuery ticket encTimeOut fileName = do
-  checkLockQ <- checkLockFile (SecureFileName ticket encTimeOut fileName)
-  return checkLockQ
-
-checkLockF :: AuthToken -> String -> IO (Maybe Bool)
-checkLockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
-  let encFileName = encryptDecrypt decSessionKey fileName
-  manager <- newManager defaultManagerSettings
-  res <- runClientM (checkLockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host lsPort ""))
-  case res of
-    Left err -> do
-      putStrLn $ "Error: " ++ show err
-      return Nothing
-    Right (isLocked) -> do
-      return (Just isLocked)

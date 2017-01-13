@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-11 15:11:16.66113 UTC
+2017-01-13 02:01:46.544446 UTC
 
 interface client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W:ClientAPI 8001
-  interface hash: 4f4ea0b05e2e4848d5c03d6df2bd1b9b
+  interface hash: daabedfde200328e5dc39c29d9d6a769
   ABI hash: 2c1fb05806f96a05ced865897d306384
   export-list hash: 20ff9f2a675f75b2e27e9611621a3a13
   orphan hash: 29af729d5993257ee5abb237ea7c8138
@@ -163,11 +163,11 @@ import  -/  base-4.9.0.0:GHC.Generics 8e2a7658e8b966c1d29d0d5fd4129f38
 import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  Cache d38028dbc8cfff2491349e24f215bc49
-  exports: 59efdc6bf4f7753f9a2049276bfb40c5
-  getFileFromCache d17197c512729232825ec657d462c04a
-  storeNewFileInCache 4906463b6c5541bbb6cf544b8a885d90
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs 17f9ead1abfaf079e739762c817a3065
+import  -/  Cache 0578e66ab0d3e2180d0ead6cf5d6a85e
+  exports: 248fe2e3503200b930e5b873d8ba2e82
+  getFileFromCache cc8545149b039f8b5ca8a63c28383ca5
+  storeNewFileInCache ec50a1be178d391a4914b226f5016caa
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs 1d7e6aeb0a6eb13c322d0ee412eb87d3
 import  -/  directory-1.2.7.1@directory-1.2.7.1-6xbYYKdoE266LLlc7GOex4:System.Directory 970e76f5d7f7d1c2bb4871bad753c6c1
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  http-client-0.4.31.2@http-client-0.4.31.2-22JDLRDi4cqJNyCfT1wj4e:Network.HTTP.Client 544aaf3c3ee192cc642318dacb39ee6e

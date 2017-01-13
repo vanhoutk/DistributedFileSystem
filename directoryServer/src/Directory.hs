@@ -41,27 +41,24 @@ fileServerPorts = [8081, 8082]
 
 startDirectory :: IO ()
 startDirectory = do
-  initDirectory fileServerPorts
+  initDirectory fileServerPorts -- Initialise the directory by getting the list of files on all active file servers
+  logMessage dirServerLogging ("Starting Directory Server...")
   run dsPort app
 
 initDirectory :: [Int] -> IO()
 initDirectory ports = do
-  fileMappingList <- getFileMappingList ports
-  --writeFile "fileMappingList" (fileMappingList)
+  logMessage dirServerLogging ("Getting list of files on active file servers...")
+  mapM (fileMapList []) ports
   return ()
-
-getFileMappingList :: [Int] -> IO [FileMapping]
-getFileMappingList ports = do
-  fileMappingList <- mapM (fileMapList []) ports
-  return $ concat fileMappingList
 
   where
     fileMapList :: [FileMapping] -> Int -> IO [FileMapping]
     fileMapList a port = do
+      logMessage dirServerLogging ("Attempting to get file list from file server on port " ++ show port ++ " ...")
       files <- runGetFilesQuery port
       case files of
         Nothing -> do
-          putStrLn "Error getting file list..."
+          logMessage dirServerLogging ("Error getting file list...")
           return a
         Just files' -> do
           fileMappingList' <- mapM (fileMap port []) files'
@@ -73,10 +70,8 @@ getFileMappingList ports = do
       let serverNumber = port `mod` 8080
       let serverName = "Server" ++ show serverNumber
       let fileMapping = (FileMapping fileName serverName (show port))
-      print fileMapping
-      putStrLn $ "Filename: " ++ fileName ++ " Servername: " ++ serverName
+      logMessage dirServerLogging ("Inserting FileMapping(Filename: " ++ fileName ++ " , Servername: " ++ serverName ++ " , Port: " ++ show port ++ ") into database...")
       withMongoDbConnection $ upsert (select ["fileName" =: fileName, "serverName" =: serverName] "FILE_SERVER_MAPPINGS") $ toBSON fileMapping 
-      putStrLn "After withMongoDbConnection"
       return $ (FileMapping fileName serverName (show port)):a
 
 app :: Application
@@ -96,59 +91,63 @@ server = searchForFile
     searchForFile (SecureFileName ticket encTimeOut encFileName) = do
       let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decFileName = encryptDecrypt sessionKey encFileName
+
+      liftIO $ logMessage dirServerLogging ("Search for file request received for file: " ++ decFileName)
+
       currentTime <- liftIO $ getCurrentTime
-      liftIO $ putStrLn $ "EncFileName = " ++ encFileName
       if (currentTime > decTimeOut) then do
+        liftIO $ logMessage dirServerLogging ("Client's authentication token has expired.")
         let encPort = encryptPort sessionKey 0
         return (SecurePort encPort)
       else do
-        let decFileName = encryptDecrypt sessionKey encFileName
-        liftIO $ putStrLn $ ticket ++ " " ++ sessionKey ++ " " ++ encFileName ++ " " ++ decFileName
+        liftIO $ logMessage dirServerLogging ("Searching for file: " ++ decFileName)
         fileMapping <- getFileMapping decFileName
         case fileMapping of
           Nothing -> do
+            liftIO $ logMessage dirServerLogging ("File not found.")
             let encPort = encryptPort sessionKey 0
             return (SecurePort encPort)
           Just fileMapping' -> do
-            let (FileMapping _ _ port) = fileMapping'
+            let (FileMapping _ server port) = fileMapping'
             let port' = (read :: String -> Int) $ port
+            liftIO $ logMessage dirServerLogging ("File found on " ++ server ++ " operating on port: " ++ port)
             let encPort = encryptPort sessionKey port'
             return (SecurePort encPort)
 
       where
         getFileMapping :: String -> APIHandler (Maybe FileMapping)
         getFileMapping name = do
-          let serverName = "Server2" :: String
-          liftIO $ putStrLn $ "Filename: " ++ name ++ " Servername: " ++ serverName
           fileMap <- liftIO $ withMongoDbConnection $ do
             docs <- find (select ["fileName" =: name] "FILE_SERVER_MAPPINGS") >>= drainCursor
-            liftIO $ print docs
             return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
 
-          liftIO $ print fileMap
-          case (length fileMap) of
+          case (length fileMap) of -- Currently no replicating so the length should either be 0 or 1
             0 -> return Nothing 
             _ -> return (Just (head fileMap))
 
     listFiles :: SecureTicket -> APIHandler [String]
     listFiles (SecureTicket ticket encTimeOut) = do
-      liftIO $ putStrLn "ListFiles"
+      liftIO $ logMessage dirServerLogging ("List Files Request received.")
       let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
+
       currentTime <- liftIO $ getCurrentTime
       if (currentTime > decTimeOut) then do
+        liftIO $ logMessage dirServerLogging ("Client's authentication token has expired.")
         let failedArray = ["Failed", "SessionKey has timed out."]
         let encFileNames = encryptDecryptArray sessionKey failedArray
         return encFileNames
       else do
+        liftIO $ logMessage dirServerLogging ("Retrieving File Mappings...")
         fileMappings <- liftIO $ withMongoDbConnection $ do
           docs <- find (select [] "FILE_SERVER_MAPPINGS") >>= drainCursor
           return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
+        liftIO $ logMessage dirServerLogging ("Retrieving File Names...")
         fileNames <- mapM (getFileNames) fileMappings
+        liftIO $ logMessage dirServerLogging ("Sorting File Names...")
         let fileNames' = DL.sort fileNames
-        liftIO $ print fileNames'
         let encFileNames = encryptDecryptArray sessionKey fileNames'
-        liftIO $ print encFileNames
         return encFileNames
 
       where
@@ -157,10 +156,12 @@ server = searchForFile
 
     updateLists :: String -> Int -> String -> APIHandler ResponseData
     updateLists updateType port fileName = do
+      liftIO $ logMessage dirServerLogging ("Update list request received of type: " ++ updateType ++ " from server on Port " ++ show port)
       case updateType of
         "delete" -> do
           let serverNumber = port `mod` 8080
           let serverName = "Server" ++ show serverNumber
+          liftIO $ logMessage dirServerLogging ("Deleting File Mapping for file: " ++ fileName)
           liftIO $ withMongoDbConnection $ do
             delete (select ["fileName" =: fileName, "serverName" =: serverName] "FILE_SERVER_MAPPINGS")
           return (ResponseData "Success")
@@ -169,9 +170,11 @@ server = searchForFile
           let serverName = "Server" ++ show serverNumber
           let serverPort = show port 
           let fileMapping = (FileMapping fileName serverName serverPort)
+          liftIO $ logMessage dirServerLogging ("Deleting File Mapping for file: " ++ fileName)
           liftIO $ withMongoDbConnection $ upsert (select ["fileName" =: fileName, "serverName" =: serverName] "FILE_SERVER_MAPPINGS") $ toBSON fileMapping
           return (ResponseData "Success")
         _ -> do
+          liftIO $ logMessage dirServerLogging ("Update Type: " ++ updateType ++ " does not match delete/update")
           return (ResponseData "Failure")
       
 
@@ -196,10 +199,10 @@ getFilesQuery = do
 runGetFilesQuery :: Int -> IO (Maybe [String])
 runGetFilesQuery port = do
   manager <- newManager defaultManagerSettings
-  res <- SC.runClientM getFilesQuery (SC.ClientEnv manager (SC.BaseUrl SC.Http host port ""))
+  res <- SC.runClientM getFilesQuery (SC.ClientEnv manager (SC.BaseUrl SC.Http fsHost port ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      liftIO $ logMessage dirServerLogging ("Error in runGetFilesQuery: " ++ show err)
       return Nothing
     Right (get_files) -> do
       return (Just get_files)

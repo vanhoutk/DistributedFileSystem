@@ -91,19 +91,19 @@ Student Number: 12301975
   - Client
   - Cache
   - ~~AuthenticationServer~~
-  - DirectoryServer
-  - FileServer
+  - ~~DirectoryServer~~
+  - ~~FileServer~~
   - TransactionServer
   - ReplicationServer
 
 11. Comment Code
   - ~~LockServer~~
   - ~~CommonAPIs~~
-  - Client
-  - Cache
+  - ClientAPI
+  - ~~Cache~~
   - ~~AuthenticationServer~~
-  - DirectoryServer
-  - FileServer
+  - ~~DirectoryServer~~
+  - ~~FileServer~~
   - TransactionServer
   - ReplicationServer
   

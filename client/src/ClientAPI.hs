@@ -26,7 +26,8 @@ import            System.Directory
 import            APIs
 import            Cache
 
--- | File Server Stuff
+
+-- | File Server
 
 uploadFile :: SecureFileUpload -> ClientM SecureResponseData
 deleteFile :: SecureFileName -> ClientM SecureResponseData
@@ -62,7 +63,7 @@ downloadQ token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
     Just serverPort' -> do
       res <- runClientM (downloadQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host serverPort' ""))
       case res of
-        Left err -> putStrLn $ "Error: " ++ show err
+        Left err -> logMessage clientLogging ("Error downloading file: " ++ show err)
         Right (downloadFile) -> do
           let (SecureFile (File name contents)) = downloadFile
           let decName = encryptDecrypt decSessionKey name
@@ -91,7 +92,7 @@ runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName
       unlockF token fileName
       res <- runClientM (uploadQuery decTicket encTimeOut encFileName encFileContents) (ClientEnv manager (BaseUrl Http host 8080 ""))
       case res of
-        Left err -> putStrLn $ "Error: " ++ show err
+        Left err -> logMessage clientLogging ("Error uploading file: " ++ show err)
         Right (uploadFileResponse@(SecureResponseData encResponse)) -> do
           let decResponse = encryptDecrypt decSessionKey encResponse
           putStrLn $ "Encrypted upload response: " ++ encResponse
@@ -100,7 +101,7 @@ runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName
       putStrLn $ "Getting list of files in directory..."
       res <- runClientM (getFileListQuery decTicket encTimeOut) (ClientEnv manager (BaseUrl Http host 8080 ""))
       case res of
-        Left err -> putStrLn $ "Error: " ++ show err
+        Left err -> logMessage clientLogging ("Error getting list of files: " ++ show err)
         Right (encFiles) -> do
           let decFiles = encryptDecryptArray decSessionKey encFiles
           print decFiles
@@ -132,7 +133,8 @@ runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName
     _ -> do
       putStrLn "Invalid Command."
 
--- | Directry Server Stuff
+
+-- | Directory Server Stuff
 
 searchForFile :: SecureFileName -> ClientM SecurePort
 getFileList :: SecureTicket -> ClientM [String]
@@ -155,7 +157,7 @@ searchForFileQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName
   res <- runClientM (searchQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host dsPort ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      logMessage clientLogging ("Error searching for file: " ++ show err)
       return Nothing
     Right (SecurePort encPort) -> do
       let decPort = decryptPort decSessionKey encPort
@@ -166,7 +168,8 @@ getFileListQuery ticket encTimeOut = do
   fileList <- getFileList (SecureTicket ticket encTimeOut)
   return fileList
 
--- | Authentication Stuff
+
+-- | Authentication Server
 
 loginUser :: LoginRequest -> ClientM AuthToken
 addNewUser :: String -> String -> ClientM ResponseData
@@ -182,11 +185,6 @@ loginUserQuery username password = do
   authToken <- loginUser (LoginRequest username encUsername)
   return authToken
 
-{-addNewUserQuery :: String -> String -> ClientM ResponseData 
-addNewUserQuery username password = do
-  response <- addNewUser username password
-  return response-}
-
 loginClient :: IO (Maybe AuthToken)
 loginClient = do
   putStrLn "Please enter username: "
@@ -197,20 +195,22 @@ loginClient = do
   res <- runClientM (loginUserQuery username password) (ClientEnv manager (BaseUrl Http host asPort ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      logMessage clientLogging ("Error logging in user: " ++ show err)
       return Nothing
     Right (authToken) -> do
       let (AuthToken encTicket encSessionKey encTimeOut) = authToken
       case encTicket of
         "Failed" -> do
-          putStrLn $ "Failed with error: " ++ encSessionKey
+          putStrLn $ "Unable to log in. Error: " ++ encSessionKey
           return Nothing
         _ -> do
+          logMessage clientLogging ("Login Successful.")
           let decTicket = encryptDecrypt password encTicket
           let decSessionKey = encryptDecrypt password encSessionKey
           return (Just (AuthToken decTicket decSessionKey encTimeOut))
 
--- | Lock Server Stuff
+
+-- | Lock Server
 
 lockFile :: SecureFileName -> ClientM SecureResponseData
 unlockFile :: SecureFileName -> ClientM SecureResponseData
@@ -233,11 +233,11 @@ lockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   res <- runClientM (lockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host lsPort ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      logMessage clientLogging ("Error locking file: " ++ show err)
       return ()
     Right (SecureResponseData encResponse) -> do
-      let decResonse = encryptDecrypt decSessionKey encResponse
-      putStrLn $ "Locking Response: " ++ decResonse
+      let decResponse = encryptDecrypt decSessionKey encResponse
+      logMessage clientLogging ("Response from Lock Server: " ++ decResponse)
       return ()
 
 unlockQuery :: String -> String -> String -> ClientM SecureResponseData
@@ -252,11 +252,11 @@ unlockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   res <- runClientM (unlockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host lsPort ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      logMessage clientLogging ("Error unlocking file: " ++ show err)
       return ()
     Right (SecureResponseData encResponse) -> do
-      let decResonse = encryptDecrypt decSessionKey encResponse
-      putStrLn $ "Unlocking Response: " ++ decResonse
+      let decResponse = encryptDecrypt decSessionKey encResponse
+      logMessage clientLogging ("Response from Lock Server: " ++ decResponse)
       return ()
 
 checkLockQuery :: String -> String -> String -> ClientM Bool
@@ -271,7 +271,7 @@ checkLockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   res <- runClientM (checkLockQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host lsPort ""))
   case res of
     Left err -> do
-      putStrLn $ "Error: " ++ show err
+      logMessage clientLogging ("Error checking lock on file: " ++ show err)
       return Nothing
     Right (isLocked) -> do
       return (Just isLocked)

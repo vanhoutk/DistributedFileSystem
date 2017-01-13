@@ -55,8 +55,13 @@ asPort = 8090
 lsPort :: Int
 lsPort = 8091
 
+-- | Host Variables
+
 host :: String
 host = "localhost"
+
+fsHost :: String
+fsHost = "localhost"
 
 
 -- | Data Declarations
