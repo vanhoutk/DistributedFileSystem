@@ -138,6 +138,7 @@ type FileServerAPI = "upload"     :> ReqBody '[JSON] SecureFileUpload :> Post '[
                 :<|> "modifyTime" :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureTime
 
 type DirectoryServerAPI = "search"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecurePort
+                     :<|> "upload"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecurePort
                      :<|> "list"        :> ReqBody '[JSON] SecureTicket :> Post '[JSON] [String]
                      :<|> "updateList"  :> Capture "updateType" String :> Capture "port" Int :> Capture "name" String :> Get '[JSON] ResponseData
 

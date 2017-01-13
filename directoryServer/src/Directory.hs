@@ -31,6 +31,7 @@ import            Servant
 import qualified  Servant.API                   as SC
 import qualified  Servant.Client                as SC
 import            System.Directory
+import            System.Random
 import            APIs
 import            MongoFunctions
 
@@ -82,6 +83,7 @@ api = Proxy
 
 server :: Server DirectoryServerAPI
 server = searchForFile
+    :<|> findUploadServer
     :<|> listFiles
     :<|> updateLists
 
@@ -107,6 +109,46 @@ server = searchForFile
           Nothing -> do
             liftIO $ logMessage dirServerLogging ("File not found.")
             let encPort = encryptPort sessionKey 0
+            return (SecurePort encPort)
+          Just fileMapping' -> do
+            let (FileMapping _ server port) = fileMapping'
+            let port' = (read :: String -> Int) $ port
+            liftIO $ logMessage dirServerLogging ("File found on " ++ server ++ " operating on port: " ++ port)
+            let encPort = encryptPort sessionKey port'
+            return (SecurePort encPort)
+
+      where
+        getFileMapping :: String -> APIHandler (Maybe FileMapping)
+        getFileMapping name = do
+          fileMap <- liftIO $ withMongoDbConnection $ do
+            docs <- find (select ["fileName" =: name] "FILE_SERVER_MAPPINGS") >>= drainCursor
+            return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
+
+          case (length fileMap) of -- Currently no replicating so the length should either be 0 or 1
+            0 -> return Nothing 
+            _ -> return (Just (head fileMap))
+
+    findUploadServer :: SecureFileName -> APIHandler SecurePort
+    findUploadServer (SecureFileName ticket encTimeOut encFileName) = do
+      let decTimeOut = decryptTime sharedServerSecret encTimeOut
+      let sessionKey = encryptDecrypt sharedServerSecret ticket
+      let decFileName = encryptDecrypt sessionKey encFileName
+
+      liftIO $ logMessage dirServerLogging ("Searching for server to upload file " ++ decFileName ++ " to...")
+
+      currentTime <- liftIO $ getCurrentTime
+      if (currentTime > decTimeOut) then do
+        liftIO $ logMessage dirServerLogging ("Client's authentication token has expired.")
+        let encPort = encryptPort sessionKey 0
+        return (SecurePort encPort)
+      else do
+        liftIO $ logMessage dirServerLogging ("Searching for file: " ++ decFileName)
+        fileMapping <- getFileMapping decFileName
+        case fileMapping of
+          Nothing -> do
+            liftIO $ logMessage dirServerLogging ("File does not exist on servers. Picking random server to upload to...")
+            port <- liftIO $ randomRIO (8081, 8083)
+            let encPort = encryptPort sessionKey port
             return (SecurePort encPort)
           Just fileMapping' -> do
             let (FileMapping _ server port) = fileMapping'
@@ -170,7 +212,7 @@ server = searchForFile
           let serverName = "Server" ++ show serverNumber
           let serverPort = show port 
           let fileMapping = (FileMapping fileName serverName serverPort)
-          liftIO $ logMessage dirServerLogging ("Deleting File Mapping for file: " ++ fileName)
+          liftIO $ logMessage dirServerLogging ("Updating File Mapping for file: " ++ fileName)
           liftIO $ withMongoDbConnection $ upsert (select ["fileName" =: fileName, "serverName" =: serverName] "FILE_SERVER_MAPPINGS") $ toBSON fileMapping
           return (ResponseData "Success")
         _ -> do

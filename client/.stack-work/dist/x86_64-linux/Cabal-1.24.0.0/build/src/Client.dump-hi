@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-13 02:01:46.883879 UTC
+2017-01-13 22:10:46.26489 UTC
 
 interface client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W:Client 8001
-  interface hash: 6273688a5df9728fdab7cd3887112106
+  interface hash: 660b35a24f4f32805d78a419f6ce2fdc
   ABI hash: dc07d9000dbe7f08d667396736a851d3
   export-list hash: dc28be1d824bfb61f8377156ff9227f8
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -164,8 +164,8 @@ import  -/  Cache 0578e66ab0d3e2180d0ead6cf5d6a85e
   exports: 248fe2e3503200b930e5b873d8ba2e82
   clearCache 952a8870b99c4e8950690dc42fbba49f
   setupCache a57e16a093925b4877cf177aa7cfd74b
-import  -/  ClientAPI 2c1fb05806f96a05ced865897d306384
-  exports: 20ff9f2a675f75b2e27e9611621a3a13
+import  -/  ClientAPI 49cdcbbfe776feda341afd22f35281a6
+  exports: 0a31e432d37cee4dd2743096db8f0de3
   loginClient dfb8b4485190da37129f49c2c1b79529
   runQuery 0611bf431bbc1064b3c6d64ae50eb639
 import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs 1d7e6aeb0a6eb13c322d0ee412eb87d3

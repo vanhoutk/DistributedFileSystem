@@ -17,7 +17,7 @@ Student Number: 12301975
 
   - ~~Controls all of the API Calls~~
   - ~~Switch to using the directory server to look for files~~
-  - Figure out how to decide which fileserver to upload to
+  - ~~Figure out how to decide which fileserver to upload to~~
 
 3. Caching (Client side to start)
 
@@ -34,8 +34,9 @@ Student Number: 12301975
   - ~~Switch to using mongoDB~~
   - ~~Save FileMapping to DB~~
   - ~~Figure out update logic~~
-  - Add upload logic for client/server interaction
+  - ~~Add upload logic for client/server interaction~~
   - ~~Move the Directory Server port to the common APIs folder~~
+  - **Check that random number gen in upload logic works correctly**
 
 5. FileServer
   - ~~Add delete functionality~~
@@ -82,28 +83,28 @@ Student Number: 12301975
   - ~~Add locking server functions to client API~~
   - ~~Allow client to make use of locking~~
   - ~~Added a ten minute timeout to locks~~
-  - Could add current user who locked the file potentially (discuss in report)
   - ~~Clear locks on upload~~
     * Note: No check that the client who unlocks had the lock. Assuming only uploading files that had write access.
+  - Could add current user who locked the file potentially (discuss in report)
 
 10. Add Proper Logging Messages
   - ~~LockServer~~
-  - Client
-  - Cache
   - ~~AuthenticationServer~~
   - ~~DirectoryServer~~
   - ~~FileServer~~
+  - Client
+  - Cache
   - TransactionServer
   - ReplicationServer
 
 11. Comment Code
   - ~~LockServer~~
   - ~~CommonAPIs~~
-  - ClientAPI
   - ~~Cache~~
   - ~~AuthenticationServer~~
   - ~~DirectoryServer~~
   - ~~FileServer~~
+  - ClientAPI
   - TransactionServer
   - ReplicationServer
   

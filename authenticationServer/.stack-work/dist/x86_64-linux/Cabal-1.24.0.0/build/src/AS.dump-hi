@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-12 17:29:45.512911 UTC
+2017-01-13 22:16:42.991379 UTC
 
 interface authenticationServer-0.1.0.0-HAZsg9CEbgBLZToVyxuvOd:AS 8001
-  interface hash: 00c2ccfaeb85ae4f4f1177cacbc4c36f
-  ABI hash: 15bc266aa4d8202e59ed6762c5bf7745
-  export-list hash: c404fd44411e1c3a8027064ec2801476
-  orphan hash: 623408786cdf2fce92ff6694e6d9ae72
+  interface hash: 893bd903cf061be0ddfa0d0707ce4f53
+  ABI hash: 01c7f523e29b0ecf880f369fb832aacb
+  export-list hash: 68dfb900f4ddbb32bc748781bd4beb12
+  orphan hash: 4d7f052cf4b06f67c9b1e9f644e9c324
   flag hash: 232b91cb96073461cf6c3dcd6a42e778
   sig of: Nothing
   used TH splices: False
@@ -200,7 +200,7 @@ import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  bson-0.3.2.3@bson-0.3.2.3-3QA3aP5EtCyCltXUzEKOsQ:Data.Bson 609b35b07f554dfa69c4b31dfeed380e
 import  -/  bson-generic-0.0.8@bson-generic-0.0.8-DtORpoUHwQhDReLJ5Keop0:Data.Bson.Generic 8688e6671f6f36dd3a9c6c1c23977c50
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs 2ca07802c245bacd654c9e7bf2822aaf
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs c9b170bb740d65b1290691aed605f5ae
 import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:MongoFunctions 119436d2d0ba26878eab36c3bc78e15e
 import  -/  directory-1.2.6.2@directory-1.2.6.2:System.Directory f7c57c4a392d1767b38addc37d00ceed
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
@@ -225,64 +225,8 @@ import  -/  transformers-0.5.2.0@transformers-0.5.2.0:Control.Monad.Trans.Except
 import  -/  wai-3.2.1.1@wai-3.2.1.1-f77bMYZGLQBAD3XJrvGiW:Network.Wai f10fb472d685284a8637bf34e58bc7f2
 import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.Warp 3da15d24b266d35965cd5350be944ee3
 import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.Warp.Run ef3cbc0ed9598c9652e6b6b9671eb6f3
-69a5ed1d86eaa0168c5838c1337a136e
+8351b42b994f634af3115315d7379ba1
   $s$fAllCTRender:a ::
-    Servant.API.ContentTypes.AllCTRender
-      '[Servant.API.ContentTypes.JSON] APIs.ResponseData
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ '[Servant.API.ContentTypes.JSON]
-                  @ APIs.ResponseData
-                  (Servant.API.ContentTypes.$fAllCTRender:a_$cp1AllCTRender
-                     @ Servant.API.ContentTypes.JSON
-                     @ '[]
-                     @ APIs.ResponseData
-                     Servant.API.ContentTypes.$fAcceptTYPEJSON_$ccontentType
-                       `cast`
-                     (Sym (Servant.API.ContentTypes.N:Accept[0]
-                               <*>_N <Servant.API.ContentTypes.JSON>_N))
-                     Servant.API.ContentTypes.$fAllMimeUnrender[]a_$callMime
-                       `cast`
-                     (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
-                     AS.$s$fAllCTRender:a_$dAllMimeRender)
-                  (Servant.API.ContentTypes.$fAllCTRender:a_$chandleAcceptH
-                     @ Servant.API.ContentTypes.JSON
-                     @ '[]
-                     @ APIs.ResponseData
-                     Servant.API.ContentTypes.$fAcceptTYPEJSON_$ccontentType
-                       `cast`
-                     (Sym (Servant.API.ContentTypes.N:Accept[0]
-                               <*>_N <Servant.API.ContentTypes.JSON>_N))
-                     Servant.API.ContentTypes.$fAllMimeUnrender[]a_$callMime
-                       `cast`
-                     (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
-                     AS.$s$fAllCTRender:a_$dAllMimeRender) -}
-37a1c859f57568a8aff6e639f86a2715
-  $s$fAllCTRender:a1 ::
-    Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
-    -> APIs.ResponseData
-    -> [(Network.HTTP.Media.MediaType.Internal.MediaType,
-         Data.ByteString.Lazy.Internal.ByteString)]
-  {- Arity: 2, Strictness: <L,A><L,1*U(1*U)>m2,
-     Unfolding: InlineRule (2, True, False)
-                (\ (eta :: Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON])
-                   (eta1 :: APIs.ResponseData) ->
-                 GHC.Types.:
-                   @ (Network.HTTP.Media.MediaType.Internal.MediaType,
-                      Data.ByteString.Lazy.Internal.ByteString)
-                   (Servant.API.ContentTypes.$fAcceptTYPEJSON1,
-                    Data.ByteString.Builder.toLazyByteString
-                      (Data.Aeson.Encode.Builder.encodeToBuilder
-                         (APIs.$fToJSONResponseData1 eta1)
-                           `cast`
-                         (Data.Aeson.Types.Generic.N:Tagged[0]
-                              <Data.Aeson.Types.Generic.True>_P
-                              <Data.Aeson.Types.Internal.Value>_R)))
-                   (GHC.Types.[]
-                      @ (Network.HTTP.Media.MediaType.Internal.MediaType,
-                         Data.ByteString.Lazy.Internal.ByteString))) -}
-0b0f905b91dfd3faa04d0994c5a5dce1
-  $s$fAllCTRender:a2 ::
     Servant.API.ContentTypes.AllCTRender
       '[Servant.API.ContentTypes.JSON] APIs.AuthToken
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -300,7 +244,7 @@ import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.War
                      Servant.API.ContentTypes.$fAllMimeUnrender[]a_$callMime
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
-                     AS.$s$fAllCTRender:a_$dAllMimeRender1)
+                     AS.$s$fAllCTRender:a_$dAllMimeRender)
                   (Servant.API.ContentTypes.$fAllCTRender:a_$chandleAcceptH
                      @ Servant.API.ContentTypes.JSON
                      @ '[]
@@ -312,9 +256,9 @@ import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.War
                      Servant.API.ContentTypes.$fAllMimeUnrender[]a_$callMime
                        `cast`
                      (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
-                     AS.$s$fAllCTRender:a_$dAllMimeRender1) -}
-4cd32c7d1ba564801510800516ea27cd
-  $s$fAllCTRender:a3 ::
+                     AS.$s$fAllCTRender:a_$dAllMimeRender) -}
+9b065f56623aedb5e3ebe9b3d5faefff
+  $s$fAllCTRender:a1 ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
     -> APIs.AuthToken
     -> [(Network.HTTP.Media.MediaType.Internal.MediaType,
@@ -337,49 +281,92 @@ import  -/  warp-3.2.9@warp-3.2.9-1srGDEsq7RWF9RsucFj6bw:Network.Wai.Handler.War
                    (GHC.Types.[]
                       @ (Network.HTTP.Media.MediaType.Internal.MediaType,
                          Data.ByteString.Lazy.Internal.ByteString))) -}
-f61278655b6f102ab28998b5bb1192ef
-  $s$fAllCTRender:a_$dAllMimeRender ::
-    Servant.API.ContentTypes.AllMimeRender
-      '[Servant.API.ContentTypes.JSON] APIs.ResponseData
-  {- Strictness: m,
-     Unfolding: InlineRule (0, True, True)
-                AS.$s$fAllCTRender:a_$s$fAllMimeRender:a0 -}
-ebe702cbbd30bb44eca39d4ed74fc472
-  $s$fAllCTRender:a_$dAllMimeRender1 ::
-    Servant.API.ContentTypes.AllMimeRender
-      '[Servant.API.ContentTypes.JSON] APIs.AuthToken
-  {- Strictness: m,
-     Unfolding: InlineRule (0, True, True)
-                AS.$s$fAllCTRender:a_$s$fAllMimeRender:a1 -}
-1e6d56f5f0781106e1255ac0e4fbc9e9
-  $s$fAllCTRender:a_$dMimeRender ::
-    Servant.API.ContentTypes.MimeRender
-      Servant.API.ContentTypes.JSON APIs.ResponseData
-  {- Strictness: m,
-     Unfolding: InlineRule (0, True, True)
-                AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa -}
-c1496677ce554267bc289157fffac4bb
-  $s$fAllCTRender:a_$dMimeRender1 ::
-    Servant.API.ContentTypes.MimeRender
-      Servant.API.ContentTypes.JSON APIs.AuthToken
-  {- Strictness: m,
-     Unfolding: InlineRule (0, True, True)
-                AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa1 -}
-662a8d080654f350d3cb020188c31b50
-  $s$fAllCTRender:a_$s$fAllMimeRender:a0 ::
-    Servant.API.ContentTypes.AllMimeRender
+0895894b6d87fb50cbe26b1fbe80e0c7
+  $s$fAllCTRender:a2 ::
+    Servant.API.ContentTypes.AllCTRender
       '[Servant.API.ContentTypes.JSON] APIs.ResponseData
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ '[Servant.API.ContentTypes.JSON]
                   @ APIs.ResponseData
-                  (Servant.API.ContentTypes.$fAllMimeRender:a0_$cp1AllMimeRender
+                  (Servant.API.ContentTypes.$fAllCTRender:a_$cp1AllCTRender
                      @ Servant.API.ContentTypes.JSON
+                     @ '[]
                      @ APIs.ResponseData
-                     AS.$s$fAllCTRender:a_$dMimeRender)
-                  AS.$s$fAllCTRender:a1 -}
-24fcdfe9c28496f07066c2ea25c2a611
-  $s$fAllCTRender:a_$s$fAllMimeRender:a1 ::
+                     Servant.API.ContentTypes.$fAcceptTYPEJSON_$ccontentType
+                       `cast`
+                     (Sym (Servant.API.ContentTypes.N:Accept[0]
+                               <*>_N <Servant.API.ContentTypes.JSON>_N))
+                     Servant.API.ContentTypes.$fAllMimeUnrender[]a_$callMime
+                       `cast`
+                     (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
+                     AS.$s$fAllCTRender:a_$dAllMimeRender1)
+                  (Servant.API.ContentTypes.$fAllCTRender:a_$chandleAcceptH
+                     @ Servant.API.ContentTypes.JSON
+                     @ '[]
+                     @ APIs.ResponseData
+                     Servant.API.ContentTypes.$fAcceptTYPEJSON_$ccontentType
+                       `cast`
+                     (Sym (Servant.API.ContentTypes.N:Accept[0]
+                               <*>_N <Servant.API.ContentTypes.JSON>_N))
+                     Servant.API.ContentTypes.$fAllMimeUnrender[]a_$callMime
+                       `cast`
+                     (Sym (Servant.API.ContentTypes.N:AllMime[0] <'[]>_N))
+                     AS.$s$fAllCTRender:a_$dAllMimeRender1) -}
+cb3fdc572fb987d9a36f1d1b79bfce77
+  $s$fAllCTRender:a3 ::
+    Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
+    -> APIs.ResponseData
+    -> [(Network.HTTP.Media.MediaType.Internal.MediaType,
+         Data.ByteString.Lazy.Internal.ByteString)]
+  {- Arity: 2, Strictness: <L,A><L,1*U(1*U)>m2,
+     Unfolding: InlineRule (2, True, False)
+                (\ (eta :: Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON])
+                   (eta1 :: APIs.ResponseData) ->
+                 GHC.Types.:
+                   @ (Network.HTTP.Media.MediaType.Internal.MediaType,
+                      Data.ByteString.Lazy.Internal.ByteString)
+                   (Servant.API.ContentTypes.$fAcceptTYPEJSON1,
+                    Data.ByteString.Builder.toLazyByteString
+                      (Data.Aeson.Encode.Builder.encodeToBuilder
+                         (APIs.$fToJSONResponseData1 eta1)
+                           `cast`
+                         (Data.Aeson.Types.Generic.N:Tagged[0]
+                              <Data.Aeson.Types.Generic.True>_P
+                              <Data.Aeson.Types.Internal.Value>_R)))
+                   (GHC.Types.[]
+                      @ (Network.HTTP.Media.MediaType.Internal.MediaType,
+                         Data.ByteString.Lazy.Internal.ByteString))) -}
+ba5dfddc2048d46208d85bc75a9cc7cb
+  $s$fAllCTRender:a_$dAllMimeRender ::
+    Servant.API.ContentTypes.AllMimeRender
+      '[Servant.API.ContentTypes.JSON] APIs.AuthToken
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                AS.$s$fAllCTRender:a_$s$fAllMimeRender:a0 -}
+14fba223364e9ce6c439e2219e73b1bf
+  $s$fAllCTRender:a_$dAllMimeRender1 ::
+    Servant.API.ContentTypes.AllMimeRender
+      '[Servant.API.ContentTypes.JSON] APIs.ResponseData
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                AS.$s$fAllCTRender:a_$s$fAllMimeRender:a1 -}
+9af620ac36e0d5db945f46567ecfdb75
+  $s$fAllCTRender:a_$dMimeRender ::
+    Servant.API.ContentTypes.MimeRender
+      Servant.API.ContentTypes.JSON APIs.AuthToken
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa -}
+c54f1555c5f909dc2695f901f195a1b4
+  $s$fAllCTRender:a_$dMimeRender1 ::
+    Servant.API.ContentTypes.MimeRender
+      Servant.API.ContentTypes.JSON APIs.ResponseData
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa1 -}
+187a13110d045c99277cff483ccb489e
+  $s$fAllCTRender:a_$s$fAllMimeRender:a0 ::
     Servant.API.ContentTypes.AllMimeRender
       '[Servant.API.ContentTypes.JSON] APIs.AuthToken
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -389,23 +376,23 @@ c1496677ce554267bc289157fffac4bb
                   (Servant.API.ContentTypes.$fAllMimeRender:a0_$cp1AllMimeRender
                      @ Servant.API.ContentTypes.JSON
                      @ APIs.AuthToken
-                     AS.$s$fAllCTRender:a_$dMimeRender1)
-                  AS.$s$fAllCTRender:a3 -}
-2c00fa9d5854b98f752ae5875b20a00d
-  $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa ::
-    Servant.API.ContentTypes.MimeRender
-      Servant.API.ContentTypes.JSON APIs.ResponseData
+                     AS.$s$fAllCTRender:a_$dMimeRender)
+                  AS.$s$fAllCTRender:a1 -}
+edba3925eaba2d6ab0838bc457d07d75
+  $s$fAllCTRender:a_$s$fAllMimeRender:a1 ::
+    Servant.API.ContentTypes.AllMimeRender
+      '[Servant.API.ContentTypes.JSON] APIs.ResponseData
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
-                  @ *
-                  @ Servant.API.ContentTypes.JSON
+                  @ '[Servant.API.ContentTypes.JSON]
                   @ APIs.ResponseData
-                  (Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cp1MimeRender
+                  (Servant.API.ContentTypes.$fAllMimeRender:a0_$cp1AllMimeRender
+                     @ Servant.API.ContentTypes.JSON
                      @ APIs.ResponseData
-                     APIs.$fToJSONResponseData)
-                  AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender -}
-6e6c841863d6141b4f1625d12a69fa3e
-  $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa1 ::
+                     AS.$s$fAllCTRender:a_$dMimeRender1)
+                  AS.$s$fAllCTRender:a3 -}
+1de4cec8979106b7dd90921d7644ac35
+  $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa ::
     Servant.API.ContentTypes.MimeRender
       Servant.API.ContentTypes.JSON APIs.AuthToken
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -416,23 +403,22 @@ c1496677ce554267bc289157fffac4bb
                   (Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cp1MimeRender
                      @ APIs.AuthToken
                      APIs.$fToJSONAuthToken)
+                  AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender -}
+823a1359f36d05054a5635fcd29e07f7
+  $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa1 ::
+    Servant.API.ContentTypes.MimeRender
+      Servant.API.ContentTypes.JSON APIs.ResponseData
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ *
+                  @ Servant.API.ContentTypes.JSON
+                  @ APIs.ResponseData
+                  (Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cp1MimeRender
+                     @ APIs.ResponseData
+                     APIs.$fToJSONResponseData)
                   AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender1 -}
-d30501fac8c0a241b7f2f16841c22124
+2f559fa4f3946ee64f0434b94991f826
   $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender ::
-    Data.Proxy.Proxy Servant.API.ContentTypes.JSON
-    -> APIs.ResponseData -> Data.ByteString.Lazy.Internal.ByteString
-  {- Arity: 2, Strictness: <L,A><L,1*U(1*U)>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (ds :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
-                   (eta :: APIs.ResponseData) ->
-                 Data.ByteString.Builder.toLazyByteString
-                   (Data.Aeson.Types.Internal.fromEncoding
-                      (Data.Aeson.Encode.Builder.encodeToBuilder
-                         (APIs.$fToJSONResponseData_$ctoJSON eta))
-                        `cast`
-                      (Sym (Data.Aeson.Types.Internal.N:Encoding[0])))) -}
-97d401963ae3ab56bd161e72d06018af
-  $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender1 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> APIs.AuthToken -> Data.ByteString.Lazy.Internal.ByteString
   {- Arity: 2, Strictness: <L,A><L,1*U(U,U,U)>,
@@ -443,6 +429,20 @@ d30501fac8c0a241b7f2f16841c22124
                    (Data.Aeson.Types.Internal.fromEncoding
                       (Data.Aeson.Encode.Builder.encodeToBuilder
                          (APIs.$fToJSONAuthToken_$ctoJSON eta))
+                        `cast`
+                      (Sym (Data.Aeson.Types.Internal.N:Encoding[0])))) -}
+d52a16708cedb3b3269770292dfb382a
+  $s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender1 ::
+    Data.Proxy.Proxy Servant.API.ContentTypes.JSON
+    -> APIs.ResponseData -> Data.ByteString.Lazy.Internal.ByteString
+  {- Arity: 2, Strictness: <L,A><L,1*U(1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
+                   (eta :: APIs.ResponseData) ->
+                 Data.ByteString.Builder.toLazyByteString
+                   (Data.Aeson.Types.Internal.fromEncoding
+                      (Data.Aeson.Encode.Builder.encodeToBuilder
+                         (APIs.$fToJSONResponseData_$ctoJSON eta))
                         `cast`
                       (Sym (Data.Aeson.Types.Internal.N:Encoding[0])))) -}
 d98dfa9dd32b1d64a2e41977afd0a027
@@ -551,18 +551,18 @@ ff89f60d6c2e4e5aea9209271508f513
 fb8e92e9b2bd55218dafa6c9059774ec
   $sserve6 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "addNewUser"#) -}
-8d71de7a6ca423a51135fd618dd24880
+5a42643423f19d82d967312bbec6b2b0
   $sserve8 ::
     Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON]
     -> Data.ByteString.Lazy.Internal.ByteString
     -> Data.ByteString.Lazy.Internal.ByteString
     -> GHC.Base.Maybe
          (Data.Either.Either GHC.Base.String APIs.LoginRequest)
-  {- Arity: 3, Strictness: <L,A><L,1*U><L,U>,
-     Unfolding: InlineRule (3, True, True)
-                (\ (w1 :: Data.Proxy.Proxy '[Servant.API.ContentTypes.JSON])
-                   (w2 :: Data.ByteString.Lazy.Internal.ByteString)
-                   (w3 :: Data.ByteString.Lazy.Internal.ByteString) ->
+  {- Arity: 3,
+     Unfolding: (\ (w1 :: Data.Proxy.Proxy
+                            '[Servant.API.ContentTypes.JSON])
+                   (w2 :: Data.ByteString.Lazy.Internal.ByteString)[OneShot]
+                   (w3 :: Data.ByteString.Lazy.Internal.ByteString)[OneShot] ->
                  Servant.API.ContentTypes.$w$chandleCTypeH
                    @ '[Servant.API.ContentTypes.JSON]
                    @ APIs.LoginRequest
@@ -614,12 +614,12 @@ c65f5583baa7c3c42842de78fa1daf12
     Control.Monad.Trans.Except.ExceptT
       Servant.Server.Internal.ServantErr.ServantErr GHC.Types.IO
     :: * -> *
-61ce66a9716d612de8c4461fa3d8bca4
+0377d08dcb6615d508512fb1b0b56544
   startAuthentication :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 AS.startAuthentication1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-40cae055b9c07009a72be29ed0574a22
+90dbbe67de53e35e69755e8bce86b0cc
   startAuthentication1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -1069,12 +1069,12 @@ fc1f1577e0e03ef8774d1ac70e516985
 9144f715a9bd884ef93f1117e4afad3e
   startAuthentication19 :: Data.Bson.Label
   {- Unfolding: (Data.Text.Show.unpackCString# "username"#) -}
-79a0b5e1f5efc86b1ac85a2eef5a86e2
+2e9f08aeb8e0ef24e941ea1a69399368
   startAuthentication2 :: Network.Wai.Application
   {- Arity: 2,
      Unfolding: (Servant.Server.Internal.RoutingApplication.toApplication
                    AS.startAuthentication3) -}
-f5d06911f0c0243e77c4e5ee1697e886
+85c919707cbcc634f13ca57f58c8555e
   startAuthentication20 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       (Data.Text.Internal.Text, (Data.Text.Internal.Text, ()))
@@ -1093,7 +1093,7 @@ f5d06911f0c0243e77c4e5ee1697e886
                    @ 'Network.HTTP.Types.Method.GET
                    @ 200
                    @ '[]
-                   AS.$s$fAllCTRender:a
+                   AS.$s$fAllCTRender:a2
                    Servant.API.Verbs.$fReflectMethodStdMethodGET_$creflectMethod
                      `cast`
                    (Sym (Servant.API.Verbs.N:ReflectMethod[0]
@@ -1112,7 +1112,7 @@ f5d06911f0c0243e77c4e5ee1697e886
                            200
                            '[Servant.API.ContentTypes.JSON]
                            APIs.ResponseData))) -}
-722eb4d6f9a8c4656f3a1a7b829a3631
+1e49737c3611e19b30caa8785df87beb
   startAuthentication21 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1123,7 +1123,7 @@ f5d06911f0c0243e77c4e5ee1697e886
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-ef13289e580e82dd1415562a635d8f90
+cc0cf2c9ea4600422c0b66803be83e2d
   startAuthentication22 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -1150,7 +1150,7 @@ ef13289e580e82dd1415562a635d8f90
                       @ (Servant.Server.Internal.Router.Router'
                            ()
                            Servant.Server.Internal.RoutingApplication.RoutingApplication)) } }) -}
-779e24c596fd2d7f357952aedd6f38ad
+1da332c3fb1985e764f6b320c37d0ccc
   startAuthentication23 :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Servant.Server.Internal.$w$croute2
                    @ *
@@ -1361,7 +1361,7 @@ ef13289e580e82dd1415562a635d8f90
                    (w1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
                  case w of ww { APIs.LoginRequest ww1 ww2 ->
                  AS.$wdt ww1 ww2 w1 }) -}
-50d5d9f2a99f5555a4a0cedcf7a58e34
+4ff5ab89305cab39d39e78299c408809
   startAuthentication28 ::
     Data.Proxy.Proxy
       (Servant.API.Verbs.Verb
@@ -1396,7 +1396,7 @@ ef13289e580e82dd1415562a635d8f90
                    @ 'Network.HTTP.Types.Method.POST
                    @ 200
                    @ '[]
-                   AS.$s$fAllCTRender:a2
+                   AS.$s$fAllCTRender:a
                    Servant.API.Verbs.$fReflectMethodStdMethodPOST_$creflectMethod
                      `cast`
                    (Sym (Servant.API.Verbs.N:ReflectMethod[0]
@@ -1419,7 +1419,7 @@ ef13289e580e82dd1415562a635d8f90
   startAuthentication29 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "Starting Authentication Server..."#) -}
-443fa8e8e7e5efbd38a2928e1058ba3a
+2a9a819476b17a624efce61db270ecc3
   startAuthentication3 ::
     Network.Wai.Internal.Request
     -> (Servant.Server.Internal.RoutingApplication.RouteResult
@@ -1437,7 +1437,7 @@ ef13289e580e82dd1415562a635d8f90
                    GHC.Tuple.()
                    eta
                    eta1) -}
-de541257c51706e9545c649960a85997
+a40436af6149ef878e3e92c9a941f510
   startAuthentication4 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1448,7 +1448,7 @@ de541257c51706e9545c649960a85997
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-737ed78c9f959259fc91fd24dad5f2a1
+4b8456b660d17b7435a4a6cdac113cdd
   startAuthentication5 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -1475,7 +1475,7 @@ de541257c51706e9545c649960a85997
                       @ (Servant.Server.Internal.Router.Router'
                            ()
                            Servant.Server.Internal.RoutingApplication.RoutingApplication)) } }) -}
-a0c9394110a2880fe42b66d29f003e9f
+59b53968cc6c7c040ed286286bb36eaf
   startAuthentication6 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -1483,7 +1483,7 @@ a0c9394110a2880fe42b66d29f003e9f
                    @ ()
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    AS.startAuthentication7) -}
-b4e79252dca169849b9c0fd6b0e264df
+ec4da4f6a52eefd9f06540e05aa3ac93
   startAuthentication7 ::
     Servant.Server.Internal.Router.Router'
       (Data.Text.Internal.Text, ())
@@ -1492,7 +1492,7 @@ b4e79252dca169849b9c0fd6b0e264df
                    @ (Data.Text.Internal.Text, ())
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    AS.startAuthentication8) -}
-4fc8be7ddd53252f18b8a0bfbbce5b49
+606ff787990abb6c5b7941a85215a581
   startAuthentication8 ::
     Servant.Server.Internal.Router.Router
       (Data.Text.Internal.Text, (Data.Text.Internal.Text, ()))
@@ -1534,7 +1534,7 @@ aea02cec8370c1d84e854d9219de10b3
                                    Servant.Server.Internal.ServantErr.ServantErr
                                    GHC.Types.IO>_N)))_R
                    AS.$sserve2) -}
-9ff7ac011b1d4f705b4d5e04993f004b
+93f51360c475d00e6d36397245e55805
   startAuthentication_r :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Servant.Server.Internal.Router.choice
                    @ ()
@@ -1554,7 +1554,7 @@ aea02cec8370c1d84e854d9219de10b3
                                            $dAccept
                                            $dAllMime
                                            $dAllMimeRender
-  = AS.$s$fAllCTRender:a2
+  = AS.$s$fAllCTRender:a
 "SPEC/AS $fAllCTRender:a @ JSON @ '[] @ ResponseData" [ALWAYS] forall ($dAccept :: Servant.API.ContentTypes.Accept
                                                                                      Servant.API.ContentTypes.JSON)
                                                                       ($dAllMime :: Servant.API.ContentTypes.AllMime
@@ -1568,21 +1568,21 @@ aea02cec8370c1d84e854d9219de10b3
                                            $dAccept
                                            $dAllMime
                                            $dAllMimeRender
-  = AS.$s$fAllCTRender:a
+  = AS.$s$fAllCTRender:a2
 "SPEC/AS $fAllMimeRender:a0 @ JSON @ AuthToken" [ALWAYS] forall ($dMimeRender :: Servant.API.ContentTypes.MimeRender
                                                                                    Servant.API.ContentTypes.JSON
                                                                                    APIs.AuthToken)
   Servant.API.ContentTypes.$fAllMimeRender:a0 @ Servant.API.ContentTypes.JSON
                                               @ APIs.AuthToken
                                               $dMimeRender
-  = AS.$s$fAllCTRender:a_$s$fAllMimeRender:a1
+  = AS.$s$fAllCTRender:a_$s$fAllMimeRender:a0
 "SPEC/AS $fAllMimeRender:a0 @ JSON @ ResponseData" [ALWAYS] forall ($dMimeRender :: Servant.API.ContentTypes.MimeRender
                                                                                       Servant.API.ContentTypes.JSON
                                                                                       APIs.ResponseData)
   Servant.API.ContentTypes.$fAllMimeRender:a0 @ Servant.API.ContentTypes.JSON
                                               @ APIs.ResponseData
                                               $dMimeRender
-  = AS.$s$fAllCTRender:a_$s$fAllMimeRender:a0
+  = AS.$s$fAllCTRender:a_$s$fAllMimeRender:a1
 "SPEC/AS $fAllMimeUnrender:a @ JSON @ LoginRequest @ '[]" [ALWAYS] forall ($dMimeUnrender :: Servant.API.ContentTypes.MimeUnrender
                                                                                                Servant.API.ContentTypes.JSON
                                                                                                APIs.LoginRequest)
@@ -1599,22 +1599,22 @@ aea02cec8370c1d84e854d9219de10b3
                                                                            APIs.AuthToken)
   Servant.API.ContentTypes.$fMimeRenderTYPEJSONa @ APIs.AuthToken
                                                  $dToJSON
-  = AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa1
+  = AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa
 "SPEC/AS $fMimeRenderTYPEJSONa @ ResponseData" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
                                                                               APIs.ResponseData)
   Servant.API.ContentTypes.$fMimeRenderTYPEJSONa @ APIs.ResponseData
                                                  $dToJSON
-  = AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa
+  = AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa1
 "SPEC/AS $fMimeRenderTYPEJSONa_$cmimeRender @ AuthToken" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
                                                                                         APIs.AuthToken)
   Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cmimeRender @ APIs.AuthToken
                                                               $dToJSON
-  = AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender1
+  = AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender
 "SPEC/AS $fMimeRenderTYPEJSONa_$cmimeRender @ ResponseData" [ALWAYS] forall ($dToJSON :: Data.Aeson.Types.Class.ToJSON
                                                                                            APIs.ResponseData)
   Servant.API.ContentTypes.$fMimeRenderTYPEJSONa_$cmimeRender @ APIs.ResponseData
                                                               $dToJSON
-  = AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender
+  = AS.$s$fAllCTRender:a_$s$fMimeRenderTYPEJSONa_$cmimeRender1
 "SPEC/AS $fMimeUnrenderTYPEJSONa @ LoginRequest" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                   APIs.LoginRequest)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.LoginRequest

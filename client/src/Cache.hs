@@ -199,13 +199,14 @@ fileModifyTimeQuery token@(AuthToken decTicket decSessionKey encTimeOut) port fi
 -- | Directory Server
 
 searchForFile :: SecureFileName -> ClientM SecurePort
+findUploadServer :: SecureFileName -> ClientM SecurePort
 getFileList :: SecureTicket -> ClientM [String]
 updateList :: String -> Int -> String -> ClientM ResponseData
 
 directoryServerApi :: Proxy DirectoryServerAPI
 directoryServerApi = Proxy
 
-searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
+searchForFile :<|> findUploadServer :<|> getFileList :<|> updateList = client directoryServerApi
 
 searchQuery :: String -> String -> String -> ClientM SecurePort
 searchQuery ticket encTimeOut fileName = do

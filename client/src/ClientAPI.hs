@@ -90,13 +90,19 @@ runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName
     "upload" -> do
       putStrLn $ "Uploading file: " ++ fileName
       unlockF token fileName
-      res <- runClientM (uploadQuery decTicket encTimeOut encFileName encFileContents) (ClientEnv manager (BaseUrl Http host 8080 ""))
-      case res of
-        Left err -> logMessage clientLogging ("Error uploading file: " ++ show err)
-        Right (uploadFileResponse@(SecureResponseData encResponse)) -> do
-          let decResponse = encryptDecrypt decSessionKey encResponse
-          putStrLn $ "Encrypted upload response: " ++ encResponse
-          putStrLn $ "Decrypted upload response: " ++ decResponse
+      port <- findUploadServerQuery token fileName
+      case port of
+        Nothing -> do 
+          putStrLn "Error finding fileserver to upload to"
+          return ()
+        Just port' -> do
+          res <- runClientM (uploadQuery decTicket encTimeOut encFileName encFileContents) (ClientEnv manager (BaseUrl Http host port' ""))
+          case res of
+            Left err -> logMessage clientLogging ("Error uploading file: " ++ show err)
+            Right (uploadFileResponse@(SecureResponseData encResponse)) -> do
+              let decResponse = encryptDecrypt decSessionKey encResponse
+              putStrLn $ "Encrypted upload response: " ++ encResponse
+              putStrLn $ "Decrypted upload response: " ++ decResponse
     "listfiles" -> do
       putStrLn $ "Getting list of files in directory..."
       res <- runClientM (getFileListQuery decTicket encTimeOut) (ClientEnv manager (BaseUrl Http host 8080 ""))
@@ -137,13 +143,14 @@ runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName
 -- | Directory Server Stuff
 
 searchForFile :: SecureFileName -> ClientM SecurePort
+findUploadServer :: SecureFileName -> ClientM SecurePort
 getFileList :: SecureTicket -> ClientM [String]
 updateList :: String -> Int -> String -> ClientM ResponseData
 
 directoryServerApi :: Proxy DirectoryServerAPI
 directoryServerApi = Proxy
 
-searchForFile :<|> getFileList :<|> updateList = client directoryServerApi
+searchForFile :<|> findUploadServer :<|> getFileList :<|> updateList = client directoryServerApi
 
 searchQuery :: String -> String -> String -> ClientM SecurePort
 searchQuery ticket encTimeOut fileName = do 
@@ -168,6 +175,23 @@ getFileListQuery ticket encTimeOut = do
   fileList <- getFileList (SecureTicket ticket encTimeOut)
   return fileList
 
+uploadServerQuery :: String -> String -> String -> ClientM SecurePort
+uploadServerQuery ticket encTimeOut fileName = do 
+  uploadServer <- findUploadServer (SecureFileName ticket encTimeOut fileName)
+  return uploadServer
+
+findUploadServerQuery :: AuthToken -> String -> IO (Maybe Int)
+findUploadServerQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
+  let encFileName = encryptDecrypt decSessionKey fileName
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (uploadServerQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host dsPort ""))
+  case res of
+    Left err -> do
+      logMessage clientLogging ("Error searching for file: " ++ show err)
+      return Nothing
+    Right (SecurePort encPort) -> do
+      let decPort = decryptPort decSessionKey encPort
+      return (Just decPort)
 
 -- | Authentication Server
 

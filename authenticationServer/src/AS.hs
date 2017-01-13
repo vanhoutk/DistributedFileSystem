@@ -85,11 +85,11 @@ server = loginUser
             let tokenTimeOut = addUTCTime oneHour currentTime
             let encTimeOut = encryptTime sharedServerSecret tokenTimeOut 
 
-            liftIO $ logMessage authServerLogging ("SessionKey: " ++ sessionKey ++ "/n" ++
-                                                    "EncSessionKey: " ++ encSessionKey ++ "/n" ++
-                                                    "Ticket: " ++ ticket ++ "/n" ++
-                                                    "EncTicket: " ++ encTicket ++ "/n" ++
-                                                    "Timeout: " ++ (show tokenTimeOut) ++ "/n")
+            liftIO $ logMessage authServerLogging ("SessionKey: " ++ sessionKey ++ "\n" ++
+                                                    "EncSessionKey: " ++ encSessionKey ++ "\n" ++
+                                                    "Ticket: " ++ ticket ++ "\n" ++
+                                                    "EncTicket: " ++ encTicket ++ "\n" ++
+                                                    "Timeout: " ++ (show tokenTimeOut) ++ "\n")
 
             return (AuthToken encTicket encSessionKey encTimeOut)
           else do -- User used an incorrect password

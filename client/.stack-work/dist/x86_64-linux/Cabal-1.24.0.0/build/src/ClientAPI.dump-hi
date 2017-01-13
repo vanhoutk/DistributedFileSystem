@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-13 02:01:46.544446 UTC
+2017-01-13 22:10:45.979177 UTC
 
 interface client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W:ClientAPI 8001
-  interface hash: daabedfde200328e5dc39c29d9d6a769
-  ABI hash: 2c1fb05806f96a05ced865897d306384
-  export-list hash: 20ff9f2a675f75b2e27e9611621a3a13
-  orphan hash: 29af729d5993257ee5abb237ea7c8138
+  interface hash: 6f1d87666e15a59b2eb63d096ba6a763
+  ABI hash: 49cdcbbfe776feda341afd22f35281a6
+  export-list hash: 0a31e432d37cee4dd2743096db8f0de3
+  orphan hash: 3f644d3ca0a6c622955f08ae52fd5e0b
   flag hash: 13c201de8bfdf7e69351b49f9035b3fa
   sig of: Nothing
   used TH splices: False
@@ -204,22 +204,36 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time 11aa6bb0881cf13119ff057ae5c21663
                    (<Data.Vector.Vector Data.Aeson.Types.Internal.Value>_R
                     ->_R Sym (Data.Aeson.Types.Internal.N:Parser[0]
                                   <[[GHC.Types.Char]]>_R))) -}
-764279b84b2b38024483c7a6402538dd
-  $s$fMimeUnrenderTYPEJSONa11 ::
+2b5adb8b3622ea134e06e8774bca3e1f
+  $s$fMimeUnrenderTYPEJSONa10 ::
     Servant.API.ContentTypes.MimeUnrender
-      Servant.API.ContentTypes.JSON APIs.SecureResponseData
+      Servant.API.ContentTypes.JSON APIs.SecureFile
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ *
                   @ Servant.API.ContentTypes.JSON
-                  @ APIs.SecureResponseData
+                  @ APIs.SecureFile
                   (Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cp1MimeUnrender
-                     @ APIs.SecureResponseData
-                     APIs.$fFromJSONSecureResponseData_$cparseJSON
+                     @ APIs.SecureFile
+                     APIs.$fFromJSONSecureFile_$cparseJSON
                        `cast`
-                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
-                               <APIs.SecureResponseData>_N)))
-                  ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender6 -}
+                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureFile>_N)))
+                  ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender5 -}
+32eed4005fe7f2b852e911c6c2458adf
+  $s$fMimeUnrenderTYPEJSONa12 ::
+    Servant.API.ContentTypes.MimeUnrender
+      Servant.API.ContentTypes.JSON APIs.AuthToken
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ *
+                  @ Servant.API.ContentTypes.JSON
+                  @ APIs.AuthToken
+                  (Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cp1MimeUnrender
+                     @ APIs.AuthToken
+                     APIs.$fFromJSONAuthToken_$cparseJSON
+                       `cast`
+                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.AuthToken>_N)))
+                  ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender7 -}
 bc400a24cc3cc24345e626ecf70a01a2
   $s$fMimeUnrenderTYPEJSONa2 ::
     Data.Vector.Vector Data.Aeson.Types.Internal.Value
@@ -288,35 +302,21 @@ d5c84030b0068483cf89898f27d99776
                        `cast`
                      (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <GHC.Types.Bool>_N)))
                   ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender1 -}
-7d63bd369b6436ab47a051c00b7c67ec
-  $s$fMimeUnrenderTYPEJSONa7 ::
-    Servant.API.ContentTypes.MimeUnrender
-      Servant.API.ContentTypes.JSON APIs.AuthToken
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ *
-                  @ Servant.API.ContentTypes.JSON
-                  @ APIs.AuthToken
-                  (Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cp1MimeUnrender
-                     @ APIs.AuthToken
-                     APIs.$fFromJSONAuthToken_$cparseJSON
-                       `cast`
-                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.AuthToken>_N)))
-                  ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 -}
-9f52b5bdc6c55857435e169b49a10b25
+00711d258ebbcbfff456e13498dda290
   $s$fMimeUnrenderTYPEJSONa8 ::
     Servant.API.ContentTypes.MimeUnrender
-      Servant.API.ContentTypes.JSON APIs.SecureFile
+      Servant.API.ContentTypes.JSON APIs.SecureResponseData
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ *
                   @ Servant.API.ContentTypes.JSON
-                  @ APIs.SecureFile
+                  @ APIs.SecureResponseData
                   (Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cp1MimeUnrender
-                     @ APIs.SecureFile
-                     APIs.$fFromJSONSecureFile_$cparseJSON
+                     @ APIs.SecureResponseData
+                     APIs.$fFromJSONSecureResponseData_$cparseJSON
                        `cast`
-                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureFile>_N)))
+                     (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
+                               <APIs.SecureResponseData>_N)))
                   ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 -}
 9a90b16167ead700215bfaab99e7a4f0
   $s$fMimeUnrenderTYPEJSONa9 ::
@@ -370,35 +370,21 @@ a9825ca2cb4c846c436331f473edd6d0
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <GHC.Types.Bool>_N))
                    eta) -}
-ed5651de995396527581187920d74bd7
-  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2 ::
-    Data.Proxy.Proxy Servant.API.ContentTypes.JSON
-    -> Data.ByteString.Lazy.Internal.ByteString
-    -> Data.Either.Either GHC.Base.String APIs.AuthToken
-  {- Arity: 2, Strictness: <L,A><S,1*U>,
-     Unfolding: InlineRule (1, True, True)
-                (\ (ds3 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
-                   (eta :: Data.ByteString.Lazy.Internal.ByteString) ->
-                 Servant.API.ContentTypes.eitherDecodeLenient
-                   @ APIs.AuthToken
-                   APIs.$fFromJSONAuthToken_$cparseJSON
-                     `cast`
-                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.AuthToken>_N))
-                   eta) -}
-c4152fd4389b75184edb53932dcd40f0
+b542b63a3a77615d89606c29bb7abdd7
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
-    -> Data.Either.Either GHC.Base.String APIs.SecureFile
+    -> Data.Either.Either GHC.Base.String APIs.SecureResponseData
   {- Arity: 2, Strictness: <L,A><S,1*U>,
      Unfolding: InlineRule (1, True, True)
                 (\ (ds3 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
                    (eta :: Data.ByteString.Lazy.Internal.ByteString) ->
                  Servant.API.ContentTypes.eitherDecodeLenient
-                   @ APIs.SecureFile
-                   APIs.$fFromJSONSecureFile_$cparseJSON
+                   @ APIs.SecureResponseData
+                   APIs.$fFromJSONSecureResponseData_$cparseJSON
                      `cast`
-                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureFile>_N))
+                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
+                             <APIs.SecureResponseData>_N))
                    eta) -}
 5526f6d23d7beed87f51b860be3905a5
   $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender4 ::
@@ -415,21 +401,35 @@ c4152fd4389b75184edb53932dcd40f0
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecurePort>_N))
                    eta) -}
-162ab48341b28e9339551252dfc51b48
-  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender6 ::
+f984b40c83540445a2ed777a1eccc658
+  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender5 ::
     Data.Proxy.Proxy Servant.API.ContentTypes.JSON
     -> Data.ByteString.Lazy.Internal.ByteString
-    -> Data.Either.Either GHC.Base.String APIs.SecureResponseData
+    -> Data.Either.Either GHC.Base.String APIs.SecureFile
   {- Arity: 2, Strictness: <L,A><S,1*U>,
      Unfolding: InlineRule (1, True, True)
                 (\ (ds3 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
                    (eta :: Data.ByteString.Lazy.Internal.ByteString) ->
                  Servant.API.ContentTypes.eitherDecodeLenient
-                   @ APIs.SecureResponseData
-                   APIs.$fFromJSONSecureResponseData_$cparseJSON
+                   @ APIs.SecureFile
+                   APIs.$fFromJSONSecureFile_$cparseJSON
                      `cast`
-                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0]
-                             <APIs.SecureResponseData>_N))
+                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureFile>_N))
+                   eta) -}
+65c3cf34004a0a4aed06573ff316a590
+  $s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender7 ::
+    Data.Proxy.Proxy Servant.API.ContentTypes.JSON
+    -> Data.ByteString.Lazy.Internal.ByteString
+    -> Data.Either.Either GHC.Base.String APIs.AuthToken
+  {- Arity: 2, Strictness: <L,A><S,1*U>,
+     Unfolding: InlineRule (1, True, True)
+                (\ (ds3 :: Data.Proxy.Proxy Servant.API.ContentTypes.JSON)
+                   (eta :: Data.ByteString.Lazy.Internal.ByteString) ->
+                 Servant.API.ContentTypes.eitherDecodeLenient
+                   @ APIs.AuthToken
+                   APIs.$fFromJSONAuthToken_$cparseJSON
+                     `cast`
+                   (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.AuthToken>_N))
                    eta) -}
 3dddef42b251f774aa4f8ff15ed9134e
   $s$fMimeUnrenderTYPEJSONa_f1 ::
@@ -541,14 +541,14 @@ c4152fd4389b75184edb53932dcd40f0
 88daa3a8f0316e6455df647009347a2b
   $s$fMimeUnrenderTYPEJSONa_f2 :: [GHC.Types.Int]
   {- Unfolding: (GHC.Enum.eftInt 0# 9223372036854775807#) -}
-339c3fbf327a664eee15f3214d3c4226
-  $sclient15 :: [GHC.Types.Char]
+1e516abe192a06b408ab8cc9b1ab8b8a
+  $sclient18 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackAppendCString#
                    "/"#
-                   ClientAPI.$sclient16) -}
-3002fd400beb6ee1c6a55d9512bbb62e
-  $sclient16 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "login"#) -}
+                   ClientAPI.$sclient19) -}
+e1cb77f352d263601ec7bfb1a8859289
+  $sclient19 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "list"#) -}
 cde0230b358900110fe3aa49a41eb480
   $sclient2 ::
     '[Servant.API.ContentTypes.JSON]
@@ -560,22 +560,22 @@ cde0230b358900110fe3aa49a41eb480
                    @ '[Servant.API.ContentTypes.JSON]
                    @ '[Servant.API.ContentTypes.JSON]
                    @~ <'[Servant.API.ContentTypes.JSON]>_N) -}
-4f907e215a4e71eed9681ab96ae6fdb1
-  $sclient23 :: [GHC.Types.Char]
+6e69e571e260e74635a83ff841aaca67
+  $sclient20 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackAppendCString#
                    "/"#
-                   ClientAPI.$sclient24) -}
-81ade310b3eff3db86a5fe50d503a714
-  $sclient24 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "list"#) -}
-622d3f1332011ec50d7b45b1b48e8a2e
-  $sclient25 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackAppendCString#
-                   "/"#
-                   ClientAPI.$sclient26) -}
-ef871e9da5e633fc38fff923658945dc
-  $sclient26 :: [GHC.Types.Char]
+                   ClientAPI.$sclient21) -}
+e7cd7d21cbc41944fcc2c0412b424ac2
+  $sclient21 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "search"#) -}
+3c26a3c44336b217f2da84f69350f4ff
+  $sclient27 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackAppendCString#
+                   "/"#
+                   ClientAPI.$sclient28) -}
+5b66d93bebe2303e63315cf5b76a6bc7
+  $sclient28 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "login"#) -}
 9c8725e2564ca5349c6fc97a4814d872
   $sclient3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackAppendCString#
@@ -615,7 +615,7 @@ d0fb7e8d10c0171d40c9552fa82daf29
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W"#) -}
-ee1ac01fb708f2f6853b8249b23d593a
+1f876a115fd8811d9458f2e91abbc848
   $w$dHasClient1 ::
     Data.Proxy.Proxy
       (Servant.API.ReqBody.ReqBody
@@ -653,7 +653,7 @@ ee1ac01fb708f2f6853b8249b23d593a
                    @ '[Servant.API.ContentTypes.JSON]
                    @ '[]
                    @ 200
-                   ClientAPI.$s$fMimeUnrenderTYPEJSONa11
+                   ClientAPI.$s$fMimeUnrenderTYPEJSONa8
                    Servant.API.Verbs.$fReflectMethodStdMethodPOST_$creflectMethod
                      `cast`
                    (Sym (Servant.API.Verbs.N:ReflectMethod[0]
@@ -750,7 +750,7 @@ dfb8b4485190da37129f49c2c1b79529
                                                                                       APIs.AuthToken)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.AuthToken
                                                    $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa7
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa12
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa @ Bool" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                  GHC.Types.Bool)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ GHC.Types.Bool
@@ -760,7 +760,7 @@ dfb8b4485190da37129f49c2c1b79529
                                                                                        APIs.SecureFile)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecureFile
                                                    $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa8
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa10
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa @ SecurePort" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                        APIs.SecurePort)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecurePort
@@ -770,7 +770,7 @@ dfb8b4485190da37129f49c2c1b79529
                                                                                                APIs.SecureResponseData)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ APIs.SecureResponseData
                                                    $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa11
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa8
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa @ [String]" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                      [GHC.Base.String])
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa @ [GHC.Base.String]
@@ -780,7 +780,7 @@ dfb8b4485190da37129f49c2c1b79529
                                                                                                      APIs.AuthToken)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.AuthToken
                                                                   $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender2
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender7
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ Bool" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                                 GHC.Types.Bool)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ GHC.Types.Bool
@@ -790,7 +790,7 @@ dfb8b4485190da37129f49c2c1b79529
                                                                                                       APIs.SecureFile)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecureFile
                                                                   $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender5
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ SecurePort" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                                       APIs.SecurePort)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecurePort
@@ -800,7 +800,7 @@ dfb8b4485190da37129f49c2c1b79529
                                                                                                               APIs.SecureResponseData)
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ APIs.SecureResponseData
                                                                   $dFromJSON
-  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender6
+  = ClientAPI.$s$fMimeUnrenderTYPEJSONa_$s$fMimeUnrenderTYPEJSONa_$cmimeUnrender3
 "SPEC/ClientAPI $fMimeUnrenderTYPEJSONa_$cmimeUnrender @ [String]" [ALWAYS] forall ($dFromJSON :: Data.Aeson.Types.Class.FromJSON
                                                                                                     [GHC.Base.String])
   Servant.API.ContentTypes.$fMimeUnrenderTYPEJSONa_$cmimeUnrender @ [GHC.Base.String]

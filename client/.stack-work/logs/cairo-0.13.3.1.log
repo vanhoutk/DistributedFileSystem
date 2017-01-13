@@ -1,0 +1,5 @@
+[1 of 1] Compiling Main             ( /tmp/stack10020/cairo-0.13.3.1/Setup.hs, /tmp/stack10020/cairo-0.13.3.1/.stack-work/dist/x86_64-linux/Cabal-1.24.2.0/setup/Main.o )
+
+/tmp/stack10020/cairo-0.13.3.1/Setup.hs:5:1: error:
+    Failed to load interface for ‘Gtk2HsSetup’
+    Use -v to see a list of the files searched for.
