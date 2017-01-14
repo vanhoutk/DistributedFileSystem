@@ -160,6 +160,7 @@ server = searchForFile
                 liftIO $ logMessage dirServerLogging ("Upload File Response: " ++ decResponse)
                 return (SecureResponseData uploadResponse)
           Just fileMapping' -> do
+            -- TODO: HERE
             mapM (sendToServers file) fileMapping'
             let encResponse = encryptDecrypt sessionKey "Success"
             return (SecureResponseData encResponse)

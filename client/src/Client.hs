@@ -6,6 +6,7 @@ import System.IO
 import APIs
 import Cache
 import ClientAPI
+import ClientEditor
 
 startClient :: IO()
 startClient = do
@@ -16,9 +17,9 @@ startClient = do
       startClient
     Just token' -> do
       setupCache token'
-      clientLoop token'
+      startEditor token'
 
-clientLoop :: AuthToken -> IO()
+{-clientLoop :: AuthToken -> IO()
 clientLoop token = do
   putStrLn "Please select command: upload/list_files/download/close_client"
   user_input <- getLine
@@ -52,4 +53,4 @@ processDownload token = do
   runQuery token "download" fileName downloadType
   --file <- downloadFileQuery fileName
   --print file
-  clientLoop token
+  clientLoop token-}

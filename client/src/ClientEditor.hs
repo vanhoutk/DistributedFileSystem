@@ -5,28 +5,43 @@ import Control.Monad.IO.Class
 import Data.IORef
 import Graphics.UI.Gtk
 
-startEditor :: IO ()
-startEditor = do
-  initGUI
-  window <- windowNew
-  set window [windowTitle := "KNote", containerBorderWidth := 10,
-             windowDefaultWidth := 600, windowDefaultHeight := 400 ]
+import APIs
+import ClientAPI
 
-  vbox <- vBoxNew False 0
+startEditor :: AuthToken -> IO ()
+startEditor token = do
+  initGUI                                     -- Initialise the GUI
+  window <- windowNew                         -- Create a new window
+  set window [ windowTitle := "Text Editor"
+             , containerBorderWidth := 10
+             , windowDefaultWidth := 800
+             , windowDefaultHeight := 600 
+             ]
+
+  vbox <- vBoxNew False 0                     {- Create a new vertical box (False = Not equal space for all children, 
+                                                                                0 = Default spacing between children.) -}
 
   containerAdd window vbox
 
-  box     <- hBoxNew False 0
-  button1 <- buttonNewWithLabel "Open"
-  onClicked button1 (putStrLn "button clicked")
-  boxPackStart box button1 PackNatural 0
-  button2 <- buttonNewWithLabel "Read"
-  onClicked button2 (putStrLn "button clicked")
-  boxPackStart box button2 PackNatural 0
-  button3 <- buttonNewWithLabel "Write"
-  onClicked button3 (putStrLn "button clicked")
-  boxPackStart box button3 PackNatural 0
-  boxPackStart vbox box PackNatural 0
+  buttonBox     <- hBoxNew False 2
+  readButton <- buttonNewWithLabel "Read File"
+  onClicked readButton (putStrLn "button clicked")
+  boxPackStart buttonBox readButton PackNatural 0
+
+  readWriteButton <- buttonNewWithLabel "Read/Write File"
+  onClicked readWriteButton (putStrLn "button clicked")
+  boxPackStart buttonBox readWriteButton PackNatural 0
+
+  uploadButton <- buttonNewWithLabel "Upload File"
+  onClicked uploadButton (putStrLn "button clicked")
+  boxPackStart buttonBox uploadButton PackNatural 0
+
+  listButton <- buttonNewWithLabel "List Files"
+  onClicked listButton $ listButtonClicked token
+  boxPackStart buttonBox listButton PackNatural 0
+
+
+  boxPackStart vbox buttonBox PackNatural 0
   sep1       <- hSeparatorNew
   boxPackStart vbox sep1 PackNatural 10
 
@@ -38,8 +53,13 @@ startEditor = do
 
   onBufferChanged buf $ do 
     cn <- textBufferGetCharCount buf
-    putStrLn (show cn)   
+    putStrLn (show cn)   -- TODO - Remove this
 
-  widgetShowAll window 
+  widgetShowAll window                          -- Show the Window
   onDestroy window mainQuit
-  mainGUI
+  mainGUI                                       -- Enter the main gtk processing loop
+
+
+listButtonClicked :: AuthToken -> IO()
+listButtonClicked token = do
+  runQuery token "listfiles" "fileName" "fileContents"
