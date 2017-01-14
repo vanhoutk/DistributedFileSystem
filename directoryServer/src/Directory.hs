@@ -83,7 +83,7 @@ api = Proxy
 
 server :: Server DirectoryServerAPI
 server = searchForFile
-    :<|> findUploadServer
+    :<|> uploadToServer
     :<|> listFiles
     :<|> updateLists
 
@@ -128,8 +128,8 @@ server = searchForFile
             0 -> return Nothing 
             _ -> return (Just (head fileMap))
 
-    findUploadServer :: SecureFileName -> APIHandler SecurePort
-    findUploadServer (SecureFileName ticket encTimeOut encFileName) = do
+    uploadToServer :: SecureFileUpload -> APIHandler SecureResponseData
+    uploadToServer file@(SecureFileUpload ticket encTimeOut (File encFileName encContents)) = do
       let decTimeOut = decryptTime sharedServerSecret encTimeOut
       let sessionKey = encryptDecrypt sharedServerSecret ticket
       let decFileName = encryptDecrypt sessionKey encFileName
@@ -139,8 +139,8 @@ server = searchForFile
       currentTime <- liftIO $ getCurrentTime
       if (currentTime > decTimeOut) then do
         liftIO $ logMessage dirServerLogging ("Client's authentication token has expired.")
-        let encPort = encryptPort sessionKey 0
-        return (SecurePort encPort)
+        let encResponse = encryptDecrypt sessionKey "Failed - SessionKey has expired."
+        return (SecureResponseData encResponse)
       else do
         liftIO $ logMessage dirServerLogging ("Searching for file: " ++ decFileName)
         fileMapping <- getFileMapping decFileName
@@ -148,17 +148,24 @@ server = searchForFile
           Nothing -> do
             liftIO $ logMessage dirServerLogging ("File does not exist on servers. Picking random server to upload to...")
             port <- liftIO $ randomRIO (8081, 8083)
-            let encPort = encryptPort sessionKey port
-            return (SecurePort encPort)
+            manager <- liftIO $ newManager defaultManagerSettings
+            res <- liftIO $ SC.runClientM (uploadQuery file) (SC.ClientEnv manager (SC.BaseUrl SC.Http fsHost port ""))
+            case res of
+              Left err -> do
+                liftIO $ logMessage dirServerLogging ("Error in uploadQuery: " ++ show err)
+                let encResponse = encryptDecrypt sessionKey "Success"
+                return (SecureResponseData encResponse)
+              Right (SecureResponseData uploadResponse) -> do
+                let decResponse = encryptDecrypt sessionKey uploadResponse
+                liftIO $ logMessage dirServerLogging ("Upload File Response: " ++ decResponse)
+                return (SecureResponseData uploadResponse)
           Just fileMapping' -> do
-            let (FileMapping _ server port) = fileMapping'
-            let port' = (read :: String -> Int) $ port
-            liftIO $ logMessage dirServerLogging ("File found on " ++ server ++ " operating on port: " ++ port)
-            let encPort = encryptPort sessionKey port'
-            return (SecurePort encPort)
+            mapM (sendToServers file) fileMapping'
+            let encResponse = encryptDecrypt sessionKey "Success"
+            return (SecureResponseData encResponse)
 
       where
-        getFileMapping :: String -> APIHandler (Maybe FileMapping)
+        getFileMapping :: String -> APIHandler (Maybe [FileMapping])
         getFileMapping name = do
           fileMap <- liftIO $ withMongoDbConnection $ do
             docs <- find (select ["fileName" =: name] "FILE_SERVER_MAPPINGS") >>= drainCursor
@@ -166,7 +173,23 @@ server = searchForFile
 
           case (length fileMap) of -- Currently no replicating so the length should either be 0 or 1
             0 -> return Nothing 
-            _ -> return (Just (head fileMap))
+            _ -> return (Just fileMap)
+
+        sendToServers :: SecureFileUpload -> FileMapping -> APIHandler(Maybe Bool)
+        sendToServers file (FileMapping _ server port) = do
+          liftIO $ do
+            logMessage dirServerLogging ("File found on " ++ server ++ " operating on port: " ++ port)
+            manager <- newManager defaultManagerSettings
+            let port' = read port :: Int
+            res <- SC.runClientM (uploadQuery file) (SC.ClientEnv manager (SC.BaseUrl SC.Http fsHost port' ""))
+            case res of
+              Left err -> do
+                logMessage dirServerLogging ("Error in uploadQuery: " ++ show err)
+                return Nothing
+              Right (SecureResponseData uploadResponse) -> do
+                logMessage dirServerLogging ("Upload File Response: " ++ uploadResponse)
+                return (Just True)
+
 
     listFiles :: SecureTicket -> APIHandler [String]
     listFiles (SecureTicket ticket encTimeOut) = do
@@ -232,6 +255,11 @@ fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
 
 uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = SC.client fileserverApi
+
+uploadQuery :: SecureFileUpload -> SC.ClientM SecureResponseData
+uploadQuery file = do
+  upload_file <- uploadFile file
+  return (upload_file)
 
 getFilesQuery :: SC.ClientM([String])
 getFilesQuery = do

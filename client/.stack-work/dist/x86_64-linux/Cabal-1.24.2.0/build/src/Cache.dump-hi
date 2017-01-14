@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-13 23:18:36.522354 UTC
+2017-01-14 13:13:07.753303 UTC
 
 interface client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W:Cache 8001
-  interface hash: 5a82275b49fa1ce63d0a7f456034cd8a
-  ABI hash: b10b51011b9679913c748de6749b25b8
+  interface hash: 7792a0acc0829b6f4d594c2012b77672
+  ABI hash: 5ff0e196c0fb8e7f658eefa0f0a2d1e9
   export-list hash: 248fe2e3503200b930e5b873d8ba2e82
   orphan hash: e3777970a12a33efc2c796e9d88ff5c9
   flag hash: 574b45f9e678fc4f88be8159527aa1b3
@@ -177,7 +177,7 @@ import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.Environment ee0914a962f5508d0fd404c89ee4999b
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  base-4.9.0.0:Text.Read 9c1be14f7e5eac8b18bcb566c5763677
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs f5eef8c7d2186ba3cf4955edb9ba0ebc
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs b14cb20229034793dd4801284cf0d872
 import  -/  directory-1.2.7.1@directory-1.2.7.1-6xbYYKdoE266LLlc7GOex4:System.Directory 970e76f5d7f7d1c2bb4871bad753c6c1
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
@@ -280,25 +280,6 @@ import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.UTC fd9f3bc9549d9de1cb313e
                      `cast`
                    (Sym (Data.Aeson.Types.Class.N:FromJSON[0] <APIs.SecureFile>_N))
                    eta) -}
-abd87151e2dbec625d5c1fa7c014f6ed
-  $sclient14 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackAppendCString#
-                   "/"#
-                   Cache.$sclient15) -}
-2fbad55a6ded6e98cbdaeef3288cccd3
-  $sclient15 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "search"#) -}
-298c0055c48834916a98adf6e2603a26
-  $sclient7 ::
-    '[Servant.API.ContentTypes.JSON]
-    GHC.Types.~~ '[Servant.API.ContentTypes.JSON]
-  {- HasNoCafRefs, Strictness: m,
-     Unfolding: (GHC.Types.Eq#
-                   @ [*]
-                   @ [*]
-                   @ '[Servant.API.ContentTypes.JSON]
-                   @ '[Servant.API.ContentTypes.JSON]
-                   @~ <'[Servant.API.ContentTypes.JSON]>_N) -}
 074a63a2ae5698c5adcc9e908a23d1de
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -312,78 +293,6 @@ bbca929b364bc33184f8a49048655175
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W"#) -}
-dfe34f0117602df56aee85dd52ae78c4
-  $w$dHasClient2 ::
-    Data.Proxy.Proxy
-      (Servant.API.ReqBody.ReqBody
-         '[Servant.API.ContentTypes.JSON] APIs.SecureFileName
-       Servant.API.Sub.:> Servant.API.Verbs.Verb
-                            'Network.HTTP.Types.Method.POST
-                            200
-                            '[Servant.API.ContentTypes.JSON]
-                            APIs.SecurePort)
-    -> Servant.Common.Req.Req
-    -> APIs.SecureFileName
-    -> Servant.Client.Client
-         (Servant.API.Verbs.Verb
-            'Network.HTTP.Types.Method.POST
-            200
-            '[Servant.API.ContentTypes.JSON]
-            APIs.SecurePort)
-  {- Arity: 3, Strictness: <S,1*H><L,1*U(U,U,A,A,U)><L,1*U(U,U,U)>,
-     Inline: [0],
-     Unfolding: (\ (w :: Data.Proxy.Proxy
-                           (Servant.API.ReqBody.ReqBody
-                              '[Servant.API.ContentTypes.JSON] APIs.SecureFileName
-                            Servant.API.Sub.:> Servant.API.Verbs.Verb
-                                                 'Network.HTTP.Types.Method.POST
-                                                 200
-                                                 '[Servant.API.ContentTypes.JSON]
-                                                 APIs.SecurePort))
-                   (w1 :: Servant.Common.Req.Req)
-                   (w2 :: APIs.SecureFileName) ->
-                 Servant.Client.$w$cclientWithRoute8
-                   @ Network.HTTP.Types.Method.StdMethod
-                   @ Servant.API.ContentTypes.JSON
-                   @ APIs.SecurePort
-                   @ 'Network.HTTP.Types.Method.POST
-                   @ '[Servant.API.ContentTypes.JSON]
-                   @ '[]
-                   @ 200
-                   Cache.$s$fMimeUnrenderTYPEJSONa8
-                   Servant.API.Verbs.$fReflectMethodStdMethodPOST_$creflectMethod
-                     `cast`
-                   (Sym (Servant.API.Verbs.N:ReflectMethod[0]
-                             <Network.HTTP.Types.Method.StdMethod>_N
-                             <'Network.HTTP.Types.Method.POST>_N))
-                   Cache.$sclient7
-                     `cast`
-                   (Sym (Data.Type.Equality.N:~[0]
-                             <[*]>_N) <'[Servant.API.ContentTypes.JSON]>_N <'[Servant.API.ContentTypes.JSON]>_N)
-                   (Data.Proxy.Proxy
-                      @ *
-                      @ (Servant.API.Verbs.Verb
-                           'Network.HTTP.Types.Method.POST
-                           200
-                           '[Servant.API.ContentTypes.JSON]
-                           APIs.SecurePort))
-                   (case w1 of wild1 { Servant.Common.Req.Req ds2 ds3 ds4 ds5 ds6 ->
-                    Servant.Common.Req.Req
-                      ds2
-                      ds3
-                      (GHC.Base.Just
-                         @ (Data.ByteString.Lazy.Internal.ByteString,
-                            Network.HTTP.Media.MediaType.Internal.MediaType)
-                         (Data.ByteString.Builder.toLazyByteString
-                            (Data.Aeson.Encode.Builder.encodeToBuilder
-                               (APIs.$fToJSONSecureFileName1 w2)
-                                 `cast`
-                               (Data.Aeson.Types.Generic.N:Tagged[0]
-                                    <Data.Aeson.Types.Generic.True>_P
-                                    <Data.Aeson.Types.Internal.Value>_R)),
-                          Servant.API.ContentTypes.$fAcceptTYPEJSON1))
-                      ds5
-                      ds6 })) -}
 a760eb1fbbcbd93e8c104fbe95a05632
   $wstoreNewFileInCache ::
     GHC.Base.String

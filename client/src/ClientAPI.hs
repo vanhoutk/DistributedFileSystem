@@ -40,11 +40,6 @@ fileserverApi = Proxy
 
 uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
 
-uploadQuery :: String -> String -> String -> String -> ClientM SecureResponseData
-uploadQuery ticket encTimeOut fileName fileContents = do
-  upload_file <- uploadFile (SecureFileUpload ticket encTimeOut (File fileName fileContents))
-  return (upload_file)
-
 downloadQuery :: String -> String -> String -> ClientM SecureFile
 downloadQuery ticket encTimeOut fileName = do
   download_file <- downloadFile (SecureFileName ticket encTimeOut fileName)
@@ -82,35 +77,23 @@ runQuery :: AuthToken -> String -> String -> String -> IO()
 runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName contentsOrType = do
   putStrLn "Running Query..."
 
-  let encFileName = encryptDecrypt decSessionKey fileName
-  let encFileContents = encryptDecrypt decSessionKey contentsOrType
-
-  manager <- newManager defaultManagerSettings
   case queryType of
+    
     "upload" -> do
       putStrLn $ "Uploading file: " ++ fileName
       unlockF token fileName
-      port <- findUploadServerQuery token fileName
-      case port of
-        Nothing -> do 
-          putStrLn "Error finding fileserver to upload to"
-          return ()
-        Just port' -> do
-          res <- runClientM (uploadQuery decTicket encTimeOut encFileName encFileContents) (ClientEnv manager (BaseUrl Http host port' ""))
-          case res of
-            Left err -> logMessage clientLogging ("Error uploading file: " ++ show err)
-            Right (uploadFileResponse@(SecureResponseData encResponse)) -> do
-              let decResponse = encryptDecrypt decSessionKey encResponse
-              putStrLn $ "Encrypted upload response: " ++ encResponse
-              putStrLn $ "Decrypted upload response: " ++ decResponse
+      uploadToServerQuery token fileName contentsOrType
+    
     "listfiles" -> do
       putStrLn $ "Getting list of files in directory..."
+      manager <- newManager defaultManagerSettings
       res <- runClientM (getFileListQuery decTicket encTimeOut) (ClientEnv manager (BaseUrl Http host 8080 ""))
       case res of
         Left err -> logMessage clientLogging ("Error getting list of files: " ++ show err)
         Right (encFiles) -> do
           let decFiles = encryptDecryptArray decSessionKey encFiles
           print decFiles
+    
     "download" -> do
       putStrLn $ "Checking if file is already in cache: " ++ fileName
       isCached <- doesFileExist fileName
@@ -143,14 +126,14 @@ runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName
 -- | Directory Server Stuff
 
 searchForFile :: SecureFileName -> ClientM SecurePort
-findUploadServer :: SecureFileName -> ClientM SecurePort
+uploadToServer :: SecureFileUpload -> ClientM SecureResponseData
 getFileList :: SecureTicket -> ClientM [String]
 updateList :: String -> Int -> String -> ClientM ResponseData
 
 directoryServerApi :: Proxy DirectoryServerAPI
 directoryServerApi = Proxy
 
-searchForFile :<|> findUploadServer :<|> getFileList :<|> updateList = client directoryServerApi
+searchForFile :<|> uploadToServer :<|> getFileList :<|> updateList = client directoryServerApi
 
 searchQuery :: String -> String -> String -> ClientM SecurePort
 searchQuery ticket encTimeOut fileName = do 
@@ -175,23 +158,23 @@ getFileListQuery ticket encTimeOut = do
   fileList <- getFileList (SecureTicket ticket encTimeOut)
   return fileList
 
-uploadServerQuery :: String -> String -> String -> ClientM SecurePort
-uploadServerQuery ticket encTimeOut fileName = do 
-  uploadServer <- findUploadServer (SecureFileName ticket encTimeOut fileName)
-  return uploadServer
+uploadServerQuery :: String -> String -> String -> String -> ClientM SecureResponseData
+uploadServerQuery ticket encTimeOut fileName fileContents = do
+  upload_file <- uploadFile (SecureFileUpload ticket encTimeOut (File fileName fileContents))
+  return (upload_file)
 
-findUploadServerQuery :: AuthToken -> String -> IO (Maybe Int)
-findUploadServerQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
+uploadToServerQuery :: AuthToken -> String -> String -> IO ()
+uploadToServerQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName contentsOrType = do
   let encFileName = encryptDecrypt decSessionKey fileName
+  let encFileContents = encryptDecrypt decSessionKey contentsOrType
   manager <- newManager defaultManagerSettings
-  res <- runClientM (uploadServerQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host dsPort ""))
+  res <- runClientM (uploadServerQuery decTicket encTimeOut encFileName encFileContents) (ClientEnv manager (BaseUrl Http host dsPort ""))
   case res of
-    Left err -> do
-      logMessage clientLogging ("Error searching for file: " ++ show err)
-      return Nothing
-    Right (SecurePort encPort) -> do
-      let decPort = decryptPort decSessionKey encPort
-      return (Just decPort)
+    Left err -> logMessage clientLogging ("Error uploading file: " ++ show err)
+    Right (uploadFileResponse@(SecureResponseData encResponse)) -> do
+      let decResponse = encryptDecrypt decSessionKey encResponse
+      putStrLn $ "Encrypted upload response: " ++ encResponse
+      putStrLn $ "Decrypted upload response: " ++ decResponse
 
 -- | Authentication Server
 

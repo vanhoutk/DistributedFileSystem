@@ -143,14 +143,14 @@ server port = uploadFile
 -- | Directory Server Stuff
 
 searchForFile :: SecureFileName -> SC.ClientM SecurePort
-findUploadServer :: SecureFileName -> SC.ClientM SecurePort
+uploadToServer :: SecureFileUpload -> SC.ClientM SecureResponseData
 getFileList :: SecureTicket -> SC.ClientM [String]
 updateList :: String -> Int -> String -> SC.ClientM ResponseData
 
 directoryServerApi :: Proxy DirectoryServerAPI
 directoryServerApi = Proxy
 
-searchForFile :<|> findUploadServer :<|> getFileList :<|> updateList = SC.client directoryServerApi
+searchForFile :<|> uploadToServer :<|> getFileList :<|> updateList = SC.client directoryServerApi
 
 updateListQuery :: String -> Int -> String -> IO()
 updateListQuery updateType port fileName = do

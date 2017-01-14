@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-13 23:19:06.740036 UTC
+2017-01-14 13:14:38.562306 UTC
 
 interface commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs [orphan module] [family instance module] 8001
-  interface hash: c122e1b1ac65b5da7587e07a69f7f493
-  ABI hash: 68598b3da85ae8e32350dfc38fdb9945
+  interface hash: a2b9e1b6f6eae106794a50107c0447d3
+  ABI hash: 3f4f14ad59b094c21de19f513b72f8db
   export-list hash: 7531c17d9a5c967ca8bcd520f562551b
   orphan hash: 2a0e8c3f3191cfa5870d28b14e119082
   flag hash: 52c7ffec886c803869fcfa4ccdf0080e
@@ -24082,7 +24082,7 @@ ceed2abbd0a4a958480d5da580d95e67
                                                                           Servant.API.Sub.:> Servant.API.Verbs.Get
                                                                                                '[Servant.API.ContentTypes.JSON]
                                                                                                APIs.ResponseData)))
-5a1b88b3f49fc0cc5f63fe074e712b1c
+13ac5bc6dba7aae18e09e8f3a3ab5def
   type DirectoryServerAPI =
     ("search"
      Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
@@ -24092,10 +24092,10 @@ ceed2abbd0a4a958480d5da580d95e67
     Servant.API.Alternative.:<|> (("upload"
                                    Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
                                                          '[Servant.API.ContentTypes.JSON]
-                                                         APIs.SecureFileName
+                                                         APIs.SecureFileUpload
                                                        Servant.API.Sub.:> Servant.API.Verbs.Post
                                                                             '[Servant.API.ContentTypes.JSON]
-                                                                            APIs.SecurePort))
+                                                                            APIs.SecureResponseData))
                                   Servant.API.Alternative.:<|> (("list"
                                                                  Servant.API.Sub.:> (Servant.API.ReqBody.ReqBody
                                                                                        '[Servant.API.ContentTypes.JSON]

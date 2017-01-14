@@ -137,10 +137,10 @@ type FileServerAPI = "upload"     :> ReqBody '[JSON] SecureFileUpload :> Post '[
                 :<|> "download"   :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureFile
                 :<|> "modifyTime" :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureTime
 
-type DirectoryServerAPI = "search"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecurePort
-                     :<|> "upload"      :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecurePort
-                     :<|> "list"        :> ReqBody '[JSON] SecureTicket :> Post '[JSON] [String]
-                     :<|> "updateList"  :> Capture "updateType" String :> Capture "port" Int :> Capture "name" String :> Get '[JSON] ResponseData
+type DirectoryServerAPI = "search"      :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecurePort
+                     :<|> "upload"      :> ReqBody '[JSON] SecureFileUpload :> Post '[JSON] SecureResponseData
+                     :<|> "list"        :> ReqBody '[JSON] SecureTicket     :> Post '[JSON] [String]
+                     :<|> "updateList"  :> Capture "updateType" String      :> Capture "port" Int :> Capture "name" String :> Get '[JSON] ResponseData
 
 type AuthenticationServerAPI = "login"      :> ReqBody '[JSON] LoginRequest :> Post '[JSON] AuthToken
                           :<|> "addNewUser" :> Capture "username" String    :> Capture "password" String :> Get '[JSON] ResponseData
