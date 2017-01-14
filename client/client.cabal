@@ -18,12 +18,14 @@ library
   exposed-modules:     Cache
                      , Client
                      , ClientAPI
+                     , ClientEditor
   build-depends:       base >= 4.7 && < 5
                      , aeson
                      , bson-generic
                      , commonAPIs
                      , containers
                      , directory
+                     , gtk
                      , http-client
                      , servant
                      , servant-client

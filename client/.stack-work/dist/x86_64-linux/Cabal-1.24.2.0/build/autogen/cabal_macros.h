@@ -49,6 +49,13 @@
   (major1) == 1 && (major2) <  2 || \
   (major1) == 1 && (major2) == 2 && (minor) <= 7)
 
+/* package gtk-0.14.6 */
+#define VERSION_gtk "0.14.6"
+#define MIN_VERSION_gtk(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  14 || \
+  (major1) == 0 && (major2) == 14 && (minor) <= 6)
+
 /* package http-client-0.4.31.2 */
 #define VERSION_http_client "0.4.31.2"
 #define MIN_VERSION_http_client(major1,major2,minor) (\
@@ -104,6 +111,13 @@
   (major1) <  3 || \
   (major1) == 3 && (major2) <  2 || \
   (major1) == 3 && (major2) == 2 && (minor) <= 9)
+
+/* tool alex-3.1.7 */
+#define TOOL_VERSION_alex "3.1.7"
+#define MIN_TOOL_VERSION_alex(major1,major2,minor) (\
+  (major1) <  3 || \
+  (major1) == 3 && (major2) <  1 || \
+  (major1) == 3 && (major2) == 1 && (minor) <= 7)
 
 /* tool gcc-4.8 */
 #define TOOL_VERSION_gcc "4.8"
@@ -168,7 +182,7 @@
   (major1) == 2 && (major2) <  24 || \
   (major1) == 2 && (major2) == 24 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W"
+#define CURRENT_COMPONENT_ID "client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0"
 
-#define CURRENT_PACKAGE_KEY "client-0.1.0.0-BBQ0lEhWF9I3xzkawYlf3W"
+#define CURRENT_PACKAGE_KEY "client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0"
 

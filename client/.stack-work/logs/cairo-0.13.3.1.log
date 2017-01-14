@@ -1,5 +1,26 @@
-[1 of 1] Compiling Main             ( /tmp/stack10020/cairo-0.13.3.1/Setup.hs, /tmp/stack10020/cairo-0.13.3.1/.stack-work/dist/x86_64-linux/Cabal-1.24.2.0/setup/Main.o )
-
-/tmp/stack10020/cairo-0.13.3.1/Setup.hs:5:1: error:
-    Failed to load interface for ‘Gtk2HsSetup’
-    Use -v to see a list of the files searched for.
+[1 of 1] Compiling Main             ( /tmp/stack27239/cairo-0.13.3.1/Setup.hs, /tmp/stack27239/cairo-0.13.3.1/.stack-work/dist/x86_64-linux/Cabal-1.24.2.0/setup/Main.o )
+Linking /tmp/stack27239/cairo-0.13.3.1/.stack-work/dist/x86_64-linux/Cabal-1.24.2.0/setup/setup ...
+Configuring cairo-0.13.3.1...
+Building cairo-0.13.3.1...
+Preprocessing library cairo-0.13.3.1...
+[ 1 of 18] Compiling Graphics.Rendering.Cairo.Matrix ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Matrix.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Matrix.o )
+[ 2 of 18] Compiling Graphics.Rendering.Cairo.Types ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Types.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Types.o )
+[ 3 of 18] Compiling Graphics.Rendering.Cairo.Internal.Utilities ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Utilities.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Utilities.o )
+[ 4 of 18] Compiling Graphics.Rendering.Cairo.Internal.Drawing.Cairo ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Cairo.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Cairo.o )
+[ 5 of 18] Compiling Graphics.Rendering.Cairo.Internal.Drawing.Paths ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Paths.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Paths.o )
+[ 6 of 18] Compiling Graphics.Rendering.Cairo.Internal.Drawing.Patterns ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Patterns.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Patterns.o )
+[ 7 of 18] Compiling Graphics.Rendering.Cairo.Internal.Drawing.Text ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Text.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Text.o )
+[ 8 of 18] Compiling Graphics.Rendering.Cairo.Internal.Drawing.Transformations ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Transformations.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Drawing/Transformations.o )
+[ 9 of 18] Compiling Graphics.Rendering.Cairo.Internal.Fonts.FontOptions ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Fonts/FontOptions.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Fonts/FontOptions.o )
+[10 of 18] Compiling Graphics.Rendering.Cairo.Internal.Surfaces.Image ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/Image.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/Image.o )
+[11 of 18] Compiling Graphics.Rendering.Cairo.Internal.Surfaces.PDF ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/PDF.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/PDF.o )
+[12 of 18] Compiling Graphics.Rendering.Cairo.Internal.Surfaces.PNG ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/PNG.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/PNG.o )
+[13 of 18] Compiling Graphics.Rendering.Cairo.Internal.Surfaces.PS ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/PS.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/PS.o )
+[14 of 18] Compiling Graphics.Rendering.Cairo.Internal.Surfaces.SVG ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/SVG.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/SVG.o )
+[15 of 18] Compiling Graphics.Rendering.Cairo.Internal.Surfaces.Surface ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/Surface.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Surfaces/Surface.o )
+[16 of 18] Compiling Graphics.Rendering.Cairo.Internal.Region ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Region.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal/Region.o )
+[17 of 18] Compiling Graphics.Rendering.Cairo.Internal ( Graphics/Rendering/Cairo/Internal.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo/Internal.o )
+[18 of 18] Compiling Graphics.Rendering.Cairo ( Graphics/Rendering/Cairo.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Graphics/Rendering/Cairo.o )
+Installing library in
+/home/protoman/.stack/snapshots/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1/cairo-0.13.3.1-JCOGHyRY3Mk6Meqo26pJOl
+Registering cairo-0.13.3.1...

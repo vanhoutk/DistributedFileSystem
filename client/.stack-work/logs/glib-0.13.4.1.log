@@ -1,5 +1,34 @@
-[1 of 1] Compiling Main             ( /tmp/stack10020/glib-0.13.4.1/Setup.hs, /tmp/stack10020/glib-0.13.4.1/.stack-work/dist/x86_64-linux/Cabal-1.24.2.0/setup/Main.o )
+[1 of 1] Compiling Main             ( /tmp/stack27239/glib-0.13.4.1/Setup.hs, /tmp/stack27239/glib-0.13.4.1/.stack-work/dist/x86_64-linux/Cabal-1.24.2.0/setup/Main.o )
+Linking /tmp/stack27239/glib-0.13.4.1/.stack-work/dist/x86_64-linux/Cabal-1.24.2.0/setup/setup ...
+Configuring glib-0.13.4.1...
+Building glib-0.13.4.1...
+Preprocessing library glib-0.13.4.1...
+[ 1 of 21] Compiling System.Glib.Attributes ( System/Glib/Attributes.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Attributes.o )
+[ 2 of 21] Compiling System.Glib.Flags ( System/Glib/Flags.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Flags.o )
+[ 3 of 21] Compiling System.Glib.FFI  ( System/Glib/FFI.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/FFI.o )
+[ 4 of 21] Compiling System.Glib.Types ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Types.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Types.o )
+[ 5 of 21] Compiling System.Glib.GString ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GString.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GString.o )
+[ 6 of 21] Compiling System.Glib.GList ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GList.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GList.o )
+[ 7 of 21] Compiling System.Glib.GType ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GType.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GType.o )
+[ 8 of 21] Compiling System.Glib.GValue ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GValue.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GValue.o )
+[ 9 of 21] Compiling System.Glib.GParameter ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GParameter.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GParameter.o )
 
-/tmp/stack10020/glib-0.13.4.1/Setup.hs:5:1: error:
-    Failed to load interface for ‘Gtk2HsSetup’
-    Use -v to see a list of the files searched for.
+System/Glib/GParameter.hsc:42:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        either ‘peek’ or ‘peekElemOff’ or ‘peekByteOff’
+    • In the instance declaration for ‘Storable GParameter’
+[10 of 21] Compiling System.Glib.GTypeConstants ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GTypeConstants.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GTypeConstants.o )
+[11 of 21] Compiling System.Glib.UTFString ( System/Glib/UTFString.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/UTFString.o )
+[12 of 21] Compiling System.Glib.GObject ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GObject.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GObject.o )
+[13 of 21] Compiling System.Glib.GValueTypes ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GValueTypes.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GValueTypes.o )
+[14 of 21] Compiling System.Glib.StoreValue ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/StoreValue.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/StoreValue.o )
+[15 of 21] Compiling System.Glib.Signals ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Signals.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Signals.o )
+[16 of 21] Compiling System.Glib.MainLoop ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/MainLoop.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/MainLoop.o )
+[17 of 21] Compiling System.Glib.GError ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GError.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GError.o )
+[18 of 21] Compiling System.Glib.GDateTime ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GDateTime.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/GDateTime.o )
+[19 of 21] Compiling System.Glib.Utils ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Utils.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Utils.o )
+[20 of 21] Compiling System.Glib.Properties ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Properties.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib/Properties.o )
+[21 of 21] Compiling System.Glib      ( System/Glib.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Glib.o )
+Installing library in
+/home/protoman/.stack/snapshots/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1/glib-0.13.4.1-LHb10HBfEaUfMcseRRiwA
+Registering glib-0.13.4.1...

@@ -1,0 +1,24 @@
+Configuring pretty-show-1.6.12...
+Building pretty-show-1.6.12...
+Preprocessing library pretty-show-1.6.12...
+[1 of 6] Compiling Paths_pretty_show ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/autogen/Paths_pretty_show.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Paths_pretty_show.o )
+[2 of 6] Compiling Text.Show.Value  ( Text/Show/Value.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Text/Show/Value.o )
+[3 of 6] Compiling Text.Show.PrettyVal ( Text/Show/PrettyVal.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Text/Show/PrettyVal.o )
+
+Text/Show/PrettyVal.hs:51:10: warning: [-Wredundant-constraints]
+    • Redundant constraint: Datatype d
+    • In the instance declaration for ‘GDump (M1 D d f)’
+[4 of 6] Compiling Text.Show.Html   ( Text/Show/Html.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Text/Show/Html.o )
+
+Text/Show/Html.hs:106:1: warning: [-Wunused-top-binds]
+    Defined but not used: ‘tallTuple’
+[5 of 6] Compiling Text.Show.Parser ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Text/Show/Parser.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Text/Show/Parser.o )
+[6 of 6] Compiling Text.Show.Pretty ( Text/Show/Pretty.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Text/Show/Pretty.o )
+Preprocessing executable 'ppsh' for pretty-show-1.6.12...
+[1 of 1] Compiling Main             ( bin/ppsh.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/ppsh/ppsh-tmp/Main.o )
+Linking .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/ppsh/ppsh ...
+Installing library in
+/home/protoman/.stack/snapshots/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1/pretty-show-1.6.12-APoyzWUT80sLwzp0X0LDvD
+Installing executable(s) in
+/home/protoman/.stack/snapshots/x86_64-linux/lts-7.15/8.0.1/bin
+Registering pretty-show-1.6.12...

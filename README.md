@@ -37,16 +37,14 @@ Student Number: 12301975
   - ~~Add upload logic for client/server interaction~~
   - ~~Move the Directory Server port to the common APIs folder~~
   - **Check that random number gen in upload logic works correctly**
+  - Remove duplicates when listing files
 
 5. FileServer
   - ~~Add delete functionality~~
   - ~~On update/delete send an update to the directory server~~
 
 6. Replication
-  - TODO: Figure out how this should work
-  - We examine replication in detail in lectures, and when we do so, you should think about the type of file usage that occurs in a typical file system. For example, multiple users do not simultaneously modify most files. So very tight synchronisation is probably not necessary – locking or transactions will probably be acceptable for those cases that do. Your task is to implement an appropriate replicatino model for file access across selected file servers (you should demonstrate operation with three or more).
-
-  - A scheme based on the gossip architecture is possible, but a model based on a primary copy will most likely be good enough. If you choose to implement a gossip style solution, and an NFS style file system model is being implemented, then replicas should talk frequently to each other. If an upload/download model is in place then communication need only occur when files are closed!
+  - ~~Implemented through a centralised replication server (The Directory Server)~~
 
 7. ~~Security Service~~
 

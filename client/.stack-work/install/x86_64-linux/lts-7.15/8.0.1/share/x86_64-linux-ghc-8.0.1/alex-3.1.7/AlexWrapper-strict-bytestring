@@ -1,0 +1,349 @@
+{-# LINE 1 "templates/wrappers.hs" #-}
+{-# LINE 1 "templates/wrappers.hs" #-}
+{-# LINE 1 "<command-line>" #-}
+{-# LINE 9 "<command-line>" #-}
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+
+# 17 "/usr/include/stdc-predef.h" 3 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{-# LINE 9 "<command-line>" #-}
+{-# LINE 1 "/home/protoman/.stack/programs/x86_64-linux/ghc-8.0.1/lib/ghc-8.0.1/include/ghcversion.h" #-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{-# LINE 9 "<command-line>" #-}
+{-# LINE 1 "/tmp/ghc7719_0/ghc_2.h" #-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{-# LINE 9 "<command-line>" #-}
+{-# LINE 1 "templates/wrappers.hs" #-}
+-- -----------------------------------------------------------------------------
+-- Alex wrapper code.
+--
+-- This code is in the PUBLIC DOMAIN; you may copy it freely and use
+-- it for any purpose whatsoever.
+
+
+
+
+
+
+import Data.Word (Word8)
+{-# LINE 21 "templates/wrappers.hs" #-}
+
+import qualified Data.Char
+import qualified Data.ByteString          as ByteString
+import qualified Data.ByteString.Internal as ByteString
+import qualified Data.ByteString.Unsafe   as ByteString
+
+{-# LINE 54 "templates/wrappers.hs" #-}
+
+type Byte = Word8
+
+-- -----------------------------------------------------------------------------
+-- The input type
+
+{-# LINE 79 "templates/wrappers.hs" #-}
+
+{-# LINE 101 "templates/wrappers.hs" #-}
+
+{-# LINE 119 "templates/wrappers.hs" #-}
+
+
+data AlexInput = AlexInput { alexChar :: {-# UNPACK #-} !Char,
+                             alexStr :: {-# UNPACK #-} !ByteString.ByteString,
+                             alexBytePos :: {-# UNPACK #-} !Int}
+
+alexInputPrevChar :: AlexInput -> Char
+alexInputPrevChar = alexChar
+
+alexGetByte (AlexInput {alexStr=cs,alexBytePos=n})
+   | ByteString.null cs = Nothing
+   | otherwise          =
+     Just $! (ByteString.head cs,
+           AlexInput {
+             alexChar = ByteString.w2c $ ByteString.unsafeHead cs,
+             alexStr =  ByteString.unsafeTail cs,
+             alexBytePos = n+1})
+
+
+-- -----------------------------------------------------------------------------
+-- Token positions
+
+-- `Posn' records the location of a token in the input text.  It has three
+-- fields: the address (number of chacaters preceding the token), line number
+-- and column of a token within the file. `start_pos' gives the position of the
+-- start of the file and `eof_pos' a standard encoding for the end of file.
+-- `move_pos' calculates the new position after traversing a given character,
+-- assuming the usual eight character tab stops.
+
+{-# LINE 160 "templates/wrappers.hs" #-}
+
+-- -----------------------------------------------------------------------------
+-- Default monad
+
+{-# LINE 271 "templates/wrappers.hs" #-}
+
+
+-- -----------------------------------------------------------------------------
+-- Monad (with ByteString input)
+
+{-# LINE 374 "templates/wrappers.hs" #-}
+
+
+-- -----------------------------------------------------------------------------
+-- Basic wrapper
+
+{-# LINE 401 "templates/wrappers.hs" #-}
+
+
+-- -----------------------------------------------------------------------------
+-- Basic wrapper, ByteString version
+
+{-# LINE 421 "templates/wrappers.hs" #-}
+
+
+
+-- alexScanTokens :: String -> [token]
+alexScanTokens str = go (AlexInput '\n' str 0)
+  where go inp =
+          case alexScan inp 0 of
+                AlexEOF -> []
+                AlexError _ -> error "lexical error"
+                AlexSkip  inp' len     -> go inp'
+                AlexToken inp' _ act -> 
+                  let str = alexStr inp
+                      len = alexBytePos inp' - alexBytePos inp in
+                  act (ByteString.take len str) : go inp'
+
+
+
+
+-- -----------------------------------------------------------------------------
+-- Posn wrapper
+
+-- Adds text positions to the basic model.
+
+{-# LINE 454 "templates/wrappers.hs" #-}
+
+
+-- -----------------------------------------------------------------------------
+-- Posn wrapper, ByteString version
+
+{-# LINE 470 "templates/wrappers.hs" #-}
+
+
+-- -----------------------------------------------------------------------------
+-- GScan wrapper
+
+-- For compatibility with previous versions of Alex, and because we can.
+

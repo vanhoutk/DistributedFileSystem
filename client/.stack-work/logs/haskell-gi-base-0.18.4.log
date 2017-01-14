@@ -1,0 +1,25 @@
+Configuring haskell-gi-base-0.18.4...
+Building haskell-gi-base-0.18.4...
+Preprocessing library haskell-gi-base-0.18.4...
+[ 1 of 19] Compiling Data.GI.Base.GType ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GType.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GType.o )
+[ 2 of 19] Compiling Data.GI.Base.Overloading ( src/Data/GI/Base/Overloading.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Overloading.o )
+[ 3 of 19] Compiling Data.GI.Base.BasicTypes ( src/Data/GI/Base/BasicTypes.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/BasicTypes.o )
+[ 4 of 19] Compiling Data.GI.Base.GHashTable ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GHashTable.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GHashTable.o )
+[ 5 of 19] Compiling Data.GI.Base.Utils ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Utils.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Utils.o )
+[ 6 of 19] Compiling Data.GI.Base.ManagedPtr ( src/Data/GI/Base/ManagedPtr.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/ManagedPtr.o )
+[ 7 of 19] Compiling Data.GI.Base.Closure ( src/Data/GI/Base/Closure.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Closure.o )
+[ 8 of 19] Compiling Data.GI.Base.GParamSpec ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GParamSpec.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GParamSpec.o )
+[ 9 of 19] Compiling Data.GI.Base.BasicConversions ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/BasicConversions.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/BasicConversions.o )
+[10 of 19] Compiling Data.GI.Base.GError ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GError.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GError.o )
+[11 of 19] Compiling Data.GI.Base.GValue ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GValue.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GValue.o )
+[12 of 19] Compiling Data.GI.Base.GVariant ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GVariant.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GVariant.o )
+[13 of 19] Compiling Data.GI.Base.Properties ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Properties.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Properties.o )
+[14 of 19] Compiling Data.GI.Base.Attributes ( src/Data/GI/Base/Attributes.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Attributes.o )
+[15 of 19] Compiling Data.GI.Base.GObject ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GObject.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/GObject.o )
+[16 of 19] Compiling Data.GI.Base.Constructible ( src/Data/GI/Base/Constructible.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Constructible.o )
+[17 of 19] Compiling Data.GI.Base.Signals ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Signals.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/Signals.o )
+[18 of 19] Compiling Data.GI.Base.ShortPrelude ( src/Data/GI/Base/ShortPrelude.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base/ShortPrelude.o )
+[19 of 19] Compiling Data.GI.Base     ( src/Data/GI/Base.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/GI/Base.o )
+Installing library in
+/home/protoman/.stack/snapshots/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1/haskell-gi-base-0.18.4-E9LoEhAlO2Y3Tf3W2VvPp5
+Registering haskell-gi-base-0.18.4...

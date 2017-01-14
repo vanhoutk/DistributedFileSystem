@@ -1,6 +1,6 @@
 module Main where
 
-import Client
+import ClientEditor
 
 main :: IO ()
-main = startClient
+main = startEditor

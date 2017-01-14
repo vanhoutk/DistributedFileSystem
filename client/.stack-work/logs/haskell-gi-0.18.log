@@ -1,0 +1,4 @@
+Configuring haskell-gi-0.18...
+setup-Simple-Cabal-1.24.2.0-ghc-8.0.1: The pkg-config package
+'gobject-introspection-1.0' version >=1.32 is required but it could not be
+found.

@@ -5,49 +5,41 @@ import Control.Monad.IO.Class
 import Data.IORef
 import Graphics.UI.Gtk
 
-
-createMenuBar descr = do
-  bar <- menuBarNew
-  mapM_ (createMenu bar) descr
-  return bar
-  
-  where
-    createMenu bar (name,items) = do
-      menu <- menuNew
-      item <- menuItemNewWithLabelOrMnemonic name
-      menuItemSetSubmenu item menu
-      menuShellAppend bar item
-      mapM_ (createMenuItem menu) items
-
-    createMenuItem menu (name,action) = do
-      item <- menuItemNewWithLabelOrMnemonic name
-      menuShellAppend menu item
-      case action of
-        Just act -> on item menuItemActivate act
-        Nothing  -> on item menuItemActivate (return ())
-    
-    menuItemNewWithLabelOrMnemonic name
-      | elem '_' name = menuItemNewWithMnemonic name
-      | otherwise     = menuItemNewWithLabel name
-
-menuBarDescr = [ 
-  ("_File", [ ("Open", Nothing)
-            , ("Save", Nothing)
-            , ("_Quit", Just mainQuit)
-            ]
-  )
-  , ("Help", [ ("_Help", Nothing) ] )
-  ]
-
-
 startEditor :: IO ()
 startEditor = do
   initGUI
   window <- windowNew
-  menuBar <- createMenuBar menuBarDescr
-  set window [ windowTitle := "Demo"
-             , containerChild := menuBar
-             ]
-  on window objectDestroy mainQuit
-  widgetShowAll window
-mainGUI
+  set window [windowTitle := "KNote", containerBorderWidth := 10,
+             windowDefaultWidth := 600, windowDefaultHeight := 400 ]
+
+  vbox <- vBoxNew False 0
+
+  containerAdd window vbox
+
+  box     <- hBoxNew False 0
+  button1 <- buttonNewWithLabel "Open"
+  onClicked button1 (putStrLn "button clicked")
+  boxPackStart box button1 PackNatural 0
+  button2 <- buttonNewWithLabel "Read"
+  onClicked button2 (putStrLn "button clicked")
+  boxPackStart box button2 PackNatural 0
+  button3 <- buttonNewWithLabel "Write"
+  onClicked button3 (putStrLn "button clicked")
+  boxPackStart box button3 PackNatural 0
+  boxPackStart vbox box PackNatural 0
+  sep1       <- hSeparatorNew
+  boxPackStart vbox sep1 PackNatural 10
+
+
+  tv <- textViewNew
+
+  containerAdd vbox tv
+  buf <- textViewGetBuffer tv
+
+  onBufferChanged buf $ do 
+    cn <- textBufferGetCharCount buf
+    putStrLn (show cn)   
+
+  widgetShowAll window 
+  onDestroy window mainQuit
+  mainGUI
