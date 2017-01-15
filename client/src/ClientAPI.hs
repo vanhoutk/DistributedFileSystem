@@ -9,8 +9,10 @@
 {-# LANGUAGE TypeSynonymInstances  #-}
 
 module ClientAPI
-    ( runQuery
+    ( downloadReadWriteQ
+    , fileListQuery
     , loginClient
+    , uploadToServerQuery
     ) where
 
 import            Data.Aeson
@@ -45,83 +47,80 @@ downloadQuery ticket encTimeOut fileName = do
   download_file <- downloadFile (SecureFileName ticket encTimeOut fileName)
   return (download_file)
 
-downloadQ :: AuthToken -> String -> IO ()
+downloadQ :: AuthToken -> String -> IO (Maybe File)
 downloadQ token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
-  putStrLn $ "Encrypted File Name: " ++ fileName
+  logMessage clientLogging ("Attempting to download file: " ++ fileName)
+
   let encFileName = encryptDecrypt decSessionKey fileName
   serverPort <- searchForFileQuery token fileName
+  
   manager <- newManager defaultManagerSettings
   case serverPort of
     Nothing -> do
-      putStrLn "Unable to find file on directory server"
-      return ()
+      logMessage clientLogging ("Error - Unable to find file on directory server")
+      return Nothing
     Just serverPort' -> do
       res <- runClientM (downloadQuery decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host serverPort' ""))
       case res of
-        Left err -> logMessage clientLogging ("Error downloading file: " ++ show err)
+        Left err -> do
+          logMessage clientLogging ("Error downloading file: " ++ show err)
+          return Nothing
         Right (downloadFile) -> do
           let (SecureFile (File name contents)) = downloadFile
           let decName = encryptDecrypt decSessionKey name
           let decContents = encryptDecrypt decSessionKey contents
           let decryptedFile = (File decName decContents)
           storeNewFileInCache decryptedFile
-          print decryptedFile
+          return (Just decryptedFile)
 
-getFilesQuery :: ClientM([String])
-getFilesQuery = do
-  get_files <- getFiles
-  return (get_files)
-
--- TODO: Might need to change the return type to return something
-runQuery :: AuthToken -> String -> String -> String -> IO()
-runQuery token@(AuthToken decTicket decSessionKey encTimeOut) queryType fileName contentsOrType = do
-  putStrLn "Running Query..."
-
-  case queryType of
+downloadReadWriteQ :: AuthToken -> String -> String -> IO (Maybe File)
+downloadReadWriteQ token@(AuthToken decTicket decSessionKey encTimeOut) fileName readOrWrite = do
+  case readOrWrite of
+    "write" -> do
+      logMessage clientLogging ("Checking for lock on file: " ++ fileName)
+      isLocked <- checkLockF token fileName
+      case isLocked of
+        Nothing -> do
+          logMessage clientLogging ("Error when checking lock on file.")
+          return Nothing
+        Just isLocked' -> do
+          case isLocked' of
+            False -> do
+              lockF token fileName
+              logMessage clientLogging ("Checking if file is already in cache: " ++ fileName)
+              isCached <- doesFileExist fileName
+              case isCached of
+                False -> do
+                  logMessage clientLogging ("File not in cache, will attempt to download...")
+                  file <- downloadQ token fileName
+                  case file of
+                    Nothing -> return Nothing
+                    Just file' -> return (Just file')
+                
+                True -> do
+                  logMessage clientLogging ("File found in cache. Retrieving file...")
+                  cachedFile <- getFileFromCache fileName
+                  return (Just cachedFile)
+            
+            True -> do
+              putStrLn "Unable to get write access to this file. There is already a lock on it."
+              return Nothing
     
-    "upload" -> do
-      putStrLn $ "Uploading file: " ++ fileName
-      unlockF token fileName
-      uploadToServerQuery token fileName contentsOrType
-    
-    "listfiles" -> do
-      putStrLn $ "Getting list of files in directory..."
-      manager <- newManager defaultManagerSettings
-      res <- runClientM (getFileListQuery decTicket encTimeOut) (ClientEnv manager (BaseUrl Http host 8080 ""))
-      case res of
-        Left err -> logMessage clientLogging ("Error getting list of files: " ++ show err)
-        Right (encFiles) -> do
-          let decFiles = encryptDecryptArray decSessionKey encFiles
-          print decFiles
-    
-    "download" -> do
-      putStrLn $ "Checking if file is already in cache: " ++ fileName
+    "read" -> do
+      logMessage clientLogging ("Checking if file is already in cache: " ++ fileName)
       isCached <- doesFileExist fileName
       case isCached of
         False -> do
-          putStrLn $ "Attempting to download file from server: " ++ fileName
-          case contentsOrType of
-            "write" -> do
-              isLocked <- checkLockF token fileName
-              case isLocked of
-                Nothing -> do
-                  putStrLn "Error when checking lock on file."
-                Just isLocked' -> do
-                  case isLocked' of
-                    False -> do
-                      lockF token fileName
-                      downloadQ token fileName
-                    True -> do
-                      putStrLn "Unable to get write access to this file. There is already a lock on it."
-            "read" -> do
-              downloadQ token fileName
+          logMessage clientLogging ("File not in cache, will attempt to download...")
+          file <- downloadQ token fileName
+          case file of
+            Nothing -> return Nothing
+            Just file' -> return (Just file')
+        
         True -> do
-          putStrLn $ "Retrieving file from cache..."
-          downloadFile <- getFileFromCache fileName
-          print downloadFile
-    _ -> do
-      putStrLn "Invalid Command."
-
+          logMessage clientLogging ("File found in cache. Retrieving file...")
+          cachedFile <- getFileFromCache fileName
+          return (Just cachedFile)
 
 -- | Directory Server Stuff
 
@@ -158,22 +157,37 @@ getFileListQuery ticket encTimeOut = do
   fileList <- getFileList (SecureTicket ticket encTimeOut)
   return fileList
 
+fileListQuery :: AuthToken -> IO (Maybe [String])
+fileListQuery token@(AuthToken decTicket decSessionKey encTimeOut) = do
+  logMessage clientLogging ("Requesting list of files from Directory Server...")
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (getFileListQuery decTicket encTimeOut) (ClientEnv manager (BaseUrl Http host 8080 ""))
+  case res of
+    Left err -> do
+      logMessage clientLogging ("Error getting list of files: " ++ show err)
+      return Nothing
+    Right (encFiles) -> do
+      let decFiles = encryptDecryptArray decSessionKey encFiles
+      print decFiles
+      return (Just decFiles)
+
 uploadServerQuery :: String -> String -> String -> String -> ClientM SecureResponseData
 uploadServerQuery ticket encTimeOut fileName fileContents = do
   upload_file <- uploadFile (SecureFileUpload ticket encTimeOut (File fileName fileContents))
   return (upload_file)
 
 uploadToServerQuery :: AuthToken -> String -> String -> IO ()
-uploadToServerQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName contentsOrType = do
+uploadToServerQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName contents = do
+  logMessage clientLogging ("Uploading File: " ++ fileName)
+  unlockF token fileName
   let encFileName = encryptDecrypt decSessionKey fileName
-  let encFileContents = encryptDecrypt decSessionKey contentsOrType
+  let encFileContents = encryptDecrypt decSessionKey contents
   manager <- newManager defaultManagerSettings
   res <- runClientM (uploadServerQuery decTicket encTimeOut encFileName encFileContents) (ClientEnv manager (BaseUrl Http host dsPort ""))
   case res of
     Left err -> logMessage clientLogging ("Error uploading file: " ++ show err)
     Right (uploadFileResponse@(SecureResponseData encResponse)) -> do
       let decResponse = encryptDecrypt decSessionKey encResponse
-      putStrLn $ "Encrypted upload response: " ++ encResponse
       putStrLn $ "Decrypted upload response: " ++ decResponse
 
 -- | Authentication Server

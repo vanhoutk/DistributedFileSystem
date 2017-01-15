@@ -1,8 +1,8 @@
 Preprocessing library client-0.1.0.0...
+[2 of 4] Compiling ClientAPI        ( src/ClientAPI.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/ClientAPI.o )
 [3 of 4] Compiling ClientEditor     ( src/ClientEditor.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/ClientEditor.o )
-[4 of 4] Compiling Client           ( src/Client.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Client.o )
+[4 of 4] Compiling Client           ( src/Client.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Client.o ) [ClientAPI changed]
 Preprocessing executable 'client-exe' for client-0.1.0.0...
-[1 of 1] Compiling Main             ( app/Main.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/client-exe/client-exe-tmp/Main.o )
 Linking .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/client-exe/client-exe ...
 Installing library in
 /home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1/client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0

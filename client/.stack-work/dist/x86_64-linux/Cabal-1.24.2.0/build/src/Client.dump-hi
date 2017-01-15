@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-14 21:00:18.281051 UTC
+2017-01-15 02:23:57.608327 UTC
 
 interface client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0:Client 8001
-  interface hash: 5acfaac6883457f03c18c6254c185014
+  interface hash: 4fc4d75430867df766857b51bd331b62
   ABI hash: a8df2750d2f6444030f9d312ce323234
   export-list hash: b56f6fef9889fd4d5c3d54bb58f7240c
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -176,11 +176,11 @@ import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  Cache fded8bfa83aeb25691149ca52c528a20
   exports: 8f8189caeda4b169492138c7d9f8baa7
   setupCache d189cf1f646cecab395162917086ef55
-import  -/  ClientAPI 1ce72554318a7003f6750b4d2e55b51d
-  exports: a9f559dba5a882d4d7fda4ef477bee44
+import  -/  ClientAPI 0571083ca91c4ed27f706dcff7ff5a0e
+  exports: 23215eeec83ed4e4f981067bd691f20a
   loginClient b3d01ef66e448d15d2e9c480a257dd32
-import  -/  ClientEditor 7e69847c3f55ab93cced637cc4f28051
-  exports: 908aeb91d855fb075b10c8d96372a9f8
+import  -/  ClientEditor f74c4ca8e4321a742aec0c2208ecb2ee
+  exports: 5c277af8a4c2967b0b34b82f2d71ae86
   startEditor 770b1767a93ef59f755a8048e04aa937
 import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs b14cb20229034793dd4801284cf0d872
 import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 24b19ef74cea78e4c18332bed9f0491d
