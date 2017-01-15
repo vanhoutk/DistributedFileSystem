@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-15 02:23:57.608327 UTC
+2017-01-15 19:07:04.271356 UTC
 
 interface client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0:Client 8001
-  interface hash: 4fc4d75430867df766857b51bd331b62
+  interface hash: 911bcda8c04fabf07cfb58747f1851b3
   ABI hash: a8df2750d2f6444030f9d312ce323234
   export-list hash: b56f6fef9889fd4d5c3d54bb58f7240c
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -173,16 +173,16 @@ family instance modules: attoparsec-0.13.1.0@attoparsec-0.13.1.0-5Olk1S76r1CDYzF
                          zlib-0.6.1.2@zlib-0.6.1.2-4CWLN1T27kOJhNvXgy46ZV:Codec.Compression.Zlib.Stream
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  Cache fded8bfa83aeb25691149ca52c528a20
-  exports: 8f8189caeda4b169492138c7d9f8baa7
+import  -/  Cache f76a683836a2a577716f8709b2746b61
+  exports: 105150b5c54d55870ee22f6a000b7271
   setupCache d189cf1f646cecab395162917086ef55
-import  -/  ClientAPI 0571083ca91c4ed27f706dcff7ff5a0e
-  exports: 23215eeec83ed4e4f981067bd691f20a
+import  -/  ClientAPI 98b197efe98daddb6fae8eb32c53e6a2
+  exports: b073ddf593526a4ad729c867ad580f02
   loginClient b3d01ef66e448d15d2e9c480a257dd32
-import  -/  ClientEditor f74c4ca8e4321a742aec0c2208ecb2ee
-  exports: 5c277af8a4c2967b0b34b82f2d71ae86
+import  -/  ClientEditor 1bef92a19d63d3030118f2ad8110ab04
+  exports: 6f69da450efd23997be22ec5529c4c82
   startEditor 770b1767a93ef59f755a8048e04aa937
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs b14cb20229034793dd4801284cf0d872
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs b66158317e93890a1da983468b86be19
 import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 24b19ef74cea78e4c18332bed9f0491d
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 a7e15b8522d72343fa98c5d5b7c9493f

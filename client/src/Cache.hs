@@ -154,11 +154,12 @@ deleteFile :: SecureFileName -> ClientM SecureResponseData
 getFiles :: ClientM [String]
 downloadFile :: SecureFileName -> ClientM SecureFile
 getModifyTime :: SecureFileName -> ClientM SecureTime
+commitFile :: String -> String -> ClientM ResponseData
 
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
 
-uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
+uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime :<|> commitFile = client fileserverApi
 
 downloadQuery :: String -> String -> String -> ClientM(SecureFile)
 downloadQuery ticket encTimeOut fileName = do
@@ -199,6 +200,7 @@ fileModifyTimeQuery token@(AuthToken decTicket decSessionKey encTimeOut) port fi
 -- | Directory Server
 
 searchForFile :: SecureFileName -> ClientM SecurePort
+searchForMany :: String -> ClientM [Int]
 uploadToServer :: SecureFileUpload -> ClientM SecureResponseData
 getFileList :: SecureTicket -> ClientM [String]
 updateList :: String -> Int -> String -> ClientM ResponseData
@@ -206,7 +208,7 @@ updateList :: String -> Int -> String -> ClientM ResponseData
 directoryServerApi :: Proxy DirectoryServerAPI
 directoryServerApi = Proxy
 
-searchForFile :<|> uploadToServer :<|> getFileList :<|> updateList = client directoryServerApi
+searchForFile :<|> searchForMany :<|> uploadToServer :<|> getFileList :<|> updateList = client directoryServerApi
 
 searchQuery :: String -> String -> String -> ClientM SecurePort
 searchQuery ticket encTimeOut fileName = do

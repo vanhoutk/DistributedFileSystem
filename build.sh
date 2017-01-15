@@ -15,3 +15,6 @@ stack build
 echo "Building Client"
 cd  "$loc/client"
 stack build
+echo "Building Transaction Server"
+cd  "$loc/transactionServer"
+stack build

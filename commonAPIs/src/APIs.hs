@@ -33,6 +33,9 @@ dirServerLogging = True
 lockServerLogging :: Bool
 lockServerLogging = True
 
+tranServerLogging :: Bool
+tranServerLogging = True
+
 clientLogging :: Bool
 clientLogging = True
 
@@ -43,6 +46,7 @@ logMessage :: Bool -> String -> IO()
 logMessage logBool message = do
   if(logBool) then putStrLn message
   else return ()
+
 
 -- | Port Variables
 
@@ -55,14 +59,22 @@ asPort = 8090
 lsPort :: Int
 lsPort = 8091
 
+tsPort :: Int
+tsPort = 8092
+
 -- | Host Variables
 
 host :: String
 host = "localhost"
 
+dsHost :: String
+dsHost = "localhost"
+
 fsHost :: String
 fsHost = "localhost"
 
+lsHost :: String
+lsHost = "localhost"
 
 -- | Data Declarations
 
@@ -104,6 +116,12 @@ data FileMapping = FileMapping { fileName :: String
                                , serverPort :: String
                                } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
 
+data TransactionData = TransactionData { userid :: String
+                                       , servFileName :: String
+                                       , tempFileName :: String
+                                       , tServerPort :: String
+                                       } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
+
 data AccountData = AccountData { username :: String
                                , password :: String
                                } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
@@ -136,8 +154,10 @@ type FileServerAPI = "upload"     :> ReqBody '[JSON] SecureFileUpload :> Post '[
                 :<|> "download"   :> Get '[JSON] [String] --Doesn't need to be encrypted as only called from Directory Server
                 :<|> "download"   :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureFile
                 :<|> "modifyTime" :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureTime
+                :<|> "commit"     :> Capture "sys" String             :> Capture "temp" String :> Get '[JSON] ResponseData
 
 type DirectoryServerAPI = "search"      :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecurePort
+                     :<|> "searchMany"  :> Capture "fileName" String        :> Get '[JSON] [Int]
                      :<|> "upload"      :> ReqBody '[JSON] SecureFileUpload :> Post '[JSON] SecureResponseData
                      :<|> "list"        :> ReqBody '[JSON] SecureTicket     :> Post '[JSON] [String]
                      :<|> "updateList"  :> Capture "updateType" String      :> Capture "port" Int :> Capture "name" String :> Get '[JSON] ResponseData
@@ -149,6 +169,12 @@ type LockServerAPI = "lock"      :> ReqBody '[JSON] SecureFileName :> Post '[JSO
                 :<|> "unlock"    :> ReqBody '[JSON] SecureFileName :> Post '[JSON] SecureResponseData
                 :<|> "checkLock" :> ReqBody '[JSON] SecureFileName :> Post '[JSON] Bool
 
+type TransactionServerAPI = "start"   :> ReqBody '[JSON] SecureTicket     :> Post '[JSON] SecureResponseData
+                       :<|> "search"  :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureFile
+                       :<|> "cache"   :> ReqBody '[JSON] SecureFileName   :> Post '[JSON] SecureResponseData
+                       :<|> "upload"  :> ReqBody '[JSON] SecureFileUpload :> Post '[JSON] SecureResponseData
+                       :<|> "commit"  :> ReqBody '[JSON] SecureTicket     :> Post '[JSON] SecureResponseData
+                       :<|> "abort"   :> ReqBody '[JSON] SecureTicket     :> Post '[JSON] SecureResponseData
 
 -- | Encryption Variable and Functions
 

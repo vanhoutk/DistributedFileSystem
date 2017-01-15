@@ -126,6 +126,13 @@
   (major1) == 3 && (major2) <  2 || \
   (major1) == 3 && (major2) == 2 && (minor) <= 9)
 
+/* tool alex-3.1.7 */
+#define TOOL_VERSION_alex "3.1.7"
+#define MIN_TOOL_VERSION_alex(major1,major2,minor) (\
+  (major1) <  3 || \
+  (major1) == 3 && (major2) <  1 || \
+  (major1) == 3 && (major2) == 1 && (minor) <= 7)
+
 /* tool gcc-4.8 */
 #define TOOL_VERSION_gcc "4.8"
 #define MIN_TOOL_VERSION_gcc(major1,major2,minor) (\

@@ -29,12 +29,12 @@ version :: Version
 version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/bin"
-libdir     = "/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1/commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9"
-dynlibdir  = "/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1"
-datadir    = "/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/share/x86_64-linux-ghc-8.0.1/commonAPIs-0.1.0.0"
-libexecdir = "/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/libexec"
-sysconfdir = "/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/etc"
+bindir     = "/home/protoman/Documents/CS4532/DFS/transactionServer/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/bin"
+libdir     = "/home/protoman/Documents/CS4532/DFS/transactionServer/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1/commonAPIs-0.1.0.0-2DdD74FJu2hIlPaJJTfr4G"
+dynlibdir  = "/home/protoman/Documents/CS4532/DFS/transactionServer/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1"
+datadir    = "/home/protoman/Documents/CS4532/DFS/transactionServer/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/share/x86_64-linux-ghc-8.0.1/commonAPIs-0.1.0.0"
+libexecdir = "/home/protoman/Documents/CS4532/DFS/transactionServer/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/libexec"
+sysconfdir = "/home/protoman/Documents/CS4532/DFS/transactionServer/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/etc"
 
 getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "commonAPIs_bindir") (\_ -> return bindir)

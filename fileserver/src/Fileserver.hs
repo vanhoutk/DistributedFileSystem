@@ -13,20 +13,20 @@ module Fileserver
     ( startServer
     ) where
 
-import           	Control.Monad.IO.Class
+import            Control.Monad.IO.Class
 import            Control.Monad.Trans.Except
-import           	Control.Monad.Trans.Resource
-import 						Data.Aeson
-import						Data.Aeson.TH
-import qualified	Data.List                    as DL
-import           	Data.Text                    (pack, unpack)
+import            Control.Monad.Trans.Resource
+import            Data.Aeson
+import            Data.Aeson.TH
+import qualified  Data.List                    as DL
+import            Data.Text                    (pack, unpack)
 import            Data.Time
 import            Network.HTTP.Client          (newManager, defaultManagerSettings)
-import 						Network.Wai
-import 						Network.Wai.Handler.Warp
-import 						Servant
-import qualified  Servant.API                  as SC
-import qualified  Servant.Client               as SC  
+import            Network.Wai
+import            Network.Wai.Handler.Warp
+import            Servant
+import            Servant.API                  
+import            Servant.Client               
 import            System.Directory
 
 import						APIs
@@ -54,6 +54,7 @@ server port = uploadFile
          :<|> getFiles
 		     :<|> downloadFile
          :<|> getModifyTime
+         :<|> commitFile
 
 	where
 
@@ -139,23 +140,33 @@ server port = uploadFile
       let encTime = encryptTime sessionKey time
       return (SecureTime encTime)
 
+    commitFile :: String -> String -> APIHandler ResponseData
+    commitFile sysFileName tempFileName = do
+      liftIO $ do
+        logMessage fileServerLogging ("Committing Changes to File: " ++ sysFileName)
+        contents <- readFile tempFileName
+        writeFile sysFileName contents
+        logMessage fileServerLogging ("Deleting file: " ++ tempFileName ++ " ...")
+        removeFile tempFileName
+      return (ResponseData "Success")
 
 -- | Directory Server Stuff
 
-searchForFile :: SecureFileName -> SC.ClientM SecurePort
-uploadToServer :: SecureFileUpload -> SC.ClientM SecureResponseData
-getFileList :: SecureTicket -> SC.ClientM [String]
-updateList :: String -> Int -> String -> SC.ClientM ResponseData
+searchForFile :: SecureFileName -> ClientM SecurePort
+searchForMany :: String -> ClientM [Int]
+uploadToServer :: SecureFileUpload -> ClientM SecureResponseData
+getFileList :: SecureTicket -> ClientM [String]
+updateList :: String -> Int -> String -> ClientM ResponseData
 
 directoryServerApi :: Proxy DirectoryServerAPI
 directoryServerApi = Proxy
 
-searchForFile :<|> uploadToServer :<|> getFileList :<|> updateList = SC.client directoryServerApi
+searchForFile :<|> searchForMany :<|> uploadToServer :<|> getFileList :<|> updateList = client directoryServerApi
 
 updateListQuery :: String -> Int -> String -> IO()
 updateListQuery updateType port fileName = do
   manager <- newManager defaultManagerSettings
-  res <- SC.runClientM (updateList updateType port fileName) (SC.ClientEnv manager (SC.BaseUrl SC.Http host dsPort ""))
+  res <- runClientM (updateList updateType port fileName) (ClientEnv manager (BaseUrl Http host dsPort ""))
   case res of
     Left err -> do
       logMessage fileServerLogging ("Error updating directory list: " ++ show err)

@@ -1,9 +1,8 @@
-Configuring fileserver-0.1.0.0...
 Preprocessing library fileserver-0.1.0.0...
 [1 of 1] Compiling Fileserver       ( src/Fileserver.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Fileserver.o )
 
-src/Fileserver.hs:16:18: warning: [-Wtabs]
-    Tab character found here, and in 42 further locations.
+src/Fileserver.hs:32:7: warning: [-Wtabs]
+    Tab character found here, and in 8 further locations.
     Please use spaces instead.
 Preprocessing executable 'fileserver-exe' for fileserver-0.1.0.0...
 [1 of 1] Compiling Main             ( app/Main.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/fileserver-exe/fileserver-exe-tmp/Main.o )

@@ -83,6 +83,7 @@ api = Proxy
 
 server :: Server DirectoryServerAPI
 server = searchForFile
+    :<|> searchForMany
     :<|> uploadToServer
     :<|> listFiles
     :<|> updateLists
@@ -128,6 +129,23 @@ server = searchForFile
             0 -> return Nothing 
             _ -> return (Just (head fileMap))
 
+    searchForMany :: String -> APIHandler [Int]
+    searchForMany fileName = do
+      liftIO $ logMessage dirServerLogging ("Searching for all servers with file:  " ++ fileName ++ " ...")
+      fileMap <- liftIO $ withMongoDbConnection $ do
+        docs <- find (select ["fileName" =: fileName] "FILE_SERVER_MAPPINGS") >>= drainCursor
+        return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
+
+      case (length fileMap) of -- Currently no replicating so the length should either be 0 or 1
+        0 -> return [] 
+        _ -> do
+          ports <- mapM (getPorts) fileMap
+          return (ports)
+
+      where
+        getPorts :: FileMapping -> APIHandler Int
+        getPorts (FileMapping _ _ port) = return (read port :: Int)
+
     uploadToServer :: SecureFileUpload -> APIHandler SecureResponseData
     uploadToServer file@(SecureFileUpload ticket encTimeOut (File encFileName encContents)) = do
       let decTimeOut = decryptTime sharedServerSecret encTimeOut
@@ -160,7 +178,7 @@ server = searchForFile
                 liftIO $ logMessage dirServerLogging ("Upload File Response: " ++ decResponse)
                 return (SecureResponseData uploadResponse)
           Just fileMapping' -> do
-            -- TODO: HERE
+            -- TODO: Check that uploads have all worked correctly
             mapM (sendToServers file) fileMapping'
             let encResponse = encryptDecrypt sessionKey "Success"
             return (SecureResponseData encResponse)
@@ -251,11 +269,12 @@ deleteFile :: SecureFileName -> SC.ClientM SecureResponseData
 getFiles :: SC.ClientM [String]
 downloadFile :: SecureFileName -> SC.ClientM SecureFile
 getModifyTime :: SecureFileName -> SC.ClientM SecureTime
+commitFile :: String -> String -> SC.ClientM ResponseData
 
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
 
-uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = SC.client fileserverApi
+uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime :<|> commitFile = SC.client fileserverApi
 
 uploadQuery :: SecureFileUpload -> SC.ClientM SecureResponseData
 uploadQuery file = do

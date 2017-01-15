@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-15 02:23:57.335032 UTC
+2017-01-15 19:07:03.822424 UTC
 
 interface client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0:ClientEditor 8001
-  interface hash: 2c49eed766c45e71017d4b8427dcafd6
-  ABI hash: f74c4ca8e4321a742aec0c2208ecb2ee
-  export-list hash: 5c277af8a4c2967b0b34b82f2d71ae86
+  interface hash: 47b9af2c93e3170602070dda59b9ae0a
+  ABI hash: 1bef92a19d63d3030118f2ad8110ab04
+  export-list hash: 6f69da450efd23997be22ec5529c4c82
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: ab396f11155bd696ab63895436e6f1df
   sig of: Nothing
@@ -16,6 +16,7 @@ exports:
   ClientEditor.quitClient
   ClientEditor.readButtonClicked
   ClientEditor.readWriteButtonClicked
+  ClientEditor.readWriteTButtonClicked
   ClientEditor.startEditor
 module dependencies: Cache ClientAPI
 package dependencies: aeson-0.11.2.1@aeson-0.11.2.1-EvvVy7RUk571N9rAPFuWeR
@@ -181,15 +182,21 @@ import  -/  base-4.9.0.0:Data.IORef 4b625b2df7d0ef688ec068837f79c7b0
 import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  Cache fded8bfa83aeb25691149ca52c528a20
-  exports: 8f8189caeda4b169492138c7d9f8baa7
+import  -/  Cache f76a683836a2a577716f8709b2746b61
+  exports: 105150b5c54d55870ee22f6a000b7271
   clearCache 328b8f81a7e752d8192e1738d32d4639
-import  -/  ClientAPI 0571083ca91c4ed27f706dcff7ff5a0e
-  exports: 23215eeec83ed4e4f981067bd691f20a
+import  -/  ClientAPI 98b197efe98daddb6fae8eb32c53e6a2
+  exports: b073ddf593526a4ad729c867ad580f02
+  abortTQuery 55e4bbfd8983396df4a96a82132ac8ec
+  commitTQuery 4518919aee67c37d86f7cacdfee6503d
   downloadReadWriteQ 974e5e47df572707c554e07ecb68593e
-  fileListQuery 46702ce47a125bf0a7bbb211ab830db0
+  downloadTQuery 1312e5c22bea62e16d63bbd73a2798c6
+  fileListQuery b2d7334ef3a3e3b3df29eba5e56e49cd
+  startTQuery 1b23b978bcafc6985aeea45f36d172b9
+  uploadTQuery f62455ad76eb5467cf30facf35bc59f1
   uploadToServerQuery 14a9dc5c0c49832d1f0445a3f2f6eecc
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs b14cb20229034793dd4801284cf0d872
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs b66158317e93890a1da983468b86be19
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  glib-0.13.4.1@glib-0.13.4.1-LHb10HBfEaUfMcseRRiwA:System.Glib.Attributes b43f7acb8ac12c3447ff229a317590a1
 import  -/  gtk-0.14.6@gtk-0.14.6-8QOyLaYdqChBgC3HlzNS5c:Graphics.UI.Gtk b4b8ae605d2a717f57e7239a8773bbf3
@@ -205,6 +212,7 @@ import  -/  gtk-0.14.6@gtk-0.14.6-8QOyLaYdqChBgC3HlzNS5c:Graphics.UI.Gtk.Layout.
 import  -/  gtk-0.14.6@gtk-0.14.6-8QOyLaYdqChBgC3HlzNS5c:Graphics.UI.Gtk.Multiline.TextBuffer 92c1e52eb09c6f6255eacfd7788fae0a
 import  -/  gtk-0.14.6@gtk-0.14.6-8QOyLaYdqChBgC3HlzNS5c:Graphics.UI.Gtk.Multiline.TextView 9ec257b216ae052b6359c90eafc02eee
 import  -/  gtk-0.14.6@gtk-0.14.6-8QOyLaYdqChBgC3HlzNS5c:Graphics.UI.Gtk.Ornaments.HSeparator 20aa1af06adec3b42baaf72519c2ef1d
+import  -/  gtk-0.14.6@gtk-0.14.6-8QOyLaYdqChBgC3HlzNS5c:Graphics.UI.Gtk.Ornaments.VSeparator 6b0434731e925ccb14f5d8cd97bda02b
 import  -/  gtk-0.14.6@gtk-0.14.6-8QOyLaYdqChBgC3HlzNS5c:Graphics.UI.Gtk.Windows.Window 00a9df73991a22ffc6243c26923cd520
 e2063234dc29497cad518144fdd212fb
   $scontainerBorderWidth1 ::
@@ -286,14 +294,14 @@ b9793fe9896fd4dfa293ec00a28e40d3
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0"#) -}
-524a3a8c76f4a0745c201f060b55d1c1
+a42501f500d2719b5241eeb07402e1f9
   listButtonClicked :: APIs.AuthToken -> GHC.Types.IO ()
   {- Arity: 2, Strictness: <S,1*U(1*U,U,1*U)><S,U>,
      Unfolding: InlineRule (0, True, True)
                 ClientEditor.listButtonClicked1
                   `cast`
                 (<APIs.AuthToken>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-bc25f771b8aab74a3645e83e6ff65557
+06216f773afd7c5049d4cc1e76fa6025
   listButtonClicked1 ::
     APIs.AuthToken
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -434,6 +442,58 @@ e935829f8e3513eb06ffd0b5ee8bb6fc
   readWriteButtonClicked3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "Please enter the name of the file you want to download:"#) -}
+a615d63c89179a057b51e9963fce7d08
+  readWriteTButtonClicked :: APIs.AuthToken -> GHC.Types.IO APIs.File
+  {- Arity: 2, Strictness: <L,1*U(U,U,U)><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                ClientEditor.readWriteTButtonClicked1
+                  `cast`
+                (<APIs.AuthToken>_R ->_R Sym (GHC.Types.N:IO[0] <APIs.File>_R)) -}
+2d3c10b5e3d47b5749b969d1dcc5ae2b
+  readWriteTButtonClicked1 ::
+    APIs.AuthToken
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, APIs.File #)
+  {- Arity: 2, Strictness: <L,1*U(U,U,U)><S,U>,
+     Unfolding: (\ (token :: APIs.AuthToken)
+                   (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        ClientEditor.readWriteButtonClicked3
+                        GHC.Types.True
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case GHC.IO.Handle.Internals.wantReadableHandle_1
+                        @ GHC.Base.String
+                        GHC.IO.Handle.Text.hGetLine4
+                        GHC.IO.Handle.FD.stdin
+                        GHC.IO.Handle.Text.hGetLine2
+                          `cast`
+                        (<GHC.IO.Handle.Types.Handle__>_R
+                         ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R))
+                        ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 case token of ww { APIs.AuthToken ww1 ww2 ww3 ->
+                 case ClientAPI.$wdownloadTQuery
+                        ww1
+                        ww2
+                        ww3
+                        ipv3
+                        ipv2 of ds3 { (#,#) ipv4 ipv5 ->
+                 case ipv5 of wild {
+                   GHC.Base.Nothing
+                   -> (# ipv4, ClientEditor.readWriteTButtonClicked2 #)
+                   GHC.Base.Just file' -> (# ipv4, file' #) } } } } }) -}
+faab51e0432a12f2e3dd4be50938aa2d
+  readWriteTButtonClicked2 :: APIs.File
+  {- Strictness: m,
+     Unfolding: (APIs.File
+                   ClientEditor.readWriteTButtonClicked4
+                   ClientEditor.readWriteTButtonClicked3) -}
+304b3828555773655bd15890e0b37ff1
+  readWriteTButtonClicked3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "No file found."#) -}
+8b3baa41637327da97bfc40fbcbc01cd
+  readWriteTButtonClicked4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Failed"#) -}
 770b1767a93ef59f755a8048e04aa937
   startEditor :: APIs.AuthToken -> GHC.Types.IO ()
   {- Arity: 2, Strictness: <L,U(U,U,U)><S,U>,

@@ -74,7 +74,9 @@ Student Number: 12301975
 
   - This general design has its faults – improve on it if you can.
 
-
+  - Will use the user's session key as a unique identifier for the user
+  - Need to add an abort/commit to the fileserver
+  
 
 9. Lock Service
   - ~~Create a locking server~~

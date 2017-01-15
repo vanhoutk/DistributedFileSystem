@@ -9,10 +9,15 @@
 {-# LANGUAGE TypeSynonymInstances  #-}
 
 module ClientAPI
-    ( downloadReadWriteQ
+    ( loginClient
+    , downloadReadWriteQ
     , fileListQuery
-    , loginClient
     , uploadToServerQuery
+    , startTQuery
+    , uploadTQuery
+    , downloadTQuery
+    , commitTQuery
+    , abortTQuery
     ) where
 
 import            Data.Aeson
@@ -36,11 +41,12 @@ deleteFile :: SecureFileName -> ClientM SecureResponseData
 getFiles :: ClientM [String]
 downloadFile :: SecureFileName -> ClientM SecureFile
 getModifyTime :: SecureFileName -> ClientM SecureTime
+commitFile :: String -> String -> ClientM ResponseData
 
 fileserverApi :: Proxy FileServerAPI
 fileserverApi = Proxy
 
-uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime = client fileserverApi
+uploadFile :<|> deleteFile :<|> getFiles :<|> downloadFile :<|> getModifyTime :<|> commitFile = client fileserverApi
 
 downloadQuery :: String -> String -> String -> ClientM SecureFile
 downloadQuery ticket encTimeOut fileName = do
@@ -125,6 +131,7 @@ downloadReadWriteQ token@(AuthToken decTicket decSessionKey encTimeOut) fileName
 -- | Directory Server Stuff
 
 searchForFile :: SecureFileName -> ClientM SecurePort
+searchForMany :: String -> ClientM [Int]
 uploadToServer :: SecureFileUpload -> ClientM SecureResponseData
 getFileList :: SecureTicket -> ClientM [String]
 updateList :: String -> Int -> String -> ClientM ResponseData
@@ -132,7 +139,7 @@ updateList :: String -> Int -> String -> ClientM ResponseData
 directoryServerApi :: Proxy DirectoryServerAPI
 directoryServerApi = Proxy
 
-searchForFile :<|> uploadToServer :<|> getFileList :<|> updateList = client directoryServerApi
+searchForFile :<|> searchForMany :<|> uploadToServer :<|> getFileList :<|> updateList = client directoryServerApi
 
 searchQuery :: String -> String -> String -> ClientM SecurePort
 searchQuery ticket encTimeOut fileName = do 
@@ -296,3 +303,153 @@ checkLockF token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
       return Nothing
     Right (isLocked) -> do
       return (Just isLocked)
+
+
+-- | Transaction Server
+
+startTransaction :: SecureTicket -> ClientM SecureResponseData
+downloadTransaction :: SecureFileName -> ClientM SecureFile
+cachedTransaction :: SecureFileName -> ClientM SecureResponseData
+uploadTransaction :: SecureFileUpload -> ClientM SecureResponseData
+commitTransaction :: SecureTicket -> ClientM SecureResponseData
+abortTransaction :: SecureTicket -> ClientM SecureResponseData
+
+transactionServerAPI :: Proxy TransactionServerAPI
+transactionServerAPI = Proxy
+
+startTransaction :<|> downloadTransaction :<|> cachedTransaction :<|> uploadTransaction :<|> commitTransaction :<|> abortTransaction = client transactionServerAPI
+
+startT :: String -> String -> ClientM SecureResponseData
+startT ticket encTimeOut = do
+  response <- startTransaction (SecureTicket ticket encTimeOut)
+  return response
+
+startTQuery :: AuthToken -> IO()
+startTQuery token@(AuthToken decTicket decSessionKey encTimeOut) = do
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (startT decTicket encTimeOut) (ClientEnv manager (BaseUrl Http host tsPort ""))
+  case res of
+    Left err -> do
+      logMessage clientLogging ("Error starting transaction: " ++ show err)
+      return ()
+    Right (SecureResponseData encResponse) -> do
+      let decResponse = encryptDecrypt decSessionKey encResponse
+      logMessage clientLogging ("Start Transaction Response: " ++ decResponse)
+      return ()
+
+downloadT :: String -> String -> String -> ClientM SecureFile
+downloadT ticket encTimeOut encFileName = do
+  file <- downloadTransaction (SecureFileName ticket encTimeOut encFileName)
+  return (file)
+
+cachedT :: String -> String -> String -> ClientM SecureResponseData
+cachedT ticket encTimeOut encFileName = do
+  response <- cachedTransaction (SecureFileName ticket encTimeOut encFileName)
+  return (response)
+
+downloadTQuery :: AuthToken -> String -> IO (Maybe File)
+downloadTQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do 
+  logMessage clientLogging ("Checking for lock on file: " ++ fileName)
+  isLocked <- checkLockF token fileName
+  case isLocked of
+    Nothing -> do
+      logMessage clientLogging ("Error when checking lock on file.")
+      return Nothing
+    Just isLocked' -> do
+      case isLocked' of
+        False -> do
+          lockF token fileName
+          logMessage clientLogging ("Checking if file is already in cache: " ++ fileName)
+          isCached <- doesFileExist fileName
+          case isCached of
+            False -> do
+              logMessage clientLogging ("File not in cache, will attempt to download...")
+              let encFileName = encryptDecrypt decSessionKey fileName
+              manager <- newManager defaultManagerSettings
+              res <- runClientM (downloadT decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host tsPort ""))
+              case res of
+                Left err -> do
+                  logMessage clientLogging ("Error downloading file: " ++ show err)
+                  return Nothing
+                Right (downloadFile) -> do
+                  let (SecureFile (File name contents)) = downloadFile
+                  let decName = encryptDecrypt decSessionKey name
+                  let decContents = encryptDecrypt decSessionKey contents
+                  let decryptedFile = (File decName decContents)
+                  storeNewFileInCache decryptedFile
+                  return (Just decryptedFile)
+            
+            True -> do
+              logMessage clientLogging ("File in cache, Notifying Transaction Server...")
+              let encFileName = encryptDecrypt decSessionKey fileName
+              manager <- newManager defaultManagerSettings
+              res <- runClientM (cachedT decTicket encTimeOut encFileName) (ClientEnv manager (BaseUrl Http host tsPort ""))
+              case res of
+                Left err -> do
+                  logMessage clientLogging ("Error notifying transaction server of cached file: " ++ show err)
+                Right (SecureResponseData encResponse) -> do
+                  let decResponse = encryptDecrypt decSessionKey encResponse
+                  logMessage clientLogging ("Response from transaction server: " ++ decResponse)
+              logMessage clientLogging ("File found in cache. Retrieving file...")
+              cachedFile <- getFileFromCache fileName
+              return (Just cachedFile)
+        
+        True -> do
+          putStrLn "Unable to get write access to this file. There is already a lock on it."
+          return Nothing
+
+uploadT :: String -> String -> String -> String -> ClientM SecureResponseData
+uploadT ticket encTimeOut encFileName encFileContents = do
+  response <- uploadTransaction (SecureFileUpload ticket encTimeOut (File encFileName encFileContents))
+  return (response)
+
+uploadTQuery :: AuthToken -> String -> String -> IO()
+uploadTQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileName fileContents = do
+  let encFileName = encryptDecrypt decSessionKey fileName
+  let encFileContents = encryptDecrypt decSessionKey fileContents
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (uploadT decTicket encTimeOut encFileName encFileContents) (ClientEnv manager (BaseUrl Http host tsPort ""))
+  case res of
+    Left err -> do
+      logMessage clientLogging ("Error uploading transaction: " ++ show err)
+      return ()
+    Right (SecureResponseData encResponse) -> do
+      let decResponse = encryptDecrypt decSessionKey encResponse
+      logMessage clientLogging ("Upload Transaction Response: " ++ decResponse)
+      return ()
+
+commitT :: String -> String -> ClientM SecureResponseData
+commitT ticket encTimeOut = do
+  response <- commitTransaction (SecureTicket ticket encTimeOut)
+  return response
+
+commitTQuery :: AuthToken -> IO()
+commitTQuery token@(AuthToken decTicket decSessionKey encTimeOut) = do
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (commitT decTicket encTimeOut) (ClientEnv manager (BaseUrl Http host tsPort ""))
+  case res of
+    Left err -> do
+      logMessage clientLogging ("Error committing transaction: " ++ show err)
+      return ()
+    Right (SecureResponseData encResponse) -> do
+      let decResponse = encryptDecrypt decSessionKey encResponse
+      logMessage clientLogging ("Commit Transaction Response: " ++ decResponse)
+      return ()
+
+abortT :: String -> String -> ClientM SecureResponseData
+abortT ticket encTimeOut = do
+  response <- abortTransaction (SecureTicket ticket encTimeOut)
+  return response
+
+abortTQuery :: AuthToken -> IO()
+abortTQuery token@(AuthToken decTicket decSessionKey encTimeOut) = do
+  manager <- newManager defaultManagerSettings
+  res <- runClientM (abortT decTicket encTimeOut) (ClientEnv manager (BaseUrl Http host tsPort ""))
+  case res of
+    Left err -> do
+      logMessage clientLogging ("Error aborting transaction: " ++ show err)
+      return ()
+    Right (SecureResponseData encResponse) -> do
+      let decResponse = encryptDecrypt decSessionKey encResponse
+      logMessage clientLogging ("Abort Transaction Response: " ++ decResponse)
+      return ()
