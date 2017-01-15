@@ -10,8 +10,8 @@ Student Number: 12301975
 
   - ~~Interactive~~
   - ~~Includes the first Client Application~~
-  - Change into more of a text editor
-  - Change upload logic to upload a file rather than text input
+  - ~~Change into more of a text editor~~
+  - ~~Change upload logic to upload a file rather than text input~~
 
 2. Primary Client Application
 
