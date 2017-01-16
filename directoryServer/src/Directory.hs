@@ -230,7 +230,7 @@ server = searchForFile
         liftIO $ logMessage dirServerLogging ("Retrieving File Names...")
         fileNames <- mapM (getFileNames) fileMappings
         liftIO $ logMessage dirServerLogging ("Sorting File Names...")
-        let fileNames' = DL.sort fileNames
+        let fileNames' = DL.nub $ DL.sort fileNames
         let encFileNames = encryptDecryptArray sessionKey fileNames'
         return encFileNames
 

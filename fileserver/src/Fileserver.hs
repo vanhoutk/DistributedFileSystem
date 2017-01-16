@@ -148,6 +148,7 @@ server port = uploadFile
         writeFile sysFileName contents
         logMessage fileServerLogging ("Deleting file: " ++ tempFileName ++ " ...")
         removeFile tempFileName
+        updateListQuery "delete" port tempFileName
       return (ResponseData "Success")
 
 -- | Directory Server Stuff

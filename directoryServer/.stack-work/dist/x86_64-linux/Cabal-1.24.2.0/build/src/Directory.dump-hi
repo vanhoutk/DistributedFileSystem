@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-15 19:06:13.12464 UTC
+2017-01-16 13:47:29.710842 UTC
 
 interface directoryServer-0.1.0.0-FDpouSKWWcLGIqa26WnZCC:Directory 8001
-  interface hash: 2c73e37354526af238e6a86054f1f3e0
-  ABI hash: 6c1a42bcdbdf3144c7eaa113f48d0101
+  interface hash: 8027a7b6f5fcfac9cd2ab4a8aba6b524
+  ABI hash: 0abbe7367e1d0104b2a6c0f41805a213
   export-list hash: 2e9d7f1099220884305730b90179df8c
   orphan hash: 5a41ae9c202f4d42c0fe33c6564f186e
   flag hash: ab1dddaa39fb8a9e594899798c275a0c
@@ -203,7 +203,7 @@ import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:Text.Read 9c1be14f7e5eac8b18bcb566c5763677
 import  -/  bson-0.3.2.3@bson-0.3.2.3-3QA3aP5EtCyCltXUzEKOsQ:Data.Bson 609b35b07f554dfa69c4b31dfeed380e
 import  -/  bson-generic-0.0.8@bson-generic-0.0.8-DtORpoUHwQhDReLJ5Keop0:Data.Bson.Generic 8688e6671f6f36dd3a9c6c1c23977c50
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs b62203f7471c354ffcb070141262fa73
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs 0bf417a4b6a771ad6bb17874197f3747
 import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:MongoFunctions 119436d2d0ba26878eab36c3bc78e15e
 import  -/  directory-1.2.6.2@directory-1.2.6.2:System.Directory f7c57c4a392d1767b38addc37d00ceed
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
@@ -1504,14 +1504,14 @@ b41bdbe66d9476819b656492803f7169
     Control.Monad.Trans.Except.ExceptT
       Servant.Server.Internal.ServantErr.ServantErr GHC.Types.IO
     :: * -> *
-646fb268ae45a4e32088048fc2f4f775
+f2317aef4944affd77ca462e384746e1
   startDirectory :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Directory.startDirectory1
                   `cast`
                 (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-b987b37c80c5f5f79f3a40be47a0df13
+a2ed39ebe4df22edddb17e3023cabade
   startDirectory1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -1881,7 +1881,7 @@ bd8b7709466553e971f3e93ce68d1b23
                    (b1 :: ())
                    (req :: Network.Wai.Internal.Request) ->
                  Directory.startDirectory20) -}
-2db7dc772c002bdb68d8d641cedf1c08
+2a3934810f25c3f8f0c162a343253824
   startDirectory2 :: Network.Wai.Application
   {- Arity: 2,
      Unfolding: (Servant.Server.Internal.RoutingApplication.toApplication
@@ -2219,7 +2219,7 @@ a1ec8c084514bedc82fd1cba253e8c8d
                         (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                   <()>_R)))
                    Directory.startDirectory30) -}
-01278fbc558dd32e1390b096e6a0e456
+44ff548807d1b2a8a9b94e53e167ba92
   startDirectory3 ::
     Network.Wai.Internal.Request
     -> (Servant.Server.Internal.RoutingApplication.RouteResult
@@ -2518,7 +2518,7 @@ e41f1f1ea984ddfcdd3745ccdb5f0eab
                                 <Control.Monad.Trans.Except.ExceptT
                                    Servant.Server.Internal.ServantErr.ServantErr
                                    GHC.Types.IO>_N)))_R) -}
-a8836ec311e870ecbf91f91a749e3797
+bc79c1a07db22a30465b77014fd531e2
   startDirectory4 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -2785,7 +2785,7 @@ b73c7cdc748744617e4d89aa4151c693
 4c91bfb7e9c7bce63ff8f3a2ad158cac
   startDirectory47 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "upload"#) -}
-99fbe3996a6656f75a5c4c863ca031b9
+5d1ef9b3f3319f3a9e23eafb60272e86
   startDirectory48 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -2796,7 +2796,7 @@ b73c7cdc748744617e4d89aa4151c693
                    (GHC.Types.[]
                       @ (()
                          -> Servant.Server.Internal.RoutingApplication.RoutingApplication))) -}
-be848eb5dbd0a17fc658a0b999db1a6d
+10149b238ee297fb2eb05ad100fd8d0c
   startDirectory49 ::
     Data.Map.Base.Map
       Data.Text.Internal.Text
@@ -2832,7 +2832,7 @@ de186ef5ac5b95021efa73220b57358c
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    Directory.startDirectory37
                    Directory.startDirectory6) -}
-d98488447c0fe5fb9ee5574cfd210d62
+6e79cb858db19f15c0004fdfcf9d4764
   startDirectory50 ::
     Servant.Server.Internal.Router.Router'
       () Servant.Server.Internal.RoutingApplication.RoutingApplication
@@ -2840,12 +2840,12 @@ d98488447c0fe5fb9ee5574cfd210d62
                    @ ()
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    Directory.startDirectory51) -}
-f8247e6bcce988d9465c9db7a95712ec
+c37b71ee44a7ec2a004d47a4659c03c8
   startDirectory51 ::
     Servant.Server.Internal.Router.Router (Data.Text.Internal.Text, ())
   {- Unfolding: (Directory.startDirectory62
                    Directory.startDirectory52) -}
-5cd0b2bb3bd256e40f8b8147fb53eb77
+b81d980f435579dc361cc7719fd92cdb
   startDirectory52 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       (Data.Text.Internal.Text, ())
@@ -2893,7 +2893,7 @@ f8247e6bcce988d9465c9db7a95712ec
                                         Servant.Server.Internal.ServantErr.ServantErr
                                         GHC.Types.IO>_N))))_R
                    Directory.startDirectory14) -}
-2486689c354b3db77b6f31a4dbb199a4
+3f06dbcbfb7836515c3891112f7f726e
   startDirectory53 ::
     Servant.Server.Internal.RoutingApplication.Delayed
       ()
@@ -2954,7 +2954,7 @@ f8247e6bcce988d9465c9db7a95712ec
                         (Sym (Servant.Server.Internal.RoutingApplication.N:DelayedIO[0]
                                   <()>_R)))
                    Directory.startDirectory54) -}
-68f20c62cfc1cdfc284af52d9f3fc355
+6beea57494b29a2cc0df8c36d42902c1
   startDirectory54 ::
     ()
     -> ()
@@ -2974,7 +2974,7 @@ f8247e6bcce988d9465c9db7a95712ec
                    (b1 :: ())
                    (req :: Network.Wai.Internal.Request) ->
                  Directory.startDirectory55) -}
-4f441a8d6ef4283a86bd70eb00db4e14
+61b1e2f9b57e467c4788d4c3bf1d57f2
   startDirectory55 ::
     Servant.Server.Internal.RoutingApplication.RouteResult
       (Servant.Server.Internal.Server
@@ -3038,7 +3038,7 @@ f8247e6bcce988d9465c9db7a95712ec
                                             <Control.Monad.Trans.Except.ExceptT
                                                Servant.Server.Internal.ServantErr.ServantErr
                                                GHC.Types.IO>_N)))))) -}
-9ba598cccf21a730144672d84ab17978
+d358f051b072bf44b2bad1c38490e303
   startDirectory56 ::
     GHC.Base.String
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -3129,7 +3129,7 @@ f8247e6bcce988d9465c9db7a95712ec
                    @ Servant.Server.Internal.ServantErr.ServantErr
                    @ [GHC.Types.Int]
                    (GHC.Types.[] @ GHC.Types.Int)) -}
-f8967d5ac8c9bc0ad6add6b22d668426
+7780b6bf5432fdf7be8912e9e8d5dcc4
   startDirectory58 ::
     [APIs.FileMapping]
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -3620,7 +3620,7 @@ cdb01571e8f8b2e103eea31eee53c6fc
 f34d6079b627f458c1e2e0bffd74a8db
   startDirectory80 :: GHC.Types.Int
   {- HasNoCafRefs, Unfolding: (GHC.Types.I# 8081#) -}
-174522e1a211b2300caec11ba533ea8a
+c8e76170886f4fab6c3e0343d044994f
   startDirectory81 ::
     [GHC.Types.Int]
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -3638,7 +3638,7 @@ caa34ddefa373fc146fec087e9101dfb
                    @ ()
                    @ Servant.Server.Internal.RoutingApplication.RoutingApplication
                    Directory.startDirectory10) -}
-6acd0635262281f7a2706b285cfa08d9
+daa3c471b6ed44de81556fb2aed0f605
   startDirectory_r :: Servant.Server.Internal.Router.Router ()
   {- Unfolding: (Servant.Server.Internal.Router.choice
                    @ ()

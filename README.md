@@ -61,6 +61,7 @@ Student Number: 12301975
 8. Transactions
   - ~~Will use the user's session key as a unique identifier for the user~~
   - ~~Need to add an abort/commit to the fileserver~~
+  - Fill in the README
   
 
 9. Lock Service
