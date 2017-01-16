@@ -6,93 +6,27 @@ Student Number: 12301975
 
 ## TODO:
 
-1. Secondary Client Application
+1. Check random number generator in Directory Server
 
-  - ~~Interactive~~
-  - ~~Includes the first Client Application~~
-  - ~~Change into more of a text editor~~
-  - ~~Change upload logic to upload a file rather than text input~~
+2. Fill in README for Transaction Server (and check others)
 
-2. Primary Client Application
+3. Add extra check to the lock service:
+  - Use the session key as a unique id and compare against it when locking/unlocking
 
-  - ~~Controls all of the API Calls~~
-  - ~~Switch to using the directory server to look for files~~
-  - ~~Figure out how to decide which fileserver to upload to~~
-
-3. Caching (Client side to start)
-
-  - ~~Create a temp folder when the client is started~~
-  - ~~Check the temp folder first whenever a download is called~~
-  - ~~Update the temp folder whenever a new download occurs~~
-  - ~~Clear the temp folder when the client is closed~~
-  - ~~Delete the oldest file when the cache is full and a new file is downloaded~~
-  - ~~Figure out invalidation of files~~
-  - ~~Make the cache module less hardcoded (localhost and port number)~~
-
-4. Directory Server
-
-  - ~~Switch to using mongoDB~~
-  - ~~Save FileMapping to DB~~
-  - ~~Figure out update logic~~
-  - ~~Add upload logic for client/server interaction~~
-  - ~~Move the Directory Server port to the common APIs folder~~
-  - **Check that random number gen in upload logic works correctly**
-  - Remove duplicates when listing files
-
-5. FileServer
-  - ~~Add delete functionality~~
-  - ~~On update/delete send an update to the directory server~~
-
-6. Replication
-  - ~~Implemented through a centralised replication server (The Directory Server)~~
-
-7. ~~Security Service~~
-
-  - ~~Authentication Server~~
-  - ~~Add a timeout to the token~~
-  - ~~Add authentiction to:~~
-    * ~~Client~~
-      - ~~Switch order of cache and login in start of client and pass token to cache~~
-    * ~~Cache~~
-    * ~~APIs~~
-      - ~~Figure out how to encrypt the [String], UTCTime and Int responses.~~
-  - **Should possibly encrypt the timeout with the user's password?**
-
-8. Transactions
-  - ~~Will use the user's session key as a unique identifier for the user~~
-  - ~~Need to add an abort/commit to the fileserver~~
-  - Fill in the README
-  
-
-9. Lock Service
-  - ~~Create a locking server~~
-  - ~~Add locking server functions to client API~~
-  - ~~Allow client to make use of locking~~
-  - ~~Added a ten minute timeout to locks~~
-  - ~~Clear locks on upload~~
-    * Note: No check that the client who unlocks had the lock. Assuming only uploading files that had write access.
-  - Could add current user who locked the file potentially (discuss in report) - Could use the user's session key as in transaction server...
-
-10. Add Proper Logging Messages
-  - ~~LockServer~~
-  - ~~AuthenticationServer~~
-  - ~~DirectoryServer~~
-  - ~~FileServer~~
+4. Comments and Logging for:
   - Client
-  - Cache
-  - TransactionServer
-  - ReplicationServer
+  - Transaction Server
+  - Replication (Directory Server)
 
-11. Comment Code
-  - ~~LockServer~~
-  - ~~CommonAPIs~~
-  - ~~Cache~~
-  - ~~AuthenticationServer~~
-  - ~~DirectoryServer~~
-  - ~~FileServer~~
-  - ClientAPI
-  - TransactionServer
-  - ReplicationServer
+5. Write a "setup.sh" which downloads the necessary libraries
+
+6. Change clean.sh, build.sh and run.sh to more generic forms (i.e. make the paths generic)
+
+7. Add mkdir mongoFiles to run.sh
+
+8. Add default user to Authentication Server in run.sh (localhost:8090/addNewUser/username/password)
+
+9. Possibly (hopefully not) make docker compatible
   
 ## Comments:
 
