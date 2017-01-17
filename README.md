@@ -6,7 +6,7 @@ Student Number: 12301975
 
 ## TODO:
 
-1. Check random number generator in Directory Server
+1. ~~Check random number generator in Directory Server~~
 
 2. Fill in README for Transaction Server (and check others)
 

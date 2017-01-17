@@ -165,7 +165,7 @@ server = searchForFile
         case fileMapping of
           Nothing -> do
             liftIO $ logMessage dirServerLogging ("File does not exist on servers. Picking random server to upload to...")
-            port <- liftIO $ randomRIO (8081, 8083)
+            port <- liftIO $ getStdRandom (randomR (8081,8082))
             manager <- liftIO $ newManager defaultManagerSettings
             res <- liftIO $ SC.runClientM (uploadQuery file) (SC.ClientEnv manager (SC.BaseUrl SC.Http fsHost port ""))
             case res of
