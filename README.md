@@ -8,7 +8,11 @@ Student Number: 12301975
 
 1. ~~Check random number generator in Directory Server~~
 
-2. Fill in README for Transaction Server (and check others)
+2. Fill in README for:
+  - Transaction Server
+  - Client 
+  - Directory Server
+  - File Server
 
 3. ~~Add extra check to the lock service:~~
   - ~~Use the session key as a unique id and compare against it when locking/unlocking~~
