@@ -34,7 +34,7 @@ import APIs
 type FileSet = (Int, UTCTime, FilePath)
 
 maxCacheSize :: Int
-maxCacheSize = 50 -- Size is detemined by number of characters. TODO: Make this bigger
+maxCacheSize = 200 -- Size is detemined by number of characters.
 
 setupCache :: AuthToken -> IO()
 setupCache token = do
@@ -43,12 +43,12 @@ setupCache token = do
   logMessage cacheLogging ("Changing current directory...")
   setCurrentDirectory ("temp/")
   logMessage cacheLogging ("Starting invalidation polling...")
-  forkIO $ checkForUpdate token 60 -- Poll every 60 seconds. TODO: Change this to 5 minutes.
+  forkIO $ checkForUpdate token (5*60) -- Poll every 5 minutes
   return ()
 
 checkForUpdate :: AuthToken -> Int -> IO()
 checkForUpdate token delay = do
-  threadDelay $ delay * 1000000 -- Wait 1 minute
+  threadDelay $ delay * 1000000 -- Wait 5 minutes
   logMessage cacheLogging ("Checking Cache for invalidations...")
   fileList <- listDirectory "../temp/"
   mapM_ (checkFileForUpdate token) fileList
@@ -57,7 +57,8 @@ checkForUpdate token delay = do
 checkFileForUpdate :: AuthToken -> String -> IO()
 checkFileForUpdate token@(AuthToken decTicket decSessionKey encTimeOut) fileName = do
   logMessage cacheLogging ("Checking for update to file: " ++ fileName)
-  localFileTime <- getAccessTime fileName -- Note: This is getAccessTime as opposed to getModificationTime, while the fileserver uses getModificationTime
+  -- Note: This is getAccessTime as opposed to getModificationTime, while the fileserver uses getModificationTime
+  localFileTime <- getAccessTime fileName 
   serverPort <- searchForFileQuery token fileName
   case serverPort of
     Nothing -> do
@@ -81,6 +82,7 @@ checkFileForUpdate token@(AuthToken decTicket decSessionKey encTimeOut) fileName
                 let decContents = encryptDecrypt decSessionKey contents
                 let decryptedFile = (File decName decContents)
                 storeNewFileInCache decryptedFile
+                logMessage cacheLogging ("Local file updated and saved.")
                 return()
           else do
             logMessage cacheLogging ("No changes made to remote file.")

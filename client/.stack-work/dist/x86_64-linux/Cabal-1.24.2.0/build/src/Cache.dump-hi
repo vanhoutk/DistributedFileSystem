@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-16 13:48:39.22913 UTC
+2017-01-17 21:39:02.252286 UTC
 
 interface client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0:Cache 8001
-  interface hash: 61d13606a6b0884b2a8e1a5c874f907a
-  ABI hash: f76a683836a2a577716f8709b2746b61
+  interface hash: 169a6febc755a43a02718fdd1bdde6a2
+  ABI hash: 4419590411ce5f19419e3cf9e6a3d58c
   export-list hash: 105150b5c54d55870ee22f6a000b7271
   orphan hash: 8a8488af419ef17052092b1b812f2ece
   flag hash: 574b45f9e678fc4f88be8159527aa1b3
@@ -177,7 +177,7 @@ import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.Environment ee0914a962f5508d0fd404c89ee4999b
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  base-4.9.0.0:Text.Read 9c1be14f7e5eac8b18bcb566c5763677
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs b66158317e93890a1da983468b86be19
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs 14f71ff2947837e809c34e3d0d86fcf1
 import  -/  directory-1.2.7.1@directory-1.2.7.1-6xbYYKdoE266LLlc7GOex4:System.Directory 970e76f5d7f7d1c2bb4871bad753c6c1
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
@@ -429,14 +429,14 @@ def2773ceb42fa8ce640449f36dcaed2
                    "Removing file from cache: "#
                    c
                    n) -}
-d189cf1f646cecab395162917086ef55
+17e029369f2f042dca0405d6932392ef
   setupCache :: APIs.AuthToken -> GHC.Types.IO ()
   {- Arity: 2, Strictness: <L,U(U,U,U)><S,U>,
      Unfolding: InlineRule (0, True, True)
                 Cache.setupCache1
                   `cast`
                 (<APIs.AuthToken>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-9d9ecd8128c61c7069731f7936aa9d51
+0bbf10f051105347cc903849923fd9fd
   setupCache1 ::
     APIs.AuthToken
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -479,9 +479,9 @@ d189cf1f646cecab395162917086ef55
                         (Sym (GHC.Types.N:IO[0] <()>_R))
                         ipv8 of ds { (#,#) ipv10 ipv11 ->
                  (# ipv10, GHC.Tuple.() #) } } } } } }) -}
-32902c8e462dbdd4d0a460b00aaec5f3
+0274d804b703e958285d9829418f2347
   setupCache2 :: GHC.Types.Int
-  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 60#) -}
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 300#) -}
 c3f13c0d0a67b509b1b95504d3cfa250
   setupCache3 ::
     APIs.AuthToken

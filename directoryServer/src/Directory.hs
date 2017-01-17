@@ -125,7 +125,7 @@ server = searchForFile
             docs <- find (select ["fileName" =: name] "FILE_SERVER_MAPPINGS") >>= drainCursor
             return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
 
-          case (length fileMap) of -- Currently no replicating so the length should either be 0 or 1
+          case (length fileMap) of
             0 -> return Nothing 
             _ -> return (Just (head fileMap))
 
@@ -136,7 +136,7 @@ server = searchForFile
         docs <- find (select ["fileName" =: fileName] "FILE_SERVER_MAPPINGS") >>= drainCursor
         return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe FileMapping) docs
 
-      case (length fileMap) of -- Currently no replicating so the length should either be 0 or 1
+      case (length fileMap) of 
         0 -> return [] 
         _ -> do
           ports <- mapM (getPorts) fileMap
@@ -178,7 +178,6 @@ server = searchForFile
                 liftIO $ logMessage dirServerLogging ("Upload File Response: " ++ decResponse)
                 return (SecureResponseData uploadResponse)
           Just fileMapping' -> do
-            -- TODO: Check that uploads have all worked correctly
             mapM (sendToServers file) fileMapping'
             let encResponse = encryptDecrypt sessionKey "Success"
             return (SecureResponseData encResponse)
@@ -197,7 +196,7 @@ server = searchForFile
         sendToServers :: SecureFileUpload -> FileMapping -> APIHandler(Maybe Bool)
         sendToServers file (FileMapping _ server port) = do
           liftIO $ do
-            logMessage dirServerLogging ("File found on " ++ server ++ " operating on port: " ++ port)
+            logMessage dirServerLogging ("File found on " ++ server ++ " operating on port: " ++ port ++ ". Uploading file...")
             manager <- newManager defaultManagerSettings
             let port' = read port :: Int
             res <- SC.runClientM (uploadQuery file) (SC.ClientEnv manager (SC.BaseUrl SC.Http fsHost port' ""))

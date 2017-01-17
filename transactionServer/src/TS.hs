@@ -92,6 +92,7 @@ server = startTransaction
           abortT ticket encTimeOut sessionKey
           return (SecureFile (File "Failed" "Session Key has expired. Transaction Aborted"))
         else do
+          -- Search for all servers that contain the file so that we can replicate to all of them if needs be
           manager <- liftIO $ newManager defaultManagerSettings
           res <- liftIO $ runClientM (searchManyQ decFileName) (ClientEnv manager (BaseUrl Http dsHost dsPort ""))
           case res of
@@ -99,7 +100,9 @@ server = startTransaction
               liftIO $ logMessage tranServerLogging ("Error getting fileserver ports from Directory Server: " ++ show err)
               return (SecureFile (File "Failed" ("Error getting fileserver ports from Directory Server: " ++ show err)))
             Right (ports) -> do
+              -- Add the list of servers to the database
               mapM (addNewMaps sessionKey decFileName) ports
+              -- Download the file from one of the servers (assumes replication is synchronous so all copies should be the same)
               resDownload <- liftIO $ runClientM (downloadF secFileName) (ClientEnv manager (BaseUrl Http dsHost (head ports) ""))
               case resDownload of
                 Left errDownload -> do
@@ -108,6 +111,7 @@ server = startTransaction
                 Right (file) -> do
                   return file
       
+      -- Called when the user accesses a while which is already cached, but the Transaction Server still needs a log of it
       cachedTransaction :: SecureFileName -> APIHandler SecureResponseData
       cachedTransaction (SecureFileName ticket encTimeOut encFileName) = do
         let decTimeOut = decryptTime sharedServerSecret encTimeOut
@@ -140,9 +144,11 @@ server = startTransaction
                   return (SecureResponseData encResponse)
                 Right (ports) -> do
                   mapM (addNewMaps sessionKey decFileName) ports
+                  liftIO $ logMessage tranServerLogging ("New Transactions map added to database.")
                   let encResponse = encryptDecrypt sessionKey "Success - Added new transaction maps."
                   return (SecureResponseData encResponse)
             _ -> do
+              liftIO $ logMessage tranServerLogging ("Transactions map already exist.")
               let encResponse = encryptDecrypt sessionKey "Success - Transaction Map already exists."
               return (SecureResponseData encResponse)
 
@@ -163,25 +169,34 @@ server = startTransaction
           return (SecureResponseData encResponse)
         else do
           liftIO $ logMessage tranServerLogging ("Searching for transaction mapping...") 
-          uploadT file sessionKey decFileName
-          let encResponse = encryptDecrypt sessionKey "Success - Upload completed."
-          return (SecureResponseData encResponse)
+          uploadResult <- uploadT file sessionKey decFileName
+          case uploadResult of
+            False -> do
+              let encResponse = encryptDecrypt sessionKey "Failed - Unable to upload a new file during a transaction."
+              return (SecureResponseData encResponse)
+            True -> do
+              let encResponse = encryptDecrypt sessionKey "Success - Upload completed."
+              return (SecureResponseData encResponse)
 
         where
-          uploadT :: SecureFileUpload -> String -> String -> APIHandler ()
+          uploadT :: SecureFileUpload -> String -> String -> APIHandler (Bool)
           uploadT file@(SecureFileUpload ticket encTimeOut (File encFileName encContents)) transactionID fileName = do
             transactionMaps <- liftIO $ withMongoDbConnection $ do
               docs <- find (select ["userid" =: transactionID, "servFileName" =: fileName] "TRANSACTION_MAPPINGS") >>= drainCursor
               return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe TransactionData) docs
 
             case (length transactionMaps) of 
-              0 -> return ()
+              0 -> do
+                liftIO $ logMessage tranServerLogging ("Transaction map does not exist.")
+                return False
               _ -> do
-                let tempFileName = fileName ++ "~" 
+                liftIO $ logMessage tranServerLogging ("Transaction map exists.")
+                let tempFileName = fileName ++ "~"
+                liftIO $ logMessage tranServerLogging ("Uploading temp file: " ++ tempFileName ++ " to relevant servers...") 
                 let encTempFileName = encryptDecrypt transactionID tempFileName
                 mapM (uploadEachT (SecureFileUpload ticket encTimeOut (File encTempFileName encContents))) transactionMaps
                 mapM (updateMaps fileName tempFileName) transactionMaps
-                return ()
+                return True
 
           uploadEachT :: SecureFileUpload -> TransactionData -> APIHandler ()
           uploadEachT file (TransactionData userid _ _ serverPort) = do
@@ -209,7 +224,7 @@ server = startTransaction
         let decTimeOut = decryptTime sharedServerSecret encTimeOut
         let sessionKey = encryptDecrypt sharedServerSecret ticket
 
-        liftIO $ logMessage tranServerLogging ("Commiting Transaction. Transaction ID: " ++ sessionKey)
+        liftIO $ logMessage tranServerLogging ("Committing Transaction. Transaction ID: " ++ sessionKey)
 
         currentTime <- liftIO $ getCurrentTime
         if (currentTime > decTimeOut) then do
@@ -219,9 +234,9 @@ server = startTransaction
           let encResponse = encryptDecrypt sessionKey "Failed - SessionKey has expired. Transaction Aborted."
           return (SecureResponseData encResponse)
         else do
-          liftIO $ logMessage tranServerLogging ("Client's authentication token has expired.")
           commitT ticket encTimeOut sessionKey
           liftIO $ withMongoDbConnection $ delete (select ["transactionID" =: sessionKey] "TRANSACTIONS")
+          liftIO $ logMessage tranServerLogging ("Transaction successfully committed.")
           let encResponse = encryptDecrypt sessionKey "Success - Transaction Committed."
           return (SecureResponseData encResponse)
 
@@ -248,7 +263,9 @@ commitT ticket encTimeOut transactionID = do
   case (length transactionMaps) of 
     0 -> return ()
     _ -> do
+      liftIO $ logMessage tranServerLogging ("Committing transaciton on each server...")
       mapM (commitEachT) transactionMaps
+      liftIO $ logMessage tranServerLogging ("Unlocking all held locks...")
       mapM (unlockAllFiles ticket encTimeOut) transactionMaps
       liftIO $ withMongoDbConnection $ delete (select ["userid" =: transactionID] "TRANSACTION_MAPPINGS")
       return ()
@@ -278,7 +295,9 @@ abortT ticket encTimeOut transactionID = do
   case (length transactionMaps) of 
     0 -> return ()
     _ -> do
+      liftIO $ logMessage tranServerLogging ("Aborting transaction on each server...")
       mapM (abortEachT ticket encTimeOut) transactionMaps
+      liftIO $ logMessage tranServerLogging ("Unlocking all held locks...")
       mapM (unlockAllFiles ticket encTimeOut) transactionMaps
       liftIO $ withMongoDbConnection $ do
         delete (select ["userid" =: transactionID] "TRANSACTION_MAPPINGS")

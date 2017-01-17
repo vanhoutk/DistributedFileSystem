@@ -22,7 +22,7 @@ startEditor token = do
                      
   -- | Widget Declarations
 
-  vbox              <- vBoxNew False 0  -- Create a new vertical box (False = Not equal space for all children, 0 = Default spacing between children.)
+  vbox              <- vBoxNew False 0  
   menuBox           <- hBoxNew False 2
   newButton         <- buttonNewWithLabel "New File"
   menuSeparator1    <- vSeparatorNew

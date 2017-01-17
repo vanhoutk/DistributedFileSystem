@@ -138,6 +138,7 @@ data AuthToken = AuthToken { encTicket :: String -- Client password encrypted ti
 data Lock = Lock { lockFileName :: String
                  , lockStatus :: Bool
                  , lockTime :: String
+                 , lockID :: String -- Unique ID identifying the user who created the lock
                  } deriving (Show, Generic, FromJSON, ToJSON, FromBSON, ToBSON)
 
 deriving instance FromBSON String  -- we need these as BSON does not provide

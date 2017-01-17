@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-16 13:47:29.710842 UTC
+2017-01-17 21:37:53.713857 UTC
 
 interface directoryServer-0.1.0.0-FDpouSKWWcLGIqa26WnZCC:Directory 8001
-  interface hash: 8027a7b6f5fcfac9cd2ab4a8aba6b524
+  interface hash: 10104729c6166cb6a10c4bf2372c084e
   ABI hash: 0abbe7367e1d0104b2a6c0f41805a213
   export-list hash: 2e9d7f1099220884305730b90179df8c
   orphan hash: 5a41ae9c202f4d42c0fe33c6564f186e
@@ -203,7 +203,7 @@ import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:Text.Read 9c1be14f7e5eac8b18bcb566c5763677
 import  -/  bson-0.3.2.3@bson-0.3.2.3-3QA3aP5EtCyCltXUzEKOsQ:Data.Bson 609b35b07f554dfa69c4b31dfeed380e
 import  -/  bson-generic-0.0.8@bson-generic-0.0.8-DtORpoUHwQhDReLJ5Keop0:Data.Bson.Generic 8688e6671f6f36dd3a9c6c1c23977c50
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs 0bf417a4b6a771ad6bb17874197f3747
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:APIs de43d306ed4249aebacc157f6d5287dd
 import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-2KMD0LAySofF5UCzxD1HfM:MongoFunctions 119436d2d0ba26878eab36c3bc78e15e
 import  -/  directory-1.2.6.2@directory-1.2.6.2:System.Directory f7c57c4a392d1767b38addc37d00ceed
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47

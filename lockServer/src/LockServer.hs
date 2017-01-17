@@ -77,7 +77,7 @@ server = lockFile
             return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe Lock) docs
           
           case fileLock of
-            [(Lock _ True time)] -> do -- Lock already exists.
+            [(Lock _ True time _)] -> do -- Lock already exists.
               currentTime <- liftIO $ getCurrentTime
               let time' = read time :: UTCTime
               if(time' > currentTime) then do -- Lock still valid
@@ -91,7 +91,7 @@ server = lockFile
                 let tenMinutes = 10 * 60
                 let lockTimeOut = addUTCTime tenMinutes currentTime
                 
-                liftIO $ do withMongoDbConnection $ upsert (select ["lockFileName" =: decName] "FILE_LOCKS") $ toBSON $ (Lock decName True (show(lockTimeOut) :: String))
+                liftIO $ do withMongoDbConnection $ upsert (select ["lockFileName" =: decName] "FILE_LOCKS") $ toBSON $ (Lock decName True (show(lockTimeOut) :: String) sessionKey)
                 liftIO $ logMessage lockServerLogging ("File: " ++ decName ++ " locked successfully.")
                 let encResponse = encryptDecrypt sessionKey ("Lock on file " ++ decName ++ " succeeded.")
                 return (SecureResponseData encResponse) 
@@ -101,7 +101,7 @@ server = lockFile
               let tenMinutes = 10 * 60
               let lockTimeOut = addUTCTime tenMinutes currentTime
               
-              liftIO $ do withMongoDbConnection $ upsert (select ["lockFileName" =: decName] "FILE_LOCKS") $ toBSON $ (Lock decName True (show(lockTimeOut) :: String))
+              liftIO $ do withMongoDbConnection $ upsert (select ["lockFileName" =: decName] "FILE_LOCKS") $ toBSON $ (Lock decName True (show(lockTimeOut) :: String) sessionKey)
               liftIO $ logMessage lockServerLogging ("File: " ++ decName ++ " locked successfully.")
               let encResponse = encryptDecrypt sessionKey ("Lock on file " ++ decName ++ " succeeded.")
               return (SecureResponseData encResponse) 
@@ -127,11 +127,25 @@ server = lockFile
             return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe Lock) docs
           
           case fileLock of
-            [(Lock _ True time)] -> do -- Lock already exists.
-              liftIO $ do withMongoDbConnection $ upsert (select ["lockFileName" =: decName] "FILE_LOCKS") $ toBSON $ (Lock decName False time)
-              liftIO $ logMessage lockServerLogging ("File: " ++ decName ++ " unlocked successfully.")
-              let encResponse = encryptDecrypt sessionKey ("Unlock of file " ++ decName ++ " succeeded.")
-              return (SecureResponseData encResponse)
+            [(Lock _ True time key)] -> do -- Lock already exists.
+              if(key == sessionKey) then do -- This user set the lock
+                liftIO $ do withMongoDbConnection $ upsert (select ["lockFileName" =: decName] "FILE_LOCKS") $ toBSON $ (Lock decName False time key)
+                liftIO $ logMessage lockServerLogging ("File: " ++ decName ++ " unlocked successfully.")
+                let encResponse = encryptDecrypt sessionKey ("Unlock of file " ++ decName ++ " succeeded.")
+                return (SecureResponseData encResponse)
+              else do -- This user did not set the lock
+                -- Check if the lock has expired, in which case unlock
+                currentTime <- liftIO $ getCurrentTime
+                let time' = read time :: UTCTime -- Convert the string time to UTCTime
+                if(time' > currentTime) then do -- Check if the lock is still valid
+                  liftIO $ logMessage lockServerLogging ("File: " ++ decName ++ " is locked by a different user to the one requesting an unlock.")
+                  let encResponse = encryptDecrypt sessionKey ("Unlock of file " ++ decName ++ " failed. Different user holds the lock.")
+                  return (SecureResponseData encResponse)
+                else do
+                  liftIO $ logMessage lockServerLogging ("File: " ++ decName ++ " lock has expired, unlocking file...")
+                  liftIO $ do withMongoDbConnection $ upsert (select ["lockFileName" =: decName] "FILE_LOCKS") $ toBSON $ (Lock decName False time key)
+                  let encResponse = encryptDecrypt sessionKey ("Unlock of file " ++ decName ++ " succeeded.")
+                  return (SecureResponseData encResponse)
             
             _ -> do -- No lock exists.
               liftIO $ logMessage lockServerLogging ("File: " ++ decName ++ " is already unlocked.")
@@ -159,7 +173,7 @@ server = lockFile
             return $ catMaybes $ DL.map (\ b -> fromBSON b :: Maybe Lock) docs
           
           case fileLock of
-            [(Lock _ True time)] -> do -- File is locked
+            [(Lock _ True time key)] -> do -- File is locked
               currentTime <- liftIO $ getCurrentTime
               let time' = read time :: UTCTime -- Convert the string time to UTCTime
               if(time' > currentTime) then do -- Check if the lock is still valid
@@ -167,7 +181,7 @@ server = lockFile
                 return True
               else do
                 liftIO $ logMessage lockServerLogging ("File: " ++ decName ++ " lock has expired, unlocking file...")
-                liftIO $ do withMongoDbConnection $ upsert (select ["lockFileName" =: decName] "FILE_LOCKS") $ toBSON $ (Lock decName False time)
+                liftIO $ do withMongoDbConnection $ upsert (select ["lockFileName" =: decName] "FILE_LOCKS") $ toBSON $ (Lock decName False time key)
                 return False
             
             _ -> do -- File is unlocked or no lock record exists

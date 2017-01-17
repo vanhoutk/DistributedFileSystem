@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-16 13:48:41.97904 UTC
+2017-01-17 21:44:03.296399 UTC
 
 interface client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0:ClientEditor 8001
-  interface hash: 47b9af2c93e3170602070dda59b9ae0a
+  interface hash: 4871556b4b88ea22b7d3602ba0d7a214
   ABI hash: 1bef92a19d63d3030118f2ad8110ab04
   export-list hash: 6f69da450efd23997be22ec5529c4c82
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -182,20 +182,20 @@ import  -/  base-4.9.0.0:Data.IORef 4b625b2df7d0ef688ec068837f79c7b0
 import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
-import  -/  Cache f76a683836a2a577716f8709b2746b61
+import  -/  Cache 4419590411ce5f19419e3cf9e6a3d58c
   exports: 105150b5c54d55870ee22f6a000b7271
   clearCache 328b8f81a7e752d8192e1738d32d4639
-import  -/  ClientAPI 98b197efe98daddb6fae8eb32c53e6a2
-  exports: b073ddf593526a4ad729c867ad580f02
-  abortTQuery 55e4bbfd8983396df4a96a82132ac8ec
-  commitTQuery 4518919aee67c37d86f7cacdfee6503d
+import  -/  ClientAPI 6804fc85a3118a7ba937019b314eb524
+  exports: 8b5963d604dd9c111d81cc899acc94a0
+  abortTQuery cbefea54ff45f7ac12a2437365b280e9
+  commitTQuery d42bc71434a4360eaf019f69d61290fe
   downloadReadWriteQ 974e5e47df572707c554e07ecb68593e
   downloadTQuery 1312e5c22bea62e16d63bbd73a2798c6
   fileListQuery b2d7334ef3a3e3b3df29eba5e56e49cd
-  startTQuery 1b23b978bcafc6985aeea45f36d172b9
+  startTQuery 421189dc220354608995a7dbdb320771
   uploadTQuery f62455ad76eb5467cf30facf35bc59f1
   uploadToServerQuery 14a9dc5c0c49832d1f0445a3f2f6eecc
-import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs b66158317e93890a1da983468b86be19
+import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs 14f71ff2947837e809c34e3d0d86fcf1
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  glib-0.13.4.1@glib-0.13.4.1-LHb10HBfEaUfMcseRRiwA:System.Glib.Attributes b43f7acb8ac12c3447ff229a317590a1
