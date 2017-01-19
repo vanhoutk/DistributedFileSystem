@@ -6,31 +6,15 @@ Student Number: 12301975
 
 ## TODO:
 
-1. ~~Check random number generator in Directory Server~~
-
-2. Fill in README for:
+1. Fill in README for:
   - Transaction Server
   - Client 
   - Directory Server
   - File Server
 
-3. ~~Add extra check to the lock service:~~
-  - ~~Use the session key as a unique id and compare against it when locking/unlocking~~
+2. Write a "setup.sh" which downloads the necessary libraries
 
-4. ~~Comments and Logging for:~~
-  - ~~Client~~
-  - ~~Transaction Server~~
-  - ~~Replication (Directory Server)~~
-
-5. Write a "setup.sh" which downloads the necessary libraries
-
-6. ~~Change clean.sh, build.sh and run.sh to more generic forms (i.e. make the paths generic)~~
-
-7. ~~Add mkdir mongoFiles to run.sh~~
-
-8. ~~Add default user to Authentication Server in run.sh (localhost:8090/addNewUser/username/password)~~
-
-9. Possibly (hopefully not) make docker compatible
+3. Informal Report
   
 ## Comments:
 
