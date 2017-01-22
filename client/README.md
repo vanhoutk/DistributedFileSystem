@@ -26,13 +26,13 @@ The cache is passed the authentication token which the user receives on login so
 The logic behind cache invalidation is shown below.
 
 1. Check for Invalidation
-	Logic:
-  	Wait 5 minutes
-  	List all of the files currently in the cache (“/temp” folder)
-  	For each file in the cache:
-    	Get the local access time of the file
-    	Request the port of the fileserver from the directory server
-    	Get the modification time of the file on the file server
-    	Check if the modification time on the file server is later than the access time of the local file
-      	If so, download the remote file and updated the local copy
-      	Otherwise, do nothing
+	- Logic:
+  	- Wait 5 minutes
+  	- List all of the files currently in the cache (“/temp” folder)
+  	- For each file in the cache:
+    	- Get the local access time of the file
+    	- Request the port of the fileserver from the directory server
+    	- Get the modification time of the file on the file server
+    	- Check if the modification time on the file server is later than the access time of the local file
+      	- If so, download the remote file and updated the local copy
+      	- Otherwise, do nothing

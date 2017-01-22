@@ -16,90 +16,90 @@ When a transaction occurs, a temporary copy of a file is uploaded to the file se
 The file service has a number of different functions, each of which is listed below.
 
 1. File Upload
-	Inputs: 
-		Session Key encrypted with the Shared Server Secret
-		Timeout on the Authentication Token, encrypted with the Shared Server Secret
-		File name encrypted with the Session Key
-		File contents encrypted with the Session Key
-  Return Values:
-    Response encrypted with the Session key
-  Logic:
-    Decrypt the timeout
-    Decrypt the session key
-    Decrypt the file name
-    Check if the token is still valid
-      If not, return a failed response
-    Decrypt the file contents
-    Send an update request to the directory server
-    Store the file
-    Return a success response
+	- Inputs: 
+		- Session Key encrypted with the Shared Server Secret
+		- Timeout on the Authentication Token, encrypted with the Shared Server Secret
+		- File name encrypted with the Session Key
+		- File contents encrypted with the Session Key
+  - Return Values:
+    - Response encrypted with the Session key
+  - Logic:
+    - Decrypt the timeout
+    - Decrypt the session key
+    - Decrypt the file name
+    - Check if the token is still valid
+      - If not, return a failed response
+    - Decrypt the file contents
+    - Send an update request to the directory server
+    - Store the file
+    - Return a success response
 
 2. Delete a file
-  Inputs: 
-    Session Key encrypted with the Shared Server Secret
-    Timeout on the Authentication Token, encrypted with the Shared Server Secret
-    File name encrypted with the Session Key
-  Return Values:
-    Response encrypted with the Session Key
-  Logic:
-    Decrypt the timeout
-    Decrypt the session key
-    Decrypt the file name
-    Check if the token is still valid
-      If not, return a failed response
-    Send a delete request to the directory server
-    Remove the file
-    Return a success response
+  - Inputs: 
+    - Session Key encrypted with the Shared Server Secret
+    - Timeout on the Authentication Token, encrypted with the Shared Server Secret
+    - File name encrypted with the Session Key
+  - Return Values:
+    - Response encrypted with the Session Key
+  - Logic:
+    - Decrypt the timeout
+    - Decrypt the session key
+    - Decrypt the file name
+    - Check if the token is still valid
+      - If not, return a failed response
+    - Send a delete request to the directory server
+    - Remove the file
+    - Return a success response
 
 3. List the files
-  Return Values:
-    List of file names 
-  Logic:
-    List the contents of the directory
-    Sort the list
-    Return the list
+  - Return Values:
+    - List of file names 
+  - Logic:
+    - List the contents of the directory
+    - Sort the list
+    - Return the list
 
 
 4. File Download
-  Inputs: 
-    Session Key encrypted with the Shared Server Secret
-    Timeout on the Authentication Token, encrypted with the Shared Server Secret
-    File name encrypted with the Session Key
-  Return Values:
-    File name encrypted with the Session Key
-    File contents encrypted with the Session Key
-  Logic:
-    Decrypt the timeout
-    Decrypt the session key
-    Decrypt the file name
-    Check if the token is still valid
-      If not, return a failed response
-    Read the contents of the file
-    Encrypt the contents
-    Return the encrypted file name and contents 
+  - Inputs: 
+    - Session Key encrypted with the Shared Server Secret
+    - Timeout on the Authentication Token, encrypted with the Shared Server Secret
+    - File name encrypted with the Session Key
+  - Return Values:
+    - File name encrypted with the Session Key
+    - File contents encrypted with the Session Key
+  - Logic:
+    - Decrypt the timeout
+    - Decrypt the session key
+    - Decrypt the file name
+    - Check if the token is still valid
+      - If not, return a failed response
+    - Read the contents of the file
+    - Encrypt the contents
+    - Return the encrypted file name and contents 
 
 5. Get Modify Time
-  Inputs: 
-    Session Key encrypted with the Shared Server Secret
-    Timeout on the Authentication Token, encrypted with the Shared Server Secret
-    File name encrypted with the Session Key
-  Return Values:
-    Modification time encrypted with the Session Key
-  Logic:
-    Decrypt the session key
-    Decrypt the file name
-    Get the modification time of the file
-    Encrypt the modification time
-    Return the encrypted modification time
+  - Inputs: 
+    - Session Key encrypted with the Shared Server Secret
+    - Timeout on the Authentication Token, encrypted with the Shared Server Secret
+    - File name encrypted with the Session Key
+  - Return Values:
+    - Modification time encrypted with the Session Key
+  - Logic:
+    - Decrypt the session key
+    - Decrypt the file name
+    - Get the modification time of the file
+    - Encrypt the modification time
+    - Return the encrypted modification time
 
 6. Commit Files
-  Inputs: 
-    File name
-    Temporary file name
-  Return Values:
-    Response message
-  Logic:
-    Read the contents of the temporary file
-    Write these contents to the permanent file
-    Delete the temporary file
-    Return a response message
+  - Inputs: 
+    - File name
+    - Temporary file name
+  - Return Values:
+    - Response message
+  - Logic:
+    - Read the contents of the temporary file
+    - Write these contents to the permanent file
+    - Delete the temporary file
+    - Return a response message

@@ -21,37 +21,37 @@ The authentication service uses a MongoDB database, called USER_ACCOUNTS, to sto
 The authentication service has two functions within it, the logic of each is explained below.
 
 1. Login User
-  Inputs: 
-    Username
-    A message encrypted with the user’s password
-  Return Values:
-    Authentication token which contains:
-    A session key, encrypted twice, first with the Shared Server Secret, follow by the user’s password, which is the authentication ticket
-    A session key, encrypted with the user’s password
-    A timeout for the token, encrypted with the Shared Server Secret
-  Logic:
-    Search for the user in the user database
-      If the user does not exist
-        Return an error Authentication Token
-      Otherwise:
-        Decrypt the message the user sent with the stored password
-        If the message does not match the username
-          Return an error Authentication Token
-        Otherwise:
-          Generate a random string for the session key
-          Encrypt the session key with the user's password to create an encrypted session key
-          Encrypt the encrypted session key with the shared server secret to create an authentication ticket
-          Encrypt the ticket with the user's password to create an encrypted ticket
-          Generate a timeout for the token
-          Encrypt the timeout with the shared server secret so that users can't change the timeout.
-          Return the Authentication Token
+  - Inputs: 
+    - Username
+    - A message encrypted with the user’s password
+  - Return Values:
+    - Authentication token which contains:
+    - A session key, encrypted twice, first with the Shared Server Secret, follow by the user’s password, which is the authentication ticket
+    - A session key, encrypted with the user’s password
+    - A timeout for the token, encrypted with the Shared Server Secret
+  - Logic:
+    - Search for the user in the user database
+      - If the user does not exist
+        - Return an error Authentication Token
+      - Otherwise:
+        - Decrypt the message the user sent with the stored password
+        - If the message does not match the username
+          - Return an error Authentication Token
+        - Otherwise:
+          - Generate a random string for the session key
+          - Encrypt the session key with the user's password to create an encrypted session key
+          - Encrypt the encrypted session key with the shared server secret to create an authentication ticket
+          - Encrypt the ticket with the user's password to create an encrypted ticket
+          - Generate a timeout for the token
+          - Encrypt the timeout with the shared server secret so that users can't change the timeout.
+          - Return the Authentication Token
 
 2. Add New User
-  Inputs: 
-    Username
-    Password
-  Return Values:
-    Response message
-  Logic:
-    Add a new username and password tuple to the database if one doesn’t already exist for that username, or update the password if a tuple already exists.
-    Return a success response
+  - Inputs: 
+    - Username
+    - Password
+  - Return Values:
+    - Response message
+  - Logic:
+    - Add a new username and password tuple to the database if one doesn’t already exist for that username, or update the password if a tuple already exists.
+    - Return a success response
