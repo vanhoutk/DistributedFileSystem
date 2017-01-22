@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-01-22 18:43:42.614682 UTC
+2017-01-22 19:21:27.026407 UTC
 
 interface client-0.1.0.0-72RVQ9fDCI5AtTz3hGj6E0:ClientEditor 8001
-  interface hash: 0e05bcddf5ae22733f73ba102c79be74
+  interface hash: c25c654672713214df43d0face9e7917
   ABI hash: 1bef92a19d63d3030118f2ad8110ab04
   export-list hash: 6f69da450efd23997be22ec5529c4c82
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -185,16 +185,16 @@ import  -/  base-4.9.0.0:System.IO eb1d40aa793a4047069a5023f2ebcfe3
 import  -/  Cache 4419590411ce5f19419e3cf9e6a3d58c
   exports: 105150b5c54d55870ee22f6a000b7271
   clearCache 328b8f81a7e752d8192e1738d32d4639
-import  -/  ClientAPI c1f8745bde91e551d1d21b54d4f20cdd
-  exports: b073ddf593526a4ad729c867ad580f02
-  abortTQuery 790a5ba2c4f6183dcd7effa0c1d25199
-  commitTQuery 0fc0fc9c7fb0d6a71a607a82063428a6
+import  -/  ClientAPI 9aa116d1f5f88f7de3df7e79ddcbf41b
+  exports: 8b5963d604dd9c111d81cc899acc94a0
+  abortTQuery cbefea54ff45f7ac12a2437365b280e9
+  commitTQuery d42bc71434a4360eaf019f69d61290fe
   downloadReadWriteQ 974e5e47df572707c554e07ecb68593e
   downloadTQuery 1312e5c22bea62e16d63bbd73a2798c6
   fileListQuery b2d7334ef3a3e3b3df29eba5e56e49cd
-  startTQuery 87950821a5e74ea0ca1063e5b71cb3d4
+  startTQuery 421189dc220354608995a7dbdb320771
   uploadTQuery f62455ad76eb5467cf30facf35bc59f1
-  uploadToServerQuery 14a9dc5c0c49832d1f0445a3f2f6eecc
+  uploadToServerQuery 9dad56de93ec319169c98205797c40e5
 import  -/  commonAPIs-0.1.0.0@commonAPIs-0.1.0.0-9OEcyEMuEuXDamiihWgBs9:APIs 5ba2d75f66f9a59177a86c4e0f695e90
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c

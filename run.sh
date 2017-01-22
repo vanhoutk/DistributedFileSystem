@@ -6,7 +6,7 @@ cd "$loc"
 dbloc="$HOME/mongoFiles"
 mkdir -p "$dbloc"
 
-gnome-terminal -e 'bash -c "mongod --dbpath $HOME/mongoFiles; exec bash"' &
+gnome-terminal -e 'bash -c "mongod --dbpath $HOME/mongoFiles --smallfiles; exec bash"' &
 echo $! > ./my.term.pid
 gnome-terminal -e 'bash -c "cd '$loc'/fileserver;echo $PPID;stack exec fileserver-exe 8082; exec bash"'  &
 echo $! >> ./my.term.pid

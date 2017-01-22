@@ -176,6 +176,7 @@ uploadToServerQuery token@(AuthToken decTicket decSessionKey encTimeOut) fileNam
   case res of
     Left err -> logMessage clientLogging ("Error uploading file: " ++ show err)
     Right (uploadFileResponse@(SecureResponseData encResponse)) -> do
+      storeNewFileInCache (File fileName contents)
       let decResponse = encryptDecrypt decSessionKey encResponse
       logMessage clientLogging ("Decrypted upload response: " ++ decResponse)
 

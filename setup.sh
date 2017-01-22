@@ -23,3 +23,7 @@ apt-get update && apt-get install -y mongodb-org
 
 export PATH="/root/.local/bin:/root/.stack/bin:$PATH"
 cd ./DistributedFileSystem
+
+chmod +x clean.sh
+chmod +x build.sh
+chmod +x run.sh
