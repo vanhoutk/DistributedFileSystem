@@ -17,29 +17,29 @@ Replication is implemented through the upload function of the directory server. 
 The directory service has a number of different functions, each of which is listed below.
 
 1. Get a fileserver for a file
-	- Inputs: 
-  	- Session Key encrypted with the Shared Server Secret
-  	- Timeout on the Authentication Token, encrypted with the Shared Server Secret
-  	- File name encrypted with the Session Key
-	- Return Values:
-	 - Fileserver Port number encrypted with the Session Key
-	- Logic:
-  	- Decrypt the timeout
-  	- Decrypt the session key
-  	- Decrypt the file name
-  	- Check if the token is still valid
-    	- If not:
-      	- Encrypt the port number 0 (which is used to signify error)
-      	- Return the encrypted error port
-  	- Search for the file name in the file mapping database
-    	- If the file mapping exists
-      	- Get the first file mapping (if there’s more than one)
-      	- Get the port from the file mapping
-      	- Encrypt the port
-      	- Return the encrypted port
-    	- Otherwise:
-      	- Encrypt the port number 0 (which is used to signify error)
-      	- Return the encrypted error port 
+  - Inputs: 
+    - Session Key encrypted with the Shared Server Secret
+    - Timeout on the Authentication Token, encrypted with the Shared Server Secret
+    - File name encrypted with the Session Key
+  - Return Values:
+    - Fileserver Port number encrypted with the Session Key
+  - Logic:
+    - Decrypt the timeout
+    - Decrypt the session key
+    - Decrypt the file name
+    - Check if the token is still valid
+      - If not:
+        - Encrypt the port number 0 (which is used to signify error)
+        - Return the encrypted error port
+    - Search for the file name in the file mapping database
+      - If the file mapping exists
+        - Get the first file mapping (if there’s more than one)
+        - Get the port from the file mapping
+        - Encrypt the port
+        - Return the encrypted port
+      - Otherwise:
+        - Encrypt the port number 0 (which is used to signify error)
+        - Return the encrypted error port 
 
 2. Get all fileservers for a file
   Inputs: 
