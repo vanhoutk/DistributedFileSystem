@@ -1,18 +1,25 @@
-sudo docker run -i -t ubuntu /bin/bash
+#!/bin/bash
+
+apt-get update && apt-get install -y git curl gtk-2.0
+
+# install Stack
+
+curl -sSL https://get.haskellstack.org/ | sh
+stack setup
+stack setup --upgrade-cabal
+stack install alex happy gtk2hs-buildtools
+
+
 mkdir -p /home/Documents/CS4532
 cd /home/Documents/CS4532
-apt-get update
-apt-get install git curl libgtk2.0
-
 
 git clone  https://github.com/vanhoutk/DistributedFileSystem.git
 
-apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
-echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/10gen.list
-apt-get update && apt-get install mongodb-10gen
+#### MongoDB installation
 
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+apt-get update && apt-get install -y mongodb-org
 
-curl -sSL https://get.haskellstack.org/ | sh
-
-cd DistributedFileSystem/client
-stack setup
+export PATH="/root/.local/bin:/root/.stack/bin:$PATH"
+cd ./DistributedFileSystem

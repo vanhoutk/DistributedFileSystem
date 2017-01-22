@@ -1,5 +1,5 @@
-[1 of 1] Compiling Main             ( /tmp/stack21193/process-1.4.2.0/Setup.hs, /tmp/stack21193/process-1.4.2.0/.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/setup/Main.o )
-Linking /tmp/stack21193/process-1.4.2.0/.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/setup/setup ...
+[1 of 1] Compiling Main             ( /tmp/stack3807/process-1.4.2.0/Setup.hs, /tmp/stack3807/process-1.4.2.0/.stack-work/dist/x86_64-linux/Cabal-1.24.2.0/setup/Main.o )
+Linking /tmp/stack3807/process-1.4.2.0/.stack-work/dist/x86_64-linux/Cabal-1.24.2.0/setup/setup ...
 Configuring process-1.4.2.0...
 configure: WARNING: unrecognized options: --with-compiler
 checking for gcc... /usr/bin/gcc
@@ -50,11 +50,11 @@ config.status: creating include/HsProcessConfig.h
 configure: WARNING: unrecognized options: --with-compiler
 Building process-1.4.2.0...
 Preprocessing library process-1.4.2.0...
-[1 of 5] Compiling System.Process.Common ( System/Process/Common.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/System/Process/Common.o )
-[2 of 5] Compiling System.Process.Posix ( System/Process/Posix.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/System/Process/Posix.o )
-[3 of 5] Compiling System.Process.Internals ( System/Process/Internals.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/System/Process/Internals.o )
-[4 of 5] Compiling System.Process   ( .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/System/Process.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/System/Process.o )
-[5 of 5] Compiling System.Cmd       ( System/Cmd.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/System/Cmd.o )
+[1 of 5] Compiling System.Process.Common ( System/Process/Common.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Process/Common.o )
+[2 of 5] Compiling System.Process.Posix ( System/Process/Posix.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Process/Posix.o )
+[3 of 5] Compiling System.Process.Internals ( System/Process/Internals.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Process/Internals.o )
+[4 of 5] Compiling System.Process   ( .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Process.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Process.o )
+[5 of 5] Compiling System.Cmd       ( System/Cmd.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/System/Cmd.o )
 Installing library in
-/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1/process-1.4.2.0-DSyGBbjTQjrDTpN59X3DYz
+/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.16/8.0.1/lib/x86_64-linux-ghc-8.0.1/process-1.4.2.0-DSyGBbjTQjrDTpN59X3DYz
 Registering process-1.4.2.0...

@@ -4,35 +4,33 @@ Name: Kris Vanhoutte
 
 Student Number: 12301975
 
-## TODO:
+## Setup Instructions
 
-1. Fill in README for:
-  - Transaction Server
-  - Client 
-  - Directory Server
-  - File Server
+A setup file has been provided which downloads the necessary libraries as well as the content of this github. The steps involved are:
 
-2. Write a "setup.sh" which downloads the necessary libraries
+1. If using docker, `run sudo docker run -i -t ubuntu /bin/bash` to start a docker container. All following steps should be run inside the docker container, or in a terminal window if not using docker.
 
-3. Informal Report
-  
-## Comments:
+2. Next run:
+  ```
+  $ apt-get update && apt-get install -y wget
+  $ wget https://raw.githubusercontent.com/vanhoutk/DistributedFileSystem/master/setup.sh
+  ```
+  This will download the setup script.
 
-The caching currently uses polling every minute <- Something which should be discussed in the report.
+3. Run the script by using
+  ```
+  $ chmod +x setup.sh
+  $ source setup.sh
+  ```
 
-The fileserver and caching both works with local directories (files/ and temp/ respectively).
+Once the libraries have been installed, the distributed file system can be built using the build.sh file, and then run with the run.sh file.
+A number of issues were encountered during testing, two of which can be resolved as follows:
 
-Caching should ideally be slightly more modular with respect to the polling.
+  1. Some versions of packages might result in build errors:
+    - To solve remove the .stack-work folder (`rm -rf .stack-work`) for the affected application and rebuild
 
-No check on the fact that the sessionKey (or rather the ticket hasn't been tampered with) <- Discuss in report
-Didn't put a time check on the ticket query for the file modify time. Too much effort and not very important.
-
-TimeOut might not be fully secure, should possibly be encrypted with the sessionKey first, then the sharedSecret. Otherwise a new connection could be used to impersonate a different user. Potentially.
-
-SessionKey used as unique ID for user in transaction server <- Comment on in report
-
-Don't currently allow user to reconnect without closing and re-opening the client - Report
-
-Transaction Server does not allow you to add new files to the server (must be done outside transaction)
-
-Not currently a closeall windows on exit command
+  2. The client build might throw up a gtk2hsSetup error message. To solve run:
+    ```
+    $ stack build --resolver lts-7.16
+    $ stack install alex happy gtk2hs-buildtools --resolver lts-7.16
+    ```

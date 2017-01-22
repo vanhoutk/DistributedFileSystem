@@ -1,8 +1,8 @@
 Configuring connection-0.2.6...
 Building connection-0.2.6...
 Preprocessing library connection-0.2.6...
-[1 of 2] Compiling Network.Connection.Types ( Network/Connection/Types.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Network/Connection/Types.o )
-[2 of 2] Compiling Network.Connection ( Network/Connection.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Network/Connection.o )
+[1 of 2] Compiling Network.Connection.Types ( Network/Connection/Types.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Network/Connection/Types.o )
+[2 of 2] Compiling Network.Connection ( Network/Connection.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Network/Connection.o )
 
 Network/Connection.hs:51:1: warning: [-Wunused-imports]
     The import of ‘Control.Applicative’ is redundant
@@ -20,5 +20,5 @@ Network/Connection.hs:339:21: warning: [-Wdeprecations]
     In the use of ‘breakByte’ (imported from Data.ByteString):
     Deprecated: "It is an internal function and should never have been exported. Use 'break (== x)' instead. (There are rewrite rules that handle this special case of 'break'.)"
 Installing library in
-/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.15/8.0.1/lib/x86_64-linux-ghc-8.0.1/connection-0.2.6-8ls5u8Bqda94LdRxeIaGy6
+/home/protoman/Documents/CS4532/DFS/client/.stack-work/install/x86_64-linux/lts-7.16/8.0.1/lib/x86_64-linux-ghc-8.0.1/connection-0.2.6-2iD9P7uxuGQ7uRTCsLaKnE
 Registering connection-0.2.6...
